@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.3.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.4.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,7 @@ use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
+use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
@@ -118,6 +119,9 @@ final class APIV1Client
     /** `$client->kv` */
     public readonly KvNamespace $kv;
 
+    /** `$client->msteams` */
+    public readonly MsteamsNamespace $msteams;
+
     /** `$client->orgs` */
     public readonly OrgsNamespace $orgs;
 
@@ -191,6 +195,7 @@ final class APIV1Client
         $this->docker = new DockerNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
+        $this->msteams = new MsteamsNamespace($this->transport);
         $this->orgs = new OrgsNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
