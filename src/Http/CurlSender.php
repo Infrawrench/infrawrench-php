@@ -1,0 +1,109 @@
+<?php
+
+/*
+ * infrawrench/sdk v0.1.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * https://github.com/Infrawrench/Infrawrench
+ *
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.1.1).
+ *
+ * DO NOT EDIT. Regenerate with:
+ *   pnpm --filter @infrawrench/web generate:sdk
+ *
+ * Internal routes are absent by construction: the generator consumes the same
+ * published spec that /openapi.json serves, which drops every operation
+ * marked x-internal.
+ */
+
+declare(strict_types=1);
+
+namespace Infrawrench\Sdk\Http;
+
+use Infrawrench\Sdk\TransportException;
+
+/**
+ * The default sender wherever `ext-curl` is loaded.
+ *
+ * Preferred over {@see StreamSender} because it reports connection failures as
+ * failures instead of warnings, gives a real connect timeout, and does not need
+ * `allow_url_fopen`. It is still not a hard requirement — see the fallback in
+ * `Transport`.
+ */
+final class CurlSender implements HttpSender
+{
+    /**
+     * @param array<int, mixed> $curlOptions Extra `CURLOPT_*` values, applied
+     *                                       last. For proxies, client
+     *                                       certificates and the like.
+     */
+    public function __construct(private readonly array $curlOptions = [])
+    {
+    }
+
+    public function send(
+        string $method,
+        string $url,
+        array $headers,
+        ?string $body,
+        ?float $timeout,
+    ): HttpResponse {
+        $handle = curl_init();
+        if ($handle === false) {
+            throw new TransportException('Could not initialise a cURL handle.');
+        }
+
+        $headerLines = [];
+        foreach ($headers as $name => $value) {
+            $headerLines[] = "{$name}: {$value}";
+        }
+        // A cURL default that surprises people: without this, cURL adds
+        // `Expect: 100-continue` to bodies over 1 KiB and then stalls for a
+        // second when the server does not answer it.
+        $headerLines[] = 'Expect:';
+
+        $responseHeaders = [];
+        $options = [
+            CURLOPT_CUSTOMREQUEST => $method,
+            CURLOPT_URL => $url,
+            CURLOPT_HTTPHEADER => $headerLines,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => false,
+            CURLOPT_HEADERFUNCTION => static function ($_handle, string $line) use (&$responseHeaders): int {
+                $length = strlen($line);
+                $separator = strpos($line, ':');
+                if ($separator !== false) {
+                    $name = strtolower(trim(substr($line, 0, $separator)));
+                    $responseHeaders[$name] = trim(substr($line, $separator + 1));
+                }
+
+                return $length;
+            },
+        ];
+        if ($body !== null) {
+            $options[CURLOPT_POSTFIELDS] = $body;
+        }
+        if ($timeout !== null) {
+            // The millisecond variants so a sub-second timeout is not silently
+            // rounded to zero, which cURL reads as "no timeout".
+            $options[CURLOPT_TIMEOUT_MS] = (int) round($timeout * 1000);
+            $options[CURLOPT_CONNECTTIMEOUT_MS] = (int) round($timeout * 1000);
+        }
+        foreach ($this->curlOptions as $key => $value) {
+            $options[$key] = $value;
+        }
+        curl_setopt_array($handle, $options);
+
+        $result = curl_exec($handle);
+        $error = curl_error($handle);
+        $status = (int) curl_getinfo($handle, CURLINFO_RESPONSE_CODE);
+        // No `curl_close()`: handles have been objects since PHP 8.0, freed when
+        // `$handle` falls out of scope, and calling it emits a deprecation
+        // notice on 8.5 — which a library has no business printing.
+        unset($handle);
+
+        if ($result === false) {
+            throw new TransportException("{$method} {$url} failed: {$error}");
+        }
+
+        return new HttpResponse($status, $responseHeaders, is_string($result) ? $result : '');
+    }
+}

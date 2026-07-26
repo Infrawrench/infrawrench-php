@@ -1,0 +1,77 @@
+<?php
+
+/*
+ * infrawrench/sdk v0.1.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * https://github.com/Infrawrench/Infrawrench
+ *
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.1.1).
+ *
+ * DO NOT EDIT. Regenerate with:
+ *   pnpm --filter @infrawrench/web generate:sdk
+ *
+ * Internal routes are absent by construction: the generator consumes the same
+ * published spec that /openapi.json serves, which drops every operation
+ * marked x-internal.
+ */
+
+declare(strict_types=1);
+
+namespace Infrawrench\Sdk\Model;
+
+use Infrawrench\Sdk\Internal\Coerce;
+
+final class AssociationRequest implements \JsonSerializable
+{
+    public function __construct(
+        public readonly string $consumerResourceId,
+        public readonly string $consumerFieldKey,
+        public readonly string $providerResourceId,
+        public readonly string $providerOutputKey,
+        public readonly string $providerPluginId,
+        public readonly string $providerResourceTypeId,
+        public readonly string $providerAccountId,
+    ) {
+    }
+
+    /**
+     * Build one from a decoded JSON object.
+     *
+     * @param array<string, mixed> $data
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            consumerResourceId: Coerce::toString($data['consumerResourceId'] ?? null),
+            consumerFieldKey: Coerce::toString($data['consumerFieldKey'] ?? null),
+            providerResourceId: Coerce::toString($data['providerResourceId'] ?? null),
+            providerOutputKey: Coerce::toString($data['providerOutputKey'] ?? null),
+            providerPluginId: Coerce::toString($data['providerPluginId'] ?? null),
+            providerResourceTypeId: Coerce::toString($data['providerResourceTypeId'] ?? null),
+            providerAccountId: Coerce::toString($data['providerAccountId'] ?? null),
+        );
+    }
+
+    /**
+     * The wire representation, ready for `json_encode`.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'consumerResourceId' => $this->consumerResourceId,
+            'consumerFieldKey' => $this->consumerFieldKey,
+            'providerResourceId' => $this->providerResourceId,
+            'providerOutputKey' => $this->providerOutputKey,
+            'providerPluginId' => $this->providerPluginId,
+            'providerResourceTypeId' => $this->providerResourceTypeId,
+            'providerAccountId' => $this->providerAccountId,
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
+    }
+}

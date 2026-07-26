@@ -1,0 +1,51 @@
+{
+  "name": "infrawrench/sdk",
+  "description": "Generated PHP client for the Infrawrench API (v0.1.1).",
+  "type": "library",
+  "keywords": [
+    "infrawrench",
+    "sdk",
+    "api-client",
+    "openapi",
+    "infrastructure",
+    "cloud",
+    "devops",
+    "php"
+  ],
+  "homepage": "https://infrawrench.com/docs/team-and-billing/client-sdks",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Infrawrench LLC",
+      "email": "astrid@infrawrench.com",
+      "homepage": "https://infrawrench.com",
+      "role": "Publisher"
+    },
+    {
+      "name": "Astrid Gealer",
+      "email": "astrid@infrawrench.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/Infrawrench/Infrawrench/issues",
+    "source": "https://github.com/Infrawrench/Infrawrench",
+    "docs": "https://infrawrench.com/docs/team-and-billing/client-sdks",
+    "email": "astrid@infrawrench.com"
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-json": "*"
+  },
+  "suggest": {
+    "ext-curl": "Preferred HTTP backend. Without it the client falls back to stream wrappers."
+  },
+  "autoload": {
+    "psr-4": {
+      "Infrawrench\\Sdk\\": "src/"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
