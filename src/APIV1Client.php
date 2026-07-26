@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.2.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.2.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.3.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -39,6 +39,7 @@ use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
+use Infrawrench\Sdk\Api\SlackNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
 use Infrawrench\Sdk\Api\SshKeysNamespace;
 use Infrawrench\Sdk\Api\SshTunnelsNamespace;
@@ -132,6 +133,9 @@ final class APIV1Client
     /** `$client->sftp` */
     public readonly SftpNamespace $sftp;
 
+    /** `$client->slack` */
+    public readonly SlackNamespace $slack;
+
     /** `$client->sql` */
     public readonly SqlNamespace $sql;
 
@@ -192,6 +196,7 @@ final class APIV1Client
         $this->resources = new ResourcesNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
         $this->sftp = new SftpNamespace($this->transport);
+        $this->slack = new SlackNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);
         $this->sshKeys = new SshKeysNamespace($this->transport);
         $this->sshTunnels = new SshTunnelsNamespace($this->transport);
