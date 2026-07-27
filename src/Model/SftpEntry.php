@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,14 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class SftpEntry implements \JsonSerializable
 {
+    /** @param string $key Absolute remote path. */
     public function __construct(
+        public readonly string $key,
         public readonly string $name,
-        public readonly bool $isDir,
-        public readonly ?int $size = null,
-        public readonly ?string $modifiedAt = null,
+        public readonly float $size,
+        public readonly string $lastModified,
+        public readonly bool $isDirectory,
+        public readonly ?string $contentType = null,
     ) {
     }
 
@@ -38,10 +41,12 @@ final class SftpEntry implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
+            key: Coerce::toString($data['key'] ?? null),
             name: Coerce::toString($data['name'] ?? null),
-            isDir: Coerce::toBool($data['isDir'] ?? null),
-            size: Coerce::toIntOrNull($data['size'] ?? null),
-            modifiedAt: Coerce::toStringOrNull($data['modifiedAt'] ?? null),
+            size: Coerce::toFloat($data['size'] ?? null),
+            lastModified: Coerce::toString($data['lastModified'] ?? null),
+            isDirectory: Coerce::toBool($data['isDirectory'] ?? null),
+            contentType: Coerce::toStringOrNull($data['contentType'] ?? null),
         );
     }
 
@@ -53,14 +58,14 @@ final class SftpEntry implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
+            'key' => $this->key,
             'name' => $this->name,
-            'isDir' => $this->isDir,
+            'size' => $this->size,
+            'lastModified' => $this->lastModified,
+            'isDirectory' => $this->isDirectory,
         ];
-        if ($this->size !== null) {
-            $payload['size'] = $this->size;
-        }
-        if ($this->modifiedAt !== null) {
-            $payload['modifiedAt'] = $this->modifiedAt;
+        if ($this->contentType !== null) {
+            $payload['contentType'] = $this->contentType;
         }
 
         return $payload;

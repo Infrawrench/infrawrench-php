@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,12 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CredentialFormat implements \JsonSerializable
 {
+    /**
+     * @param string $id Passed back as `formatId` on export.
+     * @param 'json'|'text'|'ini'|'binary-base64' $mediaType How the credential body should be presented. `binary-base64` means `content` is base64.
+     * @param string|null $filenameTemplate Suggested filename; `{resource}` is replaced with the resource's external id.
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $label,
+        public readonly string $mediaType,
         public readonly ?string $description = null,
-        public readonly ?string $fileExtension = null,
-        public readonly ?string $mimeType = null,
+        public readonly ?string $filenameTemplate = null,
     ) {
     }
 
@@ -41,9 +46,9 @@ final class CredentialFormat implements \JsonSerializable
         return new self(
             id: Coerce::toString($data['id'] ?? null),
             label: Coerce::toString($data['label'] ?? null),
+            mediaType: Coerce::toString($data['mediaType'] ?? null),
             description: Coerce::toStringOrNull($data['description'] ?? null),
-            fileExtension: Coerce::toStringOrNull($data['fileExtension'] ?? null),
-            mimeType: Coerce::toStringOrNull($data['mimeType'] ?? null),
+            filenameTemplate: Coerce::toStringOrNull($data['filenameTemplate'] ?? null),
         );
     }
 
@@ -57,15 +62,13 @@ final class CredentialFormat implements \JsonSerializable
         $payload = [
             'id' => $this->id,
             'label' => $this->label,
+            'mediaType' => $this->mediaType,
         ];
         if ($this->description !== null) {
             $payload['description'] = $this->description;
         }
-        if ($this->fileExtension !== null) {
-            $payload['fileExtension'] = $this->fileExtension;
-        }
-        if ($this->mimeType !== null) {
-            $payload['mimeType'] = $this->mimeType;
+        if ($this->filenameTemplate !== null) {
+            $payload['filenameTemplate'] = $this->filenameTemplate;
         }
 
         return $payload;

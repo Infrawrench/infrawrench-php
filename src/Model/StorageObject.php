@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class StorageObject implements \JsonSerializable
 {
+    /**
+     * @param string $key Full path within the bucket.
+     * @param string $name Last path segment — what the browser renders.
+     */
     public function __construct(
         public readonly string $key,
-        public readonly ?int $size = null,
-        public readonly ?bool $isFolder = null,
-        public readonly ?string $lastModified = null,
+        public readonly string $name,
+        public readonly float $size,
+        public readonly string $lastModified,
+        public readonly bool $isDirectory,
+        public readonly ?string $contentType = null,
     ) {
     }
 
@@ -39,9 +45,11 @@ final class StorageObject implements \JsonSerializable
     {
         return new self(
             key: Coerce::toString($data['key'] ?? null),
-            size: Coerce::toIntOrNull($data['size'] ?? null),
-            isFolder: Coerce::toBoolOrNull($data['isFolder'] ?? null),
-            lastModified: Coerce::toStringOrNull($data['lastModified'] ?? null),
+            name: Coerce::toString($data['name'] ?? null),
+            size: Coerce::toFloat($data['size'] ?? null),
+            lastModified: Coerce::toString($data['lastModified'] ?? null),
+            isDirectory: Coerce::toBool($data['isDirectory'] ?? null),
+            contentType: Coerce::toStringOrNull($data['contentType'] ?? null),
         );
     }
 
@@ -54,15 +62,13 @@ final class StorageObject implements \JsonSerializable
     {
         $payload = [
             'key' => $this->key,
+            'name' => $this->name,
+            'size' => $this->size,
+            'lastModified' => $this->lastModified,
+            'isDirectory' => $this->isDirectory,
         ];
-        if ($this->size !== null) {
-            $payload['size'] = $this->size;
-        }
-        if ($this->isFolder !== null) {
-            $payload['isFolder'] = $this->isFolder;
-        }
-        if ($this->lastModified !== null) {
-            $payload['lastModified'] = $this->lastModified;
+        if ($this->contentType !== null) {
+            $payload['contentType'] = $this->contentType;
         }
 
         return $payload;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class SecretVersion implements \JsonSerializable
 {
-    /** @param 'ENABLED'|'DISABLED'|'DESTROYED' $state */
+    /**
+     * @param 'enabled'|'disabled'|'destroyed' $state
+     * @param string $createdAt ISO-8601.
+     * @param string|null $destroyedAt Set only when destroyed.
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $state,
         public readonly string $createdAt,
+        public readonly ?string $destroyedAt = null,
+        public readonly ?bool $isLatest = null,
     ) {
     }
 
@@ -41,6 +47,8 @@ final class SecretVersion implements \JsonSerializable
             id: Coerce::toString($data['id'] ?? null),
             state: Coerce::toString($data['state'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
+            destroyedAt: Coerce::toStringOrNull($data['destroyedAt'] ?? null),
+            isLatest: Coerce::toBoolOrNull($data['isLatest'] ?? null),
         );
     }
 
@@ -51,11 +59,19 @@ final class SecretVersion implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'state' => $this->state,
             'createdAt' => $this->createdAt,
         ];
+        if ($this->destroyedAt !== null) {
+            $payload['destroyedAt'] = $this->destroyedAt;
+        }
+        if ($this->isLatest !== null) {
+            $payload['isLatest'] = $this->isLatest;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

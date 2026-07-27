@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,8 +21,8 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
-use Infrawrench\Sdk\Model\Resource;
 use Infrawrench\Sdk\Model\ResourceTypeId;
+use Infrawrench\Sdk\Model\SyncedResource;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->accounts->syncType` */
@@ -41,7 +41,7 @@ final class AccountsSyncTypeNamespace extends ApiNamespace
      *
      * @param ResourceTypeId::* $typeId
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return list<Resource>
+     * @return list<SyncedResource>
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
@@ -56,6 +56,6 @@ final class AccountsSyncTypeNamespace extends ApiNamespace
             $options,
         );
 
-        return Coerce::mapList($data, static fn (mixed $item): Resource => Resource::fromArray(Coerce::toArray($item)));
+        return Coerce::mapList($data, static fn (mixed $item): SyncedResource => SyncedResource::fromArray(Coerce::toArray($item)));
     }
 }

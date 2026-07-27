@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,7 +22,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CredentialExport implements \JsonSerializable
 {
-    /** @param array<string, string>|null $fields */
+    /**
+     * @param list<array{label: string, value: string, sensitive?: bool, hint?: string}>|null $fields
+     */
     public function __construct(
         public readonly string $content,
         public readonly string $filename,
@@ -43,7 +45,7 @@ final class CredentialExport implements \JsonSerializable
             content: Coerce::toString($data['content'] ?? null),
             filename: Coerce::toString($data['filename'] ?? null),
             mimeType: Coerce::toString($data['mimeType'] ?? null),
-            fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapValues($value, static fn (mixed $item): string => Coerce::toString($item))),
+            fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             warning: Coerce::toStringOrNull($data['warning'] ?? null),
         );
     }

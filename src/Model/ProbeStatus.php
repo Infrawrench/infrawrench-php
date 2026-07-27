@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,10 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ProbeStatus implements \JsonSerializable
 {
     /**
-     * @param 'ok'|'loading'|'error' $phase
+     * @param 'ok'|'error' $phase
      * @param list<array<string, mixed>>|null $stats
-     * @param list<array{ts: float, value: float}>|null $sparkline
-     * @param list<array{typeId: string, count: int}>|null $resourceCounts
+     * @param list<array{timestamp: float, value: float}>|null $sparkline
+     * @param list<array{typeLabel: string, count: int}>|null $resourceCounts
      */
     public function __construct(
         public readonly string $phase,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class ChildResourceRef implements \JsonSerializable
 {
+    /** @param array<string, mixed>|null $fields */
     public function __construct(
         public readonly string $id,
         public readonly string $displayName,
@@ -29,6 +30,7 @@ final class ChildResourceRef implements \JsonSerializable
         public readonly string $pluginId,
         public readonly string $accountId,
         public readonly ?StatusDot $status = null,
+        public readonly ?array $fields = null,
     ) {
     }
 
@@ -46,6 +48,7 @@ final class ChildResourceRef implements \JsonSerializable
             pluginId: Coerce::toString($data['pluginId'] ?? null),
             accountId: Coerce::toString($data['accountId'] ?? null),
             status: Coerce::nullable($data['status'] ?? null, static fn (mixed $value): StatusDot => StatusDot::fromArray(Coerce::toArray($value))),
+            fields: Coerce::toArrayOrNull($data['fields'] ?? null),
         );
     }
 
@@ -65,6 +68,9 @@ final class ChildResourceRef implements \JsonSerializable
         ];
         if ($this->status !== null) {
             $payload['status'] = $this->status->toArray();
+        }
+        if ($this->fields !== null) {
+            $payload['fields'] = $this->fields;
         }
 
         return $payload;

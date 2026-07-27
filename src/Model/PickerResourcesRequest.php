@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class PickerResourcesRequest implements \JsonSerializable
         public readonly array $sources,
         public readonly string $accountId,
         public readonly ?string $regionHint = null,
+        public readonly ?bool $crossAccount = null,
     ) {
     }
 
@@ -43,6 +44,7 @@ final class PickerResourcesRequest implements \JsonSerializable
             sources: Coerce::mapList($data['sources'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
             accountId: Coerce::toString($data['accountId'] ?? null),
             regionHint: Coerce::toStringOrNull($data['regionHint'] ?? null),
+            crossAccount: Coerce::toBoolOrNull($data['crossAccount'] ?? null),
         );
     }
 
@@ -59,6 +61,9 @@ final class PickerResourcesRequest implements \JsonSerializable
         ];
         if ($this->regionHint !== null) {
             $payload['regionHint'] = $this->regionHint;
+        }
+        if ($this->crossAccount !== null) {
+            $payload['crossAccount'] = $this->crossAccount;
         }
 
         return $payload;

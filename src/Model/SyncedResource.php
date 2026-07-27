@@ -20,14 +20,21 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class ArtifactsListRequest implements \JsonSerializable
+final class SyncedResource implements \JsonSerializable
 {
+    /**
+     * @param array<string, mixed> $fieldsJson
+     * @param array<string, mixed> $outputsJson
+     */
     public function __construct(
-        public readonly string $accountId,
-        public readonly string $resourceId,
+        public readonly string $id,
+        public readonly string $pluginId,
         public readonly string $resourceTypeId,
-        public readonly ?string $pageToken = null,
-        public readonly ?string $prefix = null,
+        public readonly string $displayName,
+        public readonly ?string $externalId,
+        public readonly array $fieldsJson,
+        public readonly array $outputsJson,
+        public readonly mixed $parentResourceId,
     ) {
     }
 
@@ -39,11 +46,14 @@ final class ArtifactsListRequest implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            accountId: Coerce::toString($data['accountId'] ?? null),
-            resourceId: Coerce::toString($data['resourceId'] ?? null),
+            id: Coerce::toString($data['id'] ?? null),
+            pluginId: Coerce::toString($data['pluginId'] ?? null),
             resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
-            pageToken: Coerce::toStringOrNull($data['pageToken'] ?? null),
-            prefix: Coerce::toStringOrNull($data['prefix'] ?? null),
+            displayName: Coerce::toString($data['displayName'] ?? null),
+            externalId: Coerce::toStringOrNull($data['externalId'] ?? null),
+            fieldsJson: Coerce::toArray($data['fieldsJson'] ?? null),
+            outputsJson: Coerce::toArray($data['outputsJson'] ?? null),
+            parentResourceId: $data['parentResourceId'] ?? null,
         );
     }
 
@@ -54,19 +64,16 @@ final class ArtifactsListRequest implements \JsonSerializable
      */
     public function toArray(): array
     {
-        $payload = [
-            'accountId' => $this->accountId,
-            'resourceId' => $this->resourceId,
+        return [
+            'id' => $this->id,
+            'pluginId' => $this->pluginId,
             'resourceTypeId' => $this->resourceTypeId,
+            'displayName' => $this->displayName,
+            'externalId' => $this->externalId,
+            'fieldsJson' => $this->fieldsJson,
+            'outputsJson' => $this->outputsJson,
+            'parentResourceId' => $this->parentResourceId,
         ];
-        if ($this->pageToken !== null) {
-            $payload['pageToken'] = $this->pageToken;
-        }
-        if ($this->prefix !== null) {
-            $payload['prefix'] = $this->prefix;
-        }
-
-        return $payload;
     }
 
     /** @return array<string, mixed> */

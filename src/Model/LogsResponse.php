@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,15 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class LogsResponse implements \JsonSerializable
 {
-    /** @param list<string> $lines */
+    /**
+     * @param string $text Raw log text; each entry keeps its trailing newline.
+     * @param list<string> $containers Container names available for this resource — drives the container picker.
+     * @param string $activeContainer Container `text` was read from.
+     */
     public function __construct(
-        public readonly array $lines,
-        public readonly ?string $nextPageToken = null,
-        public readonly ?bool $truncated = null,
+        public readonly string $text,
+        public readonly array $containers,
+        public readonly string $activeContainer,
     ) {
     }
 
@@ -38,9 +42,9 @@ final class LogsResponse implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            lines: Coerce::mapList($data['lines'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
-            nextPageToken: Coerce::toStringOrNull($data['nextPageToken'] ?? null),
-            truncated: Coerce::toBoolOrNull($data['truncated'] ?? null),
+            text: Coerce::toString($data['text'] ?? null),
+            containers: Coerce::mapList($data['containers'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            activeContainer: Coerce::toString($data['activeContainer'] ?? null),
         );
     }
 
@@ -51,17 +55,11 @@ final class LogsResponse implements \JsonSerializable
      */
     public function toArray(): array
     {
-        $payload = [
-            'lines' => $this->lines,
+        return [
+            'text' => $this->text,
+            'containers' => $this->containers,
+            'activeContainer' => $this->activeContainer,
         ];
-        if ($this->nextPageToken !== null) {
-            $payload['nextPageToken'] = $this->nextPageToken;
-        }
-        if ($this->truncated !== null) {
-            $payload['truncated'] = $this->truncated;
-        }
-
-        return $payload;
     }
 
     /** @return array<string, mixed> */

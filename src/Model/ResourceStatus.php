@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,11 +29,11 @@ namespace Infrawrench\Sdk\Model;
 final class ResourceStatus
 {
     public const HEALTHY = 'healthy';
-    public const WARNING = 'warning';
+    public const DEGRADED = 'degraded';
     public const ERROR = 'error';
     public const UNKNOWN = 'unknown';
-    public const PENDING = 'pending';
-    public const STOPPED = 'stopped';
+    public const PROVISIONING = 'provisioning';
+    public const INFO = 'info';
 
     /**
      * Every value, in the order the spec lists them.
@@ -44,11 +44,11 @@ final class ResourceStatus
     {
         return [
             self::HEALTHY,
-            self::WARNING,
+            self::DEGRADED,
             self::ERROR,
             self::UNKNOWN,
-            self::PENDING,
-            self::STOPPED,
+            self::PROVISIONING,
+            self::INFO,
         ];
     }
 }

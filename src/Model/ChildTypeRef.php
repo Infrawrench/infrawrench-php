@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,13 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class ChildTypeRef implements \JsonSerializable
 {
+    /** @param list<array<string, mixed>>|null $fields */
     public function __construct(
         public readonly string $id,
         public readonly string $displayName,
         public readonly bool $supportsCreate,
         public readonly ?string $pluralDisplayName = null,
+        public readonly ?array $fields = null,
     ) {
     }
 
@@ -42,6 +44,7 @@ final class ChildTypeRef implements \JsonSerializable
             displayName: Coerce::toString($data['displayName'] ?? null),
             supportsCreate: Coerce::toBool($data['supportsCreate'] ?? null),
             pluralDisplayName: Coerce::toStringOrNull($data['pluralDisplayName'] ?? null),
+            fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
         );
     }
 
@@ -59,6 +62,9 @@ final class ChildTypeRef implements \JsonSerializable
         ];
         if ($this->pluralDisplayName !== null) {
             $payload['pluralDisplayName'] = $this->pluralDisplayName;
+        }
+        if ($this->fields !== null) {
+            $payload['fields'] = $this->fields;
         }
 
         return $payload;
