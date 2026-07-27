@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.5.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.5.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class BudgetWithStatus implements \JsonSerializable
      * @param list<BudgetCostFilter> $filters
      * @param list<BudgetThreshold> $thresholds
      * @param list<array{id: string, thresholdType: 'actual'|'forecast', thresholdPercent: int, triggeredAt: string}> $currentMonthEvents
+     * @param list<array{widgetId: string, dashboardId: string, dashboardName: string}> $placements
      */
     public function __construct(
         public readonly string $id,
@@ -38,6 +39,7 @@ final class BudgetWithStatus implements \JsonSerializable
         public readonly int $actualCents,
         public readonly ?int $forecastCents,
         public readonly array $currentMonthEvents,
+        public readonly array $placements,
     ) {
     }
 
@@ -59,6 +61,7 @@ final class BudgetWithStatus implements \JsonSerializable
             actualCents: Coerce::toInt($data['actualCents'] ?? null),
             forecastCents: Coerce::toIntOrNull($data['forecastCents'] ?? null),
             currentMonthEvents: Coerce::mapList($data['currentMonthEvents'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
+            placements: Coerce::mapList($data['placements'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
         );
     }
 
@@ -80,6 +83,7 @@ final class BudgetWithStatus implements \JsonSerializable
             'actualCents' => $this->actualCents,
             'forecastCents' => $this->forecastCents,
             'currentMonthEvents' => $this->currentMonthEvents,
+            'placements' => $this->placements,
         ];
     }
 
