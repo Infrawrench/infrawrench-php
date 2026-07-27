@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.8.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.8.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,8 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
+use Infrawrench\Sdk\Model\AccountDeleted;
+use Infrawrench\Sdk\Model\AccountDeletionPreview;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\Model\Profile;
 use Infrawrench\Sdk\Model\ProfileSummary;
@@ -45,6 +47,67 @@ final class ProfileNamespace extends ApiNamespace
         $this->emailChange = new ProfileEmailChangeNamespace($this->transport);
         $this->mfa = new ProfileMfaNamespace($this->transport);
         $this->sessions = new ProfileSessionsNamespace($this->transport);
+    }
+
+    /**
+     * Delete the signed-in user's account
+     *
+     * Irreversible. Organizations where the caller is the only member are deleted and their
+     * subscriptions cancelled; other memberships are simply removed. Refuses with
+     * `transfer_ownership_required` while the caller is the only owner of an organization other
+     * people belong to.
+     *
+     * DELETE /api/profile
+     *
+     * Raises on 401: Unauthenticated
+     *
+     * Raises on 403: Recent sign-in required. Send the user through sign-in again and retry; the
+     * request itself was well-formed.
+     *
+     * Raises on 409: The caller still solely owns a shared organization; nothing was deleted.
+     *
+     * Raises on 502: A subscription could not be cancelled; nothing was deleted.
+     *
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function delete(?RequestOptions $options = null): AccountDeleted
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'DELETE',
+                path: '/api/profile',
+            ),
+            $options,
+        );
+
+        return AccountDeleted::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * What deleting this account would do
+     *
+     * Read-only. Lets a confirmation screen name the organizations that go with the account, and
+     * the ones that must be handed over first.
+     *
+     * GET /api/profile/deletion-preview
+     *
+     * Raises on 401: Unauthenticated
+     *
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function deletionPreview(?RequestOptions $options = null): AccountDeletionPreview
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/profile/deletion-preview',
+            ),
+            $options,
+        );
+
+        return AccountDeletionPreview::fromArray(Coerce::toArray($data));
     }
 
     /**
