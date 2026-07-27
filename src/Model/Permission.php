@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.5.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.5.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -43,6 +43,7 @@ final class Permission
     public const DASHBOARDS_READ = 'dashboards:read';
     public const DASHBOARDS_WRITE = 'dashboards:write';
     public const COSTS_READ = 'costs:read';
+    public const COSTS_WRITE = 'costs:write';
     public const BUDGETS_READ = 'budgets:read';
     public const BUDGETS_WRITE = 'budgets:write';
     public const AUDIT_READ = 'audit:read';
@@ -60,6 +61,7 @@ final class Permission
     public const BASTIONS_WRITE = 'bastions:write';
     public const CHAT_READ = 'chat:read';
     public const CHAT_WRITE = 'chat:write';
+    public const PAGES_WRITE = 'pages:write';
     public const ORG_SETTINGS_WRITE = 'org:settings:write';
 
     /**
@@ -84,6 +86,7 @@ final class Permission
             self::DASHBOARDS_READ,
             self::DASHBOARDS_WRITE,
             self::COSTS_READ,
+            self::COSTS_WRITE,
             self::BUDGETS_READ,
             self::BUDGETS_WRITE,
             self::AUDIT_READ,
@@ -101,6 +104,7 @@ final class Permission
             self::BASTIONS_WRITE,
             self::CHAT_READ,
             self::CHAT_WRITE,
+            self::PAGES_WRITE,
             self::ORG_SETTINGS_WRITE,
         ];
     }
