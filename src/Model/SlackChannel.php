@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.11.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.12.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.11.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.12.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk

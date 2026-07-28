@@ -20,11 +20,18 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class OrganizationRef implements \JsonSerializable
+final class SeatLimitResponse implements \JsonSerializable
 {
+    /**
+     * @param 'seat_limit_reached' $code
+     * @param int $seatCount Seats on the plan
+     * @param int $seatsUsed Members plus pending unexpired invitations
+     */
     public function __construct(
-        public readonly string $id,
-        public readonly string $name,
+        public readonly string $error,
+        public readonly string $code,
+        public readonly int $seatCount,
+        public readonly int $seatsUsed,
     ) {
     }
 
@@ -36,8 +43,10 @@ final class OrganizationRef implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            id: Coerce::toString($data['id'] ?? null),
-            name: Coerce::toString($data['name'] ?? null),
+            error: Coerce::toString($data['error'] ?? null),
+            code: Coerce::toString($data['code'] ?? null),
+            seatCount: Coerce::toInt($data['seatCount'] ?? null),
+            seatsUsed: Coerce::toInt($data['seatsUsed'] ?? null),
         );
     }
 
@@ -49,8 +58,10 @@ final class OrganizationRef implements \JsonSerializable
     public function toArray(): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
+            'error' => $this->error,
+            'code' => $this->code,
+            'seatCount' => $this->seatCount,
+            'seatsUsed' => $this->seatsUsed,
         ];
     }
 

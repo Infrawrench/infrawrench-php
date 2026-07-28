@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.11.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.12.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.11.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.12.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,10 @@ final class TeamInvitationsNamespace extends ApiNamespace
      * _Requires permission: `team:invite`._
      *
      * POST /api/org/{orgId}/team/invitations
+     *
+     * Raises on 409: All seats are in use; retry with addSeat to buy one more
+     *
+     * Raises on 502: Buying the extra seat failed; the invitation was not sent
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
