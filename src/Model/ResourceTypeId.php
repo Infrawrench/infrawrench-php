@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.12.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.13.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.12.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.13.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,7 @@ final class ResourceTypeId
 {
     public const ACCESS_APPLICATION = 'access-application';
     public const ACCESS_POLICY = 'access-policy';
+    public const ACCOUNT = 'account';
     public const ACM_CERTIFICATE = 'acm-certificate';
     public const AGENT_API_KEY = 'agent-api-key';
     public const AI_GATEWAY = 'ai-gateway';
@@ -40,10 +41,12 @@ final class ResourceTypeId
     public const ALLOYDB_CLUSTER = 'alloydb-cluster';
     public const ALLOYDB_INSTANCE = 'alloydb-instance';
     public const API_GATEWAY = 'api-gateway';
+    public const API_KEY = 'api-key';
     public const APP = 'app';
     public const APP_ENGINE_SERVICE = 'app-engine-service';
     public const APPRUNNER_SERVICE = 'apprunner-service';
     public const ARTIFACT_REGISTRY_REPO = 'artifact-registry-repo';
+    public const AUDIT_EVENT = 'audit-event';
     public const AUTO_SCALING_GROUP = 'auto-scaling-group';
     public const AZURE_AKS_CLUSTER = 'azure-aks-cluster';
     public const AZURE_APP_GATEWAY = 'azure-app-gateway';
@@ -78,6 +81,9 @@ final class ResourceTypeId
     public const AZURE_VNET = 'azure-vnet';
     public const BACKEND_SERVICE = 'backend-service';
     public const BACKUP_VAULT = 'backup-vault';
+    public const BALANCE = 'balance';
+    public const BATCH = 'batch';
+    public const BATCH_INFERENCE_JOB = 'batch-inference-job';
     public const BATCH_JOB_QUEUE = 'batch-job-queue';
     public const BEDROCK_MODEL = 'bedrock-model';
     public const BIGQUERY_DATASET = 'bigquery-dataset';
@@ -85,6 +91,7 @@ final class ResourceTypeId
     public const BIGTABLE_INSTANCE = 'bigtable-instance';
     public const BLOCK_VOLUME = 'block-volume';
     public const CACHE_RULE = 'cache-rule';
+    public const CACHED_CONTENT = 'cached-content';
     public const CERTIFICATE = 'certificate';
     public const CH_DATABASE = 'ch-database';
     public const CH_SERVICE = 'ch-service';
@@ -108,8 +115,11 @@ final class ResourceTypeId
     public const CODEBUILD_PROJECT = 'codebuild-project';
     public const CODEPIPELINE_PIPELINE = 'codepipeline-pipeline';
     public const COGNITO_USER_POOL = 'cognito-user-pool';
+    public const COLLECTION = 'collection';
     public const COMPOSER_ENVIRONMENT = 'composer-environment';
+    public const CONTAINER = 'container';
     public const CUSTOM_HOSTNAME = 'custom-hostname';
+    public const CUSTOM_VOICE = 'custom-voice';
     public const D1_DATABASE = 'd1-database';
     public const DATABRICKS_APP = 'databricks-app';
     public const DATABRICKS_CATALOG = 'databricks-catalog';
@@ -134,8 +144,11 @@ final class ResourceTypeId
     public const DATABRICKS_VOLUME = 'databricks-volume';
     public const DATABRICKS_WORKSPACE_OBJECT = 'databricks-workspace-object';
     public const DATAFLOW_JOB = 'dataflow-job';
+    public const DATASET = 'dataset';
     public const DB_USER = 'db-user';
     public const DEDICATED_INFERENCE = 'dedicated-inference';
+    public const DEPLOYED_MODEL = 'deployed-model';
+    public const DEPLOYMENT = 'deployment';
     public const DNS_RECORD = 'dns-record';
     public const DOCKER_CONTAINER = 'docker-container';
     public const DOCKER_IMAGE = 'docker-image';
@@ -156,7 +169,17 @@ final class ResourceTypeId
     public const ELASTIC_IP = 'elastic-ip';
     public const ELASTICACHE_CLUSTER = 'elasticache-cluster';
     public const EMAIL_ROUTING_RULE = 'email-routing-rule';
+    public const EMBED_JOB = 'embed-job';
+    public const ENDPOINT = 'endpoint';
+    public const EVAL = 'eval';
+    public const EVALUATION = 'evaluation';
     public const EVENTBRIDGE_RULE = 'eventbridge-rule';
+    public const FILE = 'file';
+    public const FILE_SEARCH_DOCUMENT = 'file-search-document';
+    public const FILE_SEARCH_STORE = 'file-search-store';
+    public const FINE_TUNE = 'fine-tune';
+    public const FINE_TUNING_JOB = 'fine-tuning-job';
+    public const FINETUNED_MODEL = 'finetuned-model';
     public const FIRESTORE_DATABASE = 'firestore-database';
     public const FIREWALL = 'firewall';
     public const FIREWALL_RULE = 'firewall-rule';
@@ -173,8 +196,14 @@ final class ResourceTypeId
     public const GEN_AI_MODEL_ROUTER = 'gen-ai-model-router';
     public const GKE_CLUSTER = 'gke-cluster';
     public const GLUE_DATABASE = 'glue-database';
+    public const GROQ_BATCH = 'groq-batch';
+    public const GROQ_FILE = 'groq-file';
+    public const GROQ_FINE_TUNING = 'groq-fine-tuning';
+    public const GROQ_MODEL = 'groq-model';
+    public const HARDWARE = 'hardware';
     public const HEALTH_CHECK = 'health-check';
     public const HEALTHCHECK = 'healthcheck';
+    public const HISTORY_ITEM = 'history-item';
     public const HYPERDRIVE = 'hyperdrive';
     public const IAM_ROLE = 'iam-role';
     public const IAM_USER = 'iam-user';
@@ -184,8 +213,10 @@ final class ResourceTypeId
     public const INSTANCE_GROUP = 'instance-group';
     public const INSTANCE_TEMPLATE = 'instance-template';
     public const INTERNET_GATEWAY = 'internet-gateway';
+    public const INVITE = 'invite';
     public const IP_ACCESS_RULE = 'ip-access-rule';
     public const IP_ALLOCATION = 'ip-allocation';
+    public const JOB = 'job';
     public const K8S_CLUSTER = 'k8s-cluster';
     public const K8S_CONFIGMAP = 'k8s-configmap';
     public const K8S_CRONJOB = 'k8s-cronjob';
@@ -213,12 +244,23 @@ final class ResourceTypeId
     public const MACHINE = 'machine';
     public const MANAGED_DATABASE = 'managed-database';
     public const MANAGED_DB = 'managed-db';
+    public const MANAGED_ENDPOINT = 'managed-endpoint';
     public const MANAGED_KUBE = 'managed-kube';
     public const MEDIA_ASSET = 'media-asset';
+    public const MEMBER = 'member';
     public const MEMCACHED_INSTANCE = 'memcached-instance';
     public const MEMORYSTORE_MEMCACHED = 'memorystore-memcached';
     public const MEMORYSTORE_REDIS = 'memorystore-redis';
+    public const MESSAGE_BATCH = 'message-batch';
+    public const MISTRAL_API_KEY = 'mistral-api-key';
+    public const MISTRAL_BATCH_JOB = 'mistral-batch-job';
+    public const MISTRAL_FILE = 'mistral-file';
+    public const MISTRAL_FINE_TUNING_JOB = 'mistral-fine-tuning-job';
+    public const MISTRAL_MODEL = 'mistral-model';
+    public const MISTRAL_VOICE = 'mistral-voice';
+    public const MODEL = 'model';
     public const MODEL_API_KEY = 'model-api-key';
+    public const MODEL_ENDPOINT = 'model-endpoint';
     public const MONGODB_DATABASE = 'mongodb-database';
     public const MQ_BROKER = 'mq-broker';
     public const MSK_CLUSTER = 'msk-cluster';
@@ -253,13 +295,19 @@ final class ResourceTypeId
     public const OBJECT_STORAGE_BUCKET = 'object-storage-bucket';
     public const OPENSEARCH_CLUSTER = 'opensearch-cluster';
     public const OPENSEARCH_DOMAIN = 'opensearch-domain';
+    public const ORGANIZATION_USER = 'organization-user';
     public const PAGE_RULE = 'page-rule';
     public const PG_DATABASE = 'pg-database';
     public const PG_SCHEMA = 'pg-schema';
     public const PLACEMENT_GROUP = 'placement-group';
+    public const PREDICTION = 'prediction';
     public const PRIMARY_IP = 'primary-ip';
     public const PRIVATE_NETWORK = 'private-network';
     public const PROJECT = 'project';
+    public const PROJECT_API_KEY = 'project-api-key';
+    public const PRONUNCIATION_DICT = 'pronunciation-dict';
+    public const PRONUNCIATION_DICTIONARY = 'pronunciation-dictionary';
+    public const PROVIDER = 'provider';
     public const PS_BACKUP = 'ps-backup';
     public const PS_BRANCH = 'ps-branch';
     public const PS_DATABASE = 'ps-database';
@@ -268,6 +316,7 @@ final class ResourceTypeId
     public const PUBSUB_SUBSCRIPTION = 'pubsub-subscription';
     public const PUBSUB_TOPIC = 'pubsub-topic';
     public const QUEUE = 'queue';
+    public const QUOTA = 'quota';
     public const R2_BUCKET = 'r2-bucket';
     public const RATE_LIMIT_RULE = 'rate-limit-rule';
     public const RDB_INSTANCE = 'rdb-instance';
@@ -282,6 +331,7 @@ final class ResourceTypeId
     public const ROUTE53_RECORD_SET = 'route53-record-set';
     public const S3_BUCKET = 's3-bucket';
     public const SAGEMAKER_ENDPOINT = 'sagemaker-endpoint';
+    public const SECRET = 'secret';
     public const SECRET_MANAGER_SECRET = 'secret-manager-secret';
     public const SECRETS_MANAGER_SECRET = 'secrets-manager-secret';
     public const SECURITY_GROUP = 'security-group';
@@ -301,8 +351,13 @@ final class ResourceTypeId
     public const STATIC_IP = 'static-ip';
     public const STEP_FUNCTION = 'step-function';
     public const SUBNET = 'subnet';
+    public const SUPERVISED_FINE_TUNING_JOB = 'supervised-fine-tuning-job';
     public const TARGET_GROUP = 'target-group';
+    public const TRAINING = 'training';
+    public const TRANSCRIPT = 'transcript';
+    public const TRANSCRIPTION = 'transcription';
     public const TRANSFORMATION = 'transformation';
+    public const TUNED_MODEL = 'tuned-model';
     public const TUNNEL = 'tunnel';
     public const TURNSTILE_WIDGET = 'turnstile-widget';
     public const TURSO_API_TOKEN = 'turso-api-token';
@@ -313,6 +368,7 @@ final class ResourceTypeId
     public const TURSO_ORGANIZATION_INVITE = 'turso-organization-invite';
     public const TURSO_ORGANIZATION_MEMBER = 'turso-organization-member';
     public const UPLOAD_PRESET = 'upload-preset';
+    public const VECTOR_STORE = 'vector-store';
     public const VECTORIZE_INDEX = 'vectorize-index';
     public const VERCEL_DEPLOYMENT = 'vercel-deployment';
     public const VERCEL_DOMAIN = 'vercel-domain';
@@ -321,6 +377,8 @@ final class ResourceTypeId
     public const VERCEL_TEAM = 'vercel-team';
     public const VERTEX_AI_ENDPOINT = 'vertex-ai-endpoint';
     public const VERTEX_GEMINI_MODEL = 'vertex-gemini-model';
+    public const VOCABULARY = 'vocabulary';
+    public const VOICE = 'voice';
     public const VOLUME = 'volume';
     public const VPC = 'vpc';
     public const VPC_NETWORK = 'vpc-network';
@@ -330,6 +388,7 @@ final class ResourceTypeId
     public const WORKER_ROUTE = 'worker-route';
     public const WORKERS_AI_MODEL = 'workers-ai-model';
     public const WORKFLOW = 'workflow';
+    public const WORKSPACE = 'workspace';
     public const ZONE = 'zone';
 
     /**
@@ -342,6 +401,7 @@ final class ResourceTypeId
         return [
             self::ACCESS_APPLICATION,
             self::ACCESS_POLICY,
+            self::ACCOUNT,
             self::ACM_CERTIFICATE,
             self::AGENT_API_KEY,
             self::AI_GATEWAY,
@@ -351,10 +411,12 @@ final class ResourceTypeId
             self::ALLOYDB_CLUSTER,
             self::ALLOYDB_INSTANCE,
             self::API_GATEWAY,
+            self::API_KEY,
             self::APP,
             self::APP_ENGINE_SERVICE,
             self::APPRUNNER_SERVICE,
             self::ARTIFACT_REGISTRY_REPO,
+            self::AUDIT_EVENT,
             self::AUTO_SCALING_GROUP,
             self::AZURE_AKS_CLUSTER,
             self::AZURE_APP_GATEWAY,
@@ -389,6 +451,9 @@ final class ResourceTypeId
             self::AZURE_VNET,
             self::BACKEND_SERVICE,
             self::BACKUP_VAULT,
+            self::BALANCE,
+            self::BATCH,
+            self::BATCH_INFERENCE_JOB,
             self::BATCH_JOB_QUEUE,
             self::BEDROCK_MODEL,
             self::BIGQUERY_DATASET,
@@ -396,6 +461,7 @@ final class ResourceTypeId
             self::BIGTABLE_INSTANCE,
             self::BLOCK_VOLUME,
             self::CACHE_RULE,
+            self::CACHED_CONTENT,
             self::CERTIFICATE,
             self::CH_DATABASE,
             self::CH_SERVICE,
@@ -419,8 +485,11 @@ final class ResourceTypeId
             self::CODEBUILD_PROJECT,
             self::CODEPIPELINE_PIPELINE,
             self::COGNITO_USER_POOL,
+            self::COLLECTION,
             self::COMPOSER_ENVIRONMENT,
+            self::CONTAINER,
             self::CUSTOM_HOSTNAME,
+            self::CUSTOM_VOICE,
             self::D1_DATABASE,
             self::DATABRICKS_APP,
             self::DATABRICKS_CATALOG,
@@ -445,8 +514,11 @@ final class ResourceTypeId
             self::DATABRICKS_VOLUME,
             self::DATABRICKS_WORKSPACE_OBJECT,
             self::DATAFLOW_JOB,
+            self::DATASET,
             self::DB_USER,
             self::DEDICATED_INFERENCE,
+            self::DEPLOYED_MODEL,
+            self::DEPLOYMENT,
             self::DNS_RECORD,
             self::DOCKER_CONTAINER,
             self::DOCKER_IMAGE,
@@ -467,7 +539,17 @@ final class ResourceTypeId
             self::ELASTIC_IP,
             self::ELASTICACHE_CLUSTER,
             self::EMAIL_ROUTING_RULE,
+            self::EMBED_JOB,
+            self::ENDPOINT,
+            self::EVAL,
+            self::EVALUATION,
             self::EVENTBRIDGE_RULE,
+            self::FILE,
+            self::FILE_SEARCH_DOCUMENT,
+            self::FILE_SEARCH_STORE,
+            self::FINE_TUNE,
+            self::FINE_TUNING_JOB,
+            self::FINETUNED_MODEL,
             self::FIRESTORE_DATABASE,
             self::FIREWALL,
             self::FIREWALL_RULE,
@@ -484,8 +566,14 @@ final class ResourceTypeId
             self::GEN_AI_MODEL_ROUTER,
             self::GKE_CLUSTER,
             self::GLUE_DATABASE,
+            self::GROQ_BATCH,
+            self::GROQ_FILE,
+            self::GROQ_FINE_TUNING,
+            self::GROQ_MODEL,
+            self::HARDWARE,
             self::HEALTH_CHECK,
             self::HEALTHCHECK,
+            self::HISTORY_ITEM,
             self::HYPERDRIVE,
             self::IAM_ROLE,
             self::IAM_USER,
@@ -495,8 +583,10 @@ final class ResourceTypeId
             self::INSTANCE_GROUP,
             self::INSTANCE_TEMPLATE,
             self::INTERNET_GATEWAY,
+            self::INVITE,
             self::IP_ACCESS_RULE,
             self::IP_ALLOCATION,
+            self::JOB,
             self::K8S_CLUSTER,
             self::K8S_CONFIGMAP,
             self::K8S_CRONJOB,
@@ -524,12 +614,23 @@ final class ResourceTypeId
             self::MACHINE,
             self::MANAGED_DATABASE,
             self::MANAGED_DB,
+            self::MANAGED_ENDPOINT,
             self::MANAGED_KUBE,
             self::MEDIA_ASSET,
+            self::MEMBER,
             self::MEMCACHED_INSTANCE,
             self::MEMORYSTORE_MEMCACHED,
             self::MEMORYSTORE_REDIS,
+            self::MESSAGE_BATCH,
+            self::MISTRAL_API_KEY,
+            self::MISTRAL_BATCH_JOB,
+            self::MISTRAL_FILE,
+            self::MISTRAL_FINE_TUNING_JOB,
+            self::MISTRAL_MODEL,
+            self::MISTRAL_VOICE,
+            self::MODEL,
             self::MODEL_API_KEY,
+            self::MODEL_ENDPOINT,
             self::MONGODB_DATABASE,
             self::MQ_BROKER,
             self::MSK_CLUSTER,
@@ -564,13 +665,19 @@ final class ResourceTypeId
             self::OBJECT_STORAGE_BUCKET,
             self::OPENSEARCH_CLUSTER,
             self::OPENSEARCH_DOMAIN,
+            self::ORGANIZATION_USER,
             self::PAGE_RULE,
             self::PG_DATABASE,
             self::PG_SCHEMA,
             self::PLACEMENT_GROUP,
+            self::PREDICTION,
             self::PRIMARY_IP,
             self::PRIVATE_NETWORK,
             self::PROJECT,
+            self::PROJECT_API_KEY,
+            self::PRONUNCIATION_DICT,
+            self::PRONUNCIATION_DICTIONARY,
+            self::PROVIDER,
             self::PS_BACKUP,
             self::PS_BRANCH,
             self::PS_DATABASE,
@@ -579,6 +686,7 @@ final class ResourceTypeId
             self::PUBSUB_SUBSCRIPTION,
             self::PUBSUB_TOPIC,
             self::QUEUE,
+            self::QUOTA,
             self::R2_BUCKET,
             self::RATE_LIMIT_RULE,
             self::RDB_INSTANCE,
@@ -593,6 +701,7 @@ final class ResourceTypeId
             self::ROUTE53_RECORD_SET,
             self::S3_BUCKET,
             self::SAGEMAKER_ENDPOINT,
+            self::SECRET,
             self::SECRET_MANAGER_SECRET,
             self::SECRETS_MANAGER_SECRET,
             self::SECURITY_GROUP,
@@ -612,8 +721,13 @@ final class ResourceTypeId
             self::STATIC_IP,
             self::STEP_FUNCTION,
             self::SUBNET,
+            self::SUPERVISED_FINE_TUNING_JOB,
             self::TARGET_GROUP,
+            self::TRAINING,
+            self::TRANSCRIPT,
+            self::TRANSCRIPTION,
             self::TRANSFORMATION,
+            self::TUNED_MODEL,
             self::TUNNEL,
             self::TURNSTILE_WIDGET,
             self::TURSO_API_TOKEN,
@@ -624,6 +738,7 @@ final class ResourceTypeId
             self::TURSO_ORGANIZATION_INVITE,
             self::TURSO_ORGANIZATION_MEMBER,
             self::UPLOAD_PRESET,
+            self::VECTOR_STORE,
             self::VECTORIZE_INDEX,
             self::VERCEL_DEPLOYMENT,
             self::VERCEL_DOMAIN,
@@ -632,6 +747,8 @@ final class ResourceTypeId
             self::VERCEL_TEAM,
             self::VERTEX_AI_ENDPOINT,
             self::VERTEX_GEMINI_MODEL,
+            self::VOCABULARY,
+            self::VOICE,
             self::VOLUME,
             self::VPC,
             self::VPC_NETWORK,
@@ -641,6 +758,7 @@ final class ResourceTypeId
             self::WORKER_ROUTE,
             self::WORKERS_AI_MODEL,
             self::WORKFLOW,
+            self::WORKSPACE,
             self::ZONE,
         ];
     }
