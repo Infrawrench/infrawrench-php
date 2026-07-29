@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.14.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.14.1).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.15.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class DeploymentRunInput implements \JsonSerializable
      * @param DeployStatus::* $status
      * @param DeployStage::*|null $stage
      * @param list<string>|null $notes
+     * @param list<DeployCreatedResource>|null $createdResources
      * @param array{message: string}|null $error
      */
     public function __construct(
@@ -37,6 +38,9 @@ final class DeploymentRunInput implements \JsonSerializable
         public readonly ?string $image = null,
         public readonly ?string $stage = null,
         public readonly ?array $notes = null,
+        public readonly mixed $output = null,
+        public readonly mixed $plan = null,
+        public readonly ?array $createdResources = null,
         public readonly ?int $durationMs = null,
         public readonly ?array $error = null,
     ) {
@@ -58,6 +62,9 @@ final class DeploymentRunInput implements \JsonSerializable
             image: Coerce::toStringOrNull($data['image'] ?? null),
             stage: Coerce::toStringOrNull($data['stage'] ?? null),
             notes: Coerce::nullable($data['notes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            output: $data['output'] ?? null,
+            plan: $data['plan'] ?? null,
+            createdResources: Coerce::nullable($data['createdResources'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): DeployCreatedResource => DeployCreatedResource::fromArray(Coerce::toArray($item)))),
             durationMs: Coerce::toIntOrNull($data['durationMs'] ?? null),
             error: Coerce::toArrayOrNull($data['error'] ?? null),
         );
@@ -91,6 +98,15 @@ final class DeploymentRunInput implements \JsonSerializable
         }
         if ($this->notes !== null) {
             $payload['notes'] = $this->notes;
+        }
+        if ($this->output !== null) {
+            $payload['output'] = $this->output;
+        }
+        if ($this->plan !== null) {
+            $payload['plan'] = $this->plan;
+        }
+        if ($this->createdResources !== null) {
+            $payload['createdResources'] = array_map(static fn (DeployCreatedResource $item): array => $item->toArray(), $this->createdResources);
         }
         if ($this->durationMs !== null) {
             $payload['durationMs'] = $this->durationMs;

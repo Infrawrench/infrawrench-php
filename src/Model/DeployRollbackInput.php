@@ -20,13 +20,10 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class PinRangeMetricSeries implements \JsonSerializable
+final class DeployRollbackInput implements \JsonSerializable
 {
-    /** @param list<array{timestamp: float, value: float}> $points */
     public function __construct(
-        public readonly string $label,
-        public readonly array $points,
-        public readonly ?string $unit = null,
+        public readonly ?bool $deleteCreated = null,
     ) {
     }
 
@@ -38,9 +35,7 @@ final class PinRangeMetricSeries implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            label: Coerce::toString($data['label'] ?? null),
-            points: Coerce::mapList($data['points'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
-            unit: Coerce::toStringOrNull($data['unit'] ?? null),
+            deleteCreated: Coerce::toBoolOrNull($data['deleteCreated'] ?? null),
         );
     }
 
@@ -52,11 +47,9 @@ final class PinRangeMetricSeries implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
-            'label' => $this->label,
-            'points' => $this->points,
         ];
-        if ($this->unit !== null) {
-            $payload['unit'] = $this->unit;
+        if ($this->deleteCreated !== null) {
+            $payload['deleteCreated'] = $this->deleteCreated;
         }
 
         return $payload;

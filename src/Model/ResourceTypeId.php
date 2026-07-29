@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.14.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.14.1).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.15.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -189,6 +189,7 @@ final class ResourceTypeId
     public const GATEWAY = 'gateway';
     public const GCE_DISK = 'gce-disk';
     public const GCE_INSTANCE = 'gce-instance';
+    public const GCP_PROJECT = 'gcp-project';
     public const GCP_SERVICE_ACCOUNT = 'gcp-service-account';
     public const GCS_BUCKET = 'gcs-bucket';
     public const GEN_AI_AGENT = 'gen-ai-agent';
@@ -559,6 +560,7 @@ final class ResourceTypeId
             self::GATEWAY,
             self::GCE_DISK,
             self::GCE_INSTANCE,
+            self::GCP_PROJECT,
             self::GCP_SERVICE_ACCOUNT,
             self::GCS_BUCKET,
             self::GEN_AI_AGENT,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.14.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.14.1).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.15.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ final class DeployStage
     public const DOCKERFILE = 'dockerfile';
     public const BUILD = 'build';
     public const DEPLOY = 'deploy';
+    public const DESTROY = 'destroy';
 
     /**
      * Every value, in the order the spec lists them.
@@ -43,6 +44,7 @@ final class DeployStage
             self::DOCKERFILE,
             self::BUILD,
             self::DEPLOY,
+            self::DESTROY,
         ];
     }
 }

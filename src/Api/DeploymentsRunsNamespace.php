@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.14.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.14.1).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.15.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,7 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Model\DeployPlanResult;
+use Infrawrench\Sdk\Model\DeployRollbackInput;
 use Infrawrench\Sdk\Model\DeploymentRun;
 use Infrawrench\Sdk\Model\DeploymentRunInput;
 use Infrawrench\Sdk\RequestOptions;
@@ -134,7 +135,9 @@ final class DeploymentsRunsNamespace extends ApiNamespace
      * Re-runs that run's `deploy()` with the image and plan it recorded, building nothing — the
      * exact artifact that was known good ships again. The Infrafile is read at the commit that run
      * deployed, not at the branch head. Only a successful run that produced an image can be rolled
-     * back to.
+     * back to. With `deleteCreated`, resources that runs after the target created through
+     * `infra.accounts` are deleted once the rollback has succeeded — undoing the provisioning, not
+     * just the shipping. Deletions are best-effort and reported in the result's notes.
      *
      * _Requires permission: `deployments:write`._
      *
@@ -156,13 +159,15 @@ final class DeploymentsRunsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function rollback(string $id, ?string $orgId = null, ?RequestOptions $options = null): DeployPlanResult
+    public function rollback(string $id, ?string $orgId = null, ?DeployRollbackInput $body = null, ?RequestOptions $options = null): DeployPlanResult
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/deployments/runs/{id}/rollback',
                 pathParams: ['orgId' => $orgId, 'id' => $id],
+                body: $body?->toArray(),
+                hasBody: $body !== null,
             ),
             $options,
         );

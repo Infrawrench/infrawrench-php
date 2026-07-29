@@ -20,17 +20,21 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class NoSqlCommandRequest implements \JsonSerializable
+final class DeployPlannedChange implements \JsonSerializable
 {
-    /** @param list<string|float> $args */
+    /**
+     * @param 'create'|'update'|'delete' $action
+     * @param array<string, string>|null $fields
+     * @param array{pluginId: string, parentResourceId: string}|null $sidecar
+     */
     public function __construct(
-        public readonly string $pluginId,
+        public readonly string $action,
         public readonly string $accountId,
         public readonly string $resourceTypeId,
-        public readonly string $resourceId,
-        public readonly string $command,
-        public readonly array $args,
-        public readonly ?string $parentResourceId = null,
+        public readonly string $displayName,
+        public readonly ?string $resourceId = null,
+        public readonly ?array $fields = null,
+        public readonly ?array $sidecar = null,
     ) {
     }
 
@@ -42,13 +46,13 @@ final class NoSqlCommandRequest implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            pluginId: Coerce::toString($data['pluginId'] ?? null),
+            action: Coerce::toString($data['action'] ?? null),
             accountId: Coerce::toString($data['accountId'] ?? null),
             resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
-            resourceId: Coerce::toString($data['resourceId'] ?? null),
-            command: Coerce::toString($data['command'] ?? null),
-            args: Coerce::toList($data['args'] ?? null),
-            parentResourceId: Coerce::toStringOrNull($data['parentResourceId'] ?? null),
+            displayName: Coerce::toString($data['displayName'] ?? null),
+            resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
+            fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapValues($value, static fn (mixed $item): string => Coerce::toString($item))),
+            sidecar: Coerce::toArrayOrNull($data['sidecar'] ?? null),
         );
     }
 
@@ -60,15 +64,19 @@ final class NoSqlCommandRequest implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
-            'pluginId' => $this->pluginId,
+            'action' => $this->action,
             'accountId' => $this->accountId,
             'resourceTypeId' => $this->resourceTypeId,
-            'resourceId' => $this->resourceId,
-            'command' => $this->command,
-            'args' => $this->args,
+            'displayName' => $this->displayName,
         ];
-        if ($this->parentResourceId !== null) {
-            $payload['parentResourceId'] = $this->parentResourceId;
+        if ($this->resourceId !== null) {
+            $payload['resourceId'] = $this->resourceId;
+        }
+        if ($this->fields !== null) {
+            $payload['fields'] = $this->fields;
+        }
+        if ($this->sidecar !== null) {
+            $payload['sidecar'] = $this->sidecar;
         }
 
         return $payload;

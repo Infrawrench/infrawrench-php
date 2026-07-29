@@ -20,16 +20,17 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class PickerResource implements \JsonSerializable
+final class DeployCreatedResource implements \JsonSerializable
 {
+    /** @param array{pluginId: string, parentResourceId: string}|null $sidecar */
     public function __construct(
-        public readonly string $id,
-        public readonly string $label,
         public readonly string $pluginId,
-        public readonly string $resourceTypeId,
         public readonly string $accountId,
-        public readonly string $outputKey,
-        public readonly string $outputValue,
+        public readonly string $resourceTypeId,
+        public readonly string $resourceId,
+        public readonly string $displayName,
+        public readonly ?string $externalId = null,
+        public readonly ?array $sidecar = null,
     ) {
     }
 
@@ -41,13 +42,13 @@ final class PickerResource implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            id: Coerce::toString($data['id'] ?? null),
-            label: Coerce::toString($data['label'] ?? null),
             pluginId: Coerce::toString($data['pluginId'] ?? null),
-            resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
             accountId: Coerce::toString($data['accountId'] ?? null),
-            outputKey: Coerce::toString($data['outputKey'] ?? null),
-            outputValue: Coerce::toString($data['outputValue'] ?? null),
+            resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
+            resourceId: Coerce::toString($data['resourceId'] ?? null),
+            displayName: Coerce::toString($data['displayName'] ?? null),
+            externalId: Coerce::toStringOrNull($data['externalId'] ?? null),
+            sidecar: Coerce::toArrayOrNull($data['sidecar'] ?? null),
         );
     }
 
@@ -58,15 +59,21 @@ final class PickerResource implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
-            'id' => $this->id,
-            'label' => $this->label,
+        $payload = [
             'pluginId' => $this->pluginId,
-            'resourceTypeId' => $this->resourceTypeId,
             'accountId' => $this->accountId,
-            'outputKey' => $this->outputKey,
-            'outputValue' => $this->outputValue,
+            'resourceTypeId' => $this->resourceTypeId,
+            'resourceId' => $this->resourceId,
+            'displayName' => $this->displayName,
         ];
+        if ($this->externalId !== null) {
+            $payload['externalId'] = $this->externalId;
+        }
+        if ($this->sidecar !== null) {
+            $payload['sidecar'] = $this->sidecar;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
