@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.16.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.15.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.16.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -118,6 +118,7 @@ final class ResourceTypeId
     public const COLLECTION = 'collection';
     public const COMPOSER_ENVIRONMENT = 'composer-environment';
     public const CONTAINER = 'container';
+    public const CONTAINER_REGISTRY = 'container-registry';
     public const CUSTOM_HOSTNAME = 'custom-hostname';
     public const CUSTOM_VOICE = 'custom-voice';
     public const D1_DATABASE = 'd1-database';
@@ -226,6 +227,7 @@ final class ResourceTypeId
     public const K8S_INGRESS = 'k8s-ingress';
     public const K8S_JOB = 'k8s-job';
     public const K8S_NAMESPACE = 'k8s-namespace';
+    public const K8S_NODE = 'k8s-node';
     public const K8S_POD = 'k8s-pod';
     public const K8S_SECRET = 'k8s-secret';
     public const K8S_SERVICE = 'k8s-service';
@@ -489,6 +491,7 @@ final class ResourceTypeId
             self::COLLECTION,
             self::COMPOSER_ENVIRONMENT,
             self::CONTAINER,
+            self::CONTAINER_REGISTRY,
             self::CUSTOM_HOSTNAME,
             self::CUSTOM_VOICE,
             self::D1_DATABASE,
@@ -597,6 +600,7 @@ final class ResourceTypeId
             self::K8S_INGRESS,
             self::K8S_JOB,
             self::K8S_NAMESPACE,
+            self::K8S_NODE,
             self::K8S_POD,
             self::K8S_SECRET,
             self::K8S_SERVICE,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.16.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.15.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.16.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ use Infrawrench\Sdk\Api\BillingNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
+use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DeploymentsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
@@ -108,6 +109,9 @@ final class APIV1Client
 
     /** `$client->costs` */
     public readonly CostsNamespace $costs;
+
+    /** `$client->customGraphs` */
+    public readonly CustomGraphsNamespace $customGraphs;
 
     /** `$client->dashboards` */
     public readonly DashboardsNamespace $dashboards;
@@ -199,6 +203,7 @@ final class APIV1Client
         $this->budgets = new BudgetsNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
+        $this->customGraphs = new CustomGraphsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
         $this->deployments = new DeploymentsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
