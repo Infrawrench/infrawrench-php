@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.17.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.18.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class TeamInvitationsNamespace extends ApiNamespace
      * _Requires permission: `team:invite`._
      *
      * POST /api/org/{orgId}/team/invitations
+     *
+     * Raises on 402: Payment required — the organization's plan does not include this
      *
      * Raises on 409: All seats are in use; retry with addSeat to buy one more
      *

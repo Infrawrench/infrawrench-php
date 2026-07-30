@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.17.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.18.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -61,6 +61,8 @@ final class AccountsNamespace extends ApiNamespace
      * POST /api/org/{orgId}/accounts
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 402: Payment required — the organization's plan does not include this
      *
      * @param array{pluginId?: PluginId::*, displayName: string, credentials: array<string, string>, bastionId?: string|null} $body
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
