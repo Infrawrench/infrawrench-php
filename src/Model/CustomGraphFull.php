@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.16.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.16.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.17.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class CustomGraphFull implements \JsonSerializable
         public readonly ?string $description,
         public readonly string $source,
         public readonly ?string $createdByUserId,
+        public readonly ?string $sourceAuthorUserId,
         public readonly ?string $deletedAt,
         public readonly string $createdAt,
         public readonly string $updatedAt,
@@ -49,6 +50,7 @@ final class CustomGraphFull implements \JsonSerializable
             description: Coerce::toStringOrNull($data['description'] ?? null),
             source: Coerce::toString($data['source'] ?? null),
             createdByUserId: Coerce::toStringOrNull($data['createdByUserId'] ?? null),
+            sourceAuthorUserId: Coerce::toStringOrNull($data['sourceAuthorUserId'] ?? null),
             deletedAt: Coerce::toStringOrNull($data['deletedAt'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
@@ -69,6 +71,7 @@ final class CustomGraphFull implements \JsonSerializable
             'description' => $this->description,
             'source' => $this->source,
             'createdByUserId' => $this->createdByUserId,
+            'sourceAuthorUserId' => $this->sourceAuthorUserId,
             'deletedAt' => $this->deletedAt,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
