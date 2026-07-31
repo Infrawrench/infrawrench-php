@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.25.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.25.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -52,6 +52,7 @@ final class ResourceTypeId
     public const AZURE_APP_GATEWAY = 'azure-app-gateway';
     public const AZURE_APP_REGISTRATION = 'azure-app-registration';
     public const AZURE_APP_SERVICE = 'azure-app-service';
+    public const AZURE_APP_SERVICE_PLAN = 'azure-app-service-plan';
     public const AZURE_CONTAINER_INSTANCE = 'azure-container-instance';
     public const AZURE_CONTAINER_REGISTRY = 'azure-container-registry';
     public const AZURE_COSMOS_DB = 'azure-cosmos-db';
@@ -146,6 +147,7 @@ final class ResourceTypeId
     public const DATABRICKS_WORKSPACE_OBJECT = 'databricks-workspace-object';
     public const DATAFLOW_JOB = 'dataflow-job';
     public const DATASET = 'dataset';
+    public const DB_SUBNET_GROUP = 'db-subnet-group';
     public const DB_USER = 'db-user';
     public const DEDICATED_INFERENCE = 'dedicated-inference';
     public const DEPLOYED_MODEL = 'deployed-model';
@@ -425,6 +427,7 @@ final class ResourceTypeId
             self::AZURE_APP_GATEWAY,
             self::AZURE_APP_REGISTRATION,
             self::AZURE_APP_SERVICE,
+            self::AZURE_APP_SERVICE_PLAN,
             self::AZURE_CONTAINER_INSTANCE,
             self::AZURE_CONTAINER_REGISTRY,
             self::AZURE_COSMOS_DB,
@@ -519,6 +522,7 @@ final class ResourceTypeId
             self::DATABRICKS_WORKSPACE_OBJECT,
             self::DATAFLOW_JOB,
             self::DATASET,
+            self::DB_SUBNET_GROUP,
             self::DB_USER,
             self::DEDICATED_INFERENCE,
             self::DEPLOYED_MODEL,

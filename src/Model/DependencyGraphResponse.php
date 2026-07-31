@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.25.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.25.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,12 +23,14 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class DependencyGraphResponse implements \JsonSerializable
 {
     /**
-     * @param list<DependencyGraphNode> $nodes Org resources that participate in at least one output reference.
-     * @param list<DependencyGraphEdge> $edges Directed depends-on edges (consumer → provider), deduped per consumer field.
+     * @param list<DependencyGraphNode> $nodes Org resources that participate in at least one edge.
+     * @param list<DependencyGraphEdge> $edges Directed depends-on edges (consumer → provider), deduped per consumer field and provider.
+     * @param bool $truncated True when inference hit its edge cap and the returned graph is a partial view of the org.
      */
     public function __construct(
         public readonly array $nodes,
         public readonly array $edges,
+        public readonly bool $truncated,
     ) {
     }
 
@@ -42,6 +44,7 @@ final class DependencyGraphResponse implements \JsonSerializable
         return new self(
             nodes: Coerce::mapList($data['nodes'] ?? null, static fn (mixed $item): DependencyGraphNode => DependencyGraphNode::fromArray(Coerce::toArray($item))),
             edges: Coerce::mapList($data['edges'] ?? null, static fn (mixed $item): DependencyGraphEdge => DependencyGraphEdge::fromArray(Coerce::toArray($item))),
+            truncated: Coerce::toBool($data['truncated'] ?? null),
         );
     }
 
@@ -55,6 +58,7 @@ final class DependencyGraphResponse implements \JsonSerializable
         return [
             'nodes' => array_map(static fn (DependencyGraphNode $item): array => $item->toArray(), $this->nodes),
             'edges' => array_map(static fn (DependencyGraphEdge $item): array => $item->toArray(), $this->edges),
+            'truncated' => $this->truncated,
         ];
     }
 
