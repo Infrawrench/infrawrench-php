@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.19.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.18.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.19.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,9 +22,6 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class TabTarget implements \JsonSerializable
 {
-    /**
-     * @param 'dashboard'|'account'|'resource'|'agents'|'costs'|'workflows'|'deployments'|'chat' $kind
-     */
     public function __construct(
         public readonly string $kind,
         public readonly ?string $dashboardId = null,
