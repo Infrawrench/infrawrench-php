@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,7 +33,7 @@ final class WorkflowApprovalsNamespace extends ApiNamespace
      *
      * The suspended run resumes within a few seconds of the decision landing.
      *
-     * _Requires permission: `dashboards:write`._
+     * _Requires permission: `workflows:approve`._
      *
      * POST /api/org/{orgId}/workflow-approvals/{id}/approve
      *
@@ -64,7 +64,7 @@ final class WorkflowApprovalsNamespace extends ApiNamespace
      *
      * Denial fails the waiting `infra.waitForApproval(...)` call in the run.
      *
-     * _Requires permission: `dashboards:write`._
+     * _Requires permission: `workflows:approve`._
      *
      * POST /api/org/{orgId}/workflow-approvals/{id}/deny
      *
@@ -96,7 +96,7 @@ final class WorkflowApprovalsNamespace extends ApiNamespace
      * Approval requests raised by `infra.waitForApproval(...)` inside workflow runs, newest first.
      * Filter with `status=pending` to build an approvals inbox.
      *
-     * _Requires permission: `dashboards:read`._
+     * _Requires permission: `workflows:read`._
      *
      * GET /api/org/{orgId}/workflow-approvals
      *

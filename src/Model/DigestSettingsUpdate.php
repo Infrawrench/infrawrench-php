@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,8 +22,15 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class DigestSettingsUpdate implements \JsonSerializable
 {
+    /**
+     * @param string|null $timezone IANA time zone name. Rejected with 400 if the server does not know the zone.
+     */
     public function __construct(
-        public readonly bool $enabled,
+        public readonly ?bool $enabled = null,
+        public readonly ?string $timezone = null,
+        public readonly ?int $sendDay = null,
+        public readonly ?int $sendHour = null,
+        public readonly ?bool $narrativeEnabled = null,
     ) {
     }
 
@@ -35,7 +42,11 @@ final class DigestSettingsUpdate implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            enabled: Coerce::toBool($data['enabled'] ?? null),
+            enabled: Coerce::toBoolOrNull($data['enabled'] ?? null),
+            timezone: Coerce::toStringOrNull($data['timezone'] ?? null),
+            sendDay: Coerce::toIntOrNull($data['sendDay'] ?? null),
+            sendHour: Coerce::toIntOrNull($data['sendHour'] ?? null),
+            narrativeEnabled: Coerce::toBoolOrNull($data['narrativeEnabled'] ?? null),
         );
     }
 
@@ -46,9 +57,25 @@ final class DigestSettingsUpdate implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
-            'enabled' => $this->enabled,
+        $payload = [
         ];
+        if ($this->enabled !== null) {
+            $payload['enabled'] = $this->enabled;
+        }
+        if ($this->timezone !== null) {
+            $payload['timezone'] = $this->timezone;
+        }
+        if ($this->sendDay !== null) {
+            $payload['sendDay'] = $this->sendDay;
+        }
+        if ($this->sendHour !== null) {
+            $payload['sendHour'] = $this->sendHour;
+        }
+        if ($this->narrativeEnabled !== null) {
+            $payload['narrativeEnabled'] = $this->narrativeEnabled;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

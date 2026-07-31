@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,15 +24,17 @@ final class CostAnomaly implements \JsonSerializable
 {
     /**
      * @param string $day The anomalous UTC day.
+     * @param 'spike'|'new_source' $kind Which detection produced the row. `spike` is spend far above the key's own trailing baseline; `new_source` is a provider or service with no spend at all across the trailing window that suddenly has material spend — it can never be a `spike`, since a zero baseline has no mean or deviation to exceed. Rows written before new-source detection existed read as `spike`.
      * @param 'provider'|'service' $dimension
      * @param string $dimensionKey The dimension's value — a plugin id or a service name.
-     * @param int $baselineCents Mean daily spend over the trailing 28-day baseline, in cents.
-     * @param int $thresholdCents The detection bar the day cleared (baseline mean + N·stddev), in cents.
+     * @param int $baselineCents Mean daily spend over the trailing 28-day baseline, in cents. Zero, or near it, for a `new_source` — clients must not compute a percentage change from it.
+     * @param int $thresholdCents The detection bar the day cleared, in cents: baseline mean + N·stddev for a `spike`, the new-source floor for a `new_source`.
      * @param string|null $notifiedAt When the anomaly was delivered to a notification channel; null when delivery failed or a recent anomaly for the same key suppressed it.
      */
     public function __construct(
         public readonly string $id,
         public readonly string $day,
+        public readonly string $kind,
         public readonly string $dimension,
         public readonly string $dimensionKey,
         public readonly string $currency,
@@ -54,6 +56,7 @@ final class CostAnomaly implements \JsonSerializable
         return new self(
             id: Coerce::toString($data['id'] ?? null),
             day: Coerce::toString($data['day'] ?? null),
+            kind: Coerce::toString($data['kind'] ?? null),
             dimension: Coerce::toString($data['dimension'] ?? null),
             dimensionKey: Coerce::toString($data['dimensionKey'] ?? null),
             currency: Coerce::toString($data['currency'] ?? null),
@@ -75,6 +78,7 @@ final class CostAnomaly implements \JsonSerializable
         return [
             'id' => $this->id,
             'day' => $this->day,
+            'kind' => $this->kind,
             'dimension' => $this->dimension,
             'dimensionKey' => $this->dimensionKey,
             'currency' => $this->currency,

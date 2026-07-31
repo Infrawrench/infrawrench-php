@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,6 +42,9 @@ final class Permission
     public const STORAGE_WRITE = 'storage:write';
     public const DASHBOARDS_READ = 'dashboards:read';
     public const DASHBOARDS_WRITE = 'dashboards:write';
+    public const WORKFLOWS_READ = 'workflows:read';
+    public const WORKFLOWS_WRITE = 'workflows:write';
+    public const WORKFLOWS_APPROVE = 'workflows:approve';
     public const DEPLOYMENTS_READ = 'deployments:read';
     public const DEPLOYMENTS_PLAN = 'deployments:plan';
     public const DEPLOYMENTS_WRITE = 'deployments:write';
@@ -91,6 +94,9 @@ final class Permission
             self::STORAGE_WRITE,
             self::DASHBOARDS_READ,
             self::DASHBOARDS_WRITE,
+            self::WORKFLOWS_READ,
+            self::WORKFLOWS_WRITE,
+            self::WORKFLOWS_APPROVE,
             self::DEPLOYMENTS_READ,
             self::DEPLOYMENTS_PLAN,
             self::DEPLOYMENTS_WRITE,

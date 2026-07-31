@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -330,6 +330,7 @@ final class ResourceTypeId
     public const REDIRECT_RULE = 'redirect-rule';
     public const REDIS_INSTANCE = 'redis-instance';
     public const REDSHIFT_CLUSTER = 'redshift-cluster';
+    public const RESERVED_IP = 'reserved-ip';
     public const ROUTE_TABLE = 'route-table';
     public const ROUTE53_HEALTH_CHECK = 'route53-health-check';
     public const ROUTE53_HOSTED_ZONE = 'route53-hosted-zone';
@@ -705,6 +706,7 @@ final class ResourceTypeId
             self::REDIRECT_RULE,
             self::REDIS_INSTANCE,
             self::REDSHIFT_CLUSTER,
+            self::RESERVED_IP,
             self::ROUTE_TABLE,
             self::ROUTE53_HEALTH_CHECK,
             self::ROUTE53_HOSTED_ZONE,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\DigestSendResult;
 use Infrawrench\Sdk\Model\DigestSettings;
 use Infrawrench\Sdk\Model\DigestSettingsUpdate;
@@ -29,12 +30,23 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->digest` */
 final class DigestNamespace extends ApiNamespace
 {
+    /** `$client->digest->recipients` */
+    public readonly DigestRecipientsNamespace $recipients;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->recipients = new DigestRecipientsNamespace($this->transport);
+    }
+
     /**
      * Get the organization's weekly digest settings
      *
-     * The weekly digest is a Monday-morning summary of last week's spend (with week-over-week
-     * movers), sync incidents, and resource churn, delivered to the Slack channels and Teams
-     * webhooks opted into the weeklyDigest trigger.
+     * The weekly digest is a summary of the last complete Monday-to-Sunday week's spend (with
+     * week-over-week movers), sync incidents, and resource churn, delivered to the Slack channels
+     * and Teams webhooks opted into the weeklyDigest trigger and to the organization's digest
+     * email recipients. The response also carries the outcome of the most recent delivery attempt
+     * so a silently failing digest is visible.
      *
      * GET /api/org/{orgId}/digest
      *
@@ -60,8 +72,9 @@ final class DigestNamespace extends ApiNamespace
      * Compose and send last week's digest now
      *
      * Ignores the schedule and the enabled flag — composes the digest for the last complete week
-     * and posts it to every opted-in channel. Fails when no Slack channel or Teams webhook has the
-     * weeklyDigest trigger on.
+     * and sends it to every opted-in channel and email recipient. This is also the manual recovery
+     * for a partial delivery, which is never retried automatically. Fails when nothing is routed
+     * to receive the digest, or when every destination rejected it.
      *
      * POST /api/org/{orgId}/digest/send
      *
@@ -86,10 +99,13 @@ final class DigestNamespace extends ApiNamespace
     }
 
     /**
-     * Enable or disable the weekly digest
+     * Update the weekly digest settings
      *
-     * Enabling schedules the first digest for next Monday morning (07:00 UTC) rather than sending
-     * immediately — use POST /digest/send for an immediate one.
+     * Every field is optional. Enabling schedules the first digest for the next configured send
+     * time rather than sending immediately — use POST /digest/send for an immediate one. The week
+     * boundary follows `timezone`, so the reported window is always the organization's own local
+     * Monday-to-Sunday week. Changing the schedule clears any parked failure state but never
+     * replays a week that already went out.
      *
      * PUT /api/org/{orgId}/digest
      *

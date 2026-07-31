@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\CostDimensionValues;
 use Infrawrench\Sdk\Model\CostPushRequest;
 use Infrawrench\Sdk\Model\CostPushResponse;
@@ -31,12 +32,26 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->costs` */
 final class CostsNamespace extends ApiNamespace
 {
+    /** `$client->costs->anomalySettings` */
+    public readonly CostsAnomalySettingsNamespace $anomalySettings;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->anomalySettings = new CostsAnomalySettingsNamespace($this->transport);
+    }
+
     /**
      * List recently detected cost anomalies
      *
-     * Spend anomalies detected by the daily background pass: days where a provider's or service's
-     * spend exceeded its trailing 28-day baseline by a statistical threshold (mean + N·stddev,
-     * with an absolute floor to ignore penny-scale noise). Newest day first, capped at 200 rows.
+     * Spend anomalies detected by the daily background pass. Two kinds share the list: a `spike`,
+     * where a provider's or service's spend exceeded its trailing 28-day baseline by a statistical
+     * threshold (mean + N·stddev, with an absolute floor to ignore penny-scale noise), and a
+     * `new_source`, where a provider or service with no spend at all across that window suddenly
+     * billed a material amount. Thresholds are per organization — see GET /costs/anomaly-settings.
+     * Newest day first, capped at 200 rows.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/costs/anomalies
      *

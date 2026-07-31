@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,16 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class DigestSendResult implements \JsonSerializable
 {
-    /** @param int $attempted Deliveries attempted across Slack channels and Teams webhooks. */
+    /**
+     * @param int $attempted Deliveries attempted across Slack channels, Teams webhooks and email recipients.
+     */
     public function __construct(
         public readonly bool $ok,
         public readonly int $attempted,
         public readonly int $succeeded,
+        public readonly DigestTransportResult $slack,
+        public readonly DigestTransportResult $teams,
+        public readonly DigestTransportResult $email,
     ) {
     }
 
@@ -41,6 +46,9 @@ final class DigestSendResult implements \JsonSerializable
             ok: Coerce::toBool($data['ok'] ?? null),
             attempted: Coerce::toInt($data['attempted'] ?? null),
             succeeded: Coerce::toInt($data['succeeded'] ?? null),
+            slack: DigestTransportResult::fromArray(Coerce::toArray($data['slack'] ?? null)),
+            teams: DigestTransportResult::fromArray(Coerce::toArray($data['teams'] ?? null)),
+            email: DigestTransportResult::fromArray(Coerce::toArray($data['email'] ?? null)),
         );
     }
 
@@ -55,6 +63,9 @@ final class DigestSendResult implements \JsonSerializable
             'ok' => $this->ok,
             'attempted' => $this->attempted,
             'succeeded' => $this->succeeded,
+            'slack' => $this->slack->toArray(),
+            'teams' => $this->teams->toArray(),
+            'email' => $this->email->toArray(),
         ];
     }
 

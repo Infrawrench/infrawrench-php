@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\ResourceChangeFeedResponse;
 use Infrawrench\Sdk\Model\ResourceChangeKind;
 use Infrawrench\Sdk\Model\ResourceChangeListResponse;
@@ -29,6 +30,15 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->changes` */
 final class ChangesNamespace extends ApiNamespace
 {
+    /** `$client->changes->alertSettings` */
+    public readonly ChangesAlertSettingsNamespace $alertSettings;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->alertSettings = new ChangesAlertSettingsNamespace($this->transport);
+    }
+
     /**
      * Org-wide change timeline (paginated, filterable)
      *

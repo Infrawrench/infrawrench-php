@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.26.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,8 @@ final class SlackChannel implements \JsonSerializable
      * @param string $channelId Slack channel id (C…/G…)
      * @param string $channelName Channel name without the leading #
      * @param bool $anomalyAlerts Statistical spend-spike (cost anomaly) alerts
-     * @param bool $workflowPages Alerts raised by a workflow calling infra.page(...)
+     * @param bool $resourceDrift Batched resource-drift digests from the change timeline. Defaults to false when a channel is added — drift is continuous where the other triggers are exceptional.
+     * @param bool $workflowPages Pages and approval requests raised by a workflow (infra.page / infra.waitForApproval) or by POST /pages
      * @param bool $weeklyDigest The Monday-morning weekly digest. Only sends when the organization has enabled the digest (see /digest).
      */
     public function __construct(
@@ -38,6 +39,7 @@ final class SlackChannel implements \JsonSerializable
         public readonly bool $syncIncidents,
         public readonly bool $budgetAlerts,
         public readonly bool $anomalyAlerts,
+        public readonly bool $resourceDrift,
         public readonly bool $workflowPages,
         public readonly bool $weeklyDigest,
     ) {
@@ -59,6 +61,7 @@ final class SlackChannel implements \JsonSerializable
             syncIncidents: Coerce::toBool($data['syncIncidents'] ?? null),
             budgetAlerts: Coerce::toBool($data['budgetAlerts'] ?? null),
             anomalyAlerts: Coerce::toBool($data['anomalyAlerts'] ?? null),
+            resourceDrift: Coerce::toBool($data['resourceDrift'] ?? null),
             workflowPages: Coerce::toBool($data['workflowPages'] ?? null),
             weeklyDigest: Coerce::toBool($data['weeklyDigest'] ?? null),
         );
@@ -80,6 +83,7 @@ final class SlackChannel implements \JsonSerializable
             'syncIncidents' => $this->syncIncidents,
             'budgetAlerts' => $this->budgetAlerts,
             'anomalyAlerts' => $this->anomalyAlerts,
+            'resourceDrift' => $this->resourceDrift,
             'workflowPages' => $this->workflowPages,
             'weeklyDigest' => $this->weeklyDigest,
         ];
