@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.23.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.24.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.23.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.24.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class SlackChannel implements \JsonSerializable
     /**
      * @param string $channelId Slack channel id (C…/G…)
      * @param string $channelName Channel name without the leading #
+     * @param bool $anomalyAlerts Statistical spend-spike (cost anomaly) alerts
      * @param bool $workflowPages Alerts raised by a workflow calling infra.page(...)
      * @param bool $weeklyDigest The Monday-morning weekly digest. Only sends when the organization has enabled the digest (see /digest).
      */
@@ -36,6 +37,7 @@ final class SlackChannel implements \JsonSerializable
         public readonly bool $isPrivate,
         public readonly bool $syncIncidents,
         public readonly bool $budgetAlerts,
+        public readonly bool $anomalyAlerts,
         public readonly bool $workflowPages,
         public readonly bool $weeklyDigest,
     ) {
@@ -56,6 +58,7 @@ final class SlackChannel implements \JsonSerializable
             isPrivate: Coerce::toBool($data['isPrivate'] ?? null),
             syncIncidents: Coerce::toBool($data['syncIncidents'] ?? null),
             budgetAlerts: Coerce::toBool($data['budgetAlerts'] ?? null),
+            anomalyAlerts: Coerce::toBool($data['anomalyAlerts'] ?? null),
             workflowPages: Coerce::toBool($data['workflowPages'] ?? null),
             weeklyDigest: Coerce::toBool($data['weeklyDigest'] ?? null),
         );
@@ -76,6 +79,7 @@ final class SlackChannel implements \JsonSerializable
             'isPrivate' => $this->isPrivate,
             'syncIncidents' => $this->syncIncidents,
             'budgetAlerts' => $this->budgetAlerts,
+            'anomalyAlerts' => $this->anomalyAlerts,
             'workflowPages' => $this->workflowPages,
             'weeklyDigest' => $this->weeklyDigest,
         ];

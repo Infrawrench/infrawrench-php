@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.23.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.24.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.23.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.24.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class MsTeamsWebhookUpdate implements \JsonSerializable
         public readonly ?string $label = null,
         public readonly ?bool $syncIncidents = null,
         public readonly ?bool $budgetAlerts = null,
+        public readonly ?bool $anomalyAlerts = null,
         public readonly ?bool $workflowPages = null,
         public readonly ?bool $weeklyDigest = null,
     ) {
@@ -42,6 +43,7 @@ final class MsTeamsWebhookUpdate implements \JsonSerializable
             label: Coerce::toStringOrNull($data['label'] ?? null),
             syncIncidents: Coerce::toBoolOrNull($data['syncIncidents'] ?? null),
             budgetAlerts: Coerce::toBoolOrNull($data['budgetAlerts'] ?? null),
+            anomalyAlerts: Coerce::toBoolOrNull($data['anomalyAlerts'] ?? null),
             workflowPages: Coerce::toBoolOrNull($data['workflowPages'] ?? null),
             weeklyDigest: Coerce::toBoolOrNull($data['weeklyDigest'] ?? null),
         );
@@ -64,6 +66,9 @@ final class MsTeamsWebhookUpdate implements \JsonSerializable
         }
         if ($this->budgetAlerts !== null) {
             $payload['budgetAlerts'] = $this->budgetAlerts;
+        }
+        if ($this->anomalyAlerts !== null) {
+            $payload['anomalyAlerts'] = $this->anomalyAlerts;
         }
         if ($this->workflowPages !== null) {
             $payload['workflowPages'] = $this->workflowPages;
