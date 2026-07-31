@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.21.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.22.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.21.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.22.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ use Infrawrench\Sdk\Api\AuthNamespace;
 use Infrawrench\Sdk\Api\BastionsNamespace;
 use Infrawrench\Sdk\Api\BillingNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
+use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
@@ -106,6 +107,9 @@ final class APIV1Client
 
     /** `$client->budgets` */
     public readonly BudgetsNamespace $budgets;
+
+    /** `$client->changes` */
+    public readonly ChangesNamespace $changes;
 
     /** `$client->connect` */
     public readonly ConnectNamespace $connect;
@@ -213,6 +217,7 @@ final class APIV1Client
         $this->bastions = new BastionsNamespace($this->transport);
         $this->billing = new BillingNamespace($this->transport);
         $this->budgets = new BudgetsNamespace($this->transport);
+        $this->changes = new ChangesNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
