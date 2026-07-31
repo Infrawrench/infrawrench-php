@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.19.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.20.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.19.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.20.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class MsTeamsWebhook implements \JsonSerializable
      * @param string $label Display name for the channel, e.g. #alerts
      * @param string $urlHint Non-secret hint at the stored webhook URL (host and last four characters). The URL itself is never returned.
      * @param bool $workflowPages Alerts raised by a workflow calling infra.page(...)
+     * @param bool $weeklyDigest The Monday-morning weekly digest. Only sends when the organization has enabled the digest (see /digest).
      */
     public function __construct(
         public readonly string $id,
@@ -34,6 +35,7 @@ final class MsTeamsWebhook implements \JsonSerializable
         public readonly bool $syncIncidents,
         public readonly bool $budgetAlerts,
         public readonly bool $workflowPages,
+        public readonly bool $weeklyDigest,
     ) {
     }
 
@@ -51,6 +53,7 @@ final class MsTeamsWebhook implements \JsonSerializable
             syncIncidents: Coerce::toBool($data['syncIncidents'] ?? null),
             budgetAlerts: Coerce::toBool($data['budgetAlerts'] ?? null),
             workflowPages: Coerce::toBool($data['workflowPages'] ?? null),
+            weeklyDigest: Coerce::toBool($data['weeklyDigest'] ?? null),
         );
     }
 
@@ -68,6 +71,7 @@ final class MsTeamsWebhook implements \JsonSerializable
             'syncIncidents' => $this->syncIncidents,
             'budgetAlerts' => $this->budgetAlerts,
             'workflowPages' => $this->workflowPages,
+            'weeklyDigest' => $this->weeklyDigest,
         ];
     }
 

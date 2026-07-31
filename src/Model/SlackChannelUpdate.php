@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.19.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.20.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.19.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.20.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class SlackChannelUpdate implements \JsonSerializable
         public readonly ?bool $syncIncidents = null,
         public readonly ?bool $budgetAlerts = null,
         public readonly ?bool $workflowPages = null,
+        public readonly ?bool $weeklyDigest = null,
     ) {
     }
 
@@ -40,6 +41,7 @@ final class SlackChannelUpdate implements \JsonSerializable
             syncIncidents: Coerce::toBoolOrNull($data['syncIncidents'] ?? null),
             budgetAlerts: Coerce::toBoolOrNull($data['budgetAlerts'] ?? null),
             workflowPages: Coerce::toBoolOrNull($data['workflowPages'] ?? null),
+            weeklyDigest: Coerce::toBoolOrNull($data['weeklyDigest'] ?? null),
         );
     }
 
@@ -60,6 +62,9 @@ final class SlackChannelUpdate implements \JsonSerializable
         }
         if ($this->workflowPages !== null) {
             $payload['workflowPages'] = $this->workflowPages;
+        }
+        if ($this->weeklyDigest !== null) {
+            $payload['weeklyDigest'] = $this->weeklyDigest;
         }
 
         return $payload;

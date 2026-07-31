@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.19.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.20.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.19.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.20.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,6 +33,7 @@ use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DeploymentsNamespace;
+use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
@@ -119,6 +120,9 @@ final class APIV1Client
 
     /** `$client->deployments` */
     public readonly DeploymentsNamespace $deployments;
+
+    /** `$client->digest` */
+    public readonly DigestNamespace $digest;
 
     /** `$client->docker` */
     public readonly DockerNamespace $docker;
@@ -210,6 +214,7 @@ final class APIV1Client
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
         $this->deployments = new DeploymentsNamespace($this->transport);
+        $this->digest = new DigestNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
