@@ -20,19 +20,21 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class UserSession implements \JsonSerializable
+final class WorkflowApproval implements \JsonSerializable
 {
-    /** @param bool $current True for the session making this request */
+    /** @param WorkflowApprovalStatus::* $status */
     public function __construct(
         public readonly string $id,
-        public readonly ?string $ipAddress,
-        public readonly ?string $userAgent,
-        public readonly string $authMethod,
+        public readonly string $workflowId,
+        public readonly ?string $workflowName,
+        public readonly string $runId,
+        public readonly string $title,
+        public readonly string $message,
         public readonly string $status,
         public readonly string $expiresAt,
+        public readonly ?string $decidedAt,
+        public readonly ?string $decidedByName,
         public readonly string $createdAt,
-        public readonly string $updatedAt,
-        public readonly bool $current,
     ) {
     }
 
@@ -45,14 +47,16 @@ final class UserSession implements \JsonSerializable
     {
         return new self(
             id: Coerce::toString($data['id'] ?? null),
-            ipAddress: Coerce::toStringOrNull($data['ipAddress'] ?? null),
-            userAgent: Coerce::toStringOrNull($data['userAgent'] ?? null),
-            authMethod: Coerce::toString($data['authMethod'] ?? null),
+            workflowId: Coerce::toString($data['workflowId'] ?? null),
+            workflowName: Coerce::toStringOrNull($data['workflowName'] ?? null),
+            runId: Coerce::toString($data['runId'] ?? null),
+            title: Coerce::toString($data['title'] ?? null),
+            message: Coerce::toString($data['message'] ?? null),
             status: Coerce::toString($data['status'] ?? null),
             expiresAt: Coerce::toString($data['expiresAt'] ?? null),
+            decidedAt: Coerce::toStringOrNull($data['decidedAt'] ?? null),
+            decidedByName: Coerce::toStringOrNull($data['decidedByName'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
-            updatedAt: Coerce::toString($data['updatedAt'] ?? null),
-            current: Coerce::toBool($data['current'] ?? null),
         );
     }
 
@@ -65,14 +69,16 @@ final class UserSession implements \JsonSerializable
     {
         return [
             'id' => $this->id,
-            'ipAddress' => $this->ipAddress,
-            'userAgent' => $this->userAgent,
-            'authMethod' => $this->authMethod,
+            'workflowId' => $this->workflowId,
+            'workflowName' => $this->workflowName,
+            'runId' => $this->runId,
+            'title' => $this->title,
+            'message' => $this->message,
             'status' => $this->status,
             'expiresAt' => $this->expiresAt,
+            'decidedAt' => $this->decidedAt,
+            'decidedByName' => $this->decidedByName,
             'createdAt' => $this->createdAt,
-            'updatedAt' => $this->updatedAt,
-            'current' => $this->current,
         ];
     }
 

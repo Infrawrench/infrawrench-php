@@ -19,21 +19,17 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * Normalized status reported by a plugin's renderSidebarItem/renderDetail.
- *
- * The values `ResourceStatus` accepts.
+ * The values `WorkflowApprovalStatus` accepts.
  *
  * Constants rather than an enum, deliberately: a value added by a newer API version has to
  * deserialize, and `enum::from()` would raise instead.
  */
-final class ResourceStatus
+final class WorkflowApprovalStatus
 {
-    public const HEALTHY = 'healthy';
-    public const DEGRADED = 'degraded';
-    public const ERROR = 'error';
-    public const UNKNOWN = 'unknown';
-    public const PROVISIONING = 'provisioning';
-    public const INFO = 'info';
+    public const PENDING = 'pending';
+    public const APPROVED = 'approved';
+    public const DENIED = 'denied';
+    public const EXPIRED = 'expired';
 
     /**
      * Every value, in the order the spec lists them.
@@ -43,12 +39,10 @@ final class ResourceStatus
     public static function values(): array
     {
         return [
-            self::HEALTHY,
-            self::DEGRADED,
-            self::ERROR,
-            self::UNKNOWN,
-            self::PROVISIONING,
-            self::INFO,
+            self::PENDING,
+            self::APPROVED,
+            self::DENIED,
+            self::EXPIRED,
         ];
     }
 }

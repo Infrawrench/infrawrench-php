@@ -21,111 +21,105 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
-use Infrawrench\Sdk\Model\SqlEstimateRequest;
-use Infrawrench\Sdk\Model\SqlExecuteRequest;
-use Infrawrench\Sdk\Model\SqlExecuteResponse;
-use Infrawrench\Sdk\Model\SqlQueryRequest;
-use Infrawrench\Sdk\Model\SqlQueryResponse;
+use Infrawrench\Sdk\Model\WorkflowApproval;
+use Infrawrench\Sdk\Model\WorkflowApprovalStatus;
 use Infrawrench\Sdk\RequestOptions;
 
-/** `$client->sql` */
-final class SqlNamespace extends ApiNamespace
+/** `$client->workflowApprovals` */
+final class WorkflowApprovalsNamespace extends ApiNamespace
 {
     /**
-     * Dry-run cost estimate (e.g. BigQuery byte scan)
+     * Approve a pending workflow approval request
      *
-     * _Requires permission: `resources:read`._
+     * The suspended run resumes within a few seconds of the decision landing.
      *
-     * POST /api/org/{orgId}/sql/estimate
+     * _Requires permission: `dashboards:write`._
      *
-     * Raises on 400: Bad request
+     * POST /api/org/{orgId}/workflow-approvals/{id}/approve
      *
      * Raises on 404: Not found
      *
+     * Raises on 409: Conflict
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return array<string, mixed>
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function estimate(SqlEstimateRequest $body, ?string $orgId = null, ?RequestOptions $options = null): array
+    public function approve(string $id, ?string $orgId = null, ?RequestOptions $options = null): WorkflowApproval
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
-                path: '/api/org/{orgId}/sql/estimate',
-                pathParams: ['orgId' => $orgId],
-                body: $body->toArray(),
-                hasBody: true,
+                path: '/api/org/{orgId}/workflow-approvals/{id}/approve',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
             ),
             $options,
         );
 
-        return Coerce::toArray($data);
+        return WorkflowApproval::fromArray(Coerce::toArray($data));
     }
 
     /**
-     * Run an INSERT/UPDATE/DELETE/DDL statement
+     * Deny a pending workflow approval request
      *
-     * _Requires permission: `resources:execute`._
+     * Denial fails the waiting `infra.waitForApproval(...)` call in the run.
      *
-     * POST /api/org/{orgId}/sql/execute
+     * _Requires permission: `dashboards:write`._
      *
-     * Raises on 400: Bad request
+     * POST /api/org/{orgId}/workflow-approvals/{id}/deny
      *
      * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function execute(SqlExecuteRequest $body, ?string $orgId = null, ?RequestOptions $options = null): SqlExecuteResponse
+    public function deny(string $id, ?string $orgId = null, ?RequestOptions $options = null): WorkflowApproval
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
-                path: '/api/org/{orgId}/sql/execute',
-                pathParams: ['orgId' => $orgId],
-                body: $body->toArray(),
-                hasBody: true,
+                path: '/api/org/{orgId}/workflow-approvals/{id}/deny',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
             ),
             $options,
         );
 
-        return SqlExecuteResponse::fromArray(Coerce::toArray($data));
+        return WorkflowApproval::fromArray(Coerce::toArray($data));
     }
 
     /**
-     * Run a read-only SQL query
+     * List workflow approval requests
      *
-     * Routes to the right driver: REST `executeQuery` (BigQuery, Databricks), per-resource SQL
-     * driver (Neon, Turso) or account-level SQL driver (Postgres, MySQL).
+     * Approval requests raised by `infra.waitForApproval(...)` inside workflow runs, newest first.
+     * Filter with `status=pending` to build an approvals inbox.
      *
-     * _Requires permission: `resources:execute`._
+     * _Requires permission: `dashboards:read`._
      *
-     * POST /api/org/{orgId}/sql/query
+     * GET /api/org/{orgId}/workflow-approvals
      *
      * Raises on 400: Bad request
      *
-     * Raises on 404: Not found
-     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return SqlQueryResponse|array<string, mixed>
+     * @param WorkflowApprovalStatus::*|null $status
+     * @return list<WorkflowApproval>
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function query(SqlQueryRequest $body, ?string $orgId = null, ?RequestOptions $options = null): SqlQueryResponse|array
+    public function list(?string $orgId = null, ?string $status = null, ?string $workflowId = null, ?string $runId = null, ?RequestOptions $options = null): array
     {
         $data = $this->transport->request(
             new RequestSpec(
-                method: 'POST',
-                path: '/api/org/{orgId}/sql/query',
+                method: 'GET',
+                path: '/api/org/{orgId}/workflow-approvals',
                 pathParams: ['orgId' => $orgId],
-                body: $body->toArray(),
-                hasBody: true,
+                query: ['status' => $status, 'workflowId' => $workflowId, 'runId' => $runId],
             ),
             $options,
         );
 
-        return $data;
+        return Coerce::mapList($data, static fn (mixed $item): WorkflowApproval => WorkflowApproval::fromArray(Coerce::toArray($item)));
     }
 }
