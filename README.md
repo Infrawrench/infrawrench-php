@@ -1,6 +1,6 @@
 # infrawrench/sdk
 
-Generated PHP client for the Infrawrench API (API version `0.27.0`).
+Generated PHP client for the Infrawrench API (API version `0.28.0`).
 
 **Do not edit this package by hand** — it is regenerated from `openapi.json` and
 is not checked into the repository. Run
@@ -102,8 +102,8 @@ $client = new APIV1Client(orgId: 'org_1', sender: $recordingSender);
 
 ## Scope
 
-This package covers the published API surface only: 204 operations across
-254 schemas. Operations marked `x-internal` in the spec — the admin surface,
+This package covers the published API surface only: 207 operations across
+257 schemas. Operations marked `x-internal` in the spec — the admin surface,
 webhook receivers, desktop sync, push registration, and the browser auth
 redirects — are not generated.
 

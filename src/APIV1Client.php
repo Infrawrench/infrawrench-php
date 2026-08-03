@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.27.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -55,6 +55,7 @@ use Infrawrench\Sdk\Api\SshTunnelsNamespace;
 use Infrawrench\Sdk\Api\StorageNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
 use Infrawrench\Sdk\Api\WorkflowApprovalsNamespace;
+use Infrawrench\Sdk\Api\WorkflowsNamespace;
 use Infrawrench\Sdk\Http\HttpSender;
 use Infrawrench\Sdk\Internal\Transport;
 
@@ -191,6 +192,9 @@ final class APIV1Client
     /** `$client->workflowApprovals` */
     public readonly WorkflowApprovalsNamespace $workflowApprovals;
 
+    /** `$client->workflows` */
+    public readonly WorkflowsNamespace $workflows;
+
     /**
      * @param string|null $apiKey API key or access token, sent as `Authorization: Bearer …`.
      * @param string|null $orgId Default organization id. Every org-scoped call accepts `orgId:`; set it once here and leave it off the call sites.
@@ -252,5 +256,6 @@ final class APIV1Client
         $this->storage = new StorageNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);
         $this->workflowApprovals = new WorkflowApprovalsNamespace($this->transport);
+        $this->workflows = new WorkflowsNamespace($this->transport);
     }
 }
