@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ final class ResourceTypeSummary implements \JsonSerializable
 {
     /**
      * @param list<array{pluginId: string, resourceTypeId: string, matchField?: string, verb?: string}>|null $attachTargets
+     * @param bool|null $schedulable The type declares lifecycle start/stop actions, so its resources can carry a sleep/wake schedule.
      */
     public function __construct(
         public readonly string $id,
@@ -34,6 +35,7 @@ final class ResourceTypeSummary implements \JsonSerializable
         public readonly ?array $attachTargets = null,
         public readonly ?bool $isSshHost = null,
         public readonly ?bool $sshTunnelAttachSource = null,
+        public readonly ?bool $schedulable = null,
     ) {
     }
 
@@ -53,6 +55,7 @@ final class ResourceTypeSummary implements \JsonSerializable
             attachTargets: Coerce::nullable($data['attachTargets'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             isSshHost: Coerce::toBoolOrNull($data['isSshHost'] ?? null),
             sshTunnelAttachSource: Coerce::toBoolOrNull($data['sshTunnelAttachSource'] ?? null),
+            schedulable: Coerce::toBoolOrNull($data['schedulable'] ?? null),
         );
     }
 
@@ -82,6 +85,9 @@ final class ResourceTypeSummary implements \JsonSerializable
         }
         if ($this->sshTunnelAttachSource !== null) {
             $payload['sshTunnelAttachSource'] = $this->sshTunnelAttachSource;
+        }
+        if ($this->schedulable !== null) {
+            $payload['schedulable'] = $this->schedulable;
         }
 
         return $payload;

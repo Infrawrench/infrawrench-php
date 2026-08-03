@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -55,6 +55,7 @@ final class Permission
     public const FREEZES_READ = 'freezes:read';
     public const FREEZES_WRITE = 'freezes:write';
     public const FREEZES_OVERRIDE = 'freezes:override';
+    public const TAG_POLICY_OVERRIDE = 'tag-policy:override';
     public const AUDIT_READ = 'audit:read';
     public const TEAM_READ = 'team:read';
     public const TEAM_INVITE = 'team:invite';
@@ -107,6 +108,7 @@ final class Permission
             self::FREEZES_READ,
             self::FREEZES_WRITE,
             self::FREEZES_OVERRIDE,
+            self::TAG_POLICY_OVERRIDE,
             self::AUDIT_READ,
             self::TEAM_READ,
             self::TEAM_INVITE,

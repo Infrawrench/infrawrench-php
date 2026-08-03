@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,6 +33,8 @@ final class MsTeamsWebhookCreate implements \JsonSerializable
         public readonly ?bool $anomalyAlerts = null,
         public readonly ?bool $resourceDrift = null,
         public readonly ?bool $workflowPages = null,
+        public readonly ?bool $providerIncidents = null,
+        public readonly ?bool $expiryAlerts = null,
         public readonly ?bool $weeklyDigest = null,
     ) {
     }
@@ -52,6 +54,8 @@ final class MsTeamsWebhookCreate implements \JsonSerializable
             anomalyAlerts: Coerce::toBoolOrNull($data['anomalyAlerts'] ?? null),
             resourceDrift: Coerce::toBoolOrNull($data['resourceDrift'] ?? null),
             workflowPages: Coerce::toBoolOrNull($data['workflowPages'] ?? null),
+            providerIncidents: Coerce::toBoolOrNull($data['providerIncidents'] ?? null),
+            expiryAlerts: Coerce::toBoolOrNull($data['expiryAlerts'] ?? null),
             weeklyDigest: Coerce::toBoolOrNull($data['weeklyDigest'] ?? null),
         );
     }
@@ -81,6 +85,12 @@ final class MsTeamsWebhookCreate implements \JsonSerializable
         }
         if ($this->workflowPages !== null) {
             $payload['workflowPages'] = $this->workflowPages;
+        }
+        if ($this->providerIncidents !== null) {
+            $payload['providerIncidents'] = $this->providerIncidents;
+        }
+        if ($this->expiryAlerts !== null) {
+            $payload['expiryAlerts'] = $this->expiryAlerts;
         }
         if ($this->weeklyDigest !== null) {
             $payload['weeklyDigest'] = $this->weeklyDigest;

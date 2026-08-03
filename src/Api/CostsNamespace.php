@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,8 @@ use Infrawrench\Sdk\Model\CostPushRequest;
 use Infrawrench\Sdk\Model\CostPushResponse;
 use Infrawrench\Sdk\Model\CostQueryRequest;
 use Infrawrench\Sdk\Model\CostQueryResponse;
+use Infrawrench\Sdk\Model\ShowbackReport;
+use Infrawrench\Sdk\Model\UntaggedSpendReport;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->costs` */
@@ -184,6 +186,40 @@ final class CostsNamespace extends ApiNamespace
     }
 
     /**
+     * Spend grouped by cost centre (showback)
+     *
+     * Runs the org's allocation rules over collected spend and sums per cost centre and currency.
+     * Spend no rule claims comes back as the "Unallocated" bucket; every defined centre appears
+     * even with zero spend.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/costs/showback
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param string|null $from Defaults to 30 days ago.
+     * @param string|null $to Defaults to today.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function showback(?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): ShowbackReport
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/costs/showback',
+                pathParams: ['orgId' => $orgId],
+                query: ['from' => $from, 'to' => $to],
+            ),
+            $options,
+        );
+
+        return ShowbackReport::fromArray(Coerce::toArray($data));
+    }
+
+    /**
      * Per-account cost collection status
      *
      * Which accounts support cost collection, whether their history backfill has completed, and
@@ -210,5 +246,39 @@ final class CostsNamespace extends ApiNamespace
         );
 
         return Coerce::toArray($data);
+    }
+
+    /**
+     * Untagged spend over the required tag keys
+     *
+     * Spend on cost rows missing at least one of the org's required tag keys, overall and per key,
+     * plus the largest untagged (account, service) buckets. Empty when no tag policy is configured
+     * — untagged is only meaningful against a policy.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/costs/untagged
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param string|null $from Defaults to 30 days ago.
+     * @param string|null $to Defaults to today.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function untagged(?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): UntaggedSpendReport
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/costs/untagged',
+                pathParams: ['orgId' => $orgId],
+                query: ['from' => $from, 'to' => $to],
+            ),
+            $options,
+        );
+
+        return UntaggedSpendReport::fromArray(Coerce::toArray($data));
     }
 }

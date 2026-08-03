@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,7 @@ final class ResourceDetail implements \JsonSerializable
      * @param list<EditableField> $editableFields
      * @param list<CredentialFormat> $credentialFormats
      * @param array<string, mixed> $resourceFields
+     * @param bool $schedulable The type declares lifecycle start/stop actions, so this resource can carry a sleep/wake schedule.
      */
     public function __construct(
         public readonly array $detailSchema,
@@ -67,6 +68,7 @@ final class ResourceDetail implements \JsonSerializable
         public readonly string $databaseName,
         public readonly string $storageBucketName,
         public readonly bool $supportsMetrics,
+        public readonly bool $schedulable,
         public readonly ?string $kvDriverName = null,
         public readonly ?string $sshPrivateHost = null,
     ) {
@@ -114,6 +116,7 @@ final class ResourceDetail implements \JsonSerializable
             databaseName: Coerce::toString($data['databaseName'] ?? null),
             storageBucketName: Coerce::toString($data['storageBucketName'] ?? null),
             supportsMetrics: Coerce::toBool($data['supportsMetrics'] ?? null),
+            schedulable: Coerce::toBool($data['schedulable'] ?? null),
             kvDriverName: Coerce::toStringOrNull($data['kvDriverName'] ?? null),
             sshPrivateHost: Coerce::toStringOrNull($data['sshPrivateHost'] ?? null),
         );
@@ -161,6 +164,7 @@ final class ResourceDetail implements \JsonSerializable
             'databaseName' => $this->databaseName,
             'storageBucketName' => $this->storageBucketName,
             'supportsMetrics' => $this->supportsMetrics,
+            'schedulable' => $this->schedulable,
         ];
         if ($this->kvDriverName !== null) {
             $payload['kvDriverName'] = $this->kvDriverName;

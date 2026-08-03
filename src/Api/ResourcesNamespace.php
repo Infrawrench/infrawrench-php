@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -110,6 +110,10 @@ final class ResourcesNamespace extends ApiNamespace
      * Raises on 400: Bad request
      *
      * Raises on 404: Not found
+     *
+     * Raises on 422: Blocked by the organization's tag policy: the submitted fields are missing a
+     * required tag (or carry a disallowed value). Retry with the `x-tag-policy-override: true`
+     * header if you hold `tag-policy:override`; both blocks and overrides are audit-logged.
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -630,12 +634,17 @@ final class ResourcesNamespace extends ApiNamespace
      *
      * Applies the supplied field changes upstream and persists the refreshed fields/display name
      * to the DB. The body's `fields` map only carries the keys the caller actually changed.
+     * Blocked with `423` while an org change freeze is in effect (this is also the path that
+     * applies right-sizing recommendations); every applied update is audit-logged.
      *
      * POST /api/org/{orgId}/resources/update
      *
      * Raises on 400: Bad request
      *
      * Raises on 404: Not found
+     *
+     * Raises on 423: Blocked by an active change freeze. Retry with the `x-change-freeze-override:
+     * true` header if you hold `freezes:override`; both blocks and overrides are audit-logged.
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

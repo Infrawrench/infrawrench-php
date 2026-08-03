@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.28.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,7 @@ use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
+use Infrawrench\Sdk\Api\CostCentresNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
@@ -38,21 +39,27 @@ use Infrawrench\Sdk\Api\DependencyGraphNamespace;
 use Infrawrench\Sdk\Api\DeploymentsNamespace;
 use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
+use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
+use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\OrphansNamespace;
 use Infrawrench\Sdk\Api\PagesNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
+use Infrawrench\Sdk\Api\RightsizingNamespace;
+use Infrawrench\Sdk\Api\SchedulesNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
 use Infrawrench\Sdk\Api\SlackNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
 use Infrawrench\Sdk\Api\SshKeysNamespace;
 use Infrawrench\Sdk\Api\SshTunnelsNamespace;
+use Infrawrench\Sdk\Api\StatusIncidentsNamespace;
 use Infrawrench\Sdk\Api\StorageNamespace;
+use Infrawrench\Sdk\Api\TagPolicyNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
 use Infrawrench\Sdk\Api\WorkflowApprovalsNamespace;
 use Infrawrench\Sdk\Api\WorkflowsNamespace;
@@ -120,6 +127,9 @@ final class APIV1Client
     /** `$client->connect` */
     public readonly ConnectNamespace $connect;
 
+    /** `$client->costCentres` */
+    public readonly CostCentresNamespace $costCentres;
+
     /** `$client->costs` */
     public readonly CostsNamespace $costs;
 
@@ -141,11 +151,17 @@ final class APIV1Client
     /** `$client->docker` */
     public readonly DockerNamespace $docker;
 
+    /** `$client->expiring` */
+    public readonly ExpiringNamespace $expiring;
+
     /** `$client->invitations` */
     public readonly InvitationsNamespace $invitations;
 
     /** `$client->kv` */
     public readonly KvNamespace $kv;
+
+    /** `$client->moment` */
+    public readonly MomentNamespace $moment;
 
     /** `$client->msteams` */
     public readonly MsteamsNamespace $msteams;
@@ -165,6 +181,12 @@ final class APIV1Client
     /** `$client->resources` */
     public readonly ResourcesNamespace $resources;
 
+    /** `$client->rightsizing` */
+    public readonly RightsizingNamespace $rightsizing;
+
+    /** `$client->schedules` */
+    public readonly SchedulesNamespace $schedules;
+
     /** `$client->search` */
     public readonly SearchNamespace $search;
 
@@ -183,8 +205,14 @@ final class APIV1Client
     /** `$client->sshTunnels` */
     public readonly SshTunnelsNamespace $sshTunnels;
 
+    /** `$client->statusIncidents` */
+    public readonly StatusIncidentsNamespace $statusIncidents;
+
     /** `$client->storage` */
     public readonly StorageNamespace $storage;
+
+    /** `$client->tagPolicy` */
+    public readonly TagPolicyNamespace $tagPolicy;
 
     /** `$client->team` */
     public readonly TeamNamespace $team;
@@ -232,6 +260,7 @@ final class APIV1Client
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
+        $this->costCentres = new CostCentresNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
@@ -239,21 +268,27 @@ final class APIV1Client
         $this->deployments = new DeploymentsNamespace($this->transport);
         $this->digest = new DigestNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
+        $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
+        $this->moment = new MomentNamespace($this->transport);
         $this->msteams = new MsteamsNamespace($this->transport);
         $this->orgs = new OrgsNamespace($this->transport);
         $this->orphans = new OrphansNamespace($this->transport);
         $this->pages = new PagesNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
+        $this->rightsizing = new RightsizingNamespace($this->transport);
+        $this->schedules = new SchedulesNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
         $this->sftp = new SftpNamespace($this->transport);
         $this->slack = new SlackNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);
         $this->sshKeys = new SshKeysNamespace($this->transport);
         $this->sshTunnels = new SshTunnelsNamespace($this->transport);
+        $this->statusIncidents = new StatusIncidentsNamespace($this->transport);
         $this->storage = new StorageNamespace($this->transport);
+        $this->tagPolicy = new TagPolicyNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);
         $this->workflowApprovals = new WorkflowApprovalsNamespace($this->transport);
         $this->workflows = new WorkflowsNamespace($this->transport);
