@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.30.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,10 +30,12 @@ final class SlackChannelCreate implements \JsonSerializable
         public readonly ?bool $syncIncidents = null,
         public readonly ?bool $budgetAlerts = null,
         public readonly ?bool $anomalyAlerts = null,
+        public readonly ?bool $metricAlerts = null,
         public readonly ?bool $resourceDrift = null,
         public readonly ?bool $workflowPages = null,
         public readonly ?bool $providerIncidents = null,
         public readonly ?bool $expiryAlerts = null,
+        public readonly ?bool $logMatchAlerts = null,
         public readonly ?bool $weeklyDigest = null,
     ) {
     }
@@ -53,10 +55,12 @@ final class SlackChannelCreate implements \JsonSerializable
             syncIncidents: Coerce::toBoolOrNull($data['syncIncidents'] ?? null),
             budgetAlerts: Coerce::toBoolOrNull($data['budgetAlerts'] ?? null),
             anomalyAlerts: Coerce::toBoolOrNull($data['anomalyAlerts'] ?? null),
+            metricAlerts: Coerce::toBoolOrNull($data['metricAlerts'] ?? null),
             resourceDrift: Coerce::toBoolOrNull($data['resourceDrift'] ?? null),
             workflowPages: Coerce::toBoolOrNull($data['workflowPages'] ?? null),
             providerIncidents: Coerce::toBoolOrNull($data['providerIncidents'] ?? null),
             expiryAlerts: Coerce::toBoolOrNull($data['expiryAlerts'] ?? null),
+            logMatchAlerts: Coerce::toBoolOrNull($data['logMatchAlerts'] ?? null),
             weeklyDigest: Coerce::toBoolOrNull($data['weeklyDigest'] ?? null),
         );
     }
@@ -85,6 +89,9 @@ final class SlackChannelCreate implements \JsonSerializable
         if ($this->anomalyAlerts !== null) {
             $payload['anomalyAlerts'] = $this->anomalyAlerts;
         }
+        if ($this->metricAlerts !== null) {
+            $payload['metricAlerts'] = $this->metricAlerts;
+        }
         if ($this->resourceDrift !== null) {
             $payload['resourceDrift'] = $this->resourceDrift;
         }
@@ -96,6 +103,9 @@ final class SlackChannelCreate implements \JsonSerializable
         }
         if ($this->expiryAlerts !== null) {
             $payload['expiryAlerts'] = $this->expiryAlerts;
+        }
+        if ($this->logMatchAlerts !== null) {
+            $payload['logMatchAlerts'] = $this->logMatchAlerts;
         }
         if ($this->weeklyDigest !== null) {
             $payload['weeklyDigest'] = $this->weeklyDigest;

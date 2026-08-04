@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.30.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ final class CostAnomaly implements \JsonSerializable
      * @param int $baselineCents Mean daily spend over the trailing 28-day baseline, in cents. Zero, or near it, for a `new_source` — clients must not compute a percentage change from it.
      * @param int $thresholdCents The detection bar the day cleared, in cents: baseline mean + N·stddev for a `spike`, the new-source floor for a `new_source`.
      * @param string|null $notifiedAt When the anomaly was delivered to a notification channel; null when delivery failed or a recent anomaly for the same key suppressed it.
+     * @param list<string> $hints Root-cause hints computed when the anomaly fired: human-readable facts from the change timeline and audit log for the anomalous day and the day before (e.g. "12 gce-instance resources appeared", a workflow run, a lifted change freeze), ranked by likely relevance and capped at three. Empty when nothing notable happened in the window or the anomaly predates hint collection.
      */
     public function __construct(
         public readonly string $id,
@@ -43,6 +44,7 @@ final class CostAnomaly implements \JsonSerializable
         public readonly int $thresholdCents,
         public readonly string $detectedAt,
         public readonly ?string $notifiedAt,
+        public readonly array $hints,
     ) {
     }
 
@@ -65,6 +67,7 @@ final class CostAnomaly implements \JsonSerializable
             thresholdCents: Coerce::toInt($data['thresholdCents'] ?? null),
             detectedAt: Coerce::toString($data['detectedAt'] ?? null),
             notifiedAt: Coerce::toStringOrNull($data['notifiedAt'] ?? null),
+            hints: Coerce::mapList($data['hints'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
         );
     }
 
@@ -87,6 +90,7 @@ final class CostAnomaly implements \JsonSerializable
             'thresholdCents' => $this->thresholdCents,
             'detectedAt' => $this->detectedAt,
             'notifiedAt' => $this->notifiedAt,
+            'hints' => $this->hints,
         ];
     }
 

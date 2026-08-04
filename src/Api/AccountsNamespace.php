@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.30.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,6 @@ use Infrawrench\Sdk\Model\AccountDetail;
 use Infrawrench\Sdk\Model\CreateAccountResponse;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\Model\PluginId;
-use Infrawrench\Sdk\Model\PluginSummary;
 use Infrawrench\Sdk\Model\Resource;
 use Infrawrench\Sdk\Model\SyncResponse;
 use Infrawrench\Sdk\Model\UpdateAccountRequest;
@@ -40,6 +39,12 @@ final class AccountsNamespace extends ApiNamespace
     /** `$client->accounts->credentials` */
     public readonly AccountsCredentialsNamespace $credentials;
 
+    /** `$client->accounts->plugins` */
+    public readonly AccountsPluginsNamespace $plugins;
+
+    /** `$client->accounts->preflight` */
+    public readonly AccountsPreflightNamespace $preflight;
+
     /** `$client->accounts->syncType` */
     public readonly AccountsSyncTypeNamespace $syncType;
 
@@ -47,6 +52,8 @@ final class AccountsNamespace extends ApiNamespace
     {
         parent::__construct($transport);
         $this->credentials = new AccountsCredentialsNamespace($this->transport);
+        $this->plugins = new AccountsPluginsNamespace($this->transport);
+        $this->preflight = new AccountsPreflightNamespace($this->transport);
         $this->syncType = new AccountsSyncTypeNamespace($this->transport);
     }
 
@@ -161,32 +168,6 @@ final class AccountsNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): Account => Account::fromArray(Coerce::toArray($item)));
-    }
-
-    /**
-     * List installed plugins and their credential fields
-     *
-     * _Requires permission: `accounts:read`._
-     *
-     * GET /api/org/{orgId}/accounts/plugins
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return list<PluginSummary>
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function plugins(?string $orgId = null, ?RequestOptions $options = null): array
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'GET',
-                path: '/api/org/{orgId}/accounts/plugins',
-                pathParams: ['orgId' => $orgId],
-            ),
-            $options,
-        );
-
-        return Coerce::mapList($data, static fn (mixed $item): PluginSummary => PluginSummary::fromArray(Coerce::toArray($item)));
     }
 
     /**

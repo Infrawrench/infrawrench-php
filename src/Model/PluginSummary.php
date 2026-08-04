@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.30.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class PluginSummary implements \JsonSerializable
         public readonly string $displayName,
         public readonly string $logoSvg,
         public readonly array $credentialFields,
+        public readonly ?PreflightDeclaration $preflight,
     ) {
     }
 
@@ -43,6 +44,7 @@ final class PluginSummary implements \JsonSerializable
             displayName: Coerce::toString($data['displayName'] ?? null),
             logoSvg: Coerce::toString($data['logoSvg'] ?? null),
             credentialFields: Coerce::mapList($data['credentialFields'] ?? null, static fn (mixed $item): CredentialField => CredentialField::fromArray(Coerce::toArray($item))),
+            preflight: Coerce::nullable($data['preflight'] ?? null, static fn (mixed $value): PreflightDeclaration => PreflightDeclaration::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -58,6 +60,7 @@ final class PluginSummary implements \JsonSerializable
             'displayName' => $this->displayName,
             'logoSvg' => $this->logoSvg,
             'credentialFields' => array_map(static fn (CredentialField $item): array => $item->toArray(), $this->credentialFields),
+            'preflight' => $this->preflight?->toArray(),
         ];
     }
 

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.30.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,6 +42,8 @@ use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
+use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
+use Infrawrench\Sdk\Api\MetricAlertsNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
@@ -55,6 +57,7 @@ use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
 use Infrawrench\Sdk\Api\SlackNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
+use Infrawrench\Sdk\Api\SshFanoutNamespace;
 use Infrawrench\Sdk\Api\SshKeysNamespace;
 use Infrawrench\Sdk\Api\SshTunnelsNamespace;
 use Infrawrench\Sdk\Api\StatusIncidentsNamespace;
@@ -160,6 +163,12 @@ final class APIV1Client
     /** `$client->kv` */
     public readonly KvNamespace $kv;
 
+    /** `$client->logWorkspaces` */
+    public readonly LogWorkspacesNamespace $logWorkspaces;
+
+    /** `$client->metricAlerts` */
+    public readonly MetricAlertsNamespace $metricAlerts;
+
     /** `$client->moment` */
     public readonly MomentNamespace $moment;
 
@@ -198,6 +207,9 @@ final class APIV1Client
 
     /** `$client->sql` */
     public readonly SqlNamespace $sql;
+
+    /** `$client->sshFanout` */
+    public readonly SshFanoutNamespace $sshFanout;
 
     /** `$client->sshKeys` */
     public readonly SshKeysNamespace $sshKeys;
@@ -271,6 +283,8 @@ final class APIV1Client
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
+        $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
+        $this->metricAlerts = new MetricAlertsNamespace($this->transport);
         $this->moment = new MomentNamespace($this->transport);
         $this->msteams = new MsteamsNamespace($this->transport);
         $this->orgs = new OrgsNamespace($this->transport);
@@ -284,6 +298,7 @@ final class APIV1Client
         $this->sftp = new SftpNamespace($this->transport);
         $this->slack = new SlackNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);
+        $this->sshFanout = new SshFanoutNamespace($this->transport);
         $this->sshKeys = new SshKeysNamespace($this->transport);
         $this->sshTunnels = new SshTunnelsNamespace($this->transport);
         $this->statusIncidents = new StatusIncidentsNamespace($this->transport);
