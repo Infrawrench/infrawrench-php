@@ -1,6 +1,6 @@
 {
   "name": "infrawrench/sdk",
-  "description": "Generated PHP client for the Infrawrench API (v0.30.0).",
+  "description": "Generated PHP client for the Infrawrench API (v0.31.0).",
   "type": "library",
   "keywords": [
     "infrawrench",

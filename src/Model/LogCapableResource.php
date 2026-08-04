@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.31.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.30.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.31.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,7 +22,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class LogCapableResource implements \JsonSerializable
 {
-    /** @param PluginId::* $pluginId */
+    /**
+     * @param PluginId::* $pluginId
+     * @param string|null $parentResourceId Set for sidecar streams: the stored parent resource the peer client is built through.
+     */
     public function __construct(
         public readonly string $resourceId,
         public readonly string $accountId,
@@ -30,6 +33,8 @@ final class LogCapableResource implements \JsonSerializable
         public readonly string $pluginId,
         public readonly string $resourceTypeId,
         public readonly string $displayName,
+        public readonly ?string $parentResourceId = null,
+        public readonly ?string $parentDisplayName = null,
     ) {
     }
 
@@ -47,6 +52,8 @@ final class LogCapableResource implements \JsonSerializable
             pluginId: Coerce::toString($data['pluginId'] ?? null),
             resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
+            parentResourceId: Coerce::toStringOrNull($data['parentResourceId'] ?? null),
+            parentDisplayName: Coerce::toStringOrNull($data['parentDisplayName'] ?? null),
         );
     }
 
@@ -57,7 +64,7 @@ final class LogCapableResource implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'resourceId' => $this->resourceId,
             'accountId' => $this->accountId,
             'accountName' => $this->accountName,
@@ -65,6 +72,14 @@ final class LogCapableResource implements \JsonSerializable
             'resourceTypeId' => $this->resourceTypeId,
             'displayName' => $this->displayName,
         ];
+        if ($this->parentResourceId !== null) {
+            $payload['parentResourceId'] = $this->parentResourceId;
+        }
+        if ($this->parentDisplayName !== null) {
+            $payload['parentDisplayName'] = $this->parentDisplayName;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
