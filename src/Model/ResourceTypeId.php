@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.34.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.35.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.34.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.35.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -118,6 +118,7 @@ final class ResourceTypeId
     public const COGNITO_USER_POOL = 'cognito-user-pool';
     public const COLLECTION = 'collection';
     public const COMPOSER_ENVIRONMENT = 'composer-environment';
+    public const CONNECTION = 'connection';
     public const CONTAINER = 'container';
     public const CONTAINER_REGISTRY = 'container-registry';
     public const CUSTOM_HOSTNAME = 'custom-hostname';
@@ -152,6 +153,9 @@ final class ResourceTypeId
     public const DEDICATED_INFERENCE = 'dedicated-inference';
     public const DEPLOYED_MODEL = 'deployed-model';
     public const DEPLOYMENT = 'deployment';
+    public const DIRECTORY = 'directory';
+    public const DIRECTORY_GROUP = 'directory-group';
+    public const DIRECTORY_USER = 'directory-user';
     public const DNS_RECORD = 'dns-record';
     public const DOCKER_CONTAINER = 'docker-container';
     public const DOCKER_IMAGE = 'docker-image';
@@ -217,6 +221,7 @@ final class ResourceTypeId
     public const INSTANCE_GROUP = 'instance-group';
     public const INSTANCE_TEMPLATE = 'instance-template';
     public const INTERNET_GATEWAY = 'internet-gateway';
+    public const INVITATION = 'invitation';
     public const INVITE = 'invite';
     public const IP_ACCESS_RULE = 'ip-access-rule';
     public const IP_ALLOCATION = 'ip-allocation';
@@ -300,6 +305,8 @@ final class ResourceTypeId
     public const OBJECT_STORAGE_BUCKET = 'object-storage-bucket';
     public const OPENSEARCH_CLUSTER = 'opensearch-cluster';
     public const OPENSEARCH_DOMAIN = 'opensearch-domain';
+    public const ORGANIZATION = 'organization';
+    public const ORGANIZATION_MEMBERSHIP = 'organization-membership';
     public const ORGANIZATION_USER = 'organization-user';
     public const PAGE_RULE = 'page-rule';
     public const PG_DATABASE = 'pg-database';
@@ -331,6 +338,7 @@ final class ResourceTypeId
     public const REDIS_INSTANCE = 'redis-instance';
     public const REDSHIFT_CLUSTER = 'redshift-cluster';
     public const RESERVED_IP = 'reserved-ip';
+    public const ROLE = 'role';
     public const ROUTE_TABLE = 'route-table';
     public const ROUTE53_HEALTH_CHECK = 'route53-health-check';
     public const ROUTE53_HOSTED_ZONE = 'route53-hosted-zone';
@@ -374,6 +382,7 @@ final class ResourceTypeId
     public const TURSO_ORGANIZATION_INVITE = 'turso-organization-invite';
     public const TURSO_ORGANIZATION_MEMBER = 'turso-organization-member';
     public const UPLOAD_PRESET = 'upload-preset';
+    public const USER = 'user';
     public const VECTOR_STORE = 'vector-store';
     public const VECTORIZE_INDEX = 'vectorize-index';
     public const VERCEL_DEPLOYMENT = 'vercel-deployment';
@@ -390,6 +399,7 @@ final class ResourceTypeId
     public const VPC_NETWORK = 'vpc-network';
     public const WAF_WEB_ACL = 'waf-web-acl';
     public const WAITING_ROOM = 'waiting-room';
+    public const WEBHOOK_ENDPOINT = 'webhook-endpoint';
     public const WORKER = 'worker';
     public const WORKER_ROUTE = 'worker-route';
     public const WORKERS_AI_MODEL = 'workers-ai-model';
@@ -494,6 +504,7 @@ final class ResourceTypeId
             self::COGNITO_USER_POOL,
             self::COLLECTION,
             self::COMPOSER_ENVIRONMENT,
+            self::CONNECTION,
             self::CONTAINER,
             self::CONTAINER_REGISTRY,
             self::CUSTOM_HOSTNAME,
@@ -528,6 +539,9 @@ final class ResourceTypeId
             self::DEDICATED_INFERENCE,
             self::DEPLOYED_MODEL,
             self::DEPLOYMENT,
+            self::DIRECTORY,
+            self::DIRECTORY_GROUP,
+            self::DIRECTORY_USER,
             self::DNS_RECORD,
             self::DOCKER_CONTAINER,
             self::DOCKER_IMAGE,
@@ -593,6 +607,7 @@ final class ResourceTypeId
             self::INSTANCE_GROUP,
             self::INSTANCE_TEMPLATE,
             self::INTERNET_GATEWAY,
+            self::INVITATION,
             self::INVITE,
             self::IP_ACCESS_RULE,
             self::IP_ALLOCATION,
@@ -676,6 +691,8 @@ final class ResourceTypeId
             self::OBJECT_STORAGE_BUCKET,
             self::OPENSEARCH_CLUSTER,
             self::OPENSEARCH_DOMAIN,
+            self::ORGANIZATION,
+            self::ORGANIZATION_MEMBERSHIP,
             self::ORGANIZATION_USER,
             self::PAGE_RULE,
             self::PG_DATABASE,
@@ -707,6 +724,7 @@ final class ResourceTypeId
             self::REDIS_INSTANCE,
             self::REDSHIFT_CLUSTER,
             self::RESERVED_IP,
+            self::ROLE,
             self::ROUTE_TABLE,
             self::ROUTE53_HEALTH_CHECK,
             self::ROUTE53_HOSTED_ZONE,
@@ -750,6 +768,7 @@ final class ResourceTypeId
             self::TURSO_ORGANIZATION_INVITE,
             self::TURSO_ORGANIZATION_MEMBER,
             self::UPLOAD_PRESET,
+            self::USER,
             self::VECTOR_STORE,
             self::VECTORIZE_INDEX,
             self::VERCEL_DEPLOYMENT,
@@ -766,6 +785,7 @@ final class ResourceTypeId
             self::VPC_NETWORK,
             self::WAF_WEB_ACL,
             self::WAITING_ROOM,
+            self::WEBHOOK_ENDPOINT,
             self::WORKER,
             self::WORKER_ROUTE,
             self::WORKERS_AI_MODEL,
