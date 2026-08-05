@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.32.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.33.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.32.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.33.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class SlackChannelCreate implements \JsonSerializable
         public readonly ?bool $providerIncidents = null,
         public readonly ?bool $expiryAlerts = null,
         public readonly ?bool $logMatchAlerts = null,
+        public readonly ?bool $postureAlerts = null,
+        public readonly ?bool $probeAlerts = null,
         public readonly ?bool $weeklyDigest = null,
     ) {
     }
@@ -61,6 +63,8 @@ final class SlackChannelCreate implements \JsonSerializable
             providerIncidents: Coerce::toBoolOrNull($data['providerIncidents'] ?? null),
             expiryAlerts: Coerce::toBoolOrNull($data['expiryAlerts'] ?? null),
             logMatchAlerts: Coerce::toBoolOrNull($data['logMatchAlerts'] ?? null),
+            postureAlerts: Coerce::toBoolOrNull($data['postureAlerts'] ?? null),
+            probeAlerts: Coerce::toBoolOrNull($data['probeAlerts'] ?? null),
             weeklyDigest: Coerce::toBoolOrNull($data['weeklyDigest'] ?? null),
         );
     }
@@ -106,6 +110,12 @@ final class SlackChannelCreate implements \JsonSerializable
         }
         if ($this->logMatchAlerts !== null) {
             $payload['logMatchAlerts'] = $this->logMatchAlerts;
+        }
+        if ($this->postureAlerts !== null) {
+            $payload['postureAlerts'] = $this->postureAlerts;
+        }
+        if ($this->probeAlerts !== null) {
+            $payload['probeAlerts'] = $this->probeAlerts;
         }
         if ($this->weeklyDigest !== null) {
             $payload['weeklyDigest'] = $this->weeklyDigest;

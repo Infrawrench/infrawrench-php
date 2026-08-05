@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.32.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.33.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.32.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.33.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,6 +42,7 @@ use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
+use Infrawrench\Sdk\Api\LeasesNamespace;
 use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
 use Infrawrench\Sdk\Api\MetricAlertsNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
@@ -49,6 +50,8 @@ use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\OrphansNamespace;
 use Infrawrench\Sdk\Api\PagesNamespace;
+use Infrawrench\Sdk\Api\PostureNamespace;
+use Infrawrench\Sdk\Api\ProbesNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
@@ -163,6 +166,9 @@ final class APIV1Client
     /** `$client->kv` */
     public readonly KvNamespace $kv;
 
+    /** `$client->leases` */
+    public readonly LeasesNamespace $leases;
+
     /** `$client->logWorkspaces` */
     public readonly LogWorkspacesNamespace $logWorkspaces;
 
@@ -183,6 +189,12 @@ final class APIV1Client
 
     /** `$client->pages` */
     public readonly PagesNamespace $pages;
+
+    /** `$client->posture` */
+    public readonly PostureNamespace $posture;
+
+    /** `$client->probes` */
+    public readonly ProbesNamespace $probes;
 
     /** `$client->profile` */
     public readonly ProfileNamespace $profile;
@@ -283,6 +295,7 @@ final class APIV1Client
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
+        $this->leases = new LeasesNamespace($this->transport);
         $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
         $this->metricAlerts = new MetricAlertsNamespace($this->transport);
         $this->moment = new MomentNamespace($this->transport);
@@ -290,6 +303,8 @@ final class APIV1Client
         $this->orgs = new OrgsNamespace($this->transport);
         $this->orphans = new OrphansNamespace($this->transport);
         $this->pages = new PagesNamespace($this->transport);
+        $this->posture = new PostureNamespace($this->transport);
+        $this->probes = new ProbesNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
         $this->rightsizing = new RightsizingNamespace($this->transport);
