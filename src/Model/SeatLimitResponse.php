@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.36.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.36.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,14 +24,16 @@ final class SeatLimitResponse implements \JsonSerializable
 {
     /**
      * @param 'seat_limit_reached' $code
-     * @param int $seatCount Seats on the plan
+     * @param int $seatCount Total capacity: monthly subscription seats plus prepaid capacity-slot seats
      * @param int $seatsUsed Members plus pending unexpired invitations
+     * @param bool $canAddSeat Whether retrying with `addSeat: true` can succeed. False when the org's capacity is entirely prepaid capacity slots: there is no monthly seat to buy, so the only remedy is another capacity slot.
      */
     public function __construct(
         public readonly string $error,
         public readonly string $code,
         public readonly int $seatCount,
         public readonly int $seatsUsed,
+        public readonly bool $canAddSeat,
     ) {
     }
 
@@ -47,6 +49,7 @@ final class SeatLimitResponse implements \JsonSerializable
             code: Coerce::toString($data['code'] ?? null),
             seatCount: Coerce::toInt($data['seatCount'] ?? null),
             seatsUsed: Coerce::toInt($data['seatsUsed'] ?? null),
+            canAddSeat: Coerce::toBool($data['canAddSeat'] ?? null),
         );
     }
 
@@ -62,6 +65,7 @@ final class SeatLimitResponse implements \JsonSerializable
             'code' => $this->code,
             'seatCount' => $this->seatCount,
             'seatsUsed' => $this->seatsUsed,
+            'canAddSeat' => $this->canAddSeat,
         ];
     }
 

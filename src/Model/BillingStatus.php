@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.36.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.36.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class BillingStatus implements \JsonSerializable
     public function __construct(
         public readonly bool $complimentary,
         public readonly ?Subscription $subscription,
+        public readonly CapacityStatus $capacity,
     ) {
     }
 
@@ -41,6 +42,7 @@ final class BillingStatus implements \JsonSerializable
         return new self(
             complimentary: Coerce::toBool($data['complimentary'] ?? null),
             subscription: Coerce::nullable($data['subscription'] ?? null, static fn (mixed $value): Subscription => Subscription::fromArray(Coerce::toArray($value))),
+            capacity: CapacityStatus::fromArray(Coerce::toArray($data['capacity'] ?? null)),
         );
     }
 
@@ -54,6 +56,7 @@ final class BillingStatus implements \JsonSerializable
         return [
             'complimentary' => $this->complimentary,
             'subscription' => $this->subscription?->toArray(),
+            'capacity' => $this->capacity->toArray(),
         ];
     }
 

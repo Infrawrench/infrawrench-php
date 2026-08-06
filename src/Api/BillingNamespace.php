@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.36.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.36.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\BillingStatus;
 use Infrawrench\Sdk\Model\StripeRedirectUrl;
 use Infrawrench\Sdk\RequestOptions;
@@ -28,6 +29,15 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->billing` */
 final class BillingNamespace extends ApiNamespace
 {
+    /** `$client->billing->capacity` */
+    public readonly BillingCapacityNamespace $capacity;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->capacity = new BillingCapacityNamespace($this->transport);
+    }
+
     /**
      * Start a Stripe Checkout session
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.36.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.36.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class InviteRequest implements \JsonSerializable
 {
     /**
      * @param OrganizationRole::*|null $role
-     * @param bool|null $addSeat When the paid plan is full (409 seat_limit_reached), retry with this set to buy one more seat and send the invitation. Requires billing:write.
+     * @param bool|null $addSeat When the paid plan is full (409 seat_limit_reached), retry with this set to buy one more monthly seat and send the invitation. Requires billing:write. Only works when the 409 reported `canAddSeat: true` — an org whose capacity is entirely prepaid capacity slots has no monthly seat to add.
      */
     public function __construct(
         public readonly string $email,
