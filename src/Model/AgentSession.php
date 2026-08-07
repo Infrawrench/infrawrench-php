@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.38.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.38.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class AgentSession implements \JsonSerializable
      * @param 'codex'|'claude-code' $tool
      * @param 'pending'|'provisioning'|'setting-up'|'up'|'failed'|'stopped' $status
      * @param list<string> $logs
+     * @param 'terminal'|'t3-code'|null $surface
      */
     public function __construct(
         public readonly string $id,
@@ -42,6 +43,7 @@ final class AgentSession implements \JsonSerializable
         public readonly array $logs,
         public readonly string $createdAt,
         public readonly string $updatedAt,
+        public readonly ?string $surface = null,
     ) {
     }
 
@@ -67,6 +69,7 @@ final class AgentSession implements \JsonSerializable
             logs: Coerce::mapList($data['logs'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
+            surface: Coerce::toStringOrNull($data['surface'] ?? null),
         );
     }
 
@@ -77,7 +80,7 @@ final class AgentSession implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'repo' => $this->repo,
             'projectName' => $this->projectName,
@@ -93,6 +96,11 @@ final class AgentSession implements \JsonSerializable
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
         ];
+        if ($this->surface !== null) {
+            $payload['surface'] = $this->surface;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

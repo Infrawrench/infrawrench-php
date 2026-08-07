@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.38.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.38.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CreateAgentSession implements \JsonSerializable
 {
     public function __construct(
-        public readonly string $repo,
         public readonly ?AgentSettings $settings,
+        public readonly ?string $repo = null,
         public readonly ?string $projectName = null,
         public readonly ?string $workspaceName = null,
     ) {
@@ -38,8 +38,8 @@ final class CreateAgentSession implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            repo: Coerce::toString($data['repo'] ?? null),
             settings: Coerce::nullable($data['settings'] ?? null, static fn (mixed $value): AgentSettings => AgentSettings::fromArray(Coerce::toArray($value))),
+            repo: Coerce::toStringOrNull($data['repo'] ?? null),
             projectName: Coerce::toStringOrNull($data['projectName'] ?? null),
             workspaceName: Coerce::toStringOrNull($data['workspaceName'] ?? null),
         );
@@ -53,9 +53,11 @@ final class CreateAgentSession implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
-            'repo' => $this->repo,
             'settings' => $this->settings?->toArray(),
         ];
+        if ($this->repo !== null) {
+            $payload['repo'] = $this->repo;
+        }
         if ($this->projectName !== null) {
             $payload['projectName'] = $this->projectName;
         }

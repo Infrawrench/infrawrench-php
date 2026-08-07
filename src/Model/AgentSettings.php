@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.38.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.37.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.38.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class AgentSettings implements \JsonSerializable
     /**
      * @param 'codex'|'claude-code' $tool
      * @param array<string, string> $fields
+     * @param 'terminal'|'t3-code'|null $surface
      */
     public function __construct(
         public readonly string $accountId,
@@ -33,6 +34,7 @@ final class AgentSettings implements \JsonSerializable
         public readonly string $resourceTypeId,
         public readonly string $tool,
         public readonly array $fields,
+        public readonly ?string $surface = null,
     ) {
     }
 
@@ -49,6 +51,7 @@ final class AgentSettings implements \JsonSerializable
             resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
             tool: Coerce::toString($data['tool'] ?? null),
             fields: Coerce::mapValues($data['fields'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            surface: Coerce::toStringOrNull($data['surface'] ?? null),
         );
     }
 
@@ -59,13 +62,18 @@ final class AgentSettings implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'accountId' => $this->accountId,
             'pluginId' => $this->pluginId,
             'resourceTypeId' => $this->resourceTypeId,
             'tool' => $this->tool,
             'fields' => $this->fields,
         ];
+        if ($this->surface !== null) {
+            $payload['surface'] = $this->surface;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
