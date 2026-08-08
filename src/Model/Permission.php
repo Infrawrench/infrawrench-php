@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -59,6 +59,9 @@ final class Permission
     public const FREEZES_OVERRIDE = 'freezes:override';
     public const TAG_POLICY_OVERRIDE = 'tag-policy:override';
     public const AUDIT_READ = 'audit:read';
+    public const ACCESS_READ = 'access:read';
+    public const ACCESS_REQUEST = 'access:request';
+    public const ACCESS_APPROVE = 'access:approve';
     public const TEAM_READ = 'team:read';
     public const TEAM_INVITE = 'team:invite';
     public const TEAM_ROLE_WRITE = 'team:role:write';
@@ -69,6 +72,8 @@ final class Permission
     public const BILLING_WRITE = 'billing:write';
     public const SSH_KEYS_READ = 'ssh-keys:read';
     public const SSH_KEYS_WRITE = 'ssh-keys:write';
+    public const SESSION_RECORDINGS_READ = 'session-recordings:read';
+    public const SESSION_RECORDINGS_WRITE = 'session-recordings:write';
     public const BASTIONS_READ = 'bastions:read';
     public const BASTIONS_WRITE = 'bastions:write';
     public const CHAT_READ = 'chat:read';
@@ -114,6 +119,9 @@ final class Permission
             self::FREEZES_OVERRIDE,
             self::TAG_POLICY_OVERRIDE,
             self::AUDIT_READ,
+            self::ACCESS_READ,
+            self::ACCESS_REQUEST,
+            self::ACCESS_APPROVE,
             self::TEAM_READ,
             self::TEAM_INVITE,
             self::TEAM_ROLE_WRITE,
@@ -124,6 +132,8 @@ final class Permission
             self::BILLING_WRITE,
             self::SSH_KEYS_READ,
             self::SSH_KEYS_WRITE,
+            self::SESSION_RECORDINGS_READ,
+            self::SESSION_RECORDINGS_WRITE,
             self::BASTIONS_READ,
             self::BASTIONS_WRITE,
             self::CHAT_READ,

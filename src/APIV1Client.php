@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -18,6 +18,7 @@ declare(strict_types=1);
 
 namespace Infrawrench\Sdk;
 
+use Infrawrench\Sdk\Api\AccessRequestsNamespace;
 use Infrawrench\Sdk\Api\AccountsNamespace;
 use Infrawrench\Sdk\Api\AgentsNamespace;
 use Infrawrench\Sdk\Api\ApiKeysNamespace;
@@ -33,11 +34,14 @@ use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostCentresNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
+use Infrawrench\Sdk\Api\CredentialHygieneNamespace;
+use Infrawrench\Sdk\Api\CreditsNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DependencyGraphNamespace;
 use Infrawrench\Sdk\Api\DeploymentsNamespace;
 use Infrawrench\Sdk\Api\DigestNamespace;
+use Infrawrench\Sdk\Api\DnsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
@@ -57,6 +61,7 @@ use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
 use Infrawrench\Sdk\Api\SchedulesNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
+use Infrawrench\Sdk\Api\SessionRecordingsNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
 use Infrawrench\Sdk\Api\SlackNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
@@ -93,6 +98,9 @@ final class APIV1Client
      * Public so a caller can read the resolved base URL, but not part of the stable surface.
      */
     public readonly Transport $transport;
+
+    /** `$client->accessRequests` */
+    public readonly AccessRequestsNamespace $accessRequests;
 
     /** `$client->accounts` */
     public readonly AccountsNamespace $accounts;
@@ -139,6 +147,12 @@ final class APIV1Client
     /** `$client->costs` */
     public readonly CostsNamespace $costs;
 
+    /** `$client->credentialHygiene` */
+    public readonly CredentialHygieneNamespace $credentialHygiene;
+
+    /** `$client->credits` */
+    public readonly CreditsNamespace $credits;
+
     /** `$client->customGraphs` */
     public readonly CustomGraphsNamespace $customGraphs;
 
@@ -153,6 +167,9 @@ final class APIV1Client
 
     /** `$client->digest` */
     public readonly DigestNamespace $digest;
+
+    /** `$client->dns` */
+    public readonly DnsNamespace $dns;
 
     /** `$client->docker` */
     public readonly DockerNamespace $docker;
@@ -210,6 +227,9 @@ final class APIV1Client
 
     /** `$client->search` */
     public readonly SearchNamespace $search;
+
+    /** `$client->sessionRecordings` */
+    public readonly SessionRecordingsNamespace $sessionRecordings;
 
     /** `$client->sftp` */
     public readonly SftpNamespace $sftp;
@@ -271,6 +291,7 @@ final class APIV1Client
             $timeout,
             $sender,
         );
+        $this->accessRequests = new AccessRequestsNamespace($this->transport);
         $this->accounts = new AccountsNamespace($this->transport);
         $this->agents = new AgentsNamespace($this->transport);
         $this->apiKeys = new ApiKeysNamespace($this->transport);
@@ -286,11 +307,14 @@ final class APIV1Client
         $this->connect = new ConnectNamespace($this->transport);
         $this->costCentres = new CostCentresNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
+        $this->credentialHygiene = new CredentialHygieneNamespace($this->transport);
+        $this->credits = new CreditsNamespace($this->transport);
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
         $this->dependencyGraph = new DependencyGraphNamespace($this->transport);
         $this->deployments = new DeploymentsNamespace($this->transport);
         $this->digest = new DigestNamespace($this->transport);
+        $this->dns = new DnsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
@@ -310,6 +334,7 @@ final class APIV1Client
         $this->rightsizing = new RightsizingNamespace($this->transport);
         $this->schedules = new SchedulesNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
+        $this->sessionRecordings = new SessionRecordingsNamespace($this->transport);
         $this->sftp = new SftpNamespace($this->transport);
         $this->slack = new SlackNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\AttachRequest;
+use Infrawrench\Sdk\Model\CostEstimateRequest;
 use Infrawrench\Sdk\Model\CreateConfigRequest;
-use Infrawrench\Sdk\Model\CreateCostEstimateRequest;
 use Infrawrench\Sdk\Model\CreatePricingRequest;
 use Infrawrench\Sdk\Model\CreateResourceRequest;
 use Infrawrench\Sdk\Model\CreateResourceResponse;
@@ -101,6 +101,43 @@ final class ResourcesNamespace extends ApiNamespace
     }
 
     /**
+     * Estimated monthly cost of a configuration
+     *
+     * Calls the plugin's `estimateCost` and returns a monthly total with the line items behind it.
+     * Price a proposed resource by passing `fields`, an existing one by passing `resourceId`, or a
+     * proposed change to an existing one by passing both — `fields` is merged over the resource's
+     * stored fields, so the caller only sends what changed. `estimate` is null when the plugin
+     * cannot price the configuration; that is not the same as an estimate of zero, and it should
+     * not be rendered as one.
+     *
+     * _Requires permission: `resources:read`._
+     *
+     * POST /api/org/{orgId}/resources/cost-estimate
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return array{estimate: array<string, mixed>|null}
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function costEstimate(CostEstimateRequest $body, ?string $orgId = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/resources/cost-estimate',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return Coerce::toArray($data);
+    }
+
+    /**
      * Create a new resource via its plugin
      *
      * _Requires permission: `resources:write`._
@@ -160,34 +197,6 @@ final class ResourcesNamespace extends ApiNamespace
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/resources/create-config',
-                pathParams: ['orgId' => $orgId],
-                body: $body->toArray(),
-                hasBody: true,
-            ),
-            $options,
-        );
-
-        return Coerce::toArray($data);
-    }
-
-    /**
-     * Cost estimate for the current create form values
-     *
-     * _Requires permission: `resources:read`._
-     *
-     * POST /api/org/{orgId}/resources/create-cost-estimate
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return array{estimate: array<string, mixed>|null}
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function createCostEstimate(CreateCostEstimateRequest $body, ?string $orgId = null, ?RequestOptions $options = null): array
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'POST',
-                path: '/api/org/{orgId}/resources/create-cost-estimate',
                 pathParams: ['orgId' => $orgId],
                 body: $body->toArray(),
                 hasBody: true,

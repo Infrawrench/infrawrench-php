@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,13 +20,14 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class CreateCostEstimateRequest implements \JsonSerializable
+final class CostEstimateRequest implements \JsonSerializable
 {
-    /** @param array<string, string> $fields */
+    /** @param array<string, string>|null $fields */
     public function __construct(
         public readonly string $accountId,
         public readonly string $resourceTypeId,
-        public readonly array $fields,
+        public readonly ?array $fields = null,
+        public readonly ?string $resourceId = null,
         public readonly ?string $pluginId = null,
         public readonly ?string $parentResourceId = null,
     ) {
@@ -42,7 +43,8 @@ final class CreateCostEstimateRequest implements \JsonSerializable
         return new self(
             accountId: Coerce::toString($data['accountId'] ?? null),
             resourceTypeId: Coerce::toString($data['resourceTypeId'] ?? null),
-            fields: Coerce::mapValues($data['fields'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapValues($value, static fn (mixed $item): string => Coerce::toString($item))),
+            resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
             pluginId: Coerce::toStringOrNull($data['pluginId'] ?? null),
             parentResourceId: Coerce::toStringOrNull($data['parentResourceId'] ?? null),
         );
@@ -58,8 +60,13 @@ final class CreateCostEstimateRequest implements \JsonSerializable
         $payload = [
             'accountId' => $this->accountId,
             'resourceTypeId' => $this->resourceTypeId,
-            'fields' => $this->fields,
         ];
+        if ($this->fields !== null) {
+            $payload['fields'] = $this->fields;
+        }
+        if ($this->resourceId !== null) {
+            $payload['resourceId'] = $this->resourceId;
+        }
         if ($this->pluginId !== null) {
             $payload['pluginId'] = $this->pluginId;
         }
