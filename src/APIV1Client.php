@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.0.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.1.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.0.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.1.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -44,6 +44,7 @@ use Infrawrench\Sdk\Api\DeploymentsNamespace;
 use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DnsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
+use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
@@ -180,6 +181,9 @@ final class APIV1Client
 
     /** `$client->docker` */
     public readonly DockerNamespace $docker;
+
+    /** `$client->environmentDiff` */
+    public readonly EnvironmentDiffNamespace $environmentDiff;
 
     /** `$client->expiring` */
     public readonly ExpiringNamespace $expiring;
@@ -333,6 +337,7 @@ final class APIV1Client
         $this->digest = new DigestNamespace($this->transport);
         $this->dns = new DnsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
+        $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
