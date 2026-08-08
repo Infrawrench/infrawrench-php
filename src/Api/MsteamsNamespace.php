@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.0.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.0.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,8 +40,8 @@ final class MsteamsNamespace extends ApiNamespace
     /**
      * List the organization's Teams channels
      *
-     * Returns the Teams channels alerts are routed to and which triggers each takes. Webhook URLs
-     * are never included.
+     * Returns the Teams channels alerts can be routed to. Which alerts reach each one is decided
+     * by /alert-rules. Webhook URLs are never included.
      *
      * GET /api/org/{orgId}/msteams/status
      *
@@ -66,9 +66,9 @@ final class MsteamsNamespace extends ApiNamespace
     /**
      * Post a test card to every configured Teams channel
      *
-     * Ignores trigger opt-ins — every channel gets the test. Fails with the error Microsoft
-     * returned when nothing could be delivered (HTTP 404 usually means the Workflow was deleted or
-     * turned off).
+     * Ignores routing rules — every channel gets the test. Fails with the error Microsoft returned
+     * when nothing could be delivered (HTTP 404 usually means the Workflow was deleted or turned
+     * off).
      *
      * POST /api/org/{orgId}/msteams/test
      *

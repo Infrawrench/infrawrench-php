@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.0.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.0.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,10 +31,12 @@ use Infrawrench\Sdk\RequestOptions;
 final class SlackChannelsNamespace extends ApiNamespace
 {
     /**
-     * Route alerts to a Slack channel
+     * Connect a Slack channel as an alert destination
      *
-     * Adds a channel, or updates the trigger opt-ins of one already added. Each trigger defaults
-     * to enabled.
+     * Adds a channel as a possible destination, or refreshes the cached name of one already added.
+     * Which alerts reach it is decided by /alert-rules; an organization with no rules falls back
+     * to the default (everything except drift, everywhere), so a freshly added channel starts
+     * receiving alerts without a second step.
      *
      * POST /api/org/{orgId}/slack/channels
      *
@@ -63,7 +65,7 @@ final class SlackChannelsNamespace extends ApiNamespace
     }
 
     /**
-     * Stop routing alerts to a channel
+     * Disconnect a channel
      *
      * DELETE /api/org/{orgId}/slack/channels/{id}
      *
@@ -88,7 +90,7 @@ final class SlackChannelsNamespace extends ApiNamespace
     }
 
     /**
-     * Change which alerts a channel receives
+     * Refresh a channel's cached name
      *
      * PATCH /api/org/{orgId}/slack/channels/{id}
      *

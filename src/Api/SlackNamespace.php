@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.0.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.0.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -100,9 +100,8 @@ final class SlackNamespace extends ApiNamespace
     /**
      * Post a test message to every configured channel
      *
-     * Ignores trigger opt-ins — every channel gets the test. Fails with the Slack error when
-     * nothing could be delivered (`not_in_channel` means the bot needs inviting to a private
-     * channel).
+     * Ignores routing rules — every channel gets the test. Fails with the Slack error when nothing
+     * could be delivered (`not_in_channel` means the bot needs inviting to a private channel).
      *
      * POST /api/org/{orgId}/slack/test
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.0.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.0.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,11 +31,11 @@ use Infrawrench\Sdk\RequestOptions;
 final class MsteamsWebhooksNamespace extends ApiNamespace
 {
     /**
-     * Route alerts to a Teams channel
+     * Connect a Teams channel as an alert destination
      *
-     * Adds a channel by webhook URL, or updates the one already holding that URL. Each trigger
-     * defaults to enabled. Responds 400 when the URL is not https or its host is not
-     * Microsoft-operated.
+     * Adds a channel by webhook URL, or updates the one already holding that URL. Which alerts
+     * reach it is decided by /alert-rules — connecting a channel routes nothing to it on its own.
+     * Responds 400 when the URL is not https or its host is not Microsoft-operated.
      *
      * POST /api/org/{orgId}/msteams/webhooks
      *
@@ -62,7 +62,7 @@ final class MsteamsWebhooksNamespace extends ApiNamespace
     }
 
     /**
-     * Stop routing alerts to a Teams channel
+     * Disconnect a Teams channel
      *
      * DELETE /api/org/{orgId}/msteams/webhooks/{id}
      *
@@ -87,7 +87,7 @@ final class MsteamsWebhooksNamespace extends ApiNamespace
     }
 
     /**
-     * Rename a Teams channel or change which alerts it receives
+     * Rename a Teams channel
      *
      * The webhook URL is immutable — remove the channel and re-add it to change it.
      *
