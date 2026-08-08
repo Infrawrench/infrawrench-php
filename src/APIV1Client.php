@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -53,6 +53,7 @@ use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\OrphansNamespace;
+use Infrawrench\Sdk\Api\OwnershipNamespace;
 use Infrawrench\Sdk\Api\PagesNamespace;
 use Infrawrench\Sdk\Api\PostureNamespace;
 use Infrawrench\Sdk\Api\ProbesNamespace;
@@ -69,6 +70,8 @@ use Infrawrench\Sdk\Api\SshFanoutNamespace;
 use Infrawrench\Sdk\Api\SshKeysNamespace;
 use Infrawrench\Sdk\Api\SshTunnelsNamespace;
 use Infrawrench\Sdk\Api\StatusIncidentsNamespace;
+use Infrawrench\Sdk\Api\StatusNamespace;
+use Infrawrench\Sdk\Api\StatusPagesNamespace;
 use Infrawrench\Sdk\Api\StorageNamespace;
 use Infrawrench\Sdk\Api\TagPolicyNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
@@ -204,6 +207,9 @@ final class APIV1Client
     /** `$client->orphans` */
     public readonly OrphansNamespace $orphans;
 
+    /** `$client->ownership` */
+    public readonly OwnershipNamespace $ownership;
+
     /** `$client->pages` */
     public readonly PagesNamespace $pages;
 
@@ -249,8 +255,14 @@ final class APIV1Client
     /** `$client->sshTunnels` */
     public readonly SshTunnelsNamespace $sshTunnels;
 
+    /** `$client->status` */
+    public readonly StatusNamespace $status;
+
     /** `$client->statusIncidents` */
     public readonly StatusIncidentsNamespace $statusIncidents;
+
+    /** `$client->statusPages` */
+    public readonly StatusPagesNamespace $statusPages;
 
     /** `$client->storage` */
     public readonly StorageNamespace $storage;
@@ -326,6 +338,7 @@ final class APIV1Client
         $this->msteams = new MsteamsNamespace($this->transport);
         $this->orgs = new OrgsNamespace($this->transport);
         $this->orphans = new OrphansNamespace($this->transport);
+        $this->ownership = new OwnershipNamespace($this->transport);
         $this->pages = new PagesNamespace($this->transport);
         $this->posture = new PostureNamespace($this->transport);
         $this->probes = new ProbesNamespace($this->transport);
@@ -341,7 +354,9 @@ final class APIV1Client
         $this->sshFanout = new SshFanoutNamespace($this->transport);
         $this->sshKeys = new SshKeysNamespace($this->transport);
         $this->sshTunnels = new SshTunnelsNamespace($this->transport);
+        $this->status = new StatusNamespace($this->transport);
         $this->statusIncidents = new StatusIncidentsNamespace($this->transport);
+        $this->statusPages = new StatusPagesNamespace($this->transport);
         $this->storage = new StorageNamespace($this->transport);
         $this->tagPolicy = new TagPolicyNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);

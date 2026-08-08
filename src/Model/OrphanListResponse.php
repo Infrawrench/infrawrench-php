@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,11 +24,13 @@ final class OrphanListResponse implements \JsonSerializable
 {
     /**
      * @param list<OrphanAccountGroup> $accounts Groups sorted by account name.
+     * @param int $unownedCount Flagged resources with no recorded owner — the 'nobody to ask' count.
      * @param int $costWindowDays Days of trailing spend the annotations cover.
      */
     public function __construct(
         public readonly array $accounts,
         public readonly int $totalCount,
+        public readonly int $unownedCount,
         public readonly int $costWindowDays,
         public readonly string $generatedAt,
     ) {
@@ -44,6 +46,7 @@ final class OrphanListResponse implements \JsonSerializable
         return new self(
             accounts: Coerce::mapList($data['accounts'] ?? null, static fn (mixed $item): OrphanAccountGroup => OrphanAccountGroup::fromArray(Coerce::toArray($item))),
             totalCount: Coerce::toInt($data['totalCount'] ?? null),
+            unownedCount: Coerce::toInt($data['unownedCount'] ?? null),
             costWindowDays: Coerce::toInt($data['costWindowDays'] ?? null),
             generatedAt: Coerce::toString($data['generatedAt'] ?? null),
         );
@@ -59,6 +62,7 @@ final class OrphanListResponse implements \JsonSerializable
         return [
             'accounts' => array_map(static fn (OrphanAccountGroup $item): array => $item->toArray(), $this->accounts),
             'totalCount' => $this->totalCount,
+            'unownedCount' => $this->unownedCount,
             'costWindowDays' => $this->costWindowDays,
             'generatedAt' => $this->generatedAt,
         ];

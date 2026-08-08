@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v0.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v0.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 0.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,6 +37,7 @@ final class OrphanedResource implements \JsonSerializable
         public readonly ?string $externalId,
         public readonly string $reason,
         public readonly ?OrphanCostAnnotation $cost,
+        public readonly ?ResourceOwnerAnnotation $owner,
         public readonly ?string $lastSyncedAt,
     ) {
     }
@@ -57,6 +58,7 @@ final class OrphanedResource implements \JsonSerializable
             externalId: Coerce::toStringOrNull($data['externalId'] ?? null),
             reason: Coerce::toString($data['reason'] ?? null),
             cost: Coerce::nullable($data['cost'] ?? null, static fn (mixed $value): OrphanCostAnnotation => OrphanCostAnnotation::fromArray(Coerce::toArray($value))),
+            owner: Coerce::nullable($data['owner'] ?? null, static fn (mixed $value): ResourceOwnerAnnotation => ResourceOwnerAnnotation::fromArray(Coerce::toArray($value))),
             lastSyncedAt: Coerce::toStringOrNull($data['lastSyncedAt'] ?? null),
         );
     }
@@ -77,6 +79,7 @@ final class OrphanedResource implements \JsonSerializable
             'externalId' => $this->externalId,
             'reason' => $this->reason,
             'cost' => $this->cost?->toArray(),
+            'owner' => $this->owner?->toArray(),
             'lastSyncedAt' => $this->lastSyncedAt,
         ];
     }
