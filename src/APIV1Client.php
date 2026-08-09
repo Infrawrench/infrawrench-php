@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.1.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.2.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.1.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.2.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ use Infrawrench\Sdk\Api\BillingNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
+use Infrawrench\Sdk\Api\ConfigNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostCentresNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
@@ -145,6 +146,9 @@ final class APIV1Client
 
     /** `$client->changes` */
     public readonly ChangesNamespace $changes;
+
+    /** `$client->config` */
+    public readonly ConfigNamespace $config;
 
     /** `$client->connect` */
     public readonly ConnectNamespace $connect;
@@ -325,6 +329,7 @@ final class APIV1Client
         $this->budgets = new BudgetsNamespace($this->transport);
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
+        $this->config = new ConfigNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
         $this->costCentres = new CostCentresNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
