@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,8 @@ final class CostDimension
     public const REGION = 'region';
     public const RESOURCE = 'resource';
     public const TAG = 'tag';
+    public const CHARGE_TYPE = 'charge_type';
+    public const COMMITMENT = 'commitment';
 
     /**
      * Every value, in the order the spec lists them.
@@ -47,6 +49,8 @@ final class CostDimension
             self::REGION,
             self::RESOURCE,
             self::TAG,
+            self::CHARGE_TYPE,
+            self::COMMITMENT,
         ];
     }
 }

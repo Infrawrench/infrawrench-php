@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,7 @@ final class AlertTrigger
     public const SYNC_INCIDENTS = 'syncIncidents';
     public const BUDGET_ALERTS = 'budgetAlerts';
     public const ANOMALY_ALERTS = 'anomalyAlerts';
+    public const COST_CHANGE_ALERTS = 'costChangeAlerts';
     public const METRIC_ALERTS = 'metricAlerts';
     public const RESOURCE_DRIFT = 'resourceDrift';
     public const WORKFLOW_PAGES = 'workflowPages';
@@ -52,6 +53,7 @@ final class AlertTrigger
             self::SYNC_INCIDENTS,
             self::BUDGET_ALERTS,
             self::ANOMALY_ALERTS,
+            self::COST_CHANGE_ALERTS,
             self::METRIC_ALERTS,
             self::RESOURCE_DRIFT,
             self::WORKFLOW_PAGES,

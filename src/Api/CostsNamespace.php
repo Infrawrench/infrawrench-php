@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -84,7 +84,8 @@ final class CostsNamespace extends ApiNamespace
      * List distinct values for a cost dimension
      *
      * Feeds the filter and group-by pickers. Pass dimension=tag-keys for tag keys; dimension=tag
-     * requires tagKey.
+     * requires tagKey. `charge_type` answers from the fixed set of charge types rather than from
+     * the stored data, so the picker is populated before any provider has reported one.
      *
      * _Requires permission: `costs:read`._
      *
@@ -92,7 +93,6 @@ final class CostsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * @param 'provider'|'account'|'service'|'region'|'resource'|'tag'|'tag-keys' $dimension
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
@@ -118,6 +118,15 @@ final class CostsNamespace extends ApiNamespace
      * Aggregates collected provider spend into per-bucket, per-group series for cost graphs.
      * Currencies are never merged; mixed-currency orgs get one series per currency. Optionally
      * returns a previous-period comparison and a trend forecast.
+     *
+     * `costBasis` chooses between cash and amortized money, and `chargeTypes` narrows which kinds
+     * of charge count. Both the comparison period and the forecast are computed on the same basis
+     * and charge types as the series itself.
+     *
+     * The filter can be sent structurally as `filters` or as text in the cost query language via
+     * `query` (`provider = 'aws' AND tag['env'] != 'dev'`). They are two spellings of one filter:
+     * sending both is a 400, and a query that does not parse is a 400 carrying the offset of the
+     * mistake.
      *
      * _Requires permission: `costs:read`._
      *
@@ -201,17 +210,18 @@ final class CostsNamespace extends ApiNamespace
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $from Defaults to 30 days ago.
      * @param string|null $to Defaults to today.
+     * @param 'cash'|'amortized'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. Providers that report no amortized amount fall back to their cash amount.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function showback(?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): ShowbackReport
+    public function showback(?string $orgId = null, ?string $from = null, ?string $to = null, ?string $basis = null, ?RequestOptions $options = null): ShowbackReport
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'GET',
                 path: '/api/org/{orgId}/costs/showback',
                 pathParams: ['orgId' => $orgId],
-                query: ['from' => $from, 'to' => $to],
+                query: ['from' => $from, 'to' => $to, 'basis' => $basis],
             ),
             $options,
         );
@@ -264,17 +274,18 @@ final class CostsNamespace extends ApiNamespace
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $from Defaults to 30 days ago.
      * @param string|null $to Defaults to today.
+     * @param 'cash'|'amortized'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. Providers that report no amortized amount fall back to their cash amount.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function untagged(?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): UntaggedSpendReport
+    public function untagged(?string $orgId = null, ?string $from = null, ?string $to = null, ?string $basis = null, ?RequestOptions $options = null): UntaggedSpendReport
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'GET',
                 path: '/api/org/{orgId}/costs/untagged',
                 pathParams: ['orgId' => $orgId],
-                query: ['from' => $from, 'to' => $to],
+                query: ['from' => $from, 'to' => $to, 'basis' => $basis],
             ),
             $options,
         );

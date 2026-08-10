@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,12 +32,19 @@ use Infrawrench\Sdk\Api\BillingNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
+use Infrawrench\Sdk\Api\CommitmentsNamespace;
 use Infrawrench\Sdk\Api\ConfigNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
+use Infrawrench\Sdk\Api\CostAlertsNamespace;
 use Infrawrench\Sdk\Api\CostCentresNamespace;
+use Infrawrench\Sdk\Api\CostExportsNamespace;
+use Infrawrench\Sdk\Api\CostReportFoldersNamespace;
+use Infrawrench\Sdk\Api\CostReportNotificationsNamespace;
+use Infrawrench\Sdk\Api\CostReportsNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CredentialHygieneNamespace;
 use Infrawrench\Sdk\Api\CreditsNamespace;
+use Infrawrench\Sdk\Api\CurrencyNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DependencyGraphNamespace;
@@ -48,8 +55,10 @@ use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
+use Infrawrench\Sdk\Api\JiraNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
 use Infrawrench\Sdk\Api\LeasesNamespace;
+use Infrawrench\Sdk\Api\LinearNamespace;
 use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
 use Infrawrench\Sdk\Api\MetricAlertsNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
@@ -63,6 +72,7 @@ use Infrawrench\Sdk\Api\ProbesNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
+use Infrawrench\Sdk\Api\SavedCostFiltersNamespace;
 use Infrawrench\Sdk\Api\SchedulesNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SessionRecordingsNamespace;
@@ -147,14 +157,32 @@ final class APIV1Client
     /** `$client->changes` */
     public readonly ChangesNamespace $changes;
 
+    /** `$client->commitments` */
+    public readonly CommitmentsNamespace $commitments;
+
     /** `$client->config` */
     public readonly ConfigNamespace $config;
 
     /** `$client->connect` */
     public readonly ConnectNamespace $connect;
 
+    /** `$client->costAlerts` */
+    public readonly CostAlertsNamespace $costAlerts;
+
     /** `$client->costCentres` */
     public readonly CostCentresNamespace $costCentres;
+
+    /** `$client->costExports` */
+    public readonly CostExportsNamespace $costExports;
+
+    /** `$client->costReportFolders` */
+    public readonly CostReportFoldersNamespace $costReportFolders;
+
+    /** `$client->costReportNotifications` */
+    public readonly CostReportNotificationsNamespace $costReportNotifications;
+
+    /** `$client->costReports` */
+    public readonly CostReportsNamespace $costReports;
 
     /** `$client->costs` */
     public readonly CostsNamespace $costs;
@@ -164,6 +192,9 @@ final class APIV1Client
 
     /** `$client->credits` */
     public readonly CreditsNamespace $credits;
+
+    /** `$client->currency` */
+    public readonly CurrencyNamespace $currency;
 
     /** `$client->customGraphs` */
     public readonly CustomGraphsNamespace $customGraphs;
@@ -195,11 +226,17 @@ final class APIV1Client
     /** `$client->invitations` */
     public readonly InvitationsNamespace $invitations;
 
+    /** `$client->jira` */
+    public readonly JiraNamespace $jira;
+
     /** `$client->kv` */
     public readonly KvNamespace $kv;
 
     /** `$client->leases` */
     public readonly LeasesNamespace $leases;
+
+    /** `$client->linear` */
+    public readonly LinearNamespace $linear;
 
     /** `$client->logWorkspaces` */
     public readonly LogWorkspacesNamespace $logWorkspaces;
@@ -239,6 +276,9 @@ final class APIV1Client
 
     /** `$client->rightsizing` */
     public readonly RightsizingNamespace $rightsizing;
+
+    /** `$client->savedCostFilters` */
+    public readonly SavedCostFiltersNamespace $savedCostFilters;
 
     /** `$client->schedules` */
     public readonly SchedulesNamespace $schedules;
@@ -329,12 +369,19 @@ final class APIV1Client
         $this->budgets = new BudgetsNamespace($this->transport);
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
+        $this->commitments = new CommitmentsNamespace($this->transport);
         $this->config = new ConfigNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
+        $this->costAlerts = new CostAlertsNamespace($this->transport);
         $this->costCentres = new CostCentresNamespace($this->transport);
+        $this->costExports = new CostExportsNamespace($this->transport);
+        $this->costReportFolders = new CostReportFoldersNamespace($this->transport);
+        $this->costReportNotifications = new CostReportNotificationsNamespace($this->transport);
+        $this->costReports = new CostReportsNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
         $this->credentialHygiene = new CredentialHygieneNamespace($this->transport);
         $this->credits = new CreditsNamespace($this->transport);
+        $this->currency = new CurrencyNamespace($this->transport);
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
         $this->dependencyGraph = new DependencyGraphNamespace($this->transport);
@@ -345,8 +392,10 @@ final class APIV1Client
         $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
+        $this->jira = new JiraNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
         $this->leases = new LeasesNamespace($this->transport);
+        $this->linear = new LinearNamespace($this->transport);
         $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
         $this->metricAlerts = new MetricAlertsNamespace($this->transport);
         $this->moment = new MomentNamespace($this->transport);
@@ -360,6 +409,7 @@ final class APIV1Client
         $this->profile = new ProfileNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
         $this->rightsizing = new RightsizingNamespace($this->transport);
+        $this->savedCostFilters = new SavedCostFiltersNamespace($this->transport);
         $this->schedules = new SchedulesNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
         $this->sessionRecordings = new SessionRecordingsNamespace($this->transport);

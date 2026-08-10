@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,8 @@ final class BudgetWithStatus implements \JsonSerializable
     /**
      * @param list<BudgetCostFilter> $filters
      * @param list<BudgetThreshold> $thresholds
+     * @param BudgetCostBasis::* $costBasis
+     * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` when the budget is evaluated. Updates are full replaces, so omitting it on PUT clears it. A reference that fails to resolve errors the budget's evaluation rather than silently measuring all spend.
      * @param list<array{id: string, thresholdType: 'actual'|'forecast', thresholdPercent: int, triggeredAt: string}> $currentMonthEvents
      * @param list<array{widgetId: string, dashboardId: string, dashboardName: string}> $placements
      */
@@ -35,6 +37,8 @@ final class BudgetWithStatus implements \JsonSerializable
         public readonly string $currency,
         public readonly array $filters,
         public readonly array $thresholds,
+        public readonly string $costBasis,
+        public readonly ?string $savedFilterId,
         public readonly string $month,
         public readonly int $actualCents,
         public readonly ?int $forecastCents,
@@ -57,6 +61,8 @@ final class BudgetWithStatus implements \JsonSerializable
             currency: Coerce::toString($data['currency'] ?? null),
             filters: Coerce::mapList($data['filters'] ?? null, static fn (mixed $item): BudgetCostFilter => BudgetCostFilter::fromArray(Coerce::toArray($item))),
             thresholds: Coerce::mapList($data['thresholds'] ?? null, static fn (mixed $item): BudgetThreshold => BudgetThreshold::fromArray(Coerce::toArray($item))),
+            costBasis: Coerce::toString($data['costBasis'] ?? null),
+            savedFilterId: Coerce::toStringOrNull($data['savedFilterId'] ?? null),
             month: Coerce::toString($data['month'] ?? null),
             actualCents: Coerce::toInt($data['actualCents'] ?? null),
             forecastCents: Coerce::toIntOrNull($data['forecastCents'] ?? null),
@@ -79,6 +85,8 @@ final class BudgetWithStatus implements \JsonSerializable
             'currency' => $this->currency,
             'filters' => array_map(static fn (BudgetCostFilter $item): array => $item->toArray(), $this->filters),
             'thresholds' => array_map(static fn (BudgetThreshold $item): array => $item->toArray(), $this->thresholds),
+            'costBasis' => $this->costBasis,
+            'savedFilterId' => $this->savedFilterId,
             'month' => $this->month,
             'actualCents' => $this->actualCents,
             'forecastCents' => $this->forecastCents,

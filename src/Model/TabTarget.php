@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class TabTarget implements \JsonSerializable
         public readonly ?string $accountId = null,
         public readonly ?string $resourceId = null,
         public readonly ?string $conversationId = null,
+        public readonly ?string $reportId = null,
     ) {
     }
 
@@ -44,6 +45,7 @@ final class TabTarget implements \JsonSerializable
             accountId: Coerce::toStringOrNull($data['accountId'] ?? null),
             resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
             conversationId: Coerce::toStringOrNull($data['conversationId'] ?? null),
+            reportId: Coerce::toStringOrNull($data['reportId'] ?? null),
         );
     }
 
@@ -68,6 +70,9 @@ final class TabTarget implements \JsonSerializable
         }
         if ($this->conversationId !== null) {
             $payload['conversationId'] = $this->conversationId;
+        }
+        if ($this->reportId !== null) {
+            $payload['reportId'] = $this->reportId;
         }
 
         return $payload;
