@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.4.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.3.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.4.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -383,6 +383,8 @@ final class ResourceTypeId
     public const TURSO_ORGANIZATION_MEMBER = 'turso-organization-member';
     public const UPLOAD_PRESET = 'upload-preset';
     public const USER = 'user';
+    public const UT_APP = 'ut-app';
+    public const UT_FILE = 'ut-file';
     public const VECTOR_STORE = 'vector-store';
     public const VECTORIZE_INDEX = 'vectorize-index';
     public const VERCEL_DEPLOYMENT = 'vercel-deployment';
@@ -769,6 +771,8 @@ final class ResourceTypeId
             self::TURSO_ORGANIZATION_MEMBER,
             self::UPLOAD_PRESET,
             self::USER,
+            self::UT_APP,
+            self::UT_FILE,
             self::VECTOR_STORE,
             self::VECTORIZE_INDEX,
             self::VERCEL_DEPLOYMENT,
