@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.2.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.2.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.3.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class OrgConfigDashboard implements \JsonSerializable
 {
     /**
      * @param string $key Stable slug identifying this entity across organizations. Derived from the name on export; it is what an apply matches on, so renaming an entity while keeping its key is a rename rather than a delete-and-create.
-     * @param list<array{kind: 'widget', widgetKind: 'cost_graph'|'budget'|'custom_graph', title?: string, config?: array<string, mixed>, budgetKey?: string, graphKey?: string, width?: int, height?: int}|array{kind: 'workflow', workflowKey: string}|array{kind: 'resource', pluginId: string, resourceTypeId: string, externalId: string, account: string, width?: int, height?: int}>|null $cards
+     * @param list<array{kind: 'widget', widgetKind: 'cost_graph'|'cost_report'|'budget'|'custom_graph', title?: string, config?: array<string, mixed>, budgetKey?: string, graphKey?: string, width?: int, height?: int}|array{kind: 'workflow', workflowKey: string}|array{kind: 'resource', pluginId: string, resourceTypeId: string, externalId: string, account: string, width?: int, height?: int}>|null $cards
      */
     public function __construct(
         public readonly string $key,

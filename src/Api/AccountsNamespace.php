@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.2.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.2.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.3.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\Model\PluginId;
 use Infrawrench\Sdk\Model\Resource;
 use Infrawrench\Sdk\Model\SyncResponse;
+use Infrawrench\Sdk\Model\TerraformExport;
 use Infrawrench\Sdk\Model\UpdateAccountRequest;
 use Infrawrench\Sdk\Model\UpdatedAccount;
 use Infrawrench\Sdk\RequestOptions;
@@ -142,6 +143,33 @@ final class AccountsNamespace extends ApiNamespace
         );
 
         return AccountDetail::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Generate Terraform HCL for the account's stored inventory
+     *
+     * _Requires permission: `resources:read`._
+     *
+     * GET /api/org/{orgId}/accounts/{id}/export-terraform
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function exportTerraform(string $id, ?string $orgId = null, ?RequestOptions $options = null): TerraformExport
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/accounts/{id}/export-terraform',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+            ),
+            $options,
+        );
+
+        return TerraformExport::fromArray(Coerce::toArray($data));
     }
 
     /**

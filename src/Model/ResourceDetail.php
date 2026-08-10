@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.2.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.2.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.3.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -48,6 +48,7 @@ final class ResourceDetail implements \JsonSerializable
         public readonly bool $canEdit,
         public readonly array $editableFields,
         public readonly array $credentialFormats,
+        public readonly bool $supportsTerraformExport,
         public readonly bool $hasManifestEditor,
         public readonly bool $hasSecretVersions,
         public readonly string $resourceDisplayName,
@@ -96,6 +97,7 @@ final class ResourceDetail implements \JsonSerializable
             canEdit: Coerce::toBool($data['canEdit'] ?? null),
             editableFields: Coerce::mapList($data['editableFields'] ?? null, static fn (mixed $item): EditableField => EditableField::fromArray(Coerce::toArray($item))),
             credentialFormats: Coerce::mapList($data['credentialFormats'] ?? null, static fn (mixed $item): CredentialFormat => CredentialFormat::fromArray(Coerce::toArray($item))),
+            supportsTerraformExport: Coerce::toBool($data['supportsTerraformExport'] ?? null),
             hasManifestEditor: Coerce::toBool($data['hasManifestEditor'] ?? null),
             hasSecretVersions: Coerce::toBool($data['hasSecretVersions'] ?? null),
             resourceDisplayName: Coerce::toString($data['resourceDisplayName'] ?? null),
@@ -144,6 +146,7 @@ final class ResourceDetail implements \JsonSerializable
             'canEdit' => $this->canEdit,
             'editableFields' => array_map(static fn (EditableField $item): array => $item->toArray(), $this->editableFields),
             'credentialFormats' => array_map(static fn (CredentialFormat $item): array => $item->toArray(), $this->credentialFormats),
+            'supportsTerraformExport' => $this->supportsTerraformExport,
             'hasManifestEditor' => $this->hasManifestEditor,
             'hasSecretVersions' => $this->hasSecretVersions,
             'resourceDisplayName' => $this->resourceDisplayName,

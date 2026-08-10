@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.2.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.3.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.2.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.3.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ use Infrawrench\Sdk\Model\CredentialExport;
 use Infrawrench\Sdk\Model\DescribeRequest;
 use Infrawrench\Sdk\Model\DescribeResponse;
 use Infrawrench\Sdk\Model\ExportCredentialRequest;
+use Infrawrench\Sdk\Model\ExportTerraformRequest;
 use Infrawrench\Sdk\Model\FieldActionRequest;
 use Infrawrench\Sdk\Model\FieldActionResponse;
 use Infrawrench\Sdk\Model\ImportYamlRequest;
@@ -49,6 +50,7 @@ use Infrawrench\Sdk\Model\PickerResourcesRequest;
 use Infrawrench\Sdk\Model\PluginId;
 use Infrawrench\Sdk\Model\ResourceDetail;
 use Infrawrench\Sdk\Model\ResourceTypeId;
+use Infrawrench\Sdk\Model\TerraformExport;
 use Infrawrench\Sdk\Model\UpdateResourceRequest;
 use Infrawrench\Sdk\Model\UpdateResourceResponse;
 use Infrawrench\Sdk\RequestOptions;
@@ -371,6 +373,39 @@ final class ResourcesNamespace extends ApiNamespace
         );
 
         return CredentialExport::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Generate Terraform HCL for a resource (and its direct children) from stored state
+     *
+     * _Requires permission: `resources:read`._
+     *
+     * POST /api/org/{orgId}/resources/{pluginId}/{typeId}/export-terraform
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param PluginId::* $pluginId
+     * @param ResourceTypeId::* $typeId
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function exportTerraform(string $pluginId, string $typeId, ExportTerraformRequest $body, ?string $orgId = null, ?RequestOptions $options = null): TerraformExport
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/resources/{pluginId}/{typeId}/export-terraform',
+                pathParams: ['orgId' => $orgId, 'pluginId' => $pluginId, 'typeId' => $typeId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return TerraformExport::fromArray(Coerce::toArray($data));
     }
 
     /**
