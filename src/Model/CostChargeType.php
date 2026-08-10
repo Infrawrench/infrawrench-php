@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.6.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.6.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ namespace Infrawrench\Sdk\Model;
 final class CostChargeType
 {
     public const USAGE = 'usage';
+    public const COMMITMENT_COVERED_USAGE = 'commitment_covered_usage';
     public const COMMITMENT_FEE = 'commitment_fee';
     public const COMMITMENT_DISCOUNT = 'commitment_discount';
     public const CREDIT = 'credit';
@@ -45,6 +46,7 @@ final class CostChargeType
     {
         return [
             self::USAGE,
+            self::COMMITMENT_COVERED_USAGE,
             self::COMMITMENT_FEE,
             self::COMMITMENT_DISCOUNT,
             self::CREDIT,
