@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.12.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.13.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.12.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.13.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ use Infrawrench\Sdk\Api\AuthNamespace;
 use Infrawrench\Sdk\Api\BastionsNamespace;
 use Infrawrench\Sdk\Api\BillingNamespace;
 use Infrawrench\Sdk\Api\BillingRulesNamespace;
+use Infrawrench\Sdk\Api\BlastRadiusNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\BusinessMetricsNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
@@ -158,6 +159,9 @@ final class APIV1Client
 
     /** `$client->billingRules` */
     public readonly BillingRulesNamespace $billingRules;
+
+    /** `$client->blastRadius` */
+    public readonly BlastRadiusNamespace $blastRadius;
 
     /** `$client->budgets` */
     public readonly BudgetsNamespace $budgets;
@@ -399,6 +403,7 @@ final class APIV1Client
         $this->bastions = new BastionsNamespace($this->transport);
         $this->billing = new BillingNamespace($this->transport);
         $this->billingRules = new BillingRulesNamespace($this->transport);
+        $this->blastRadius = new BlastRadiusNamespace($this->transport);
         $this->budgets = new BudgetsNamespace($this->transport);
         $this->businessMetrics = new BusinessMetricsNamespace($this->transport);
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
