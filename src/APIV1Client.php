@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,18 +29,22 @@ use Infrawrench\Sdk\Api\AuditLogsNamespace;
 use Infrawrench\Sdk\Api\AuthNamespace;
 use Infrawrench\Sdk\Api\BastionsNamespace;
 use Infrawrench\Sdk\Api\BillingNamespace;
+use Infrawrench\Sdk\Api\BillingRulesNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
+use Infrawrench\Sdk\Api\BusinessMetricsNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\CommitmentsNamespace;
 use Infrawrench\Sdk\Api\ConfigNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostAlertsNamespace;
+use Infrawrench\Sdk\Api\CostAnnotationsNamespace;
 use Infrawrench\Sdk\Api\CostCentresNamespace;
 use Infrawrench\Sdk\Api\CostExportsNamespace;
 use Infrawrench\Sdk\Api\CostReportFoldersNamespace;
 use Infrawrench\Sdk\Api\CostReportNotificationsNamespace;
 use Infrawrench\Sdk\Api\CostReportsNamespace;
+use Infrawrench\Sdk\Api\CostScenariosNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CredentialHygieneNamespace;
 use Infrawrench\Sdk\Api\CreditsNamespace;
@@ -55,11 +59,13 @@ use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
+use Infrawrench\Sdk\Api\InvoicesNamespace;
 use Infrawrench\Sdk\Api\JiraNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
 use Infrawrench\Sdk\Api\LeasesNamespace;
 use Infrawrench\Sdk\Api\LinearNamespace;
 use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
+use Infrawrench\Sdk\Api\ManagedAccountsNamespace;
 use Infrawrench\Sdk\Api\MetricAlertsNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
@@ -148,8 +154,14 @@ final class APIV1Client
     /** `$client->billing` */
     public readonly BillingNamespace $billing;
 
+    /** `$client->billingRules` */
+    public readonly BillingRulesNamespace $billingRules;
+
     /** `$client->budgets` */
     public readonly BudgetsNamespace $budgets;
+
+    /** `$client->businessMetrics` */
+    public readonly BusinessMetricsNamespace $businessMetrics;
 
     /** `$client->changeFreezes` */
     public readonly ChangeFreezesNamespace $changeFreezes;
@@ -169,6 +181,9 @@ final class APIV1Client
     /** `$client->costAlerts` */
     public readonly CostAlertsNamespace $costAlerts;
 
+    /** `$client->costAnnotations` */
+    public readonly CostAnnotationsNamespace $costAnnotations;
+
     /** `$client->costCentres` */
     public readonly CostCentresNamespace $costCentres;
 
@@ -183,6 +198,9 @@ final class APIV1Client
 
     /** `$client->costReports` */
     public readonly CostReportsNamespace $costReports;
+
+    /** `$client->costScenarios` */
+    public readonly CostScenariosNamespace $costScenarios;
 
     /** `$client->costs` */
     public readonly CostsNamespace $costs;
@@ -226,6 +244,9 @@ final class APIV1Client
     /** `$client->invitations` */
     public readonly InvitationsNamespace $invitations;
 
+    /** `$client->invoices` */
+    public readonly InvoicesNamespace $invoices;
+
     /** `$client->jira` */
     public readonly JiraNamespace $jira;
 
@@ -240,6 +261,9 @@ final class APIV1Client
 
     /** `$client->logWorkspaces` */
     public readonly LogWorkspacesNamespace $logWorkspaces;
+
+    /** `$client->managedAccounts` */
+    public readonly ManagedAccountsNamespace $managedAccounts;
 
     /** `$client->metricAlerts` */
     public readonly MetricAlertsNamespace $metricAlerts;
@@ -366,18 +390,22 @@ final class APIV1Client
         $this->auth = new AuthNamespace($this->transport);
         $this->bastions = new BastionsNamespace($this->transport);
         $this->billing = new BillingNamespace($this->transport);
+        $this->billingRules = new BillingRulesNamespace($this->transport);
         $this->budgets = new BudgetsNamespace($this->transport);
+        $this->businessMetrics = new BusinessMetricsNamespace($this->transport);
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
         $this->commitments = new CommitmentsNamespace($this->transport);
         $this->config = new ConfigNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
         $this->costAlerts = new CostAlertsNamespace($this->transport);
+        $this->costAnnotations = new CostAnnotationsNamespace($this->transport);
         $this->costCentres = new CostCentresNamespace($this->transport);
         $this->costExports = new CostExportsNamespace($this->transport);
         $this->costReportFolders = new CostReportFoldersNamespace($this->transport);
         $this->costReportNotifications = new CostReportNotificationsNamespace($this->transport);
         $this->costReports = new CostReportsNamespace($this->transport);
+        $this->costScenarios = new CostScenariosNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
         $this->credentialHygiene = new CredentialHygieneNamespace($this->transport);
         $this->credits = new CreditsNamespace($this->transport);
@@ -392,11 +420,13 @@ final class APIV1Client
         $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
+        $this->invoices = new InvoicesNamespace($this->transport);
         $this->jira = new JiraNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
         $this->leases = new LeasesNamespace($this->transport);
         $this->linear = new LinearNamespace($this->transport);
         $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
+        $this->managedAccounts = new ManagedAccountsNamespace($this->transport);
         $this->metricAlerts = new MetricAlertsNamespace($this->transport);
         $this->moment = new MomentNamespace($this->transport);
         $this->msteams = new MsteamsNamespace($this->transport);

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class CostGraphConfig implements \JsonSerializable
      * @param array{kind: 'relative', preset: '7d'|'30d'|'90d'|'mtd'|'last_month'|'qtd'|'ytd'|'12m'}|array{kind: 'absolute', from: string, to: string} $dateRange
      * @param list<CostReportFilter>|null $filters
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` at query time, server-side. Editing the saved filter changes every graph, report and budget referencing it; a reference that fails to resolve makes the query error rather than silently run unfiltered.
+     * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast — known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.
      * @param 'cash'|'amortized'|null $costBasis
      */
     public function __construct(
@@ -46,6 +47,7 @@ final class CostGraphConfig implements \JsonSerializable
         public readonly ?int $topN = null,
         public readonly ?bool $comparePreviousPeriod = null,
         public readonly ?bool $showForecast = null,
+        public readonly ?string $scenarioModelId = null,
         public readonly ?string $costBasis = null,
     ) {
     }
@@ -69,6 +71,7 @@ final class CostGraphConfig implements \JsonSerializable
             topN: Coerce::toIntOrNull($data['topN'] ?? null),
             comparePreviousPeriod: Coerce::toBoolOrNull($data['comparePreviousPeriod'] ?? null),
             showForecast: Coerce::toBoolOrNull($data['showForecast'] ?? null),
+            scenarioModelId: Coerce::toStringOrNull($data['scenarioModelId'] ?? null),
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
         );
     }
@@ -104,6 +107,9 @@ final class CostGraphConfig implements \JsonSerializable
         }
         if ($this->showForecast !== null) {
             $payload['showForecast'] = $this->showForecast;
+        }
+        if ($this->scenarioModelId !== null) {
+            $payload['scenarioModelId'] = $this->scenarioModelId;
         }
         if ($this->costBasis !== null) {
             $payload['costBasis'] = $this->costBasis;

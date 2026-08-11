@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,8 @@ final class AuditEntry implements \JsonSerializable
         public readonly string $createdAt,
         public readonly ?string $userName,
         public readonly ?string $userEmail,
+        public readonly ?string $apiKeyName,
+        public readonly ?string $apiKeyPrefix,
     ) {
     }
 
@@ -57,6 +59,8 @@ final class AuditEntry implements \JsonSerializable
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             userName: Coerce::toStringOrNull($data['userName'] ?? null),
             userEmail: Coerce::toStringOrNull($data['userEmail'] ?? null),
+            apiKeyName: Coerce::toStringOrNull($data['apiKeyName'] ?? null),
+            apiKeyPrefix: Coerce::toStringOrNull($data['apiKeyPrefix'] ?? null),
         );
     }
 
@@ -79,6 +83,8 @@ final class AuditEntry implements \JsonSerializable
             'createdAt' => $this->createdAt,
             'userName' => $this->userName,
             'userEmail' => $this->userEmail,
+            'apiKeyName' => $this->apiKeyName,
+            'apiKeyPrefix' => $this->apiKeyPrefix,
         ];
     }
 

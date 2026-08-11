@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -38,14 +38,14 @@ final class AuditLogsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function get(?string $orgId = null, ?int $page = null, ?int $pageSize = null, ?string $action = null, ?string $entityType = null, ?string $userId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): AuditResponse
+    public function get(?string $orgId = null, ?int $page = null, ?int $pageSize = null, ?string $action = null, ?string $entityType = null, ?string $userId = null, ?string $apiKeyId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): AuditResponse
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'GET',
                 path: '/api/org/{orgId}/audit-logs',
                 pathParams: ['orgId' => $orgId],
-                query: ['page' => $page, 'pageSize' => $pageSize, 'action' => $action, 'entityType' => $entityType, 'userId' => $userId, 'from' => $from, 'to' => $to],
+                query: ['page' => $page, 'pageSize' => $pageSize, 'action' => $action, 'entityType' => $entityType, 'userId' => $userId, 'apiKeyId' => $apiKeyId, 'from' => $from, 'to' => $to],
             ),
             $options,
         );

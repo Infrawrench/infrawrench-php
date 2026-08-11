@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,9 +25,9 @@ final class CostQueryResponse implements \JsonSerializable
     /**
      * @param list<CostQuerySeries> $series
      * @param list<string> $currencies
-     * @param array<string, float> $totals
+     * @param array<string, float> $totals Period total per currency, and always exactly the sum of `series`. Fixed-amount billing-rule charges are deliberately **not** folded in here — they have no series behind them and are reported in `adjustment.fixedTotals` instead.
      * @param list<CostQuerySeries>|null $comparison
-     * @param list<CostSeriesPoint>|null $forecast
+     * @param list<CostSeriesPoint>|null $forecast The **unadjusted trend** projection. Stays the trend even when a scenario is applied, so a reader can always see what the fit said before anybody's assumptions touched it.
      * @param array<string, float>|null $previousTotals
      */
     public function __construct(
@@ -36,7 +36,9 @@ final class CostQueryResponse implements \JsonSerializable
         public readonly array $totals,
         public readonly ?array $comparison = null,
         public readonly ?array $forecast = null,
+        public readonly ?CostScenarioResult $scenario = null,
         public readonly ?array $previousTotals = null,
+        public readonly ?CostAdjustmentSummary $adjustment = null,
     ) {
     }
 
@@ -53,7 +55,9 @@ final class CostQueryResponse implements \JsonSerializable
             totals: Coerce::mapValues($data['totals'] ?? null, static fn (mixed $item): float => Coerce::toFloat($item)),
             comparison: Coerce::nullable($data['comparison'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CostQuerySeries => CostQuerySeries::fromArray(Coerce::toArray($item)))),
             forecast: Coerce::nullable($data['forecast'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CostSeriesPoint => CostSeriesPoint::fromArray(Coerce::toArray($item)))),
+            scenario: Coerce::nullable($data['scenario'] ?? null, static fn (mixed $value): CostScenarioResult => CostScenarioResult::fromArray(Coerce::toArray($value))),
             previousTotals: Coerce::nullable($data['previousTotals'] ?? null, static fn (mixed $value): array => Coerce::mapValues($value, static fn (mixed $item): float => Coerce::toFloat($item))),
+            adjustment: Coerce::nullable($data['adjustment'] ?? null, static fn (mixed $value): CostAdjustmentSummary => CostAdjustmentSummary::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -75,8 +79,14 @@ final class CostQueryResponse implements \JsonSerializable
         if ($this->forecast !== null) {
             $payload['forecast'] = array_map(static fn (CostSeriesPoint $item): array => $item->toArray(), $this->forecast);
         }
+        if ($this->scenario !== null) {
+            $payload['scenario'] = $this->scenario->toArray();
+        }
         if ($this->previousTotals !== null) {
             $payload['previousTotals'] = $this->previousTotals;
+        }
+        if ($this->adjustment !== null) {
+            $payload['adjustment'] = $this->adjustment->toArray();
         }
 
         return $payload;

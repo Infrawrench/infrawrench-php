@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,10 +22,14 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CostCentre implements \JsonSerializable
 {
+    /**
+     * @param string|null $parentId The centre this one sits under; null is a top-level centre. Nesting is a reporting structure only — allocation still resolves each cost row to exactly one centre.
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $name,
         public readonly ?string $description,
+        public readonly ?string $parentId,
         public readonly string $createdAt,
         public readonly string $updatedAt,
     ) {
@@ -42,6 +46,7 @@ final class CostCentre implements \JsonSerializable
             id: Coerce::toString($data['id'] ?? null),
             name: Coerce::toString($data['name'] ?? null),
             description: Coerce::toStringOrNull($data['description'] ?? null),
+            parentId: Coerce::toStringOrNull($data['parentId'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
         );
@@ -58,6 +63,7 @@ final class CostCentre implements \JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
+            'parentId' => $this->parentId,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
         ];

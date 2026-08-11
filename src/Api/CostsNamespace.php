@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,10 +37,14 @@ final class CostsNamespace extends ApiNamespace
     /** `$client->costs->anomalySettings` */
     public readonly CostsAnomalySettingsNamespace $anomalySettings;
 
+    /** `$client->costs->efficiencyAlertSettings` */
+    public readonly CostsEfficiencyAlertSettingsNamespace $efficiencyAlertSettings;
+
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
         $this->anomalySettings = new CostsAnomalySettingsNamespace($this->transport);
+        $this->efficiencyAlertSettings = new CostsEfficiencyAlertSettingsNamespace($this->transport);
     }
 
     /**
@@ -110,6 +114,43 @@ final class CostsNamespace extends ApiNamespace
         );
 
         return CostDimensionValues::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Recently fired efficiency alerts
+     *
+     * The three slow-lane cost alerts in one feed, newest first: commitments about to lapse,
+     * commitments that are not being used, and business metrics whose cost per unit rose. Unlike
+     * budgets, anomalies and change alerts — all of which compare a spend total against another
+     * spend total — these read the commitment calendar and the volume the spend bought, so they
+     * see the two surprises the other three structurally cannot.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/costs/efficiency-alerts
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param 'commitment_expiry'|'commitment_idle'|'unit_cost_regression'|null $kind Restrict to one detector. Omitted returns all three, interleaved by time.
+     * @param int|null $limit Rows to return, newest first. Defaults to 50.
+     * @return array{events: list<array<string, mixed>>}
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function efficiencyAlerts(?string $orgId = null, ?string $kind = null, ?int $limit = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/costs/efficiency-alerts',
+                pathParams: ['orgId' => $orgId],
+                query: ['kind' => $kind, 'limit' => $limit],
+            ),
+            $options,
+        );
+
+        return Coerce::toArray($data);
     }
 
     /**
@@ -201,6 +242,13 @@ final class CostsNamespace extends ApiNamespace
      * Spend no rule claims comes back as the "Unallocated" bucket; every defined centre appears
      * even with zero spend.
      *
+     * Cost centres nest, so the list is a depth-first tree. Each entry carries `totals` (spend
+     * allocated directly to it) and `subtreeTotals` (its own plus every descendant's) —
+     * "Engineering, of which Platform" needs both. Rules still evaluate first-match-wins by
+     * ascending priority against a flat list, so a row is allocated exactly once even when a rule
+     * targets a parent and another targets its child; at equal priority the more deeply nested
+     * centre wins.
+     *
      * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/costs/showback
@@ -211,17 +259,18 @@ final class CostsNamespace extends ApiNamespace
      * @param string|null $from Defaults to 30 days ago.
      * @param string|null $to Defaults to today.
      * @param 'cash'|'amortized'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. Providers that report no amortized amount fall back to their cash amount.
+     * @param 'true'|'false'|null $adjusted Apply the organization's billing rules (see /billing-rules): markups multiply, and a reallocation moves a centre's spend onto another centre. Off by default — a chargeback report that silently showed marked-up numbers is one the receiving team could not reconcile. On, the response carries `adjustment` with the collected totals beside the adjusted ones. Fixed-amount rules are booked onto the cost centre they name (or "Unallocated" when they name none), pro-rated across the period.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function showback(?string $orgId = null, ?string $from = null, ?string $to = null, ?string $basis = null, ?RequestOptions $options = null): ShowbackReport
+    public function showback(?string $orgId = null, ?string $from = null, ?string $to = null, ?string $basis = null, ?string $adjusted = null, ?RequestOptions $options = null): ShowbackReport
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'GET',
                 path: '/api/org/{orgId}/costs/showback',
                 pathParams: ['orgId' => $orgId],
-                query: ['from' => $from, 'to' => $to, 'basis' => $basis],
+                query: ['from' => $from, 'to' => $to, 'basis' => $basis, 'adjusted' => $adjusted],
             ),
             $options,
         );

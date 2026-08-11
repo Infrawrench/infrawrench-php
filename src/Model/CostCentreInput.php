@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.7.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.7.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,9 +22,13 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CostCentreInput implements \JsonSerializable
 {
+    /**
+     * @param string|null $parentId Cost centre to nest this one under; null is the top level. On an update, moving a centre is this field changing — omitting it leaves the centre where it is. Rejected with 400 when the parent is unknown, is the centre itself or one of its own descendants, or when the resulting tree would be more than 4 levels deep (measured over the whole subtree being moved).
+     */
     public function __construct(
         public readonly string $name,
         public readonly ?string $description = null,
+        public readonly ?string $parentId = null,
     ) {
     }
 
@@ -38,6 +42,7 @@ final class CostCentreInput implements \JsonSerializable
         return new self(
             name: Coerce::toString($data['name'] ?? null),
             description: Coerce::toStringOrNull($data['description'] ?? null),
+            parentId: Coerce::toStringOrNull($data['parentId'] ?? null),
         );
     }
 
@@ -53,6 +58,9 @@ final class CostCentreInput implements \JsonSerializable
         ];
         if ($this->description !== null) {
             $payload['description'] = $this->description;
+        }
+        if ($this->parentId !== null) {
+            $payload['parentId'] = $this->parentId;
         }
 
         return $payload;
