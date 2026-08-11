@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.10.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.12.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.10.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.12.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -77,6 +77,7 @@ use Infrawrench\Sdk\Api\PagesNamespace;
 use Infrawrench\Sdk\Api\PostureNamespace;
 use Infrawrench\Sdk\Api\ProbesNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
+use Infrawrench\Sdk\Api\QuotasNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
 use Infrawrench\Sdk\Api\SavedCostFiltersNamespace;
@@ -299,6 +300,9 @@ final class APIV1Client
     /** `$client->profile` */
     public readonly ProfileNamespace $profile;
 
+    /** `$client->quotas` */
+    public readonly QuotasNamespace $quotas;
+
     /** `$client->resources` */
     public readonly ResourcesNamespace $resources;
 
@@ -442,6 +446,7 @@ final class APIV1Client
         $this->posture = new PostureNamespace($this->transport);
         $this->probes = new ProbesNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
+        $this->quotas = new QuotasNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
         $this->rightsizing = new RightsizingNamespace($this->transport);
         $this->savedCostFilters = new SavedCostFiltersNamespace($this->transport);
