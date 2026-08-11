@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.10.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.10.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,7 @@ final class CostAnomaly implements \JsonSerializable
      * @param int $thresholdCents The detection bar the day cleared, in cents: baseline mean + N·stddev for a `spike`, the new-source floor for a `new_source`.
      * @param string|null $notifiedAt When the anomaly was delivered to a notification channel; null when delivery failed or a recent anomaly for the same key suppressed it.
      * @param list<string> $hints Root-cause hints computed when the anomaly fired: human-readable facts from the change timeline and audit log for the anomalous day and the day before (e.g. "12 gce-instance resources appeared", a workflow run, a lifted change freeze), ranked by likely relevance and capped at three. Empty when nothing notable happened in the window or the anomaly predates hint collection.
+     * @param array{explanation: string, acknowledgedAt: string, acknowledgedByUserId: string|null, annotationId: string|null}|null $acknowledgement Present once somebody has explained this finding, null while it is still an open question. Acknowledging does not suppress detection — the same key spiking again on a later day is a new anomaly and fires as normal.
      */
     public function __construct(
         public readonly string $id,
@@ -45,6 +46,7 @@ final class CostAnomaly implements \JsonSerializable
         public readonly string $detectedAt,
         public readonly ?string $notifiedAt,
         public readonly array $hints,
+        public readonly ?array $acknowledgement,
     ) {
     }
 
@@ -68,6 +70,7 @@ final class CostAnomaly implements \JsonSerializable
             detectedAt: Coerce::toString($data['detectedAt'] ?? null),
             notifiedAt: Coerce::toStringOrNull($data['notifiedAt'] ?? null),
             hints: Coerce::mapList($data['hints'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            acknowledgement: Coerce::toArrayOrNull($data['acknowledgement'] ?? null),
         );
     }
 
@@ -91,6 +94,7 @@ final class CostAnomaly implements \JsonSerializable
             'detectedAt' => $this->detectedAt,
             'notifiedAt' => $this->notifiedAt,
             'hints' => $this->hints,
+            'acknowledgement' => $this->acknowledgement,
         ];
     }
 

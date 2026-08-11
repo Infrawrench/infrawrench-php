@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.9.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.10.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.9.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.10.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,9 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->costs` */
 final class CostsNamespace extends ApiNamespace
 {
+    /** `$client->costs->anomalies` */
+    public readonly CostsAnomaliesNamespace $anomalies;
+
     /** `$client->costs->anomalySettings` */
     public readonly CostsAnomalySettingsNamespace $anomalySettings;
 
@@ -43,45 +46,9 @@ final class CostsNamespace extends ApiNamespace
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->anomalies = new CostsAnomaliesNamespace($this->transport);
         $this->anomalySettings = new CostsAnomalySettingsNamespace($this->transport);
         $this->efficiencyAlertSettings = new CostsEfficiencyAlertSettingsNamespace($this->transport);
-    }
-
-    /**
-     * List recently detected cost anomalies
-     *
-     * Spend anomalies detected by the daily background pass. Two kinds share the list: a `spike`,
-     * where a provider's or service's spend exceeded its trailing 28-day baseline by a statistical
-     * threshold (mean + N·stddev, with an absolute floor to ignore penny-scale noise), and a
-     * `new_source`, where a provider or service with no spend at all across that window suddenly
-     * billed a material amount. Thresholds are per organization — see GET /costs/anomaly-settings.
-     * Newest day first, capped at 200 rows.
-     *
-     * _Requires permission: `costs:read`._
-     *
-     * GET /api/org/{orgId}/costs/anomalies
-     *
-     * Raises on 400: Bad request
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param string|null $days Window in days over anomalous days, 1-90. Defaults to 30.
-     * @return array{anomalies: list<array<string, mixed>>}
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function anomalies(?string $orgId = null, ?string $days = null, ?RequestOptions $options = null): array
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'GET',
-                path: '/api/org/{orgId}/costs/anomalies',
-                pathParams: ['orgId' => $orgId],
-                query: ['days' => $days],
-            ),
-            $options,
-        );
-
-        return Coerce::toArray($data);
     }
 
     /**
