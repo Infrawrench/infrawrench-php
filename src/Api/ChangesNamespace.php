@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.17.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.18.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,8 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
+use Infrawrench\Sdk\Model\ChangeCostImpactsRequest;
+use Infrawrench\Sdk\Model\ChangeCostImpactsResponse;
 use Infrawrench\Sdk\Model\ResourceChangeFeedResponse;
 use Infrawrench\Sdk\Model\ResourceChangeKind;
 use Infrawrench\Sdk\Model\ResourceChangeListResponse;
@@ -41,6 +43,46 @@ final class ChangesNamespace extends ApiNamespace
         parent::__construct($transport);
         $this->alertSettings = new ChangesAlertSettingsNamespace($this->transport);
         $this->revert = new ChangesRevertNamespace($this->transport);
+    }
+
+    /**
+     * Cost impact of a page of changes
+     *
+     * For each change, compares the resource's per-day spend over the window before it against the
+     * window after, and reports the difference as a run-rate delta.
+     *
+     * A POST because it takes a list of ids, not because it writes: nothing is stored. The answer
+     * is recomputed on every call, deliberately — provider cost arrives late and is then restated,
+     * so a stored number would be a wrong number that never corrects itself.
+     *
+     * Both windows exclude the change's own day (spend on it is half old shape, half new) and
+     * today (an accruing day always reads as a dip), and are clamped symmetrically to the days
+     * cost collection actually covers.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * POST /api/org/{orgId}/changes/cost-impacts
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function costImpacts(?string $orgId = null, ?ChangeCostImpactsRequest $body = null, ?RequestOptions $options = null): ChangeCostImpactsResponse
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/changes/cost-impacts',
+                pathParams: ['orgId' => $orgId],
+                body: $body?->toArray(),
+                hasBody: $body !== null,
+            ),
+            $options,
+        );
+
+        return ChangeCostImpactsResponse::fromArray(Coerce::toArray($data));
     }
 
     /**

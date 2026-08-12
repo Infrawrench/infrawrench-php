@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.17.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.18.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,8 +21,10 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Model\ChangeCostBasis;
 use Infrawrench\Sdk\Model\DeployPlanResult;
 use Infrawrench\Sdk\Model\DeployRollbackInput;
+use Infrawrench\Sdk\Model\DeploymentCostImpact;
 use Infrawrench\Sdk\Model\DeploymentRun;
 use Infrawrench\Sdk\Model\DeploymentRunInput;
 use Infrawrench\Sdk\RequestOptions;
@@ -30,6 +32,40 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->deployments->runs` */
 final class DeploymentsRunsNamespace extends ApiNamespace
 {
+    /**
+     * Cost impact of a deployment run
+     *
+     * The same comparison as `POST /changes/cost-impacts`, run over the resources this deploy
+     * provisioned, with a per-resource breakdown that sums to the total.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/deployments/runs/{id}/cost-impact
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param ChangeCostBasis::*|null $costBasis Which charge-type basis both windows are read on. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. It is echoed on every response because a delta whose basis is unstated is unreadable — an amortized 'after' against a cash 'before' looks exactly like a saving.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function costImpact(string $id, ?string $orgId = null, ?int $windowDays = null, ?string $costBasis = null, ?RequestOptions $options = null): DeploymentCostImpact
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/deployments/runs/{id}/cost-impact',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+                query: ['windowDays' => $windowDays, 'costBasis' => $costBasis],
+            ),
+            $options,
+        );
+
+        return DeploymentCostImpact::fromArray(Coerce::toArray($data));
+    }
+
     /**
      * Record a deployment that ran elsewhere
      *

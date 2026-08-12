@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.17.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.18.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,8 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Model\ChangeCostImpactAnnotationRequest;
+use Infrawrench\Sdk\Model\ChangeCostImpactAnnotationResponse;
 use Infrawrench\Sdk\Model\CostAnnotation;
 use Infrawrench\Sdk\Model\CostAnnotationInput;
 use Infrawrench\Sdk\Model\Ok;
@@ -29,6 +31,45 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->costAnnotations` */
 final class CostAnnotationsNamespace extends ApiNamespace
 {
+    /**
+     * Pin a change's or deploy's cost impact onto the cost charts
+     *
+     * Writes the finding as a cost annotation, so the step in the run rate is explained on the
+     * graph where it shows. Re-posting the same subject **rewords the existing note** rather than
+     * adding a second — which is what makes it safe to pin a finding again once the provider has
+     * finished restating. The note's date and report scope are never rewritten: they may have been
+     * edited deliberately.
+     *
+     * A subject with no measurable impact is a 400, not a note reading `$0.00/day`.
+     *
+     * _Requires permission: `costs:write`._
+     *
+     * POST /api/org/{orgId}/cost-annotations/change-impact
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function changeImpact(?string $orgId = null, ?ChangeCostImpactAnnotationRequest $body = null, ?RequestOptions $options = null): ChangeCostImpactAnnotationResponse
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/cost-annotations/change-impact',
+                pathParams: ['orgId' => $orgId],
+                body: $body?->toArray(),
+                hasBody: $body !== null,
+            ),
+            $options,
+        );
+
+        return ChangeCostImpactAnnotationResponse::fromArray(Coerce::toArray($data));
+    }
+
     /**
      * Create a cost annotation
      *
