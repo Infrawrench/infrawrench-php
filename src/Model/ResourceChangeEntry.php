@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.16.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.16.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.17.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class ResourceChangeEntry implements \JsonSerializable
      * @param ResourceChangeKind::* $changeKind
      * @param list<ResourceFieldChange> $diff Changed fields for `updated` events; empty for `created` and `deleted`.
      * @param 'schedule'|null $origin Who caused the change when a non-sync writer knows: `schedule` for sleep/wake schedule transitions. Absent/null = observed by sync.
+     * @param string|null $revertedAt When this event was reverted, or null if it never was. Reverting is a one-shot: an event carrying a timestamp here cannot be reverted again.
      */
     public function __construct(
         public readonly string $id,
@@ -39,6 +40,7 @@ final class ResourceChangeEntry implements \JsonSerializable
         public readonly array $diff,
         public readonly string $createdAt,
         public readonly ?string $origin = null,
+        public readonly ?string $revertedAt = null,
     ) {
     }
 
@@ -60,6 +62,7 @@ final class ResourceChangeEntry implements \JsonSerializable
             diff: Coerce::mapList($data['diff'] ?? null, static fn (mixed $item): ResourceFieldChange => ResourceFieldChange::fromArray(Coerce::toArray($item))),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             origin: Coerce::toStringOrNull($data['origin'] ?? null),
+            revertedAt: Coerce::toStringOrNull($data['revertedAt'] ?? null),
         );
     }
 
@@ -83,6 +86,9 @@ final class ResourceChangeEntry implements \JsonSerializable
         ];
         if ($this->origin !== null) {
             $payload['origin'] = $this->origin;
+        }
+        if ($this->revertedAt !== null) {
+            $payload['revertedAt'] = $this->revertedAt;
         }
 
         return $payload;

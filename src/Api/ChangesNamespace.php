@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.16.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.17.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.16.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.17.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,10 +33,14 @@ final class ChangesNamespace extends ApiNamespace
     /** `$client->changes->alertSettings` */
     public readonly ChangesAlertSettingsNamespace $alertSettings;
 
+    /** `$client->changes->revert` */
+    public readonly ChangesRevertNamespace $revert;
+
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
         $this->alertSettings = new ChangesAlertSettingsNamespace($this->transport);
+        $this->revert = new ChangesRevertNamespace($this->transport);
     }
 
     /**
