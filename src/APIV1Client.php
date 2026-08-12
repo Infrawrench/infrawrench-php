@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.20.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.21.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.20.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.21.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -60,6 +60,7 @@ use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DnsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
+use Infrawrench\Sdk\Api\EnvironmentsNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
 use Infrawrench\Sdk\Api\IncidentsNamespace;
@@ -254,6 +255,9 @@ final class APIV1Client
 
     /** `$client->environmentDiff` */
     public readonly EnvironmentDiffNamespace $environmentDiff;
+
+    /** `$client->environments` */
+    public readonly EnvironmentsNamespace $environments;
 
     /** `$client->expiring` */
     public readonly ExpiringNamespace $expiring;
@@ -453,6 +457,7 @@ final class APIV1Client
         $this->dns = new DnsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
         $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
+        $this->environments = new EnvironmentsNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->iac = new IacNamespace($this->transport);
         $this->incidents = new IncidentsNamespace($this->transport);
