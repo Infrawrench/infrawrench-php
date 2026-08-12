@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.15.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.16.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.15.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.16.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -19,6 +19,7 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk;
 
 use Infrawrench\Sdk\Api\AccessRequestsNamespace;
+use Infrawrench\Sdk\Api\AccessReviewNamespace;
 use Infrawrench\Sdk\Api\AccountsNamespace;
 use Infrawrench\Sdk\Api\AgentsNamespace;
 use Infrawrench\Sdk\Api\AlertRulesNamespace;
@@ -128,6 +129,9 @@ final class APIV1Client
 
     /** `$client->accessRequests` */
     public readonly AccessRequestsNamespace $accessRequests;
+
+    /** `$client->accessReview` */
+    public readonly AccessReviewNamespace $accessReview;
 
     /** `$client->accounts` */
     public readonly AccountsNamespace $accounts;
@@ -400,6 +404,7 @@ final class APIV1Client
             $sender,
         );
         $this->accessRequests = new AccessRequestsNamespace($this->transport);
+        $this->accessReview = new AccessReviewNamespace($this->transport);
         $this->accounts = new AccountsNamespace($this->transport);
         $this->agents = new AgentsNamespace($this->transport);
         $this->alertRules = new AlertRulesNamespace($this->transport);
