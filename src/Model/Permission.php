@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.19.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.20.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.19.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.20.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -62,6 +62,8 @@ final class Permission
     public const TAG_POLICY_OVERRIDE = 'tag-policy:override';
     public const CONFIG_READ = 'config:read';
     public const CONFIG_WRITE = 'config:write';
+    public const IAC_READ = 'iac:read';
+    public const IAC_WRITE = 'iac:write';
     public const AUDIT_READ = 'audit:read';
     public const ACCESS_READ = 'access:read';
     public const ACCESS_REQUEST = 'access:request';
@@ -133,6 +135,8 @@ final class Permission
             self::TAG_POLICY_OVERRIDE,
             self::CONFIG_READ,
             self::CONFIG_WRITE,
+            self::IAC_READ,
+            self::IAC_WRITE,
             self::AUDIT_READ,
             self::ACCESS_READ,
             self::ACCESS_REQUEST,
