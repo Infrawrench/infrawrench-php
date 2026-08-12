@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.13.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.14.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.13.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.14.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,8 @@ final class SessionRecording implements \JsonSerializable
      * @param bool $hasInput True when the cast also contains keystrokes (the org opted into input capture).
      * @param 'recording'|'complete'|'truncated'|'abandoned' $status `recording` (live), `complete` (closed cleanly), `truncated` (hit the per-session capture ceiling — the tape is a genuine partial and says so), or `abandoned` (the server handling the session went away before it could close the row).
      * @param int $outputBytes Terminal bytes captured, before compression.
+     * @param string|null $sharedConsoleId Set when this session was shared with colleagues while it ran.
+     * @param list<array{userId: string|null, userName: string|null, role: 'observer'|'driver', joinedAt: string, leftAt: string|null}>|null $participants Everyone who was attached to this session and in what role — the **highest** role they held, not their role at the end. Null or empty for an ordinary solo session. Once a session can be shared, `userId` alone stops answering 'whose hands were on this box'; this does. The cast carries the same facts in-band as asciicast `"m"` marker events, so a viewer sees *when* the keyboard moved.
      */
     public function __construct(
         public readonly string $id,
@@ -50,6 +52,8 @@ final class SessionRecording implements \JsonSerializable
         public readonly string $startedAt,
         public readonly ?string $endedAt,
         public readonly ?int $durationMs,
+        public readonly ?string $sharedConsoleId = null,
+        public readonly ?array $participants = null,
     ) {
     }
 
@@ -79,6 +83,8 @@ final class SessionRecording implements \JsonSerializable
             startedAt: Coerce::toString($data['startedAt'] ?? null),
             endedAt: Coerce::toStringOrNull($data['endedAt'] ?? null),
             durationMs: Coerce::toIntOrNull($data['durationMs'] ?? null),
+            sharedConsoleId: Coerce::toStringOrNull($data['sharedConsoleId'] ?? null),
+            participants: Coerce::nullable($data['participants'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
         );
     }
 
@@ -89,7 +95,7 @@ final class SessionRecording implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'userId' => $this->userId,
             'userName' => $this->userName,
@@ -109,6 +115,14 @@ final class SessionRecording implements \JsonSerializable
             'endedAt' => $this->endedAt,
             'durationMs' => $this->durationMs,
         ];
+        if ($this->sharedConsoleId !== null) {
+            $payload['sharedConsoleId'] = $this->sharedConsoleId;
+        }
+        if ($this->participants !== null) {
+            $payload['participants'] = $this->participants;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

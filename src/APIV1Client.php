@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.13.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.14.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.13.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.14.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -86,6 +86,7 @@ use Infrawrench\Sdk\Api\SchedulesNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SessionRecordingsNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
+use Infrawrench\Sdk\Api\SharedConsolesNamespace;
 use Infrawrench\Sdk\Api\SlackNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
 use Infrawrench\Sdk\Api\SshFanoutNamespace;
@@ -328,6 +329,9 @@ final class APIV1Client
     /** `$client->sftp` */
     public readonly SftpNamespace $sftp;
 
+    /** `$client->sharedConsoles` */
+    public readonly SharedConsolesNamespace $sharedConsoles;
+
     /** `$client->slack` */
     public readonly SlackNamespace $slack;
 
@@ -459,6 +463,7 @@ final class APIV1Client
         $this->search = new SearchNamespace($this->transport);
         $this->sessionRecordings = new SessionRecordingsNamespace($this->transport);
         $this->sftp = new SftpNamespace($this->transport);
+        $this->sharedConsoles = new SharedConsolesNamespace($this->transport);
         $this->slack = new SlackNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);
         $this->sshFanout = new SshFanoutNamespace($this->transport);
