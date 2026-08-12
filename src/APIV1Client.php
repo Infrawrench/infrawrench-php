@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.18.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.19.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.18.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.19.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ use Infrawrench\Sdk\Api\ArtifactsNamespace;
 use Infrawrench\Sdk\Api\AssociationsNamespace;
 use Infrawrench\Sdk\Api\AuditLogsNamespace;
 use Infrawrench\Sdk\Api\AuthNamespace;
+use Infrawrench\Sdk\Api\BackupsNamespace;
 use Infrawrench\Sdk\Api\BastionsNamespace;
 use Infrawrench\Sdk\Api\BillingNamespace;
 use Infrawrench\Sdk\Api\BillingRulesNamespace;
@@ -156,6 +157,9 @@ final class APIV1Client
 
     /** `$client->auth` */
     public readonly AuthNamespace $auth;
+
+    /** `$client->backups` */
+    public readonly BackupsNamespace $backups;
 
     /** `$client->bastions` */
     public readonly BastionsNamespace $bastions;
@@ -413,6 +417,7 @@ final class APIV1Client
         $this->associations = new AssociationsNamespace($this->transport);
         $this->auditLogs = new AuditLogsNamespace($this->transport);
         $this->auth = new AuthNamespace($this->transport);
+        $this->backups = new BackupsNamespace($this->transport);
         $this->bastions = new BastionsNamespace($this->transport);
         $this->billing = new BillingNamespace($this->transport);
         $this->billingRules = new BillingRulesNamespace($this->transport);
