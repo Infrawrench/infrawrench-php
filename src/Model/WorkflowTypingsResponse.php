@@ -20,18 +20,13 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class CostFilter implements \JsonSerializable
+final class WorkflowTypingsResponse implements \JsonSerializable
 {
     /**
-     * @param CostDimension::* $dimension
-     * @param 'in'|'not_in' $op
-     * @param list<string> $values
+     * @param string $dts Ambient TypeScript declarations for this workflow's `infra` API — the same file the Monaco editor and `check` endpoint type against.
      */
     public function __construct(
-        public readonly string $dimension,
-        public readonly string $op,
-        public readonly array $values,
-        public readonly ?string $tagKey = null,
+        public readonly string $dts,
     ) {
     }
 
@@ -43,10 +38,7 @@ final class CostFilter implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            dimension: Coerce::toString($data['dimension'] ?? null),
-            op: Coerce::toString($data['op'] ?? null),
-            values: Coerce::mapList($data['values'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
-            tagKey: Coerce::toStringOrNull($data['tagKey'] ?? null),
+            dts: Coerce::toString($data['dts'] ?? null),
         );
     }
 
@@ -57,16 +49,9 @@ final class CostFilter implements \JsonSerializable
      */
     public function toArray(): array
     {
-        $payload = [
-            'dimension' => $this->dimension,
-            'op' => $this->op,
-            'values' => $this->values,
+        return [
+            'dts' => $this->dts,
         ];
-        if ($this->tagKey !== null) {
-            $payload['tagKey'] = $this->tagKey;
-        }
-
-        return $payload;
     }
 
     /** @return array<string, mixed> */
