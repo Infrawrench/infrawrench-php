@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.23.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.24.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.23.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.24.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,6 +37,7 @@ use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\BusinessMetricsNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
+use Infrawrench\Sdk\Api\ChatNamespace;
 use Infrawrench\Sdk\Api\CommitmentsNamespace;
 use Infrawrench\Sdk\Api\ConfigNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
@@ -104,6 +105,7 @@ use Infrawrench\Sdk\Api\StorageNamespace;
 use Infrawrench\Sdk\Api\TagPolicyNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
 use Infrawrench\Sdk\Api\WorkflowApprovalsNamespace;
+use Infrawrench\Sdk\Api\WorkflowSecretsNamespace;
 use Infrawrench\Sdk\Api\WorkflowsNamespace;
 use Infrawrench\Sdk\Http\HttpSender;
 use Infrawrench\Sdk\Internal\Transport;
@@ -186,6 +188,9 @@ final class APIV1Client
 
     /** `$client->changes` */
     public readonly ChangesNamespace $changes;
+
+    /** `$client->chat` */
+    public readonly ChatNamespace $chat;
 
     /** `$client->commitments` */
     public readonly CommitmentsNamespace $commitments;
@@ -388,6 +393,9 @@ final class APIV1Client
     /** `$client->workflowApprovals` */
     public readonly WorkflowApprovalsNamespace $workflowApprovals;
 
+    /** `$client->workflowSecrets` */
+    public readonly WorkflowSecretsNamespace $workflowSecrets;
+
     /** `$client->workflows` */
     public readonly WorkflowsNamespace $workflows;
 
@@ -434,6 +442,7 @@ final class APIV1Client
         $this->businessMetrics = new BusinessMetricsNamespace($this->transport);
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
+        $this->chat = new ChatNamespace($this->transport);
         $this->commitments = new CommitmentsNamespace($this->transport);
         $this->config = new ConfigNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
@@ -501,6 +510,7 @@ final class APIV1Client
         $this->tagPolicy = new TagPolicyNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);
         $this->workflowApprovals = new WorkflowApprovalsNamespace($this->transport);
+        $this->workflowSecrets = new WorkflowSecretsNamespace($this->transport);
         $this->workflows = new WorkflowsNamespace($this->transport);
     }
 }
