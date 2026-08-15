@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.25.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.26.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.25.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.26.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,8 @@ namespace Infrawrench\Sdk;
 use Infrawrench\Sdk\Api\AccessRequestsNamespace;
 use Infrawrench\Sdk\Api\AccessReviewNamespace;
 use Infrawrench\Sdk\Api\AccountsNamespace;
+use Infrawrench\Sdk\Api\AgentNamespace;
+use Infrawrench\Sdk\Api\AgentRegistrationsNamespace;
 use Infrawrench\Sdk\Api\AgentsNamespace;
 use Infrawrench\Sdk\Api\AlertRulesNamespace;
 use Infrawrench\Sdk\Api\ApiKeysNamespace;
@@ -140,6 +142,12 @@ final class APIV1Client
 
     /** `$client->accounts` */
     public readonly AccountsNamespace $accounts;
+
+    /** `$client->agent` */
+    public readonly AgentNamespace $agent;
+
+    /** `$client->agentRegistrations` */
+    public readonly AgentRegistrationsNamespace $agentRegistrations;
 
     /** `$client->agents` */
     public readonly AgentsNamespace $agents;
@@ -426,6 +434,8 @@ final class APIV1Client
         $this->accessRequests = new AccessRequestsNamespace($this->transport);
         $this->accessReview = new AccessReviewNamespace($this->transport);
         $this->accounts = new AccountsNamespace($this->transport);
+        $this->agent = new AgentNamespace($this->transport);
+        $this->agentRegistrations = new AgentRegistrationsNamespace($this->transport);
         $this->agents = new AgentsNamespace($this->transport);
         $this->alertRules = new AlertRulesNamespace($this->transport);
         $this->apiKeys = new ApiKeysNamespace($this->transport);
