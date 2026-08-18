@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.31.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.30.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.31.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ use Infrawrench\Sdk\Api\AgentRegistrationsNamespace;
 use Infrawrench\Sdk\Api\AgentsNamespace;
 use Infrawrench\Sdk\Api\AlertRulesNamespace;
 use Infrawrench\Sdk\Api\ApiKeysNamespace;
+use Infrawrench\Sdk\Api\AppsNamespace;
 use Infrawrench\Sdk\Api\ArtifactsNamespace;
 use Infrawrench\Sdk\Api\AssociationsNamespace;
 use Infrawrench\Sdk\Api\AuditLogsNamespace;
@@ -159,6 +160,9 @@ final class APIV1Client
 
     /** `$client->apiKeys` */
     public readonly ApiKeysNamespace $apiKeys;
+
+    /** `$client->apps` */
+    public readonly AppsNamespace $apps;
 
     /** `$client->artifacts` */
     public readonly ArtifactsNamespace $artifacts;
@@ -447,6 +451,7 @@ final class APIV1Client
         $this->agents = new AgentsNamespace($this->transport);
         $this->alertRules = new AlertRulesNamespace($this->transport);
         $this->apiKeys = new ApiKeysNamespace($this->transport);
+        $this->apps = new AppsNamespace($this->transport);
         $this->artifacts = new ArtifactsNamespace($this->transport);
         $this->associations = new AssociationsNamespace($this->transport);
         $this->auditLogs = new AuditLogsNamespace($this->transport);
