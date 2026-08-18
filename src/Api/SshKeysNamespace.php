@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.29.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.30.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.29.1).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.30.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,8 @@ use Infrawrench\Sdk\Model\GeneratedSshKey;
 use Infrawrench\Sdk\Model\ImportSshKeyRequest;
 use Infrawrench\Sdk\Model\ImportedSshKey;
 use Infrawrench\Sdk\Model\Ok;
+use Infrawrench\Sdk\Model\SignSshKeyRequest;
+use Infrawrench\Sdk\Model\SignSshKeyResponse;
 use Infrawrench\Sdk\Model\SshKey;
 use Infrawrench\Sdk\RequestOptions;
 
@@ -139,5 +141,39 @@ final class SshKeysNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): SshKey => SshKey::fromArray(Coerce::toArray($item)));
+    }
+
+    /**
+     * Sign an SSH auth challenge with a cloud-held key (the cloud as an SSH agent)
+     *
+     * Signs one publickey-authentication challenge with a server-generated org key whose private
+     * half never leaves Infrawrench Cloud. Requires the `resources:execute` permission — producing
+     * an auth signature is the same authority as opening a shell. Imported keys cannot sign (only
+     * their public half is stored). Every call is audited.
+     *
+     * POST /api/org/{orgId}/ssh-keys/{id}/sign
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function sign(string $id, SignSshKeyRequest $body, ?string $orgId = null, ?RequestOptions $options = null): SignSshKeyResponse
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/ssh-keys/{id}/sign',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return SignSshKeyResponse::fromArray(Coerce::toArray($data));
     }
 }
