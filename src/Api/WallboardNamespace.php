@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.29.1 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.29.1).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,9 +35,9 @@ final class WallboardNamespace extends ApiNamespace
      * at. There is deliberately no history, no trend and no breakdown — those belong on the page
      * you open when you do walk over.
      *
-     * Four sources — declared incidents, synthetic probes, query monitors and account sync health
-     * — each guarded independently, because a television that goes blank because one query threw
-     * is showing nothing to a room that was relying on it.
+     * Three sources — declared incidents, synthetic probes and account sync health — each guarded
+     * independently, because a television that goes blank because one query threw is showing
+     * nothing to a room that was relying on it.
      *
      * Session-authenticated on purpose: unlike the calendar feed or a public status page, this
      * carries incident titles, probe names and account names, and a screen in an office is exactly

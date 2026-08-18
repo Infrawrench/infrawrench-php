@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.29.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.29.1 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.29.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.29.1).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,7 @@ final class WallboardResponse implements \JsonSerializable
      * @param 'ok'|'degraded'|'down' $status Three states rather than five, because at four metres a person distinguishes three colours reliably and nothing more. `down` is reserved for the two things that mean customers are affected now — a sev1 incident or a probe that is down; everything else that is wrong is `degraded`. A source that could not be read is `degraded` and never `ok`.
      * @param list<WallboardTile> $tiles
      * @param list<WallboardIncidentLine> $incidents Unresolved incidents, newest first.
-     * @param list<WallboardFailureLine> $failures Probes that are down, monitors breaching, accounts that stopped syncing.
+     * @param list<WallboardFailureLine> $failures Probes that are down, accounts that stopped syncing.
      * @param list<string> $failedSources Sources that could not be read, **named on the screen**. A wallboard showing green because a query failed is worse than a blank one — it is actively telling the room the wrong thing.
      */
     public function __construct(

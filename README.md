@@ -1,6 +1,6 @@
 # infrawrench/sdk
 
-Generated PHP client for the Infrawrench API (API version `1.29.0`).
+Generated PHP client for the Infrawrench API (API version `1.29.1`).
 
 **Do not edit this package by hand** — it is regenerated from `openapi.json` and
 is not checked into the repository. Run
