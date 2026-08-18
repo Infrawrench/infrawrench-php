@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.27.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.28.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.27.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.28.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -106,6 +106,7 @@ use Infrawrench\Sdk\Api\StatusPagesNamespace;
 use Infrawrench\Sdk\Api\StorageNamespace;
 use Infrawrench\Sdk\Api\TagPolicyNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
+use Infrawrench\Sdk\Api\WallboardNamespace;
 use Infrawrench\Sdk\Api\WorkflowApprovalsNamespace;
 use Infrawrench\Sdk\Api\WorkflowSecretsNamespace;
 use Infrawrench\Sdk\Api\WorkflowsNamespace;
@@ -398,6 +399,9 @@ final class APIV1Client
     /** `$client->team` */
     public readonly TeamNamespace $team;
 
+    /** `$client->wallboard` */
+    public readonly WallboardNamespace $wallboard;
+
     /** `$client->workflowApprovals` */
     public readonly WorkflowApprovalsNamespace $workflowApprovals;
 
@@ -519,6 +523,7 @@ final class APIV1Client
         $this->storage = new StorageNamespace($this->transport);
         $this->tagPolicy = new TagPolicyNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);
+        $this->wallboard = new WallboardNamespace($this->transport);
         $this->workflowApprovals = new WorkflowApprovalsNamespace($this->transport);
         $this->workflowSecrets = new WorkflowSecretsNamespace($this->transport);
         $this->workflows = new WorkflowsNamespace($this->transport);
