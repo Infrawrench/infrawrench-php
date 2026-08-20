@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.33.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.34.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.33.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.34.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,7 @@ final class AlertRule implements \JsonSerializable
     /**
      * @param int $position Ascending evaluation order
      * @param list<array{field: 'trigger', op: 'in'|'notIn', values: list<AlertTrigger::*>}|array{field: 'severity', op: 'gte'|'eq', severity: AlertSeverity::*}|array{field: 'accountId', op: 'in'|'notIn', values: list<string>}|array{field: 'pluginId', op: 'in'|'notIn', values: list<string>}|array{field: 'resourceTypeId', op: 'in'|'notIn', values: list<string>}|array{field: 'amountCents', op: 'gte'|'lt', cents: int}|array{field: 'key', op: 'contains'|'notContains'|'eq', value: string}|array{field: 'text', op: 'contains'|'notContains', value: string}> $conditions
-     * @param list<array{kind: 'push'}|array{kind: 'slack', channelId: string}|array{kind: 'msteams', webhookId: string}> $destinations Empty is legal and meaningful: an enabled rule with no destinations swallows matching alerts and shadows the rules below it.
+     * @param list<array{kind: 'push'}|array{kind: 'slack', channelId: string}|array{kind: 'msteams', webhookId: string}|array{kind: 'on-call', scheduleId: string}> $destinations Empty is legal and meaningful: an enabled rule with no destinations swallows matching alerts and shadows the rules below it.
      * @param bool $continueOnMatch False (the default) makes the list first-match-wins, which is what lets a narrow rule sit above a broad one. True makes the rule a tee that copies without shadowing.
      */
     public function __construct(

@@ -1,0 +1,66 @@
+<?php
+
+/*
+ * infrawrench/sdk v1.34.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * https://github.com/Infrawrench/Infrawrench
+ *
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.34.0).
+ *
+ * DO NOT EDIT. Regenerate with:
+ *   pnpm --filter @infrawrench/web generate:sdk
+ *
+ * Internal routes are absent by construction: the generator consumes the same
+ * published spec that /openapi.json serves, which drops every operation
+ * marked x-internal.
+ */
+
+declare(strict_types=1);
+
+namespace Infrawrench\Sdk\Model;
+
+use Infrawrench\Sdk\Internal\Coerce;
+
+final class OnCallShiftsResponse implements \JsonSerializable
+{
+    /**
+     * @param list<OnCallShift|null> $shifts
+     * @param list<OnCallOverride> $overrides Covers overlapping the previewed window, returned **separately** rather than merged into the shifts: a preview that folded them in would make it impossible to see what the rotation itself does, which is the thing being edited.
+     */
+    public function __construct(
+        public readonly array $shifts,
+        public readonly array $overrides,
+    ) {
+    }
+
+    /**
+     * Build one from a decoded JSON object.
+     *
+     * @param array<string, mixed> $data
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            shifts: Coerce::mapList($data['shifts'] ?? null, static fn (mixed $item): ?OnCallShift => Coerce::nullable($item, static fn (mixed $value): OnCallShift => OnCallShift::fromArray(Coerce::toArray($value)))),
+            overrides: Coerce::mapList($data['overrides'] ?? null, static fn (mixed $item): OnCallOverride => OnCallOverride::fromArray(Coerce::toArray($item))),
+        );
+    }
+
+    /**
+     * The wire representation, ready for `json_encode`.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'shifts' => array_map(static fn (?OnCallShift $item): array => $item?->toArray(), $this->shifts),
+            'overrides' => array_map(static fn (OnCallOverride $item): array => $item->toArray(), $this->overrides),
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
+    }
+}

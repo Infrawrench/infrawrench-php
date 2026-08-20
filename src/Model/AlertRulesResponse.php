@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.33.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.34.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.33.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.34.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class AlertRulesResponse implements \JsonSerializable
      * @param list<array{id: string, name: string, isPrivate: bool}> $slackChannels
      * @param list<array{id: string, label: string}> $msTeamsWebhooks
      * @param list<array{id: string, displayName: string, pluginId: string}> $accounts
+     * @param list<array{id: string, name: string}> $onCallSchedules Live on-call rotations, so the editor can offer 'whoever is on call' as a destination. Disabled rotations are omitted for the same reason a disconnected Slack install is: offering one would let the editor build a rule that routes nowhere.
      */
     public function __construct(
         public readonly array $rules,
@@ -35,6 +36,7 @@ final class AlertRulesResponse implements \JsonSerializable
         public readonly array $slackChannels,
         public readonly array $msTeamsWebhooks,
         public readonly array $accounts,
+        public readonly array $onCallSchedules,
     ) {
     }
 
@@ -51,6 +53,7 @@ final class AlertRulesResponse implements \JsonSerializable
             slackChannels: Coerce::mapList($data['slackChannels'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
             msTeamsWebhooks: Coerce::mapList($data['msTeamsWebhooks'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
             accounts: Coerce::mapList($data['accounts'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
+            onCallSchedules: Coerce::mapList($data['onCallSchedules'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
         );
     }
 
@@ -67,6 +70,7 @@ final class AlertRulesResponse implements \JsonSerializable
             'slackChannels' => $this->slackChannels,
             'msTeamsWebhooks' => $this->msTeamsWebhooks,
             'accounts' => $this->accounts,
+            'onCallSchedules' => $this->onCallSchedules,
         ];
     }
 

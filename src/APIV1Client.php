@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.33.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.34.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.33.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.34.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -81,6 +81,7 @@ use Infrawrench\Sdk\Api\MetricAlertsNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\NetworkFlowsNamespace;
+use Infrawrench\Sdk\Api\OnCallNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\OrphansNamespace;
 use Infrawrench\Sdk\Api\OwnershipNamespace;
@@ -327,6 +328,9 @@ final class APIV1Client
     /** `$client->networkFlows` */
     public readonly NetworkFlowsNamespace $networkFlows;
 
+    /** `$client->onCall` */
+    public readonly OnCallNamespace $onCall;
+
     /** `$client->orgs` */
     public readonly OrgsNamespace $orgs;
 
@@ -510,6 +514,7 @@ final class APIV1Client
         $this->moment = new MomentNamespace($this->transport);
         $this->msteams = new MsteamsNamespace($this->transport);
         $this->networkFlows = new NetworkFlowsNamespace($this->transport);
+        $this->onCall = new OnCallNamespace($this->transport);
         $this->orgs = new OrgsNamespace($this->transport);
         $this->orphans = new OrphansNamespace($this->transport);
         $this->ownership = new OwnershipNamespace($this->transport);
