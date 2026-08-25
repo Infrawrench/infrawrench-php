@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.36.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.36.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.37.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -89,6 +89,7 @@ use Infrawrench\Sdk\Api\PagesNamespace;
 use Infrawrench\Sdk\Api\PostureNamespace;
 use Infrawrench\Sdk\Api\ProbesNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
+use Infrawrench\Sdk\Api\QueryMonitorsNamespace;
 use Infrawrench\Sdk\Api\QuotasNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
@@ -352,6 +353,9 @@ final class APIV1Client
     /** `$client->profile` */
     public readonly ProfileNamespace $profile;
 
+    /** `$client->queryMonitors` */
+    public readonly QueryMonitorsNamespace $queryMonitors;
+
     /** `$client->quotas` */
     public readonly QuotasNamespace $quotas;
 
@@ -522,6 +526,7 @@ final class APIV1Client
         $this->posture = new PostureNamespace($this->transport);
         $this->probes = new ProbesNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
+        $this->queryMonitors = new QueryMonitorsNamespace($this->transport);
         $this->quotas = new QuotasNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
         $this->rightsizing = new RightsizingNamespace($this->transport);
