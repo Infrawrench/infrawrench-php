@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.37.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.38.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.37.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.38.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,7 +21,6 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
-use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\StatusPage;
 use Infrawrench\Sdk\Model\StatusPageCreate;
 use Infrawrench\Sdk\Model\StatusPageListResponse;
@@ -31,15 +30,6 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->statusPages` */
 final class StatusPagesNamespace extends ApiNamespace
 {
-    /** `$client->statusPages->customHostname` */
-    public readonly StatusPagesCustomHostnameNamespace $customHostname;
-
-    public function __construct(Transport $transport)
-    {
-        parent::__construct($transport);
-        $this->customHostname = new StatusPagesCustomHostnameNamespace($this->transport);
-    }
-
     /**
      * Create a status page
      *
@@ -134,8 +124,7 @@ final class StatusPagesNamespace extends ApiNamespace
      * Issue a new public link
      *
      * Replaces the slug, revoking the current public URL immediately — the reroll for a link that
-     * ended up somewhere unintended. The page stays published. If a custom hostname is attached,
-     * its hostname→slug mapping is updated so the vanity URL keeps working.
+     * ended up somewhere unintended. The page stays published.
      *
      * _Requires permission: `resources:write`._
      *
