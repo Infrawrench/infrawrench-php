@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.38.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.38.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.39.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\QueryMonitor;
 use Infrawrench\Sdk\Model\QueryMonitorCreate;
+use Infrawrench\Sdk\Model\QueryMonitorTargets;
 use Infrawrench\Sdk\Model\QueryMonitorTestResult;
 use Infrawrench\Sdk\Model\QueryMonitorUpdate;
 use Infrawrench\Sdk\RequestOptions;
@@ -104,6 +105,36 @@ final class QueryMonitorsNamespace extends ApiNamespace
             ),
             $options,
         );
+    }
+
+    /**
+     * List what a monitor can run against
+     *
+     * The editor's target picker: each account with a SQL driver of its own, plus the SQL-capable
+     * resources inside it — a database that is a *resource* (a ClickHouse service, a D1 or Turso
+     * database, a Databricks SQL warehouse, a BigQuery dataset) rather than the account's own
+     * connection. Accounts with neither are omitted; a monitor pointed at one could only ever
+     * fail. Pass a resource's `id` (and optionally its `resourceTypeId` — the server fills it from
+     * the synced resource either way) when creating a monitor to scope the query to that resource.
+     *
+     * GET /api/org/{orgId}/query-monitors/targets
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function targets(?string $orgId = null, ?RequestOptions $options = null): QueryMonitorTargets
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/query-monitors/targets',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return QueryMonitorTargets::fromArray(Coerce::toArray($data));
     }
 
     /**
