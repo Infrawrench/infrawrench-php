@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.40.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.41.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.40.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.41.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,26 +33,39 @@ final class ResourceTypeId
     public const ACCESS_POLICY = 'access-policy';
     public const ACCOUNT = 'account';
     public const ACM_CERTIFICATE = 'acm-certificate';
+    public const ADMIN_API_KEY = 'admin-api-key';
+    public const AGENT = 'agent';
     public const AGENT_API_KEY = 'agent-api-key';
+    public const AGENT_CONFIG = 'agent-config';
+    public const AGENT_SESSION = 'agent-session';
+    public const AGENT_VARIABLE = 'agent-variable';
     public const AI_GATEWAY = 'ai-gateway';
     public const AI_SEARCH = 'ai-search';
     public const ALB = 'alb';
     public const ALERT_POLICY = 'alert-policy';
+    public const ALIGNMENT_JOB = 'alignment-job';
     public const ALLOYDB_CLUSTER = 'alloydb-cluster';
     public const ALLOYDB_INSTANCE = 'alloydb-instance';
+    public const ANALYTICS_ENGINE_DATASET = 'analytics-engine-dataset';
     public const API_GATEWAY = 'api-gateway';
     public const API_KEY = 'api-key';
     public const APP = 'app';
     public const APP_ENGINE_SERVICE = 'app-engine-service';
+    public const APP_SECRET = 'app-secret';
     public const APPRUNNER_SERVICE = 'apprunner-service';
     public const ARTIFACT_REGISTRY_REPO = 'artifact-registry-repo';
     public const AUDIT_EVENT = 'audit-event';
     public const AUTO_SCALING_GROUP = 'auto-scaling-group';
+    public const AUTOSCALE_POOL = 'autoscale-pool';
+    public const AZURE_AI_SERVICES = 'azure-ai-services';
     public const AZURE_AKS_CLUSTER = 'azure-aks-cluster';
     public const AZURE_APP_GATEWAY = 'azure-app-gateway';
     public const AZURE_APP_REGISTRATION = 'azure-app-registration';
     public const AZURE_APP_SERVICE = 'azure-app-service';
     public const AZURE_APP_SERVICE_PLAN = 'azure-app-service-plan';
+    public const AZURE_CONTAINER_APP = 'azure-container-app';
+    public const AZURE_CONTAINER_APP_ENVIRONMENT = 'azure-container-app-environment';
+    public const AZURE_CONTAINER_APP_JOB = 'azure-container-app-job';
     public const AZURE_CONTAINER_INSTANCE = 'azure-container-instance';
     public const AZURE_CONTAINER_REGISTRY = 'azure-container-registry';
     public const AZURE_COSMOS_DB = 'azure-cosmos-db';
@@ -65,6 +78,7 @@ final class ResourceTypeId
     public const AZURE_LOAD_BALANCER = 'azure-load-balancer';
     public const AZURE_LOG_ANALYTICS = 'azure-log-analytics';
     public const AZURE_MANAGED_IDENTITY = 'azure-managed-identity';
+    public const AZURE_MANAGED_REDIS = 'azure-managed-redis';
     public const AZURE_MYSQL_FLEXIBLE = 'azure-mysql-flexible';
     public const AZURE_NAT_GATEWAY = 'azure-nat-gateway';
     public const AZURE_NSG = 'azure-nsg';
@@ -83,6 +97,11 @@ final class ResourceTypeId
     public const BACKEND_SERVICE = 'backend-service';
     public const BACKUP_VAULT = 'backup-vault';
     public const BALANCE = 'balance';
+    public const BASIN_CATALOG = 'basin-catalog';
+    public const BASIN_PIPELINE = 'basin-pipeline';
+    public const BASIN_SINK = 'basin-sink';
+    public const BASIN_STREAM = 'basin-stream';
+    public const BASIN_TABLE = 'basin-table';
     public const BATCH = 'batch';
     public const BATCH_INFERENCE_JOB = 'batch-inference-job';
     public const BATCH_JOB_QUEUE = 'batch-job-queue';
@@ -91,10 +110,17 @@ final class ResourceTypeId
     public const BIGQUERY_TABLE = 'bigquery-table';
     public const BIGTABLE_INSTANCE = 'bigtable-instance';
     public const BLOCK_VOLUME = 'block-volume';
+    public const BYOK_CREDENTIAL = 'byok-credential';
     public const CACHE_RULE = 'cache-rule';
     public const CACHED_CONTENT = 'cached-content';
+    public const CDN_ENDPOINT = 'cdn-endpoint';
     public const CERTIFICATE = 'certificate';
+    public const CH_API_KEY = 'ch-api-key';
+    public const CH_BACKUP = 'ch-backup';
+    public const CH_CLICKPIPE = 'ch-clickpipe';
     public const CH_DATABASE = 'ch-database';
+    public const CH_MEMBER = 'ch-member';
+    public const CH_POSTGRES = 'ch-postgres';
     public const CH_SERVICE = 'ch-service';
     public const CLOUD_ARMOR_POLICY = 'cloud-armor-policy';
     public const CLOUD_BUILD_TRIGGER = 'cloud-build-trigger';
@@ -104,6 +130,7 @@ final class ResourceTypeId
     public const CLOUD_FUNCTION = 'cloud-function';
     public const CLOUD_NAT = 'cloud-nat';
     public const CLOUD_ROUTER = 'cloud-router';
+    public const CLOUD_RUN_JOB = 'cloud-run-job';
     public const CLOUD_RUN_SERVICE = 'cloud-run-service';
     public const CLOUD_SCHEDULER_JOB = 'cloud-scheduler-job';
     public const CLOUD_TASKS_QUEUE = 'cloud-tasks-queue';
@@ -117,6 +144,7 @@ final class ResourceTypeId
     public const CODEPIPELINE_PIPELINE = 'codepipeline-pipeline';
     public const COGNITO_USER_POOL = 'cognito-user-pool';
     public const COLLECTION = 'collection';
+    public const COLLECTION_DOCUMENT = 'collection-document';
     public const COMPOSER_ENVIRONMENT = 'composer-environment';
     public const CONNECTION = 'connection';
     public const CONTAINER = 'container';
@@ -131,6 +159,8 @@ final class ResourceTypeId
     public const DATABRICKS_DASHBOARD = 'databricks-dashboard';
     public const DATABRICKS_FUNCTION = 'databricks-function';
     public const DATABRICKS_JOB = 'databricks-job';
+    public const DATABRICKS_LAKEBASE_BRANCH = 'databricks-lakebase-branch';
+    public const DATABRICKS_LAKEBASE_PROJECT = 'databricks-lakebase-project';
     public const DATABRICKS_MODEL_VERSION = 'databricks-model-version';
     public const DATABRICKS_NODE_TYPE = 'databricks-node-type';
     public const DATABRICKS_PIPELINE = 'databricks-pipeline';
@@ -157,7 +187,9 @@ final class ResourceTypeId
     public const DIRECTORY = 'directory';
     public const DIRECTORY_GROUP = 'directory-group';
     public const DIRECTORY_USER = 'directory-user';
+    public const DISTRIBUTION_CREDENTIAL = 'distribution-credential';
     public const DNS_RECORD = 'dns-record';
+    public const DNS_ZONE = 'dns-zone';
     public const DOCKER_CONTAINER = 'docker-container';
     public const DOCKER_IMAGE = 'docker-image';
     public const DOCKER_NETWORK = 'docker-network';
@@ -165,6 +197,7 @@ final class ResourceTypeId
     public const DOCUMENTDB_CLUSTER = 'documentdb-cluster';
     public const DOKS_CLUSTER = 'doks-cluster';
     public const DOMAIN = 'domain';
+    public const DPO_JOB = 'dpo-job';
     public const DROPLET = 'droplet';
     public const DURABLE_OBJECT_NAMESPACE = 'durable-object-namespace';
     public const DYNAMODB_TABLE = 'dynamodb-table';
@@ -176,12 +209,16 @@ final class ResourceTypeId
     public const EKS_CLUSTER = 'eks-cluster';
     public const ELASTIC_IP = 'elastic-ip';
     public const ELASTICACHE_CLUSTER = 'elasticache-cluster';
+    public const ELASTICACHE_SERVERLESS_CACHE = 'elasticache-serverless-cache';
     public const EMAIL_ROUTING_RULE = 'email-routing-rule';
     public const EMBED_JOB = 'embed-job';
     public const ENDPOINT = 'endpoint';
     public const EVAL = 'eval';
     public const EVALUATION = 'evaluation';
+    public const EVALUATION_JOB = 'evaluation-job';
+    public const EVALUATOR = 'evaluator';
     public const EVENTBRIDGE_RULE = 'eventbridge-rule';
+    public const FEATURE_FLAG = 'feature-flag';
     public const FILE = 'file';
     public const FILE_SEARCH_DOCUMENT = 'file-search-document';
     public const FILE_SEARCH_STORE = 'file-search-store';
@@ -191,6 +228,7 @@ final class ResourceTypeId
     public const FIRESTORE_DATABASE = 'firestore-database';
     public const FIREWALL = 'firewall';
     public const FIREWALL_RULE = 'firewall-rule';
+    public const FLEXIBLE_IP = 'flexible-ip';
     public const FLOATING_IP = 'floating-ip';
     public const FOLDER = 'folder';
     public const FORWARDING_RULE = 'forwarding-rule';
@@ -205,10 +243,13 @@ final class ResourceTypeId
     public const GEN_AI_MODEL_ROUTER = 'gen-ai-model-router';
     public const GKE_CLUSTER = 'gke-cluster';
     public const GLUE_DATABASE = 'glue-database';
+    public const GPU_CLUSTER = 'gpu-cluster';
     public const GROQ_BATCH = 'groq-batch';
     public const GROQ_FILE = 'groq-file';
     public const GROQ_FINE_TUNING = 'groq-fine-tuning';
     public const GROQ_MODEL = 'groq-model';
+    public const GROUP = 'group';
+    public const GUARDRAIL = 'guardrail';
     public const HARDWARE = 'hardware';
     public const HEALTH_CHECK = 'health-check';
     public const HEALTHCHECK = 'healthcheck';
@@ -224,6 +265,7 @@ final class ResourceTypeId
     public const INTERNET_GATEWAY = 'internet-gateway';
     public const INVITATION = 'invitation';
     public const INVITE = 'invite';
+    public const INVOICE = 'invoice';
     public const IP_ACCESS_RULE = 'ip-access-rule';
     public const IP_ALLOCATION = 'ip-allocation';
     public const JOB = 'job';
@@ -244,11 +286,16 @@ final class ResourceTypeId
     public const KAFKA_CONSUMER_GROUP = 'kafka-consumer-group';
     public const KAFKA_TOPIC = 'kafka-topic';
     public const KAPSULE_CLUSTER = 'kapsule-cluster';
+    public const KEY = 'key';
     public const KINESIS_STREAM = 'kinesis-stream';
     public const KMS_KEY = 'kms-key';
     public const KMS_KEY_RING = 'kms-key-ring';
+    public const KNOWLEDGE_BASE_DOCUMENT = 'knowledge-base-document';
     public const KV_NAMESPACE = 'kv-namespace';
     public const LAMBDA_FUNCTION = 'lambda-function';
+    public const LANGUAGE_ID_JOB = 'language-id-job';
+    public const LIVE_SESSION = 'live-session';
+    public const LLM_MODEL = 'llm-model';
     public const LOAD_BALANCER = 'load-balancer';
     public const LOG_SINK = 'log-sink';
     public const LOGPUSH_JOB = 'logpush-job';
@@ -262,16 +309,20 @@ final class ResourceTypeId
     public const MEMCACHED_INSTANCE = 'memcached-instance';
     public const MEMORYSTORE_MEMCACHED = 'memorystore-memcached';
     public const MEMORYSTORE_REDIS = 'memorystore-redis';
+    public const MEMORYSTORE_VALKEY = 'memorystore-valkey';
     public const MESSAGE_BATCH = 'message-batch';
+    public const MISTRAL_AGENT = 'mistral-agent';
     public const MISTRAL_API_KEY = 'mistral-api-key';
     public const MISTRAL_BATCH_JOB = 'mistral-batch-job';
     public const MISTRAL_FILE = 'mistral-file';
     public const MISTRAL_FINE_TUNING_JOB = 'mistral-fine-tuning-job';
+    public const MISTRAL_LIBRARY = 'mistral-library';
     public const MISTRAL_MODEL = 'mistral-model';
     public const MISTRAL_VOICE = 'mistral-voice';
     public const MODEL = 'model';
     public const MODEL_API_KEY = 'model-api-key';
     public const MODEL_ENDPOINT = 'model-endpoint';
+    public const MODEL_VERSION = 'model-version';
     public const MONGODB_DATABASE = 'mongodb-database';
     public const MQ_BROKER = 'mq-broker';
     public const MSK_CLUSTER = 'msk-cluster';
@@ -294,30 +345,45 @@ final class ResourceTypeId
     public const NEON_SNAPSHOT = 'neon-snapshot';
     public const NEPTUNE_CLUSTER = 'neptune-cluster';
     public const NETLIFY_BUILD_HOOK = 'netlify-build-hook';
+    public const NETLIFY_DATABASE = 'netlify-database';
     public const NETLIFY_DEPLOY = 'netlify-deploy';
     public const NETLIFY_DNS_RECORD = 'netlify-dns-record';
     public const NETLIFY_DNS_ZONE = 'netlify-dns-zone';
     public const NETLIFY_ENV_VAR = 'netlify-env-var';
     public const NETLIFY_FORM = 'netlify-form';
+    public const NETLIFY_NOTIFICATION_HOOK = 'netlify-notification-hook';
     public const NETLIFY_SITE = 'netlify-site';
+    public const NETLIFY_SNIPPET = 'netlify-snippet';
     public const NETWORK = 'network';
     public const NFS_SHARE = 'nfs-share';
     public const NOTIFICATION_POLICY = 'notification-policy';
     public const OBJECT_STORAGE_BUCKET = 'object-storage-bucket';
+    public const OCTAVIA_LOAD_BALANCER = 'octavia-load-balancer';
     public const OPENSEARCH_CLUSTER = 'opensearch-cluster';
     public const OPENSEARCH_DOMAIN = 'opensearch-domain';
     public const ORGANIZATION = 'organization';
+    public const ORGANIZATION_API_KEY = 'organization-api-key';
+    public const ORGANIZATION_DOMAIN = 'organization-domain';
     public const ORGANIZATION_MEMBERSHIP = 'organization-membership';
+    public const ORGANIZATION_ROLE = 'organization-role';
     public const ORGANIZATION_USER = 'organization-user';
     public const PAGE_RULE = 'page-rule';
+    public const PERMISSION = 'permission';
     public const PG_DATABASE = 'pg-database';
     public const PG_SCHEMA = 'pg-schema';
+    public const PHONE_NUMBER = 'phone-number';
     public const PLACEMENT_GROUP = 'placement-group';
+    public const POSTGRES_CLUSTER = 'postgres-cluster';
+    public const POSTURE_INTEGRATION = 'posture-integration';
     public const PREDICTION = 'prediction';
     public const PRIMARY_IP = 'primary-ip';
     public const PRIVATE_NETWORK = 'private-network';
+    public const PRODUCT_ENVIRONMENT = 'product-environment';
     public const PROJECT = 'project';
     public const PROJECT_API_KEY = 'project-api-key';
+    public const PROJECT_RATE_LIMIT = 'project-rate-limit';
+    public const PROJECT_SERVICE_ACCOUNT = 'project-service-account';
+    public const PROJECT_USER = 'project-user';
     public const PRONUNCIATION_DICT = 'pronunciation-dict';
     public const PRONUNCIATION_DICTIONARY = 'pronunciation-dictionary';
     public const PROVIDER = 'provider';
@@ -326,11 +392,15 @@ final class ResourceTypeId
     public const PS_DATABASE = 'ps-database';
     public const PS_DEPLOY_REQUEST = 'ps-deploy-request';
     public const PS_PASSWORD = 'ps-password';
+    public const PS_ROLE = 'ps-role';
+    public const PS_WEBHOOK = 'ps-webhook';
     public const PUBSUB_SUBSCRIPTION = 'pubsub-subscription';
     public const PUBSUB_TOPIC = 'pubsub-topic';
+    public const PURCHASE = 'purchase';
     public const QUEUE = 'queue';
     public const QUOTA = 'quota';
     public const R2_BUCKET = 'r2-bucket';
+    public const RATE_LIMIT = 'rate-limit';
     public const RATE_LIMIT_RULE = 'rate-limit-rule';
     public const RDB_INSTANCE = 'rdb-instance';
     public const RDS_CLUSTER = 'rds-cluster';
@@ -338,19 +408,29 @@ final class ResourceTypeId
     public const REDIRECT_RULE = 'redirect-rule';
     public const REDIS_INSTANCE = 'redis-instance';
     public const REDSHIFT_CLUSTER = 'redshift-cluster';
+    public const REGISTRY_NAMESPACE = 'registry-namespace';
+    public const REINFORCEMENT_FINE_TUNING_JOB = 'reinforcement-fine-tuning-job';
     public const RESERVED_IP = 'reserved-ip';
     public const ROLE = 'role';
     public const ROUTE_TABLE = 'route-table';
     public const ROUTE53_HEALTH_CHECK = 'route53-health-check';
     public const ROUTE53_HOSTED_ZONE = 'route53-hosted-zone';
     public const ROUTE53_RECORD_SET = 'route53-record-set';
+    public const ROUTER = 'router';
     public const S3_BUCKET = 's3-bucket';
     public const SAGEMAKER_ENDPOINT = 'sagemaker-endpoint';
     public const SECRET = 'secret';
     public const SECRET_MANAGER_SECRET = 'secret-manager-secret';
     public const SECRETS_MANAGER_SECRET = 'secrets-manager-secret';
+    public const SECRETS_STORE_SECRET = 'secrets-store-secret';
     public const SECURITY_GROUP = 'security-group';
+    public const SENTIMENT_JOB = 'sentiment-job';
     public const SERVER = 'server';
+    public const SERVERLESS_CONTAINER = 'serverless-container';
+    public const SERVERLESS_FUNCTION = 'serverless-function';
+    public const SERVICE = 'service';
+    public const SHARED_VOLUME = 'shared-volume';
+    public const SKILL = 'skill';
     public const SNAPSHOT = 'snapshot';
     public const SNS_TOPIC = 'sns-topic';
     public const SPACES_BUCKET = 'spaces-bucket';
@@ -358,6 +438,9 @@ final class ResourceTypeId
     public const SPANNER_DATABASE = 'spanner-database';
     public const SPANNER_INSTANCE = 'spanner-instance';
     public const SPECTRUM_APPLICATION = 'spectrum-application';
+    public const SPEND_ALERT = 'spend-alert';
+    public const SPEND_LIMIT = 'spend-limit';
+    public const SPENDING_LIMIT = 'spending-limit';
     public const SQS_QUEUE = 'sqs-queue';
     public const SSH_KEY = 'ssh-key';
     public const SSH_TARGET = 'ssh-target';
@@ -365,13 +448,17 @@ final class ResourceTypeId
     public const SSM_PARAMETER = 'ssm-parameter';
     public const STATIC_IP = 'static-ip';
     public const STEP_FUNCTION = 'step-function';
+    public const STORAGE_BOX = 'storage-box';
     public const SUBNET = 'subnet';
     public const SUPERVISED_FINE_TUNING_JOB = 'supervised-fine-tuning-job';
+    public const TAILNET = 'tailnet';
     public const TARGET_GROUP = 'target-group';
+    public const TOPIC_JOB = 'topic-job';
     public const TRAINING = 'training';
     public const TRANSCRIPT = 'transcript';
     public const TRANSCRIPTION = 'transcription';
     public const TRANSFORMATION = 'transformation';
+    public const TRIGGER = 'trigger';
     public const TUNED_MODEL = 'tuned-model';
     public const TUNNEL = 'tunnel';
     public const TURNSTILE_WIDGET = 'turnstile-widget';
@@ -382,32 +469,44 @@ final class ResourceTypeId
     public const TURSO_LOCATION = 'turso-location';
     public const TURSO_ORGANIZATION_INVITE = 'turso-organization-invite';
     public const TURSO_ORGANIZATION_MEMBER = 'turso-organization-member';
+    public const UPLOAD_MAPPING = 'upload-mapping';
     public const UPLOAD_PRESET = 'upload-preset';
+    public const UPTIME_CHECK = 'uptime-check';
     public const USER = 'user';
+    public const USER_INVITE = 'user-invite';
     public const UT_APP = 'ut-app';
     public const UT_FILE = 'ut-file';
     public const VECTOR_STORE = 'vector-store';
     public const VECTORIZE_INDEX = 'vectorize-index';
     public const VERCEL_DEPLOYMENT = 'vercel-deployment';
+    public const VERCEL_DNS_RECORD = 'vercel-dns-record';
     public const VERCEL_DOMAIN = 'vercel-domain';
     public const VERCEL_ENV_VAR = 'vercel-env-var';
     public const VERCEL_PROJECT = 'vercel-project';
     public const VERCEL_TEAM = 'vercel-team';
+    public const VERCEL_WEBHOOK = 'vercel-webhook';
     public const VERTEX_AI_ENDPOINT = 'vertex-ai-endpoint';
     public const VERTEX_GEMINI_MODEL = 'vertex-gemini-model';
     public const VOCABULARY = 'vocabulary';
     public const VOICE = 'voice';
+    public const VOICE_AGENT = 'voice-agent';
     public const VOLUME = 'volume';
+    public const VOLUME_SNAPSHOT = 'volume-snapshot';
     public const VPC = 'vpc';
+    public const VPC_NAT_GATEWAY = 'vpc-nat-gateway';
     public const VPC_NETWORK = 'vpc-network';
+    public const VPC_PEERING = 'vpc-peering';
     public const WAF_WEB_ACL = 'waf-web-acl';
     public const WAITING_ROOM = 'waiting-room';
+    public const WEBHOOK = 'webhook';
     public const WEBHOOK_ENDPOINT = 'webhook-endpoint';
+    public const WEBHOOK_SUBSCRIPTION = 'webhook-subscription';
     public const WORKER = 'worker';
     public const WORKER_ROUTE = 'worker-route';
     public const WORKERS_AI_MODEL = 'workers-ai-model';
     public const WORKFLOW = 'workflow';
     public const WORKSPACE = 'workspace';
+    public const WORKSPACE_MEMBER = 'workspace-member';
     public const ZONE = 'zone';
 
     /**
@@ -422,26 +521,39 @@ final class ResourceTypeId
             self::ACCESS_POLICY,
             self::ACCOUNT,
             self::ACM_CERTIFICATE,
+            self::ADMIN_API_KEY,
+            self::AGENT,
             self::AGENT_API_KEY,
+            self::AGENT_CONFIG,
+            self::AGENT_SESSION,
+            self::AGENT_VARIABLE,
             self::AI_GATEWAY,
             self::AI_SEARCH,
             self::ALB,
             self::ALERT_POLICY,
+            self::ALIGNMENT_JOB,
             self::ALLOYDB_CLUSTER,
             self::ALLOYDB_INSTANCE,
+            self::ANALYTICS_ENGINE_DATASET,
             self::API_GATEWAY,
             self::API_KEY,
             self::APP,
             self::APP_ENGINE_SERVICE,
+            self::APP_SECRET,
             self::APPRUNNER_SERVICE,
             self::ARTIFACT_REGISTRY_REPO,
             self::AUDIT_EVENT,
             self::AUTO_SCALING_GROUP,
+            self::AUTOSCALE_POOL,
+            self::AZURE_AI_SERVICES,
             self::AZURE_AKS_CLUSTER,
             self::AZURE_APP_GATEWAY,
             self::AZURE_APP_REGISTRATION,
             self::AZURE_APP_SERVICE,
             self::AZURE_APP_SERVICE_PLAN,
+            self::AZURE_CONTAINER_APP,
+            self::AZURE_CONTAINER_APP_ENVIRONMENT,
+            self::AZURE_CONTAINER_APP_JOB,
             self::AZURE_CONTAINER_INSTANCE,
             self::AZURE_CONTAINER_REGISTRY,
             self::AZURE_COSMOS_DB,
@@ -454,6 +566,7 @@ final class ResourceTypeId
             self::AZURE_LOAD_BALANCER,
             self::AZURE_LOG_ANALYTICS,
             self::AZURE_MANAGED_IDENTITY,
+            self::AZURE_MANAGED_REDIS,
             self::AZURE_MYSQL_FLEXIBLE,
             self::AZURE_NAT_GATEWAY,
             self::AZURE_NSG,
@@ -472,6 +585,11 @@ final class ResourceTypeId
             self::BACKEND_SERVICE,
             self::BACKUP_VAULT,
             self::BALANCE,
+            self::BASIN_CATALOG,
+            self::BASIN_PIPELINE,
+            self::BASIN_SINK,
+            self::BASIN_STREAM,
+            self::BASIN_TABLE,
             self::BATCH,
             self::BATCH_INFERENCE_JOB,
             self::BATCH_JOB_QUEUE,
@@ -480,10 +598,17 @@ final class ResourceTypeId
             self::BIGQUERY_TABLE,
             self::BIGTABLE_INSTANCE,
             self::BLOCK_VOLUME,
+            self::BYOK_CREDENTIAL,
             self::CACHE_RULE,
             self::CACHED_CONTENT,
+            self::CDN_ENDPOINT,
             self::CERTIFICATE,
+            self::CH_API_KEY,
+            self::CH_BACKUP,
+            self::CH_CLICKPIPE,
             self::CH_DATABASE,
+            self::CH_MEMBER,
+            self::CH_POSTGRES,
             self::CH_SERVICE,
             self::CLOUD_ARMOR_POLICY,
             self::CLOUD_BUILD_TRIGGER,
@@ -493,6 +618,7 @@ final class ResourceTypeId
             self::CLOUD_FUNCTION,
             self::CLOUD_NAT,
             self::CLOUD_ROUTER,
+            self::CLOUD_RUN_JOB,
             self::CLOUD_RUN_SERVICE,
             self::CLOUD_SCHEDULER_JOB,
             self::CLOUD_TASKS_QUEUE,
@@ -506,6 +632,7 @@ final class ResourceTypeId
             self::CODEPIPELINE_PIPELINE,
             self::COGNITO_USER_POOL,
             self::COLLECTION,
+            self::COLLECTION_DOCUMENT,
             self::COMPOSER_ENVIRONMENT,
             self::CONNECTION,
             self::CONTAINER,
@@ -520,6 +647,8 @@ final class ResourceTypeId
             self::DATABRICKS_DASHBOARD,
             self::DATABRICKS_FUNCTION,
             self::DATABRICKS_JOB,
+            self::DATABRICKS_LAKEBASE_BRANCH,
+            self::DATABRICKS_LAKEBASE_PROJECT,
             self::DATABRICKS_MODEL_VERSION,
             self::DATABRICKS_NODE_TYPE,
             self::DATABRICKS_PIPELINE,
@@ -546,7 +675,9 @@ final class ResourceTypeId
             self::DIRECTORY,
             self::DIRECTORY_GROUP,
             self::DIRECTORY_USER,
+            self::DISTRIBUTION_CREDENTIAL,
             self::DNS_RECORD,
+            self::DNS_ZONE,
             self::DOCKER_CONTAINER,
             self::DOCKER_IMAGE,
             self::DOCKER_NETWORK,
@@ -554,6 +685,7 @@ final class ResourceTypeId
             self::DOCUMENTDB_CLUSTER,
             self::DOKS_CLUSTER,
             self::DOMAIN,
+            self::DPO_JOB,
             self::DROPLET,
             self::DURABLE_OBJECT_NAMESPACE,
             self::DYNAMODB_TABLE,
@@ -565,12 +697,16 @@ final class ResourceTypeId
             self::EKS_CLUSTER,
             self::ELASTIC_IP,
             self::ELASTICACHE_CLUSTER,
+            self::ELASTICACHE_SERVERLESS_CACHE,
             self::EMAIL_ROUTING_RULE,
             self::EMBED_JOB,
             self::ENDPOINT,
             self::EVAL,
             self::EVALUATION,
+            self::EVALUATION_JOB,
+            self::EVALUATOR,
             self::EVENTBRIDGE_RULE,
+            self::FEATURE_FLAG,
             self::FILE,
             self::FILE_SEARCH_DOCUMENT,
             self::FILE_SEARCH_STORE,
@@ -580,6 +716,7 @@ final class ResourceTypeId
             self::FIRESTORE_DATABASE,
             self::FIREWALL,
             self::FIREWALL_RULE,
+            self::FLEXIBLE_IP,
             self::FLOATING_IP,
             self::FOLDER,
             self::FORWARDING_RULE,
@@ -594,10 +731,13 @@ final class ResourceTypeId
             self::GEN_AI_MODEL_ROUTER,
             self::GKE_CLUSTER,
             self::GLUE_DATABASE,
+            self::GPU_CLUSTER,
             self::GROQ_BATCH,
             self::GROQ_FILE,
             self::GROQ_FINE_TUNING,
             self::GROQ_MODEL,
+            self::GROUP,
+            self::GUARDRAIL,
             self::HARDWARE,
             self::HEALTH_CHECK,
             self::HEALTHCHECK,
@@ -613,6 +753,7 @@ final class ResourceTypeId
             self::INTERNET_GATEWAY,
             self::INVITATION,
             self::INVITE,
+            self::INVOICE,
             self::IP_ACCESS_RULE,
             self::IP_ALLOCATION,
             self::JOB,
@@ -633,11 +774,16 @@ final class ResourceTypeId
             self::KAFKA_CONSUMER_GROUP,
             self::KAFKA_TOPIC,
             self::KAPSULE_CLUSTER,
+            self::KEY,
             self::KINESIS_STREAM,
             self::KMS_KEY,
             self::KMS_KEY_RING,
+            self::KNOWLEDGE_BASE_DOCUMENT,
             self::KV_NAMESPACE,
             self::LAMBDA_FUNCTION,
+            self::LANGUAGE_ID_JOB,
+            self::LIVE_SESSION,
+            self::LLM_MODEL,
             self::LOAD_BALANCER,
             self::LOG_SINK,
             self::LOGPUSH_JOB,
@@ -651,16 +797,20 @@ final class ResourceTypeId
             self::MEMCACHED_INSTANCE,
             self::MEMORYSTORE_MEMCACHED,
             self::MEMORYSTORE_REDIS,
+            self::MEMORYSTORE_VALKEY,
             self::MESSAGE_BATCH,
+            self::MISTRAL_AGENT,
             self::MISTRAL_API_KEY,
             self::MISTRAL_BATCH_JOB,
             self::MISTRAL_FILE,
             self::MISTRAL_FINE_TUNING_JOB,
+            self::MISTRAL_LIBRARY,
             self::MISTRAL_MODEL,
             self::MISTRAL_VOICE,
             self::MODEL,
             self::MODEL_API_KEY,
             self::MODEL_ENDPOINT,
+            self::MODEL_VERSION,
             self::MONGODB_DATABASE,
             self::MQ_BROKER,
             self::MSK_CLUSTER,
@@ -683,30 +833,45 @@ final class ResourceTypeId
             self::NEON_SNAPSHOT,
             self::NEPTUNE_CLUSTER,
             self::NETLIFY_BUILD_HOOK,
+            self::NETLIFY_DATABASE,
             self::NETLIFY_DEPLOY,
             self::NETLIFY_DNS_RECORD,
             self::NETLIFY_DNS_ZONE,
             self::NETLIFY_ENV_VAR,
             self::NETLIFY_FORM,
+            self::NETLIFY_NOTIFICATION_HOOK,
             self::NETLIFY_SITE,
+            self::NETLIFY_SNIPPET,
             self::NETWORK,
             self::NFS_SHARE,
             self::NOTIFICATION_POLICY,
             self::OBJECT_STORAGE_BUCKET,
+            self::OCTAVIA_LOAD_BALANCER,
             self::OPENSEARCH_CLUSTER,
             self::OPENSEARCH_DOMAIN,
             self::ORGANIZATION,
+            self::ORGANIZATION_API_KEY,
+            self::ORGANIZATION_DOMAIN,
             self::ORGANIZATION_MEMBERSHIP,
+            self::ORGANIZATION_ROLE,
             self::ORGANIZATION_USER,
             self::PAGE_RULE,
+            self::PERMISSION,
             self::PG_DATABASE,
             self::PG_SCHEMA,
+            self::PHONE_NUMBER,
             self::PLACEMENT_GROUP,
+            self::POSTGRES_CLUSTER,
+            self::POSTURE_INTEGRATION,
             self::PREDICTION,
             self::PRIMARY_IP,
             self::PRIVATE_NETWORK,
+            self::PRODUCT_ENVIRONMENT,
             self::PROJECT,
             self::PROJECT_API_KEY,
+            self::PROJECT_RATE_LIMIT,
+            self::PROJECT_SERVICE_ACCOUNT,
+            self::PROJECT_USER,
             self::PRONUNCIATION_DICT,
             self::PRONUNCIATION_DICTIONARY,
             self::PROVIDER,
@@ -715,11 +880,15 @@ final class ResourceTypeId
             self::PS_DATABASE,
             self::PS_DEPLOY_REQUEST,
             self::PS_PASSWORD,
+            self::PS_ROLE,
+            self::PS_WEBHOOK,
             self::PUBSUB_SUBSCRIPTION,
             self::PUBSUB_TOPIC,
+            self::PURCHASE,
             self::QUEUE,
             self::QUOTA,
             self::R2_BUCKET,
+            self::RATE_LIMIT,
             self::RATE_LIMIT_RULE,
             self::RDB_INSTANCE,
             self::RDS_CLUSTER,
@@ -727,19 +896,29 @@ final class ResourceTypeId
             self::REDIRECT_RULE,
             self::REDIS_INSTANCE,
             self::REDSHIFT_CLUSTER,
+            self::REGISTRY_NAMESPACE,
+            self::REINFORCEMENT_FINE_TUNING_JOB,
             self::RESERVED_IP,
             self::ROLE,
             self::ROUTE_TABLE,
             self::ROUTE53_HEALTH_CHECK,
             self::ROUTE53_HOSTED_ZONE,
             self::ROUTE53_RECORD_SET,
+            self::ROUTER,
             self::S3_BUCKET,
             self::SAGEMAKER_ENDPOINT,
             self::SECRET,
             self::SECRET_MANAGER_SECRET,
             self::SECRETS_MANAGER_SECRET,
+            self::SECRETS_STORE_SECRET,
             self::SECURITY_GROUP,
+            self::SENTIMENT_JOB,
             self::SERVER,
+            self::SERVERLESS_CONTAINER,
+            self::SERVERLESS_FUNCTION,
+            self::SERVICE,
+            self::SHARED_VOLUME,
+            self::SKILL,
             self::SNAPSHOT,
             self::SNS_TOPIC,
             self::SPACES_BUCKET,
@@ -747,6 +926,9 @@ final class ResourceTypeId
             self::SPANNER_DATABASE,
             self::SPANNER_INSTANCE,
             self::SPECTRUM_APPLICATION,
+            self::SPEND_ALERT,
+            self::SPEND_LIMIT,
+            self::SPENDING_LIMIT,
             self::SQS_QUEUE,
             self::SSH_KEY,
             self::SSH_TARGET,
@@ -754,13 +936,17 @@ final class ResourceTypeId
             self::SSM_PARAMETER,
             self::STATIC_IP,
             self::STEP_FUNCTION,
+            self::STORAGE_BOX,
             self::SUBNET,
             self::SUPERVISED_FINE_TUNING_JOB,
+            self::TAILNET,
             self::TARGET_GROUP,
+            self::TOPIC_JOB,
             self::TRAINING,
             self::TRANSCRIPT,
             self::TRANSCRIPTION,
             self::TRANSFORMATION,
+            self::TRIGGER,
             self::TUNED_MODEL,
             self::TUNNEL,
             self::TURNSTILE_WIDGET,
@@ -771,32 +957,44 @@ final class ResourceTypeId
             self::TURSO_LOCATION,
             self::TURSO_ORGANIZATION_INVITE,
             self::TURSO_ORGANIZATION_MEMBER,
+            self::UPLOAD_MAPPING,
             self::UPLOAD_PRESET,
+            self::UPTIME_CHECK,
             self::USER,
+            self::USER_INVITE,
             self::UT_APP,
             self::UT_FILE,
             self::VECTOR_STORE,
             self::VECTORIZE_INDEX,
             self::VERCEL_DEPLOYMENT,
+            self::VERCEL_DNS_RECORD,
             self::VERCEL_DOMAIN,
             self::VERCEL_ENV_VAR,
             self::VERCEL_PROJECT,
             self::VERCEL_TEAM,
+            self::VERCEL_WEBHOOK,
             self::VERTEX_AI_ENDPOINT,
             self::VERTEX_GEMINI_MODEL,
             self::VOCABULARY,
             self::VOICE,
+            self::VOICE_AGENT,
             self::VOLUME,
+            self::VOLUME_SNAPSHOT,
             self::VPC,
+            self::VPC_NAT_GATEWAY,
             self::VPC_NETWORK,
+            self::VPC_PEERING,
             self::WAF_WEB_ACL,
             self::WAITING_ROOM,
+            self::WEBHOOK,
             self::WEBHOOK_ENDPOINT,
+            self::WEBHOOK_SUBSCRIPTION,
             self::WORKER,
             self::WORKER_ROUTE,
             self::WORKERS_AI_MODEL,
             self::WORKFLOW,
             self::WORKSPACE,
+            self::WORKSPACE_MEMBER,
             self::ZONE,
         ];
     }
