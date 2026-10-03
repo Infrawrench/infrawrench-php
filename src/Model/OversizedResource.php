@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.41.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.42.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.41.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.42.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,8 @@ final class OversizedResource implements \JsonSerializable
      * @param float $projectedCpuP95 Projected p95 CPU on the recommended size, for the confirm dialog.
      * @param string $currency ISO 4217 code the size prices are quoted in.
      * @param float|null $monthlySaving Current minus recommended monthly price; null when either side is unpriced.
+     * @param float|null $currentMonthlyKgCo2e Estimated monthly kg CO2e of the current size where it runs; null when the region has no published grid figure. See the Carbon tag for the method.
+     * @param float|null $monthlyKgCo2eSaving Estimated monthly kg CO2e the resize would save; null as above.
      * @param string|null $resizeNote Plugin-authored caveat (e.g. the provider requires the machine stopped).
      */
     public function __construct(
@@ -53,6 +55,8 @@ final class OversizedResource implements \JsonSerializable
         public readonly float $projectedCpuP95,
         public readonly string $currency,
         public readonly ?float $monthlySaving,
+        public readonly ?float $currentMonthlyKgCo2e,
+        public readonly ?float $monthlyKgCo2eSaving,
         public readonly ?string $resizeNote,
         public readonly ?string $lastSyncedAt,
     ) {
@@ -82,6 +86,8 @@ final class OversizedResource implements \JsonSerializable
             projectedCpuP95: Coerce::toFloat($data['projectedCpuP95'] ?? null),
             currency: Coerce::toString($data['currency'] ?? null),
             monthlySaving: Coerce::toFloatOrNull($data['monthlySaving'] ?? null),
+            currentMonthlyKgCo2e: Coerce::toFloatOrNull($data['currentMonthlyKgCo2e'] ?? null),
+            monthlyKgCo2eSaving: Coerce::toFloatOrNull($data['monthlyKgCo2eSaving'] ?? null),
             resizeNote: Coerce::toStringOrNull($data['resizeNote'] ?? null),
             lastSyncedAt: Coerce::toStringOrNull($data['lastSyncedAt'] ?? null),
         );
@@ -111,6 +117,8 @@ final class OversizedResource implements \JsonSerializable
             'projectedCpuP95' => $this->projectedCpuP95,
             'currency' => $this->currency,
             'monthlySaving' => $this->monthlySaving,
+            'currentMonthlyKgCo2e' => $this->currentMonthlyKgCo2e,
+            'monthlyKgCo2eSaving' => $this->monthlyKgCo2eSaving,
             'resizeNote' => $this->resizeNote,
             'lastSyncedAt' => $this->lastSyncedAt,
         ];

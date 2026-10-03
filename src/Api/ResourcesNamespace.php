@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.41.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.42.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.41.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.42.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -123,7 +123,7 @@ final class ResourcesNamespace extends ApiNamespace
      * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return array{estimate: array<string, mixed>|null}
+     * @return array{estimate: array<string, mixed>|null, carbon: array<string, mixed>|null}
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.41.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.42.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.41.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.42.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -39,6 +39,7 @@ use Infrawrench\Sdk\Api\BlastRadiusNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
 use Infrawrench\Sdk\Api\BusinessMetricsNamespace;
 use Infrawrench\Sdk\Api\CalendarNamespace;
+use Infrawrench\Sdk\Api\CarbonNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\ChatNamespace;
@@ -202,6 +203,9 @@ final class APIV1Client
 
     /** `$client->calendar` */
     public readonly CalendarNamespace $calendar;
+
+    /** `$client->carbon` */
+    public readonly CarbonNamespace $carbon;
 
     /** `$client->changeFreezes` */
     public readonly ChangeFreezesNamespace $changeFreezes;
@@ -476,6 +480,7 @@ final class APIV1Client
         $this->budgets = new BudgetsNamespace($this->transport);
         $this->businessMetrics = new BusinessMetricsNamespace($this->transport);
         $this->calendar = new CalendarNamespace($this->transport);
+        $this->carbon = new CarbonNamespace($this->transport);
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
         $this->chat = new ChatNamespace($this->transport);
