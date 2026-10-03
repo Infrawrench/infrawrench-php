@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.40.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.40.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -153,6 +153,7 @@ final class ResourceTypeId
     public const DEDICATED_INFERENCE = 'dedicated-inference';
     public const DEPLOYED_MODEL = 'deployed-model';
     public const DEPLOYMENT = 'deployment';
+    public const DEVICE = 'device';
     public const DIRECTORY = 'directory';
     public const DIRECTORY_GROUP = 'directory-group';
     public const DIRECTORY_USER = 'directory-user';
@@ -541,6 +542,7 @@ final class ResourceTypeId
             self::DEDICATED_INFERENCE,
             self::DEPLOYED_MODEL,
             self::DEPLOYMENT,
+            self::DEVICE,
             self::DIRECTORY,
             self::DIRECTORY_GROUP,
             self::DIRECTORY_USER,

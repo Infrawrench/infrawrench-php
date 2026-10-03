@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.40.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.40.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class ResourceDetail implements \JsonSerializable
      * @param list<CredentialFormat> $credentialFormats
      * @param array<string, mixed> $resourceFields
      * @param bool $schedulable The type declares lifecycle start/stop actions, so this resource can carry a sleep/wake schedule.
+     * @param bool|null $supportsSshInstall Whether the generic SSH service installer can target this resource.
      */
     public function __construct(
         public readonly array $detailSchema,
@@ -71,6 +72,7 @@ final class ResourceDetail implements \JsonSerializable
         public readonly bool $supportsMetrics,
         public readonly bool $schedulable,
         public readonly ?string $kvDriverName = null,
+        public readonly ?bool $supportsSshInstall = null,
         public readonly ?string $sshPrivateHost = null,
     ) {
     }
@@ -120,6 +122,7 @@ final class ResourceDetail implements \JsonSerializable
             supportsMetrics: Coerce::toBool($data['supportsMetrics'] ?? null),
             schedulable: Coerce::toBool($data['schedulable'] ?? null),
             kvDriverName: Coerce::toStringOrNull($data['kvDriverName'] ?? null),
+            supportsSshInstall: Coerce::toBoolOrNull($data['supportsSshInstall'] ?? null),
             sshPrivateHost: Coerce::toStringOrNull($data['sshPrivateHost'] ?? null),
         );
     }
@@ -171,6 +174,9 @@ final class ResourceDetail implements \JsonSerializable
         ];
         if ($this->kvDriverName !== null) {
             $payload['kvDriverName'] = $this->kvDriverName;
+        }
+        if ($this->supportsSshInstall !== null) {
+            $payload['supportsSshInstall'] = $this->supportsSshInstall;
         }
         if ($this->sshPrivateHost !== null) {
             $payload['sshPrivateHost'] = $this->sshPrivateHost;

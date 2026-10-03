@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.39.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.40.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.39.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.40.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -71,6 +71,7 @@ final class PluginId
     public const SCALEWAY = 'scaleway';
     public const SPEECHMATICS = 'speechmatics';
     public const SSH = 'ssh';
+    public const TAILSCALE = 'tailscale';
     public const TOGETHER = 'together';
     public const TURSO = 'turso';
     public const UPLOADTHING = 'uploadthing';
@@ -129,6 +130,7 @@ final class PluginId
             self::SCALEWAY,
             self::SPEECHMATICS,
             self::SSH,
+            self::TAILSCALE,
             self::TOGETHER,
             self::TURSO,
             self::UPLOADTHING,
