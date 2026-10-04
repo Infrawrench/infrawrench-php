@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -60,6 +60,7 @@ use Infrawrench\Sdk\Api\CredentialHygieneNamespace;
 use Infrawrench\Sdk\Api\CreditsNamespace;
 use Infrawrench\Sdk\Api\CurrencyNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
+use Infrawrench\Sdk\Api\DashboardNotificationsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DependencyGraphNamespace;
 use Infrawrench\Sdk\Api\DeploymentsNamespace;
@@ -268,6 +269,9 @@ final class APIV1Client
 
     /** `$client->customGraphs` */
     public readonly CustomGraphsNamespace $customGraphs;
+
+    /** `$client->dashboardNotifications` */
+    public readonly DashboardNotificationsNamespace $dashboardNotifications;
 
     /** `$client->dashboards` */
     public readonly DashboardsNamespace $dashboards;
@@ -509,6 +513,7 @@ final class APIV1Client
         $this->credits = new CreditsNamespace($this->transport);
         $this->currency = new CurrencyNamespace($this->transport);
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
+        $this->dashboardNotifications = new DashboardNotificationsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
         $this->dependencyGraph = new DependencyGraphNamespace($this->transport);
         $this->deployments = new DeploymentsNamespace($this->transport);

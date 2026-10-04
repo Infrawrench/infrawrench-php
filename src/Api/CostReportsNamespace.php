@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -150,6 +150,40 @@ final class CostReportsNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): CostReport => CostReport::fromArray(Coerce::toArray($item)));
+    }
+
+    /**
+     * Export a saved cost report as a PDF
+     *
+     * The report's chart and totals table for its saved window, rendered server-side and converted
+     * to the org's display currency where configured.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/cost-reports/{id}/pdf
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param string|null $tz IANA zone the document's generated-at line is written in, e.g. `Europe/Berlin`. UTC when absent or unknown.
+     * @return string Raw response bytes.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function pdf(string $id, ?string $orgId = null, ?string $tz = null, ?RequestOptions $options = null): string
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/cost-reports/{id}/pdf',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+                query: ['tz' => $tz],
+                accept: 'binary',
+            ),
+            $options,
+        );
+
+        return Coerce::toString($data);
     }
 
     /**

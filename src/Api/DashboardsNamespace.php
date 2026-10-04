@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -41,6 +41,9 @@ final class DashboardsNamespace extends ApiNamespace
     /** `$client->dashboards->default` */
     public readonly DashboardsDefaultNamespace $default;
 
+    /** `$client->dashboards->notifications` */
+    public readonly DashboardsNotificationsNamespace $notifications;
+
     /** `$client->dashboards->pin` */
     public readonly DashboardsPinNamespace $pin;
 
@@ -51,6 +54,7 @@ final class DashboardsNamespace extends ApiNamespace
     {
         parent::__construct($transport);
         $this->default = new DashboardsDefaultNamespace($this->transport);
+        $this->notifications = new DashboardsNotificationsNamespace($this->transport);
         $this->pin = new DashboardsPinNamespace($this->transport);
         $this->widgets = new DashboardsWidgetsNamespace($this->transport);
     }
@@ -165,6 +169,43 @@ final class DashboardsNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): Dashboard => Dashboard::fromArray(Coerce::toArray($item)));
+    }
+
+    /**
+     * Export a dashboard as a PDF
+     *
+     * Renders every card server-side: cost graphs and saved reports (chart plus a totals table,
+     * converted to the org's display currency where configured), budgets (spend against the
+     * amount, forecast and thresholds), custom graphs (including their KPI and table forms) and
+     * pinned resources and workflows. Cost cards need `costs:read` as well and are replaced by a
+     * note without it. A card that fails renders its error in place.
+     *
+     * _Requires permission: `dashboards:read`._
+     *
+     * GET /api/org/{orgId}/dashboards/{id}/pdf
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param string|null $tz IANA zone the document's generated-at line is written in, e.g. `Europe/Berlin`. UTC when absent or unknown.
+     * @return string Raw response bytes.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function pdf(string $id, ?string $orgId = null, ?string $tz = null, ?RequestOptions $options = null): string
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/dashboards/{id}/pdf',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+                query: ['tz' => $tz],
+                accept: 'binary',
+            ),
+            $options,
+        );
+
+        return Coerce::toString($data);
     }
 
     /**

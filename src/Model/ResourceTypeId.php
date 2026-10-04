@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class ResourceTypeId
     public const ACCESS_APPLICATION = 'access-application';
     public const ACCESS_KEY = 'access-key';
     public const ACCESS_POLICY = 'access-policy';
+    public const ACCESS_POLICY_TOKEN = 'access-policy-token';
     public const ACCOUNT = 'account';
     public const ACM_CERTIFICATE = 'acm-certificate';
     public const ACTIONS_CACHE = 'actions-cache';
@@ -47,6 +48,7 @@ final class ResourceTypeId
     public const ALERT = 'alert';
     public const ALERT_CONFIGURATION = 'alert-configuration';
     public const ALERT_POLICY = 'alert-policy';
+    public const ALERT_RULE = 'alert-rule';
     public const ALIGNMENT_JOB = 'alignment-job';
     public const ALLOYDB_CLUSTER = 'alloydb-cluster';
     public const ALLOYDB_INSTANCE = 'alloydb-instance';
@@ -171,6 +173,7 @@ final class ResourceTypeId
     public const CONNECTION = 'connection';
     public const CONNECTIVITY_RULE = 'connectivity-rule';
     public const CONNECTOR = 'connector';
+    public const CONTACT_POINT = 'contact-point';
     public const CONTAINER = 'container';
     public const CONTAINER_REGISTRY = 'container-registry';
     public const CONTEXT = 'context';
@@ -211,6 +214,7 @@ final class ResourceTypeId
     public const DATABRICKS_WORKSPACE_OBJECT = 'databricks-workspace-object';
     public const DATAFLOW_JOB = 'dataflow-job';
     public const DATASET = 'dataset';
+    public const DATASOURCE = 'datasource';
     public const DB_SUBNET_GROUP = 'db-subnet-group';
     public const DB_USER = 'db-user';
     public const DEDICATED_INFERENCE = 'dedicated-inference';
@@ -562,6 +566,8 @@ final class ResourceTypeId
     public const SSH_TARGET = 'ssh-target';
     public const SSL_CERTIFICATE = 'ssl-certificate';
     public const SSM_PARAMETER = 'ssm-parameter';
+    public const STACK = 'stack';
+    public const STACK_PLUGIN = 'stack-plugin';
     public const STACKSCRIPT = 'stackscript';
     public const STATIC_IP = 'static-ip';
     public const STEP_FUNCTION = 'step-function';
@@ -569,6 +575,7 @@ final class ResourceTypeId
     public const SUBACCOUNT = 'subaccount';
     public const SUBNET = 'subnet';
     public const SUPERVISED_FINE_TUNING_JOB = 'supervised-fine-tuning-job';
+    public const SYNTHETIC_CHECK = 'synthetic-check';
     public const TAILNET = 'tailnet';
     public const TARGET_GROUP = 'target-group';
     public const TCO_POLICY = 'tco-policy';
@@ -652,6 +659,7 @@ final class ResourceTypeId
             self::ACCESS_APPLICATION,
             self::ACCESS_KEY,
             self::ACCESS_POLICY,
+            self::ACCESS_POLICY_TOKEN,
             self::ACCOUNT,
             self::ACM_CERTIFICATE,
             self::ACTIONS_CACHE,
@@ -667,6 +675,7 @@ final class ResourceTypeId
             self::ALERT,
             self::ALERT_CONFIGURATION,
             self::ALERT_POLICY,
+            self::ALERT_RULE,
             self::ALIGNMENT_JOB,
             self::ALLOYDB_CLUSTER,
             self::ALLOYDB_INSTANCE,
@@ -791,6 +800,7 @@ final class ResourceTypeId
             self::CONNECTION,
             self::CONNECTIVITY_RULE,
             self::CONNECTOR,
+            self::CONTACT_POINT,
             self::CONTAINER,
             self::CONTAINER_REGISTRY,
             self::CONTEXT,
@@ -831,6 +841,7 @@ final class ResourceTypeId
             self::DATABRICKS_WORKSPACE_OBJECT,
             self::DATAFLOW_JOB,
             self::DATASET,
+            self::DATASOURCE,
             self::DB_SUBNET_GROUP,
             self::DB_USER,
             self::DEDICATED_INFERENCE,
@@ -1182,6 +1193,8 @@ final class ResourceTypeId
             self::SSH_TARGET,
             self::SSL_CERTIFICATE,
             self::SSM_PARAMETER,
+            self::STACK,
+            self::STACK_PLUGIN,
             self::STACKSCRIPT,
             self::STATIC_IP,
             self::STEP_FUNCTION,
@@ -1189,6 +1202,7 @@ final class ResourceTypeId
             self::SUBACCOUNT,
             self::SUBNET,
             self::SUPERVISED_FINE_TUNING_JOB,
+            self::SYNTHETIC_CHECK,
             self::TAILNET,
             self::TARGET_GROUP,
             self::TCO_POLICY,

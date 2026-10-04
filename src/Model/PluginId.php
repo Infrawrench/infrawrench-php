@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -59,6 +59,7 @@ final class PluginId
     public const GEMINI = 'gemini';
     public const GITHUB = 'github';
     public const GLADIA = 'gladia';
+    public const GRAFANA_CLOUD = 'grafana-cloud';
     public const GROQ = 'groq';
     public const HETZNER = 'hetzner';
     public const KAFKA = 'kafka';
@@ -138,6 +139,7 @@ final class PluginId
             self::GEMINI,
             self::GITHUB,
             self::GLADIA,
+            self::GRAFANA_CLOUD,
             self::GROQ,
             self::HETZNER,
             self::KAFKA,
