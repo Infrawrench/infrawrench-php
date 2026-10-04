@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.46.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.46.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -74,6 +74,7 @@ final class PluginId
     public const MYSQL = 'mysql';
     public const NEON = 'neon';
     public const NETLIFY = 'netlify';
+    public const NEWRELIC = 'newrelic';
     public const OPENAI = 'openai';
     public const OPENROUTER = 'openrouter';
     public const OPENSEARCH = 'opensearch';
@@ -154,6 +155,7 @@ final class PluginId
             self::MYSQL,
             self::NEON,
             self::NETLIFY,
+            self::NEWRELIC,
             self::OPENAI,
             self::OPENROUTER,
             self::OPENSEARCH,

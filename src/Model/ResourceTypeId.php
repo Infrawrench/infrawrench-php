@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.45.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.46.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.45.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.46.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,6 +46,7 @@ final class ResourceTypeId
     public const AI_SEARCH = 'ai-search';
     public const ALB = 'alb';
     public const ALERT = 'alert';
+    public const ALERT_CONDITION = 'alert-condition';
     public const ALERT_CONFIGURATION = 'alert-configuration';
     public const ALERT_POLICY = 'alert-policy';
     public const ALERT_RULE = 'alert-rule';
@@ -56,6 +57,7 @@ final class ResourceTypeId
     public const API_GATEWAY = 'api-gateway';
     public const API_KEY = 'api-key';
     public const API_TOKEN = 'api-token';
+    public const APM_APPLICATION = 'apm-application';
     public const APP = 'app';
     public const APP_ENGINE_SERVICE = 'app-engine-service';
     public const APP_SECRET = 'app-secret';
@@ -125,6 +127,7 @@ final class ResourceTypeId
     public const BILLING_GROUP = 'billing-group';
     public const BLOCK_VOLUME = 'block-volume';
     public const BOOT_VOLUME = 'boot-volume';
+    public const BROWSER_APPLICATION = 'browser-application';
     public const BUCKET = 'bucket';
     public const BUDGET = 'budget';
     public const BUDGET_ALERT_RULE = 'budget-alert-rule';
@@ -310,6 +313,7 @@ final class ResourceTypeId
     public const HEALTH_CHECK = 'health-check';
     public const HEALTHCHECK = 'healthcheck';
     public const HISTORY_ITEM = 'history-item';
+    public const HOST = 'host';
     public const HOSTED_RUNNER = 'hosted-runner';
     public const HYPERDRIVE = 'hyperdrive';
     public const IAM_ROLE = 'iam-role';
@@ -576,6 +580,7 @@ final class ResourceTypeId
     public const SUBNET = 'subnet';
     public const SUPERVISED_FINE_TUNING_JOB = 'supervised-fine-tuning-job';
     public const SYNTHETIC_CHECK = 'synthetic-check';
+    public const SYNTHETIC_MONITOR = 'synthetic-monitor';
     public const TAILNET = 'tailnet';
     public const TARGET_GROUP = 'target-group';
     public const TCO_POLICY = 'tco-policy';
@@ -644,6 +649,7 @@ final class ResourceTypeId
     public const WORKER_ROUTE = 'worker-route';
     public const WORKERS_AI_MODEL = 'workers-ai-model';
     public const WORKFLOW = 'workflow';
+    public const WORKLOAD = 'workload';
     public const WORKSPACE = 'workspace';
     public const WORKSPACE_MEMBER = 'workspace-member';
     public const ZONE = 'zone';
@@ -673,6 +679,7 @@ final class ResourceTypeId
             self::AI_SEARCH,
             self::ALB,
             self::ALERT,
+            self::ALERT_CONDITION,
             self::ALERT_CONFIGURATION,
             self::ALERT_POLICY,
             self::ALERT_RULE,
@@ -683,6 +690,7 @@ final class ResourceTypeId
             self::API_GATEWAY,
             self::API_KEY,
             self::API_TOKEN,
+            self::APM_APPLICATION,
             self::APP,
             self::APP_ENGINE_SERVICE,
             self::APP_SECRET,
@@ -752,6 +760,7 @@ final class ResourceTypeId
             self::BILLING_GROUP,
             self::BLOCK_VOLUME,
             self::BOOT_VOLUME,
+            self::BROWSER_APPLICATION,
             self::BUCKET,
             self::BUDGET,
             self::BUDGET_ALERT_RULE,
@@ -937,6 +946,7 @@ final class ResourceTypeId
             self::HEALTH_CHECK,
             self::HEALTHCHECK,
             self::HISTORY_ITEM,
+            self::HOST,
             self::HOSTED_RUNNER,
             self::HYPERDRIVE,
             self::IAM_ROLE,
@@ -1203,6 +1213,7 @@ final class ResourceTypeId
             self::SUBNET,
             self::SUPERVISED_FINE_TUNING_JOB,
             self::SYNTHETIC_CHECK,
+            self::SYNTHETIC_MONITOR,
             self::TAILNET,
             self::TARGET_GROUP,
             self::TCO_POLICY,
@@ -1271,6 +1282,7 @@ final class ResourceTypeId
             self::WORKER_ROUTE,
             self::WORKERS_AI_MODEL,
             self::WORKFLOW,
+            self::WORKLOAD,
             self::WORKSPACE,
             self::WORKSPACE_MEMBER,
             self::ZONE,
