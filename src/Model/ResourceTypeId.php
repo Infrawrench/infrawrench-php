@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.42.3 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.42.3).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -56,6 +56,7 @@ final class ResourceTypeId
     public const ARTIFACT_REGISTRY_REPO = 'artifact-registry-repo';
     public const AUDIT_EVENT = 'audit-event';
     public const AUTO_SCALING_GROUP = 'auto-scaling-group';
+    public const AUTONOMOUS_DATABASE = 'autonomous-database';
     public const AUTOSCALE_POOL = 'autoscale-pool';
     public const AZURE_AI_SERVICES = 'azure-ai-services';
     public const AZURE_AKS_CLUSTER = 'azure-aks-cluster';
@@ -110,6 +111,10 @@ final class ResourceTypeId
     public const BIGQUERY_TABLE = 'bigquery-table';
     public const BIGTABLE_INSTANCE = 'bigtable-instance';
     public const BLOCK_VOLUME = 'block-volume';
+    public const BOOT_VOLUME = 'boot-volume';
+    public const BUCKET = 'bucket';
+    public const BUDGET = 'budget';
+    public const BUDGET_ALERT_RULE = 'budget-alert-rule';
     public const BYOK_CREDENTIAL = 'byok-credential';
     public const CACHE_RULE = 'cache-rule';
     public const CACHED_CONTENT = 'cached-content';
@@ -145,6 +150,7 @@ final class ResourceTypeId
     public const COGNITO_USER_POOL = 'cognito-user-pool';
     public const COLLECTION = 'collection';
     public const COLLECTION_DOCUMENT = 'collection-document';
+    public const COMPARTMENT = 'compartment';
     public const COMPOSER_ENVIRONMENT = 'composer-environment';
     public const CONNECTION = 'connection';
     public const CONTAINER = 'container';
@@ -356,9 +362,11 @@ final class ResourceTypeId
     public const NETLIFY_SNIPPET = 'netlify-snippet';
     public const NETWORK = 'network';
     public const NFS_SHARE = 'nfs-share';
+    public const NODE_POOL = 'node-pool';
     public const NOTIFICATION_POLICY = 'notification-policy';
     public const OBJECT_STORAGE_BUCKET = 'object-storage-bucket';
     public const OCTAVIA_LOAD_BALANCER = 'octavia-load-balancer';
+    public const OKE_CLUSTER = 'oke-cluster';
     public const OPENSEARCH_CLUSTER = 'opensearch-cluster';
     public const OPENSEARCH_DOMAIN = 'opensearch-domain';
     public const ORGANIZATION = 'organization';
@@ -424,6 +432,7 @@ final class ResourceTypeId
     public const SECRETS_MANAGER_SECRET = 'secrets-manager-secret';
     public const SECRETS_STORE_SECRET = 'secrets-store-secret';
     public const SECURITY_GROUP = 'security-group';
+    public const SECURITY_LIST = 'security-list';
     public const SENTIMENT_JOB = 'sentiment-job';
     public const SERVER = 'server';
     public const SERVERLESS_CONTAINER = 'serverless-container';
@@ -453,6 +462,7 @@ final class ResourceTypeId
     public const SUPERVISED_FINE_TUNING_JOB = 'supervised-fine-tuning-job';
     public const TAILNET = 'tailnet';
     public const TARGET_GROUP = 'target-group';
+    public const TENANCY = 'tenancy';
     public const TOPIC_JOB = 'topic-job';
     public const TRAINING = 'training';
     public const TRANSCRIPT = 'transcript';
@@ -476,6 +486,7 @@ final class ResourceTypeId
     public const USER_INVITE = 'user-invite';
     public const UT_APP = 'ut-app';
     public const UT_FILE = 'ut-file';
+    public const VCN = 'vcn';
     public const VECTOR_STORE = 'vector-store';
     public const VECTORIZE_INDEX = 'vectorize-index';
     public const VERCEL_DEPLOYMENT = 'vercel-deployment';
@@ -544,6 +555,7 @@ final class ResourceTypeId
             self::ARTIFACT_REGISTRY_REPO,
             self::AUDIT_EVENT,
             self::AUTO_SCALING_GROUP,
+            self::AUTONOMOUS_DATABASE,
             self::AUTOSCALE_POOL,
             self::AZURE_AI_SERVICES,
             self::AZURE_AKS_CLUSTER,
@@ -598,6 +610,10 @@ final class ResourceTypeId
             self::BIGQUERY_TABLE,
             self::BIGTABLE_INSTANCE,
             self::BLOCK_VOLUME,
+            self::BOOT_VOLUME,
+            self::BUCKET,
+            self::BUDGET,
+            self::BUDGET_ALERT_RULE,
             self::BYOK_CREDENTIAL,
             self::CACHE_RULE,
             self::CACHED_CONTENT,
@@ -633,6 +649,7 @@ final class ResourceTypeId
             self::COGNITO_USER_POOL,
             self::COLLECTION,
             self::COLLECTION_DOCUMENT,
+            self::COMPARTMENT,
             self::COMPOSER_ENVIRONMENT,
             self::CONNECTION,
             self::CONTAINER,
@@ -844,9 +861,11 @@ final class ResourceTypeId
             self::NETLIFY_SNIPPET,
             self::NETWORK,
             self::NFS_SHARE,
+            self::NODE_POOL,
             self::NOTIFICATION_POLICY,
             self::OBJECT_STORAGE_BUCKET,
             self::OCTAVIA_LOAD_BALANCER,
+            self::OKE_CLUSTER,
             self::OPENSEARCH_CLUSTER,
             self::OPENSEARCH_DOMAIN,
             self::ORGANIZATION,
@@ -912,6 +931,7 @@ final class ResourceTypeId
             self::SECRETS_MANAGER_SECRET,
             self::SECRETS_STORE_SECRET,
             self::SECURITY_GROUP,
+            self::SECURITY_LIST,
             self::SENTIMENT_JOB,
             self::SERVER,
             self::SERVERLESS_CONTAINER,
@@ -941,6 +961,7 @@ final class ResourceTypeId
             self::SUPERVISED_FINE_TUNING_JOB,
             self::TAILNET,
             self::TARGET_GROUP,
+            self::TENANCY,
             self::TOPIC_JOB,
             self::TRAINING,
             self::TRANSCRIPT,
@@ -964,6 +985,7 @@ final class ResourceTypeId
             self::USER_INVITE,
             self::UT_APP,
             self::UT_FILE,
+            self::VCN,
             self::VECTOR_STORE,
             self::VECTORIZE_INDEX,
             self::VERCEL_DEPLOYMENT,
