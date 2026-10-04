@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class MeResponse implements \JsonSerializable
         public readonly string $email,
         public readonly ?RoleSummary $role,
         public readonly array $permissions,
+        public readonly ?CostVisibilitySummary $costVisibility = null,
     ) {
     }
 
@@ -43,6 +44,7 @@ final class MeResponse implements \JsonSerializable
             email: Coerce::toString($data['email'] ?? null),
             role: Coerce::nullable($data['role'] ?? null, static fn (mixed $value): RoleSummary => RoleSummary::fromArray(Coerce::toArray($value))),
             permissions: Coerce::mapList($data['permissions'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            costVisibility: Coerce::nullable($data['costVisibility'] ?? null, static fn (mixed $value): CostVisibilitySummary => CostVisibilitySummary::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -53,12 +55,17 @@ final class MeResponse implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'userId' => $this->userId,
             'email' => $this->email,
             'role' => $this->role?->toArray(),
             'permissions' => $this->permissions,
         ];
+        if ($this->costVisibility !== null) {
+            $payload['costVisibility'] = $this->costVisibility->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

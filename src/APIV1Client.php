@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -54,6 +54,7 @@ use Infrawrench\Sdk\Api\CostReportFoldersNamespace;
 use Infrawrench\Sdk\Api\CostReportNotificationsNamespace;
 use Infrawrench\Sdk\Api\CostReportsNamespace;
 use Infrawrench\Sdk\Api\CostScenariosNamespace;
+use Infrawrench\Sdk\Api\CostVisibilityNamespace;
 use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CredentialHygieneNamespace;
 use Infrawrench\Sdk\Api\CreditsNamespace;
@@ -101,6 +102,7 @@ use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SessionRecordingsNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
 use Infrawrench\Sdk\Api\SharedConsolesNamespace;
+use Infrawrench\Sdk\Api\SharingNamespace;
 use Infrawrench\Sdk\Api\SlackNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
 use Infrawrench\Sdk\Api\SshFanoutNamespace;
@@ -249,6 +251,9 @@ final class APIV1Client
     /** `$client->costScenarios` */
     public readonly CostScenariosNamespace $costScenarios;
 
+    /** `$client->costVisibility` */
+    public readonly CostVisibilityNamespace $costVisibility;
+
     /** `$client->costs` */
     public readonly CostsNamespace $costs;
 
@@ -390,6 +395,9 @@ final class APIV1Client
     /** `$client->sharedConsoles` */
     public readonly SharedConsolesNamespace $sharedConsoles;
 
+    /** `$client->sharing` */
+    public readonly SharingNamespace $sharing;
+
     /** `$client->slack` */
     public readonly SlackNamespace $slack;
 
@@ -495,6 +503,7 @@ final class APIV1Client
         $this->costReportNotifications = new CostReportNotificationsNamespace($this->transport);
         $this->costReports = new CostReportsNamespace($this->transport);
         $this->costScenarios = new CostScenariosNamespace($this->transport);
+        $this->costVisibility = new CostVisibilityNamespace($this->transport);
         $this->costs = new CostsNamespace($this->transport);
         $this->credentialHygiene = new CredentialHygieneNamespace($this->transport);
         $this->credits = new CreditsNamespace($this->transport);
@@ -542,6 +551,7 @@ final class APIV1Client
         $this->sessionRecordings = new SessionRecordingsNamespace($this->transport);
         $this->sftp = new SftpNamespace($this->transport);
         $this->sharedConsoles = new SharedConsolesNamespace($this->transport);
+        $this->sharing = new SharingNamespace($this->transport);
         $this->slack = new SlackNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);
         $this->sshFanout = new SshFanoutNamespace($this->transport);

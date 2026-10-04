@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ final class CredentialField implements \JsonSerializable
 {
     /**
      * @param list<CredentialFieldRegion>|null $regions
+     * @param array{dependsOn: list<string>, emptyLabel?: string}|null $providerOptions Present when the field's choices come from the provider. Once every field in `dependsOn` has a value, `POST /accounts/credential-options` returns them.
      * @param array{label: string, url: string}|null $helpLink
      */
     public function __construct(
@@ -35,6 +36,7 @@ final class CredentialField implements \JsonSerializable
         public readonly ?bool $multiline = null,
         public readonly ?string $defaultValue = null,
         public readonly ?array $regions = null,
+        public readonly ?array $providerOptions = null,
         public readonly ?array $helpLink = null,
     ) {
     }
@@ -55,6 +57,7 @@ final class CredentialField implements \JsonSerializable
             multiline: Coerce::toBoolOrNull($data['multiline'] ?? null),
             defaultValue: Coerce::toStringOrNull($data['defaultValue'] ?? null),
             regions: Coerce::nullable($data['regions'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CredentialFieldRegion => CredentialFieldRegion::fromArray(Coerce::toArray($item)))),
+            providerOptions: Coerce::toArrayOrNull($data['providerOptions'] ?? null),
             helpLink: Coerce::toArrayOrNull($data['helpLink'] ?? null),
         );
     }
@@ -87,6 +90,9 @@ final class CredentialField implements \JsonSerializable
         }
         if ($this->regions !== null) {
             $payload['regions'] = array_map(static fn (CredentialFieldRegion $item): array => $item->toArray(), $this->regions);
+        }
+        if ($this->providerOptions !== null) {
+            $payload['providerOptions'] = $this->providerOptions;
         }
         if ($this->helpLink !== null) {
             $payload['helpLink'] = $this->helpLink;

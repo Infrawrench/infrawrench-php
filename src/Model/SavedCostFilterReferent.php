@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class SavedCostFilterReferent implements \JsonSerializable
 {
     /**
-     * @param 'budget'|'cost_report'|'cost_graph_widget' $kind
+     * @param 'budget'|'cost_report'|'cost_graph_widget'|'cost_visibility_scope' $kind
      * @param string $id Budget id, report id, or dashboard-widget id.
      * @param string $name Budget name, report name, or the widget's title.
      * @param string|null $dashboardId Set for `cost_graph_widget` referents.

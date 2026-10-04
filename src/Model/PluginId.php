@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,28 +33,42 @@ final class PluginId
     public const AWS = 'aws';
     public const AZURE = 'azure';
     public const CARTESIA = 'cartesia';
+    public const CIRCLECI = 'circleci';
     public const CLICKHOUSE = 'clickhouse';
     public const CLOUDFLARE = 'cloudflare';
     public const CLOUDINARY = 'cloudinary';
     public const COHERE = 'cohere';
+    public const CONFLUENT_CLOUD = 'confluent-cloud';
+    public const CORALOGIX = 'coralogix';
+    public const COREWEAVE = 'coreweave';
+    public const CRUSOE = 'crusoe';
+    public const CURSOR = 'cursor';
     public const DATABRICKS = 'databricks';
     public const DEEPGRAM = 'deepgram';
     public const DEEPSEEK = 'deepseek';
+    public const DEPOT = 'depot';
+    public const DEVIN = 'devin';
     public const DIGITALOCEAN = 'digitalocean';
     public const DOCKER = 'docker';
+    public const ELASTIC_CLOUD = 'elastic-cloud';
     public const ELEVENLABS = 'elevenlabs';
+    public const FASTLY = 'fastly';
     public const FIREWORKS = 'fireworks';
     public const FLY = 'fly';
     public const GCP = 'gcp';
     public const GEMINI = 'gemini';
+    public const GITHUB = 'github';
     public const GLADIA = 'gladia';
     public const GROQ = 'groq';
     public const HETZNER = 'hetzner';
     public const KAFKA = 'kafka';
     public const KUBERNETES = 'kubernetes';
+    public const LINODE = 'linode';
     public const MEMCACHED = 'memcached';
     public const MISTRAL = 'mistral';
+    public const MODAL = 'modal';
     public const MONGODB = 'mongodb';
+    public const MONGODB_ATLAS = 'mongodb-atlas';
     public const MSSQL = 'mssql';
     public const MYSQL = 'mysql';
     public const NEON = 'neon';
@@ -67,14 +81,19 @@ final class PluginId
     public const PLANETSCALE = 'planetscale';
     public const POSTGRES = 'postgres';
     public const REDIS = 'redis';
+    public const REDIS_CLOUD = 'redis-cloud';
     public const REPLICATE = 'replicate';
     public const REVAI = 'revai';
     public const SCALEWAY = 'scaleway';
+    public const SENTRY = 'sentry';
+    public const SNOWFLAKE = 'snowflake';
     public const SPEECHMATICS = 'speechmatics';
     public const SSH = 'ssh';
     public const TAILSCALE = 'tailscale';
+    public const TEMPORAL_CLOUD = 'temporal-cloud';
     public const TOGETHER = 'together';
     public const TURSO = 'turso';
+    public const TWILIO = 'twilio';
     public const UPLOADTHING = 'uploadthing';
     public const VERCEL = 'vercel';
     public const WORKOS = 'workos';
@@ -93,28 +112,42 @@ final class PluginId
             self::AWS,
             self::AZURE,
             self::CARTESIA,
+            self::CIRCLECI,
             self::CLICKHOUSE,
             self::CLOUDFLARE,
             self::CLOUDINARY,
             self::COHERE,
+            self::CONFLUENT_CLOUD,
+            self::CORALOGIX,
+            self::COREWEAVE,
+            self::CRUSOE,
+            self::CURSOR,
             self::DATABRICKS,
             self::DEEPGRAM,
             self::DEEPSEEK,
+            self::DEPOT,
+            self::DEVIN,
             self::DIGITALOCEAN,
             self::DOCKER,
+            self::ELASTIC_CLOUD,
             self::ELEVENLABS,
+            self::FASTLY,
             self::FIREWORKS,
             self::FLY,
             self::GCP,
             self::GEMINI,
+            self::GITHUB,
             self::GLADIA,
             self::GROQ,
             self::HETZNER,
             self::KAFKA,
             self::KUBERNETES,
+            self::LINODE,
             self::MEMCACHED,
             self::MISTRAL,
+            self::MODAL,
             self::MONGODB,
+            self::MONGODB_ATLAS,
             self::MSSQL,
             self::MYSQL,
             self::NEON,
@@ -127,14 +160,19 @@ final class PluginId
             self::PLANETSCALE,
             self::POSTGRES,
             self::REDIS,
+            self::REDIS_CLOUD,
             self::REPLICATE,
             self::REVAI,
             self::SCALEWAY,
+            self::SENTRY,
+            self::SNOWFLAKE,
             self::SPEECHMATICS,
             self::SSH,
             self::TAILSCALE,
+            self::TEMPORAL_CLOUD,
             self::TOGETHER,
             self::TURSO,
+            self::TWILIO,
             self::UPLOADTHING,
             self::VERCEL,
             self::WORKOS,

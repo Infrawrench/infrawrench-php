@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.43.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.44.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.43.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.44.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,8 @@ use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\Account;
 use Infrawrench\Sdk\Model\AccountDetail;
 use Infrawrench\Sdk\Model\CreateAccountResponse;
+use Infrawrench\Sdk\Model\CredentialOptionsRequest;
+use Infrawrench\Sdk\Model\CredentialOptionsResponse;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\Model\PluginId;
 use Infrawrench\Sdk\Model\Resource;
@@ -91,6 +93,41 @@ final class AccountsNamespace extends ApiNamespace
         );
 
         return CreateAccountResponse::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * List the provider's choices for a credential field
+     *
+     * For credential fields that declare `providerOptions` (an account picker filled from the API
+     * key, say): asks the provider for the choices the submitted credentials can see. Nothing is
+     * stored. A 400 carries the provider's reason, and clients fall back to a text input.
+     *
+     * _Requires permission: `accounts:write`._
+     *
+     * POST /api/org/{orgId}/accounts/credential-options
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function credentialOptions(CredentialOptionsRequest $body, ?string $orgId = null, ?RequestOptions $options = null): CredentialOptionsResponse
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/accounts/credential-options',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return CredentialOptionsResponse::fromArray(Coerce::toArray($data));
     }
 
     /**
