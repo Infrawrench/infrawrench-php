@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,8 @@ final class BusinessMetricInput implements \JsonSerializable
      * @param string|null $currency ISO-4217 code. **Required when `kind` is `currency`, and rejected otherwise** — a revenue metric with no currency cannot have margin computed against it, and a count metric carrying one would suggest its numbers are money when they are requests.
      * @param list<BusinessMetricScopeTerm>|null $costScope The spend this metric divides, in the same filter vocabulary cost graphs and budgets use. Empty (the default) is all of the organization's spend. A unit-cost query may narrow this further but can never widen it: the scope is part of what the metric means, and a caller who could drop it would be answering a different question under the same name.
      * @param string|null $savedFilterId A saved cost filter AND-composed with `costScope`, resolved server-side at query time. A reference that fails to resolve errors the unit-cost query rather than silently widening the numerator to all spend.
+     * @param list<BusinessMetricLabelMapping>|null $labelMappings Which value labels name a cost dimension. One mapping per label.
+     * @param list<UnitCostThreshold>|null $thresholds Standing unit-cost or margin limits. Margin thresholds need a `currency` metric.
      */
     public function __construct(
         public readonly string $key,
@@ -39,6 +41,8 @@ final class BusinessMetricInput implements \JsonSerializable
         public readonly ?string $currency = null,
         public readonly ?array $costScope = null,
         public readonly ?string $savedFilterId = null,
+        public readonly ?array $labelMappings = null,
+        public readonly ?array $thresholds = null,
     ) {
     }
 
@@ -58,6 +62,8 @@ final class BusinessMetricInput implements \JsonSerializable
             currency: Coerce::toStringOrNull($data['currency'] ?? null),
             costScope: Coerce::nullable($data['costScope'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): BusinessMetricScopeTerm => BusinessMetricScopeTerm::fromArray(Coerce::toArray($item)))),
             savedFilterId: Coerce::toStringOrNull($data['savedFilterId'] ?? null),
+            labelMappings: Coerce::nullable($data['labelMappings'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): BusinessMetricLabelMapping => BusinessMetricLabelMapping::fromArray(Coerce::toArray($item)))),
+            thresholds: Coerce::nullable($data['thresholds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): UnitCostThreshold => UnitCostThreshold::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -85,6 +91,12 @@ final class BusinessMetricInput implements \JsonSerializable
         }
         if ($this->savedFilterId !== null) {
             $payload['savedFilterId'] = $this->savedFilterId;
+        }
+        if ($this->labelMappings !== null) {
+            $payload['labelMappings'] = array_map(static fn (BusinessMetricLabelMapping $item): array => $item->toArray(), $this->labelMappings);
+        }
+        if ($this->thresholds !== null) {
+            $payload['thresholds'] = array_map(static fn (UnitCostThreshold $item): array => $item->toArray(), $this->thresholds);
         }
 
         return $payload;

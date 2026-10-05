@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,8 @@ final class BusinessMetric implements \JsonSerializable
     /**
      * @param BusinessMetricKind::* $kind
      * @param list<BusinessMetricScopeTerm> $costScope
+     * @param list<BusinessMetricLabelMapping> $labelMappings
+     * @param list<UnitCostThreshold> $thresholds
      */
     public function __construct(
         public readonly string $id,
@@ -36,6 +38,8 @@ final class BusinessMetric implements \JsonSerializable
         public readonly ?string $currency,
         public readonly array $costScope,
         public readonly ?string $savedFilterId,
+        public readonly array $labelMappings,
+        public readonly array $thresholds,
         public readonly ?string $createdByUserId,
         public readonly string $createdAt,
         public readonly string $updatedAt,
@@ -61,6 +65,8 @@ final class BusinessMetric implements \JsonSerializable
             currency: Coerce::toStringOrNull($data['currency'] ?? null),
             costScope: Coerce::mapList($data['costScope'] ?? null, static fn (mixed $item): BusinessMetricScopeTerm => BusinessMetricScopeTerm::fromArray(Coerce::toArray($item))),
             savedFilterId: Coerce::toStringOrNull($data['savedFilterId'] ?? null),
+            labelMappings: Coerce::mapList($data['labelMappings'] ?? null, static fn (mixed $item): BusinessMetricLabelMapping => BusinessMetricLabelMapping::fromArray(Coerce::toArray($item))),
+            thresholds: Coerce::mapList($data['thresholds'] ?? null, static fn (mixed $item): UnitCostThreshold => UnitCostThreshold::fromArray(Coerce::toArray($item))),
             createdByUserId: Coerce::toStringOrNull($data['createdByUserId'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
@@ -86,6 +92,8 @@ final class BusinessMetric implements \JsonSerializable
             'currency' => $this->currency,
             'costScope' => array_map(static fn (BusinessMetricScopeTerm $item): array => $item->toArray(), $this->costScope),
             'savedFilterId' => $this->savedFilterId,
+            'labelMappings' => array_map(static fn (BusinessMetricLabelMapping $item): array => $item->toArray(), $this->labelMappings),
+            'thresholds' => array_map(static fn (UnitCostThreshold $item): array => $item->toArray(), $this->thresholds),
             'createdByUserId' => $this->createdByUserId,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,9 +26,10 @@ final class UnitCostPoint implements \JsonSerializable
      * @param string $bucket Bucket start date, YYYY-MM-DD.
      * @param float|null $value The ratio, or **null for a gap**. Never 0 and never infinite: a bucket with no reported metric value is unknown, not free, and rendering it as 0 would say the opposite of the truth. A zero numerator over a positive denominator is a real 0 and is returned as one.
      * @param float $cost Spend summed over the bucket, in the series' currency.
-     * @param float|null $metricValue Metric value summed over the bucket, or null when nothing was reported.
+     * @param float|null $metricValue The denominator summed over the bucket (the metric, or usage for `usage_unit_cost`), unscaled, or null when nothing was reported.
      * @param int $reportedDays Days in the bucket carrying a reported value, out of `bucketDays`. When it is smaller, the denominator covers only part of the bucket and the ratio there reads high.
-     * @param 'no_metric_value'|'non_positive_metric_value'|'unconvertible_currency'|null $gap Set exactly when `value` is null.
+     * @param float|null $absoluteMargin `margin` only: revenue − spend in the series currency; null on a gap.
+     * @param 'no_metric_value'|'non_positive_metric_value'|'unconvertible_currency'|'no_usage'|null $gap Set exactly when `value` is null.
      */
     public function __construct(
         public readonly string $bucket,
@@ -37,6 +38,7 @@ final class UnitCostPoint implements \JsonSerializable
         public readonly ?float $metricValue,
         public readonly int $reportedDays,
         public readonly int $bucketDays,
+        public readonly ?float $absoluteMargin = null,
         public readonly ?string $gap = null,
     ) {
     }
@@ -55,6 +57,7 @@ final class UnitCostPoint implements \JsonSerializable
             metricValue: Coerce::toFloatOrNull($data['metricValue'] ?? null),
             reportedDays: Coerce::toInt($data['reportedDays'] ?? null),
             bucketDays: Coerce::toInt($data['bucketDays'] ?? null),
+            absoluteMargin: Coerce::toFloatOrNull($data['absoluteMargin'] ?? null),
             gap: Coerce::toStringOrNull($data['gap'] ?? null),
         );
     }
@@ -74,6 +77,9 @@ final class UnitCostPoint implements \JsonSerializable
             'reportedDays' => $this->reportedDays,
             'bucketDays' => $this->bucketDays,
         ];
+        if ($this->absoluteMargin !== null) {
+            $payload['absoluteMargin'] = $this->absoluteMargin;
+        }
         if ($this->gap !== null) {
             $payload['gap'] = $this->gap;
         }

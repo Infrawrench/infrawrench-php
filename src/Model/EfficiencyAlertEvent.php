@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class EfficiencyAlertEvent implements \JsonSerializable
 {
     /**
-     * @param 'commitment_expiry'|'commitment_idle'|'unit_cost_regression' $kind Which detector produced it.
+     * @param 'commitment_expiry'|'commitment_idle'|'unit_cost_regression'|'unit_cost_threshold' $kind Which detector produced it.
      * @param string $subject The commitment's description, or the business metric's name.
      * @param string|null $accountId The account, for commitment kinds; null otherwise.
      * @param string|null $currency ISO 4217 of `amount`, or null when it carries none.

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -218,6 +218,36 @@ final class BusinessMetricsNamespace extends ApiNamespace
     }
 
     /**
+     * List a metric's labels
+     *
+     * The label keys the metric's values carry, each with its distinct values (at most 500) and
+     * its cost mapping. A mapped label nobody has reported yet is listed with no values.
+     *
+     * GET /api/org/{orgId}/business-metrics/{id}/labels
+     *
+     * Raises on 404: Not found
+     *
+     * @param string $id Metric id or key
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return array{labels: list<array<string, mixed>>}
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function labels(string $id, ?string $orgId = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/business-metrics/{id}/labels',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+            ),
+            $options,
+        );
+
+        return Coerce::toArray($data);
+    }
+
+    /**
      * Query unit costs or margin
      *
      * Divide spend by the metric, bucketed as asked. Three properties of the answer are worth
@@ -231,9 +261,10 @@ final class BusinessMetricsNamespace extends ApiNamespace
      * - **Currencies are never merged.** Spend in a currency with no stated rate keeps its own
      * series rather than being dropped or added to another.
      *
-     * There is no `groupBy`: a per-group ratio would need a per-group denominator, and dividing
-     * each service's spend by the whole customer count produces numbers that do not sum to the
-     * real one.
+     * There is no spend `groupBy`: a per-group ratio needs a per-group denominator. Split by a
+     * metric label with `groupByLabel` instead; in a ratio mode the label must be mapped to the
+     * cost dimension its values name (`labelMappings` on the metric), so each label value's spend
+     * is divided by its own volume.
      *
      * _Requires permission: `costs:read`._
      *
@@ -300,5 +331,64 @@ final class BusinessMetricsNamespace extends ApiNamespace
         );
 
         return BusinessMetric::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Query cost per usage unit
+     *
+     * Spend divided by the usage quantity providers report in one `usageUnit`, with no business
+     * metric involved. Both halves come from the same cost rows (those reported in that unit), so
+     * the numerator is exactly the spend that bought the denominator. A bucket with no usage is a
+     * gap (`no_usage`), never 0. Labels do not apply.
+     *
+     * POST /api/org/{orgId}/business-metrics/usage-unit-costs
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function usageUnitCosts(UnitCostQueryRequest $body, ?string $orgId = null, ?RequestOptions $options = null): UnitCostQueryResponse
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/business-metrics/usage-unit-costs',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return UnitCostQueryResponse::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * List usage units
+     *
+     * The provider usage units the organization's cost rows carry over the last 90 days, most
+     * spend first, with a few of the services reporting each. Backs the per-usage-unit picker.
+     *
+     * GET /api/org/{orgId}/business-metrics/usage-units
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return array{units: list<array{unit: string, usage: float, services: list<string>}>}
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function usageUnits(?string $orgId = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/business-metrics/usage-units',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return Coerce::toArray($data);
     }
 }

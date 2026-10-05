@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -172,7 +172,7 @@ final class CostsNamespace extends ApiNamespace
      * Raises on 400: Bad request
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param 'commitment_expiry'|'commitment_idle'|'unit_cost_regression'|null $kind Restrict to one detector. Omitted returns all three, interleaved by time.
+     * @param 'commitment_expiry'|'commitment_idle'|'unit_cost_regression'|'unit_cost_threshold'|null $kind Restrict to one detector. Omitted returns all three, interleaved by time.
      * @param int|null $limit Rows to return, newest first. Defaults to 50.
      * @return array{events: list<array<string, mixed>>}
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

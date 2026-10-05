@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,13 +24,15 @@ final class BusinessMetricValue implements \JsonSerializable
 {
     /**
      * @param string $day UTC day, YYYY-MM-DD.
-     * @param string|null $label Optional breakdown label; a day's total is the sum across its labels.
+     * @param string|null $label The single breakdown label: the `label` key of `labels`, or null. Kept for clients that predate multi-dimensional labels.
+     * @param array<string, string> $labels
      * @param 'api'|'workflow'|'import' $source
      */
     public function __construct(
         public readonly string $day,
         public readonly float $value,
         public readonly ?string $label,
+        public readonly array $labels,
         public readonly string $source,
         public readonly string $updatedAt,
     ) {
@@ -47,6 +49,7 @@ final class BusinessMetricValue implements \JsonSerializable
             day: Coerce::toString($data['day'] ?? null),
             value: Coerce::toFloat($data['value'] ?? null),
             label: Coerce::toStringOrNull($data['label'] ?? null),
+            labels: Coerce::mapValues($data['labels'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             source: Coerce::toString($data['source'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
         );
@@ -63,6 +66,7 @@ final class BusinessMetricValue implements \JsonSerializable
             'day' => $this->day,
             'value' => $this->value,
             'label' => $this->label,
+            'labels' => $this->labels,
             'source' => $this->source,
             'updatedAt' => $this->updatedAt,
         ];

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class UnitCostSeries implements \JsonSerializable
     /**
      * @param list<UnitCostPoint> $points
      * @param float|null $overallValue The period ratio: **summed numerator ÷ summed denominator**, not the mean of the per-bucket ratios — the mean weights a quiet Sunday exactly as heavily as a peak Monday. Only buckets that produced a ratio contribute, on both sides.
+     * @param array{key: string, value: string|null, other?: bool}|null $label Set when the query grouped by a label.
      */
     public function __construct(
         public readonly string $currency,
@@ -32,6 +33,8 @@ final class UnitCostSeries implements \JsonSerializable
         public readonly ?float $overallValue,
         public readonly float $overallCost,
         public readonly ?float $overallMetricValue,
+        public readonly ?array $label = null,
+        public readonly ?float $overallAbsoluteMargin = null,
     ) {
     }
 
@@ -48,6 +51,8 @@ final class UnitCostSeries implements \JsonSerializable
             overallValue: Coerce::toFloatOrNull($data['overallValue'] ?? null),
             overallCost: Coerce::toFloat($data['overallCost'] ?? null),
             overallMetricValue: Coerce::toFloatOrNull($data['overallMetricValue'] ?? null),
+            label: Coerce::toArrayOrNull($data['label'] ?? null),
+            overallAbsoluteMargin: Coerce::toFloatOrNull($data['overallAbsoluteMargin'] ?? null),
         );
     }
 
@@ -58,13 +63,21 @@ final class UnitCostSeries implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'currency' => $this->currency,
             'points' => array_map(static fn (UnitCostPoint $item): array => $item->toArray(), $this->points),
             'overallValue' => $this->overallValue,
             'overallCost' => $this->overallCost,
             'overallMetricValue' => $this->overallMetricValue,
         ];
+        if ($this->label !== null) {
+            $payload['label'] = $this->label;
+        }
+        if ($this->overallAbsoluteMargin !== null) {
+            $payload['overallAbsoluteMargin'] = $this->overallAbsoluteMargin;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
