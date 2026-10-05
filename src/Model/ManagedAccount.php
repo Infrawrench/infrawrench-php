@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -41,6 +41,7 @@ final class ManagedAccount implements \JsonSerializable
         public readonly string $billingCurrency,
         public readonly string $costBasis,
         public readonly bool $applyBillingRules,
+        public readonly ?ManagedAccountPricing $pricing,
         public readonly ?string $notes,
         public readonly array $costCentreIds,
         public readonly array $accountIds,
@@ -67,6 +68,7 @@ final class ManagedAccount implements \JsonSerializable
             billingCurrency: Coerce::toString($data['billingCurrency'] ?? null),
             costBasis: Coerce::toString($data['costBasis'] ?? null),
             applyBillingRules: Coerce::toBool($data['applyBillingRules'] ?? null),
+            pricing: Coerce::nullable($data['pricing'] ?? null, static fn (mixed $value): ManagedAccountPricing => ManagedAccountPricing::fromArray(Coerce::toArray($value))),
             notes: Coerce::toStringOrNull($data['notes'] ?? null),
             costCentreIds: Coerce::mapList($data['costCentreIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             accountIds: Coerce::mapList($data['accountIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
@@ -93,6 +95,7 @@ final class ManagedAccount implements \JsonSerializable
             'billingCurrency' => $this->billingCurrency,
             'costBasis' => $this->costBasis,
             'applyBillingRules' => $this->applyBillingRules,
+            'pricing' => $this->pricing?->toArray(),
             'notes' => $this->notes,
             'costCentreIds' => $this->costCentreIds,
             'accountIds' => $this->accountIds,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class BillingRuleInput implements \JsonSerializable
     /**
      * @param int $priority Lower evaluates first. Percentage rules all apply regardless of order (multiplication commutes); reallocation is first-match-wins, so priority decides which one moves a row.
      * @param bool|null $enabled Disabled rules are kept and excluded from every query. Switching a markup off for a quarter is an edit, not a delete.
+     * @param list<string>|null $managedAccountIds `tiered` and `expression` only: the managed accounts whose invoices this rule prices. Empty or absent means every customer whose billing rules are on.
      */
     public function __construct(
         public readonly string $name,
@@ -33,6 +34,7 @@ final class BillingRuleInput implements \JsonSerializable
         public readonly BillingRuleAdjustment $adjustment,
         public readonly ?string $description = null,
         public readonly ?bool $enabled = null,
+        public readonly ?array $managedAccountIds = null,
     ) {
     }
 
@@ -50,6 +52,7 @@ final class BillingRuleInput implements \JsonSerializable
             adjustment: BillingRuleAdjustment::fromArray(Coerce::toArray($data['adjustment'] ?? null)),
             description: Coerce::toStringOrNull($data['description'] ?? null),
             enabled: Coerce::toBoolOrNull($data['enabled'] ?? null),
+            managedAccountIds: Coerce::nullable($data['managedAccountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
         );
     }
 
@@ -71,6 +74,9 @@ final class BillingRuleInput implements \JsonSerializable
         }
         if ($this->enabled !== null) {
             $payload['enabled'] = $this->enabled;
+        }
+        if ($this->managedAccountIds !== null) {
+            $payload['managedAccountIds'] = $this->managedAccountIds;
         }
 
         return $payload;

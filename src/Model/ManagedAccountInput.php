@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -39,6 +39,7 @@ This is deliberately a list of existing cost centres rather than a rule of its o
         public readonly ?string $billingAddress = null,
         public readonly ?string $costBasis = null,
         public readonly ?bool $applyBillingRules = null,
+        public readonly ?ManagedAccountPricing $pricing = null,
         public readonly ?string $notes = null,
         public readonly ?array $costCentreIds = null,
         public readonly ?array $accountIds = null,
@@ -60,6 +61,7 @@ This is deliberately a list of existing cost centres rather than a rule of its o
             billingAddress: Coerce::toStringOrNull($data['billingAddress'] ?? null),
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
             applyBillingRules: Coerce::toBoolOrNull($data['applyBillingRules'] ?? null),
+            pricing: Coerce::nullable($data['pricing'] ?? null, static fn (mixed $value): ManagedAccountPricing => ManagedAccountPricing::fromArray(Coerce::toArray($value))),
             notes: Coerce::toStringOrNull($data['notes'] ?? null),
             costCentreIds: Coerce::nullable($data['costCentreIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             accountIds: Coerce::nullable($data['accountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
@@ -91,6 +93,9 @@ This is deliberately a list of existing cost centres rather than a rule of its o
         }
         if ($this->applyBillingRules !== null) {
             $payload['applyBillingRules'] = $this->applyBillingRules;
+        }
+        if ($this->pricing !== null) {
+            $payload['pricing'] = $this->pricing?->toArray();
         }
         if ($this->notes !== null) {
             $payload['notes'] = $this->notes;

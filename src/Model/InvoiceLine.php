@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,7 @@ final class InvoiceLine implements \JsonSerializable
      * @param float $adjusted `collected + adjustment`.
      * @param float|null $rate The rate applied to reach `billed`. 1 when the line is already in the invoice currency; null when the organisation has stated no rate for this currency, in which case the amount is carried in its own currency rather than dropped or invented.
      * @param float|null $billed `adjusted × rate`, in the invoice currency.
+     * @param list<array{key: string, amount: float}>|null $effects What moved this line, in pipeline order and in the line's currency: one entry per re-rating step, discount treatment or billing rule. Sums to `adjustment`. `key` matches an entry in the derivation's `effects`. Absent on invoices approved before the breakdown existed.
      */
     public function __construct(
         public readonly string $kind,
@@ -47,6 +48,7 @@ final class InvoiceLine implements \JsonSerializable
         public readonly float $adjusted,
         public readonly ?float $rate,
         public readonly ?float $billed,
+        public readonly ?array $effects = null,
     ) {
     }
 
@@ -67,6 +69,7 @@ final class InvoiceLine implements \JsonSerializable
             adjusted: Coerce::toFloat($data['adjusted'] ?? null),
             rate: Coerce::toFloatOrNull($data['rate'] ?? null),
             billed: Coerce::toFloatOrNull($data['billed'] ?? null),
+            effects: Coerce::nullable($data['effects'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
         );
     }
 
@@ -77,7 +80,7 @@ final class InvoiceLine implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'kind' => $this->kind,
             'refId' => $this->refId,
             'label' => $this->label,
@@ -88,6 +91,11 @@ final class InvoiceLine implements \JsonSerializable
             'rate' => $this->rate,
             'billed' => $this->billed,
         ];
+        if ($this->effects !== null) {
+            $payload['effects'] = $this->effects;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

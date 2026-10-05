@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,7 +30,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class EscalationPolicy implements \JsonSerializable
 {
     /**
-     * @param list<array{kind: 'push'}|array{kind: 'slack', channelId: string}|array{kind: 'msteams', webhookId: string}|array{kind: 'on-call', scheduleId: string}> $destinations
+     * @param list<array{kind: 'push'}|array{kind: 'slack', channelId: string}|array{kind: 'msteams', webhookId: string}|array{kind: 'on-call', scheduleId: string}|array{kind: 'github-issues'}> $destinations
      */
     public function __construct(
         public readonly int $afterMinutes,

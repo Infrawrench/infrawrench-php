@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -88,6 +88,8 @@ final class Permission
     public const JIRA_WRITE = 'jira:write';
     public const LINEAR_READ = 'linear:read';
     public const LINEAR_WRITE = 'linear:write';
+    public const GITHUB_ISSUES_READ = 'github-issues:read';
+    public const GITHUB_ISSUES_WRITE = 'github-issues:write';
     public const INVOICES_READ = 'invoices:read';
     public const INVOICES_WRITE = 'invoices:write';
     public const INVOICES_ISSUE = 'invoices:issue';
@@ -162,6 +164,8 @@ final class Permission
             self::JIRA_WRITE,
             self::LINEAR_READ,
             self::LINEAR_WRITE,
+            self::GITHUB_ISSUES_READ,
+            self::GITHUB_ISSUES_WRITE,
             self::INVOICES_READ,
             self::INVOICES_WRITE,
             self::INVOICES_ISSUE,

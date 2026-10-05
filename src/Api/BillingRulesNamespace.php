@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Model\BillingRule;
 use Infrawrench\Sdk\Model\BillingRuleInput;
+use Infrawrench\Sdk\Model\BillingRuleOrder;
 use Infrawrench\Sdk\Model\Ok;
+use Infrawrench\Sdk\Model\PricingPreviewRequest;
+use Infrawrench\Sdk\Model\PricingPreviewResult;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->billingRules` */
@@ -148,6 +151,75 @@ final class BillingRulesNamespace extends ApiNamespace
                 method: 'GET',
                 path: '/api/org/{orgId}/billing-rules',
                 pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return Coerce::mapList($data, static fn (mixed $item): BillingRule => BillingRule::fromArray(Coerce::toArray($item)));
+    }
+
+    /**
+     * Preview a rule or customer pricing against a month of spend
+     *
+     * Prices one calendar month (last month by default) twice: with the saved rules and settings,
+     * and with the candidate rule or customer settings swapped in. Nothing is written. Returns
+     * both totals, every effect, re-rating coverage, any expression failures and the lines that
+     * moved most.
+     *
+     * Requires `costs:read`, and `invoices:read` as well when a customer is named.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * POST /api/org/{orgId}/billing-rules/preview
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function preview(PricingPreviewRequest $body, ?string $orgId = null, ?RequestOptions $options = null): PricingPreviewResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/billing-rules/preview',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return PricingPreviewResult::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Reorder billing rules
+     *
+     * Rewrites every rule's priority to match the given order (10, 20, 30…) in one transaction and
+     * one audit entry. The list must name every rule exactly once.
+     *
+     * _Requires permission: `org:settings:write`._
+     *
+     * POST /api/org/{orgId}/billing-rules/reorder
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return list<BillingRule>
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function reorder(BillingRuleOrder $body, ?string $orgId = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/billing-rules/reorder',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );

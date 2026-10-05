@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class BillingRule implements \JsonSerializable
 {
+    /** @param list<string> $managedAccountIds */
     public function __construct(
         public readonly string $id,
         public readonly string $name,
@@ -30,6 +31,7 @@ final class BillingRule implements \JsonSerializable
         public readonly int $priority,
         public readonly BillingRuleMatch $match,
         public readonly BillingRuleAdjustment $adjustment,
+        public readonly array $managedAccountIds,
         public readonly string $createdAt,
         public readonly string $updatedAt,
     ) {
@@ -50,6 +52,7 @@ final class BillingRule implements \JsonSerializable
             priority: Coerce::toInt($data['priority'] ?? null),
             match: BillingRuleMatch::fromArray(Coerce::toArray($data['match'] ?? null)),
             adjustment: BillingRuleAdjustment::fromArray(Coerce::toArray($data['adjustment'] ?? null)),
+            managedAccountIds: Coerce::mapList($data['managedAccountIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
         );
@@ -70,6 +73,7 @@ final class BillingRule implements \JsonSerializable
             'priority' => $this->priority,
             'match' => $this->match->toArray(),
             'adjustment' => $this->adjustment->toArray(),
+            'managedAccountIds' => $this->managedAccountIds,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
         ];
