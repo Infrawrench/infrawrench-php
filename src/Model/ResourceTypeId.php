@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.46.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.47.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.46.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.47.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -61,6 +61,7 @@ final class ResourceTypeId
     public const APP = 'app';
     public const APP_ENGINE_SERVICE = 'app-engine-service';
     public const APP_SECRET = 'app-secret';
+    public const APPLICATION_KEY = 'application-key';
     public const APPRUNNER_SERVICE = 'apprunner-service';
     public const ARTIFACT_REGISTRY_REPO = 'artifact-registry-repo';
     public const AUDIT_EVENT = 'audit-event';
@@ -247,6 +248,7 @@ final class ResourceTypeId
     public const DOKS_CLUSTER = 'doks-cluster';
     public const DOMAIN = 'domain';
     public const DOMAIN_RECORD = 'domain-record';
+    public const DOWNTIME = 'downtime';
     public const DPO_JOB = 'dpo-job';
     public const DROPLET = 'droplet';
     public const DURABLE_OBJECT_NAMESPACE = 'durable-object-namespace';
@@ -545,6 +547,7 @@ final class ResourceTypeId
     public const SESSION = 'session';
     public const SHARED_VOLUME = 'shared-volume';
     public const SKILL = 'skill';
+    public const SLO = 'slo';
     public const SNAPSHOT = 'snapshot';
     public const SNOWFLAKE_ACCOUNT = 'snowflake-account';
     public const SNOWFLAKE_DATABASE = 'snowflake-database';
@@ -581,6 +584,7 @@ final class ResourceTypeId
     public const SUPERVISED_FINE_TUNING_JOB = 'supervised-fine-tuning-job';
     public const SYNTHETIC_CHECK = 'synthetic-check';
     public const SYNTHETIC_MONITOR = 'synthetic-monitor';
+    public const SYNTHETICS_TEST = 'synthetics-test';
     public const TAILNET = 'tailnet';
     public const TARGET_GROUP = 'target-group';
     public const TCO_POLICY = 'tco-policy';
@@ -694,6 +698,7 @@ final class ResourceTypeId
             self::APP,
             self::APP_ENGINE_SERVICE,
             self::APP_SECRET,
+            self::APPLICATION_KEY,
             self::APPRUNNER_SERVICE,
             self::ARTIFACT_REGISTRY_REPO,
             self::AUDIT_EVENT,
@@ -880,6 +885,7 @@ final class ResourceTypeId
             self::DOKS_CLUSTER,
             self::DOMAIN,
             self::DOMAIN_RECORD,
+            self::DOWNTIME,
             self::DPO_JOB,
             self::DROPLET,
             self::DURABLE_OBJECT_NAMESPACE,
@@ -1178,6 +1184,7 @@ final class ResourceTypeId
             self::SESSION,
             self::SHARED_VOLUME,
             self::SKILL,
+            self::SLO,
             self::SNAPSHOT,
             self::SNOWFLAKE_ACCOUNT,
             self::SNOWFLAKE_DATABASE,
@@ -1214,6 +1221,7 @@ final class ResourceTypeId
             self::SUPERVISED_FINE_TUNING_JOB,
             self::SYNTHETIC_CHECK,
             self::SYNTHETIC_MONITOR,
+            self::SYNTHETICS_TEST,
             self::TAILNET,
             self::TARGET_GROUP,
             self::TCO_POLICY,

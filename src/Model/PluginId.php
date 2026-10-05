@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.46.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.47.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.46.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.47.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -44,6 +44,7 @@ final class PluginId
     public const CRUSOE = 'crusoe';
     public const CURSOR = 'cursor';
     public const DATABRICKS = 'databricks';
+    public const DATADOG = 'datadog';
     public const DEEPGRAM = 'deepgram';
     public const DEEPSEEK = 'deepseek';
     public const DEPOT = 'depot';
@@ -125,6 +126,7 @@ final class PluginId
             self::CRUSOE,
             self::CURSOR,
             self::DATABRICKS,
+            self::DATADOG,
             self::DEEPGRAM,
             self::DEEPSEEK,
             self::DEPOT,
