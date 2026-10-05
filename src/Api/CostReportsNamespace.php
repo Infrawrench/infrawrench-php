@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.74.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.74.1 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.74.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.74.1).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -88,6 +88,8 @@ final class CostReportsNamespace extends ApiNamespace
      * POST /api/org/{orgId}/cost-reports
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -275,6 +277,8 @@ final class CostReportsNamespace extends ApiNamespace
      * PUT /api/org/{orgId}/cost-reports/{id}
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
      *
      * Raises on 404: Not found
      *
