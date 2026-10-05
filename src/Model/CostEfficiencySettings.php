@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -51,6 +51,7 @@ final class CostEfficiencySettings implements \JsonSerializable
         public readonly int $unitCostWindowDays,
         public readonly int $unitCostMinReportedDays,
         public readonly int $unitCostMinSpendCents,
+        public readonly ?AlertEmailRecipients $emailRecipients = null,
     ) {
     }
 
@@ -75,6 +76,7 @@ final class CostEfficiencySettings implements \JsonSerializable
             unitCostWindowDays: Coerce::toInt($data['unitCostWindowDays'] ?? null),
             unitCostMinReportedDays: Coerce::toInt($data['unitCostMinReportedDays'] ?? null),
             unitCostMinSpendCents: Coerce::toInt($data['unitCostMinSpendCents'] ?? null),
+            emailRecipients: Coerce::nullable($data['emailRecipients'] ?? null, static fn (mixed $value): AlertEmailRecipients => AlertEmailRecipients::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -85,7 +87,7 @@ final class CostEfficiencySettings implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'commitmentExpiryEnabled' => $this->commitmentExpiryEnabled,
             'commitmentExpiryHorizonDays' => $this->commitmentExpiryHorizonDays,
             'commitmentExpiryAlertOnExpired' => $this->commitmentExpiryAlertOnExpired,
@@ -100,6 +102,11 @@ final class CostEfficiencySettings implements \JsonSerializable
             'unitCostMinReportedDays' => $this->unitCostMinReportedDays,
             'unitCostMinSpendCents' => $this->unitCostMinSpendCents,
         ];
+        if ($this->emailRecipients !== null) {
+            $payload['emailRecipients'] = $this->emailRecipients->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

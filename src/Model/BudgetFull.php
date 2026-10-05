@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,6 +46,7 @@ final class BudgetFull implements \JsonSerializable
         public readonly array $thresholds,
         public readonly string $costBasis,
         public readonly bool $useAdjustedSpend,
+        public readonly AlertEmailRecipients $emailRecipients,
         public readonly ?string $createdByUserId,
         public readonly ?string $deletedAt,
         public readonly string $createdAt,
@@ -77,6 +78,7 @@ final class BudgetFull implements \JsonSerializable
             thresholds: Coerce::mapList($data['thresholds'] ?? null, static fn (mixed $item): BudgetThreshold => BudgetThreshold::fromArray(Coerce::toArray($item))),
             costBasis: Coerce::toString($data['costBasis'] ?? null),
             useAdjustedSpend: Coerce::toBool($data['useAdjustedSpend'] ?? null),
+            emailRecipients: AlertEmailRecipients::fromArray(Coerce::toArray($data['emailRecipients'] ?? null)),
             createdByUserId: Coerce::toStringOrNull($data['createdByUserId'] ?? null),
             deletedAt: Coerce::toStringOrNull($data['deletedAt'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
@@ -108,6 +110,7 @@ final class BudgetFull implements \JsonSerializable
             'thresholds' => array_map(static fn (BudgetThreshold $item): array => $item->toArray(), $this->thresholds),
             'costBasis' => $this->costBasis,
             'useAdjustedSpend' => $this->useAdjustedSpend,
+            'emailRecipients' => $this->emailRecipients->toArray(),
             'createdByUserId' => $this->createdByUserId,
             'deletedAt' => $this->deletedAt,
             'createdAt' => $this->createdAt,

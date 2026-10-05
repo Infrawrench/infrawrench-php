@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,7 @@ final class GithubIssueSourceKind
     public const POSTURE_FINDING = 'posture_finding';
     public const EXPIRING = 'expiring';
     public const PROBE = 'probe';
+    public const EXTENDED_SUPPORT = 'extended_support';
     public const COMMITMENT_IDLE = 'commitment_idle';
 
     /**
@@ -50,6 +51,7 @@ final class GithubIssueSourceKind
             self::POSTURE_FINDING,
             self::EXPIRING,
             self::PROBE,
+            self::EXTENDED_SUPPORT,
             self::COMMITMENT_IDLE,
         ];
     }

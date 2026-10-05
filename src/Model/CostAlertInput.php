@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -41,6 +41,7 @@ final class CostAlertInput implements \JsonSerializable
         public readonly ?int $thresholdPercent = null,
         public readonly ?int $thresholdAmountCents = null,
         public readonly ?bool $enabled = null,
+        public readonly ?AlertEmailRecipients $emailRecipients = null,
     ) {
     }
 
@@ -61,6 +62,7 @@ final class CostAlertInput implements \JsonSerializable
             thresholdPercent: Coerce::toIntOrNull($data['thresholdPercent'] ?? null),
             thresholdAmountCents: Coerce::toIntOrNull($data['thresholdAmountCents'] ?? null),
             enabled: Coerce::toBoolOrNull($data['enabled'] ?? null),
+            emailRecipients: Coerce::nullable($data['emailRecipients'] ?? null, static fn (mixed $value): AlertEmailRecipients => AlertEmailRecipients::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -93,6 +95,9 @@ final class CostAlertInput implements \JsonSerializable
         }
         if ($this->enabled !== null) {
             $payload['enabled'] = $this->enabled;
+        }
+        if ($this->emailRecipients !== null) {
+            $payload['emailRecipients'] = $this->emailRecipients->toArray();
         }
 
         return $payload;

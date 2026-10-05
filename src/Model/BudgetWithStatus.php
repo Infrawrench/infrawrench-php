@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -59,6 +59,7 @@ final class BudgetWithStatus implements \JsonSerializable
         public readonly ?string $scenarioModelId,
         public readonly ?string $scenarioModelName,
         public readonly bool $useAdjustedSpend,
+        public readonly AlertEmailRecipients $emailRecipients,
         public readonly ?int $rawActualCents,
         public readonly string $month,
         public readonly int $actualCents,
@@ -101,6 +102,7 @@ final class BudgetWithStatus implements \JsonSerializable
             scenarioModelId: Coerce::toStringOrNull($data['scenarioModelId'] ?? null),
             scenarioModelName: Coerce::toStringOrNull($data['scenarioModelName'] ?? null),
             useAdjustedSpend: Coerce::toBool($data['useAdjustedSpend'] ?? null),
+            emailRecipients: AlertEmailRecipients::fromArray(Coerce::toArray($data['emailRecipients'] ?? null)),
             rawActualCents: Coerce::toIntOrNull($data['rawActualCents'] ?? null),
             month: Coerce::toString($data['month'] ?? null),
             actualCents: Coerce::toInt($data['actualCents'] ?? null),
@@ -143,6 +145,7 @@ final class BudgetWithStatus implements \JsonSerializable
             'scenarioModelId' => $this->scenarioModelId,
             'scenarioModelName' => $this->scenarioModelName,
             'useAdjustedSpend' => $this->useAdjustedSpend,
+            'emailRecipients' => $this->emailRecipients->toArray(),
             'rawActualCents' => $this->rawActualCents,
             'month' => $this->month,
             'actualCents' => $this->actualCents,

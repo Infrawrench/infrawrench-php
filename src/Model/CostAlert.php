@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,6 +46,7 @@ final class CostAlert implements \JsonSerializable
         public readonly bool $enabled,
         public readonly ?string $lastEvaluatedAt,
         public readonly ?string $lastFiredAt,
+        public readonly AlertEmailRecipients $emailRecipients,
         public readonly string $createdAt,
         public readonly string $updatedAt,
     ) {
@@ -71,6 +72,7 @@ final class CostAlert implements \JsonSerializable
             enabled: Coerce::toBool($data['enabled'] ?? null),
             lastEvaluatedAt: Coerce::toStringOrNull($data['lastEvaluatedAt'] ?? null),
             lastFiredAt: Coerce::toStringOrNull($data['lastFiredAt'] ?? null),
+            emailRecipients: AlertEmailRecipients::fromArray(Coerce::toArray($data['emailRecipients'] ?? null)),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
         );
@@ -96,6 +98,7 @@ final class CostAlert implements \JsonSerializable
             'enabled' => $this->enabled,
             'lastEvaluatedAt' => $this->lastEvaluatedAt,
             'lastFiredAt' => $this->lastFiredAt,
+            'emailRecipients' => $this->emailRecipients->toArray(),
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
         ];

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ use Infrawrench\Sdk\Api\AgentNamespace;
 use Infrawrench\Sdk\Api\AgentRegistrationsNamespace;
 use Infrawrench\Sdk\Api\AgentsNamespace;
 use Infrawrench\Sdk\Api\AiAttributionNamespace;
+use Infrawrench\Sdk\Api\AlertEmailNamespace;
 use Infrawrench\Sdk\Api\AlertRulesNamespace;
 use Infrawrench\Sdk\Api\ApiKeysNamespace;
 use Infrawrench\Sdk\Api\AppsNamespace;
@@ -73,6 +74,7 @@ use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
 use Infrawrench\Sdk\Api\EnvironmentsNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
+use Infrawrench\Sdk\Api\ExtendedSupportNamespace;
 use Infrawrench\Sdk\Api\GithubIssuesNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
 use Infrawrench\Sdk\Api\IncidentsNamespace;
@@ -172,6 +174,9 @@ final class APIV1Client
 
     /** `$client->aiAttribution` */
     public readonly AiAttributionNamespace $aiAttribution;
+
+    /** `$client->alertEmail` */
+    public readonly AlertEmailNamespace $alertEmail;
 
     /** `$client->alertRules` */
     public readonly AlertRulesNamespace $alertRules;
@@ -316,6 +321,9 @@ final class APIV1Client
 
     /** `$client->expiring` */
     public readonly ExpiringNamespace $expiring;
+
+    /** `$client->extendedSupport` */
+    public readonly ExtendedSupportNamespace $extendedSupport;
 
     /** `$client->githubIssues` */
     public readonly GithubIssuesNamespace $githubIssues;
@@ -510,6 +518,7 @@ final class APIV1Client
         $this->agentRegistrations = new AgentRegistrationsNamespace($this->transport);
         $this->agents = new AgentsNamespace($this->transport);
         $this->aiAttribution = new AiAttributionNamespace($this->transport);
+        $this->alertEmail = new AlertEmailNamespace($this->transport);
         $this->alertRules = new AlertRulesNamespace($this->transport);
         $this->apiKeys = new ApiKeysNamespace($this->transport);
         $this->apps = new AppsNamespace($this->transport);
@@ -558,6 +567,7 @@ final class APIV1Client
         $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
         $this->environments = new EnvironmentsNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
+        $this->extendedSupport = new ExtendedSupportNamespace($this->transport);
         $this->githubIssues = new GithubIssuesNamespace($this->transport);
         $this->iac = new IacNamespace($this->transport);
         $this->incidents = new IncidentsNamespace($this->transport);

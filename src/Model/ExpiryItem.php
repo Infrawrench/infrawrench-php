@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,7 @@ final class ExpiryItem implements \JsonSerializable
      * @param PluginId::* $pluginId
      * @param string|null $externalId Provider-native id, when known.
      * @param string $fieldKey The declared field the deadline came from.
-     * @param 'tls-cert'|'domain'|'api-token'|'access-key'|'k8s-cert'|'ssh-key'|'secret-version'|'other' $kind Grouping bucket for the kind of deadline.
+     * @param string $kind Grouping bucket for the kind of deadline.
      * @param string $label Plugin-authored caption for the deadline.
      * @param 'expiry'|'age' $basis `expiry` — the field held the deadline itself; `age` — the deadline was derived from a creation/rotation date plus an age budget.
      * @param string $dueAt The deadline.
