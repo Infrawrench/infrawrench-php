@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.55.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.55.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,7 +20,8 @@ namespace Infrawrench\Sdk\Model;
 
 /**
  * `cost_graph` stores its whole config inline — a one-off card. `cost_report` points at a saved
- * cost report by id, so editing the report updates every dashboard showing it.
+ * cost report by id, so editing the report updates every dashboard showing it. `cost_canvas`
+ * points at a cost canvas by id (`{version: 1, canvasId}`) the same way.
  *
  * The values `DashboardWidgetKind` accepts.
  *
@@ -33,6 +34,7 @@ final class DashboardWidgetKind
     public const COST_REPORT = 'cost_report';
     public const BUDGET = 'budget';
     public const CUSTOM_GRAPH = 'custom_graph';
+    public const COST_CANVAS = 'cost_canvas';
 
     /**
      * Every value, in the order the spec lists them.
@@ -46,6 +48,7 @@ final class DashboardWidgetKind
             self::COST_REPORT,
             self::BUDGET,
             self::CUSTOM_GRAPH,
+            self::COST_CANVAS,
         ];
     }
 }

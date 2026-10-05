@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.55.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.55.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,7 +29,7 @@ final class CostGraphConfig implements \JsonSerializable
     /**
      * @param 'stacked_bar'|'multi_bar'|'line'|'area'|'pie' $chartType
      * @param 'daily'|'weekly'|'monthly'|'cumulative' $binning
-     * @param array{kind: 'relative', preset: '7d'|'30d'|'90d'|'mtd'|'last_month'|'qtd'|'ytd'|'12m'}|array{kind: 'absolute', from: string, to: string} $dateRange
+     * @param array{kind: 'relative', preset: string}|array{kind: 'absolute', from: string, to: string} $dateRange
      * @param list<CostReportFilter>|null $filters
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` at query time, server-side. Editing the saved filter changes every graph, report and budget referencing it; a reference that fails to resolve makes the query error rather than silently run unfiltered.
      * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast — known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.

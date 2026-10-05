@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.55.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.55.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -48,6 +48,7 @@ use Infrawrench\Sdk\Api\ConfigNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostAlertsNamespace;
 use Infrawrench\Sdk\Api\CostAnnotationsNamespace;
+use Infrawrench\Sdk\Api\CostCanvasesNamespace;
 use Infrawrench\Sdk\Api\CostCentresNamespace;
 use Infrawrench\Sdk\Api\CostExportsNamespace;
 use Infrawrench\Sdk\Api\CostReportFoldersNamespace;
@@ -235,6 +236,9 @@ final class APIV1Client
 
     /** `$client->costAnnotations` */
     public readonly CostAnnotationsNamespace $costAnnotations;
+
+    /** `$client->costCanvases` */
+    public readonly CostCanvasesNamespace $costCanvases;
 
     /** `$client->costCentres` */
     public readonly CostCentresNamespace $costCentres;
@@ -509,6 +513,7 @@ final class APIV1Client
         $this->connect = new ConnectNamespace($this->transport);
         $this->costAlerts = new CostAlertsNamespace($this->transport);
         $this->costAnnotations = new CostAnnotationsNamespace($this->transport);
+        $this->costCanvases = new CostCanvasesNamespace($this->transport);
         $this->costCentres = new CostCentresNamespace($this->transport);
         $this->costExports = new CostExportsNamespace($this->transport);
         $this->costReportFolders = new CostReportFoldersNamespace($this->transport);

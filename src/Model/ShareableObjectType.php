@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.54.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.55.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.54.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.55.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class ShareableObjectType
     public const COST_REPORT = 'cost_report';
     public const COST_REPORT_FOLDER = 'cost_report_folder';
     public const DASHBOARD = 'dashboard';
+    public const COST_CANVAS = 'cost_canvas';
 
     /**
      * Every value, in the order the spec lists them.
@@ -41,6 +42,7 @@ final class ShareableObjectType
             self::COST_REPORT,
             self::COST_REPORT_FOLDER,
             self::DASHBOARD,
+            self::COST_CANVAS,
         ];
     }
 }
