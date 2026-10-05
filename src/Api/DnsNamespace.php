@@ -32,7 +32,7 @@ final class DnsNamespace extends ApiNamespace
      *
      * One view over every zone and record across the connected DNS providers (Cloudflare, Route
      * 53, Cloud DNS, DigitalOcean, Netlify, Azure DNS, Vercel), with each record target classified
-     * against the rest of the workspace. No provider API calls are made and no DNS is resolved —
+     * against the rest of the workspace. No provider API calls are made and no DNS is resolved:
      * results reflect the last sync.
      *
      * A `dangling` target is a subdomain-takeover candidate: the record points into a provider

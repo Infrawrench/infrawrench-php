@@ -127,7 +127,7 @@ final class BillingRulesNamespace extends ApiNamespace
     /**
      * List billing rules in evaluation order
      *
-     * Billing rules are the organisation's own adjustments to collected spend — a markup that
+     * Billing rules are the organisation's own adjustments to collected spend; a markup that
      * recovers shared overhead, a discount negotiated outside the provider's pricing, a shared
      * cluster reallocated onto the teams that use it.
      *
@@ -230,7 +230,7 @@ final class BillingRulesNamespace extends ApiNamespace
     /**
      * Update a billing rule
      *
-     * A full replace, `enabled` included — switching a markup off is an edit of the rule, so there
+     * A full replace, `enabled` included; switching a markup off is an edit of the rule, so there
      * is one audited action for “this rule changed” rather than two.
      *
      * _Requires permission: `org:settings:write`._

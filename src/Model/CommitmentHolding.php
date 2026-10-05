@@ -24,19 +24,19 @@ final class CommitmentHolding implements \JsonSerializable
 {
     /**
      * @param PluginId::* $pluginId
-     * @param string $commitmentId Provider-native id — the join key against cost rows' commitment dimension (an ARN where billing data carries ARNs, the bare id where it does not).
+     * @param string $commitmentId Provider-native id: the join key against cost rows' commitment dimension (an ARN where billing data carries ARNs, the bare id where it does not).
      * @param 'reservation'|'savings_plan'|'committed_use' $kind
-     * @param string|null $scope Provider scope qualifier — an AZ, an instance family, 'Shared'.
-     * @param string|null $region Null means the commitment applies across regions (an AWS Compute Savings Plan) — a real state, rendered as 'All regions', not missing data.
-     * @param int|null $termDays Provider-reported term length — never derived from the dates, which stop spanning the term once a commitment is split or merged.
+     * @param string|null $scope Provider scope qualifier; an AZ, an instance family, 'Shared'.
+     * @param string|null $region Null means the commitment applies across regions (an AWS Compute Savings Plan); a real state, rendered as 'All regions', not missing data.
+     * @param int|null $termDays Provider-reported term length; never derived from the dates, which stop spanning the term once a commitment is split or merged.
      * @param 'all_upfront'|'partial_upfront'|'no_upfront'|'monthly'|null $paymentOption
      * @param string|null $currency Null when the provider reports no money at all for this record.
-     * @param float|null $upfrontAmount Null means the provider did not report a price (Azure's list API reports none) — 'not reported', never rendered as 'free'.
+     * @param float|null $upfrontAmount Null means the provider did not report a price (Azure's list API reports none); 'not reported', never rendered as 'free'.
      * @param 'hour'|'month'|null $recurringPeriod Atomic with recurringAmount: an amount without a period is a 730× ambiguity.
-     * @param float|null $hourlyCommitmentAmount Committed spend per hour — what utilization is measured against.
-     * @param list<CommitmentUnitAmount>|null $unitCommitments Committed resource quantities for unit-denominated commitments (GCP CUDs). A record has either this or hourlyCommitmentAmount — the split decides which utilization question is even askable.
+     * @param float|null $hourlyCommitmentAmount Committed spend per hour; what utilization is measured against.
+     * @param list<CommitmentUnitAmount>|null $unitCommitments Committed resource quantities for unit-denominated commitments (GCP CUDs). A record has either this or hourlyCommitmentAmount; the split decides which utilization question is even askable.
      * @param 'active'|'expired'|'queued' $state
-     * @param list<CommitmentProviderUtilization>|null $providerUtilization The provider's own utilization aggregates (Azure reservations only), verbatim — never blended with the derived utilization below.
+     * @param list<CommitmentProviderUtilization>|null $providerUtilization The provider's own utilization aggregates (Azure reservations only), verbatim; never blended with the derived utilization below.
      */
     public function __construct(
         public readonly string $accountId,

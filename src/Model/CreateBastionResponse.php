@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CreateBastionResponse implements \JsonSerializable
 {
     /**
-     * @param string $token Enrollment token in the form `iwb_<random>`. Pass to the agent container as `BASTION_TOKEN`. Returned once — not recoverable later.
+     * @param string $token Enrollment token in the form `iwb_<random>`. Pass to the agent container as `BASTION_TOKEN`. Returned once: not recoverable later.
      */
     public function __construct(
         public readonly string $id,

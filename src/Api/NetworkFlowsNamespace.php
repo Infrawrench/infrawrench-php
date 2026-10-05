@@ -54,7 +54,7 @@ final class NetworkFlowsNamespace extends ApiNamespace
      * discount applied. Use the ranking; do not reconcile the total against an invoice line.
      *
      * Accounts whose provider has no readable flow source appear in `accounts` with
-     * `supportsFlows: false` and contribute nothing to the totals — never zero bytes.
+     * `supportsFlows: false` and contribute nothing to the totals; never zero bytes.
      *
      * _Requires permission: `costs:read`._
      *

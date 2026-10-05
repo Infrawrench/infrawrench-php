@@ -23,10 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class Invoice implements \JsonSerializable
 {
     /**
-     * @param string|null $number `INV-2026-0001`. Null while draft — numbers are assigned at approval so a deleted draft cannot leave a gap in the sequence.
+     * @param string|null $number `INV-2026-0001`. Null while draft: numbers are assigned at approval so a deleted draft cannot leave a gap in the sequence.
      * @param InvoiceStatus::* $status
      * @param list<InvoiceLine> $lines
-     * @param bool $live True when the figures in this response were recomputed for it — true for a draft, false for everything else. Say so: “these numbers will move” and “these numbers are what we sent” are different claims about the same fields.
+     * @param bool $live True when the figures in this response were recomputed for it; true for a draft, false for everything else. Say so: “these numbers will move” and “these numbers are what we sent” are different claims about the same fields.
      */
     public function __construct(
         public readonly string $id,

@@ -24,7 +24,7 @@ final class LogsResponse implements \JsonSerializable
 {
     /**
      * @param string $text Raw log text; each entry keeps its trailing newline.
-     * @param list<string> $containers Container names available for this resource — drives the container picker.
+     * @param list<string> $containers Container names available for this resource, drives the container picker.
      * @param string $activeContainer Container `text` was read from.
      */
     public function __construct(

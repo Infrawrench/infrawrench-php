@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostCentreInput implements \JsonSerializable
 {
     /**
-     * @param string|null $parentId Cost centre to nest this one under; null is the top level. On an update, moving a centre is this field changing — omitting it leaves the centre where it is. Rejected with 400 when the parent is unknown, is the centre itself or one of its own descendants, or when the resulting tree would be more than 4 levels deep (measured over the whole subtree being moved).
+     * @param string|null $parentId Cost centre to nest this one under; null is the top level. On an update, moving a centre is this field changing; omitting it leaves the centre where it is. Rejected with 400 when the parent is unknown, is the centre itself or one of its own descendants, or when the resulting tree would be more than 4 levels deep (measured over the whole subtree being moved).
      */
     public function __construct(
         public readonly string $name,

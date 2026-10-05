@@ -30,10 +30,10 @@ final class CostScenariosGetNamespace extends ApiNamespace
     /**
      * List scenario models
      *
-     * Named, reusable sets of adjustments an organization overlays on a cost forecast — the
-     * **known future cost a trend fit cannot see**. Pass an id as `POST /costs/query`'s
-     * `scenarioModelId` (alongside `forecast: true`) to get the adjusted projection back *beside*
-     * the unadjusted one, never instead of it.
+     * Named, reusable sets of adjustments an organization overlays on a cost forecast; the **known
+     * future cost a trend fit cannot see**. Pass an id as `POST /costs/query`'s `scenarioModelId`
+     * (alongside `forecast: true`) to get the adjusted projection back *beside* the unadjusted
+     * one, never instead of it.
      *
      * _Requires permission: `costs:read`._
      *

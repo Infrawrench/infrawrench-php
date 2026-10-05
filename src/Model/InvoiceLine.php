@@ -29,7 +29,7 @@ final class InvoiceLine implements \JsonSerializable
     /**
      * @param 'cost_centre'|'account'|'fixed' $kind
      * @param string|null $refId Cost-centre id, account id, or null for an org-level fixed charge.
-     * @param string $label The name at issue time, frozen with the numbers — renaming a cost centre in March must not retitle a line on January's invoice.
+     * @param string $label The name at issue time, frozen with the numbers; renaming a cost centre in March must not retitle a line on January's invoice.
      * @param string $currency The currency the providers billed in.
      * @param float $collected What the providers charged for this scope, before any billing rule.
      * @param float $adjustment What the organisation's billing rules added or removed.

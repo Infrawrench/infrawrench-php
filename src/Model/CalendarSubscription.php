@@ -25,7 +25,7 @@ final class CalendarSubscription implements \JsonSerializable
     /**
      * @param list<'change-freeze'|'sleep-schedule'|'expiry'|'commitment-expiry'|'workflow-schedule'|'incident'> $kinds Kinds the feed carries. Empty means every kind, including ones added later.
      * @param string|null $lastAccessedAt Last fetch, written at most hourly. Its purpose is answering 'is anyone still using this?' before revoking, which an hour of staleness cannot change.
-     * @param string|null $url The subscription URL, returned **only** by the create call — the token it contains is stored hashed and cannot be shown again. Lose it and mint a new feed.
+     * @param string|null $url The subscription URL, returned **only** by the create call; the token it contains is stored hashed and cannot be shown again. Lose it and mint a new feed.
      */
     public function __construct(
         public readonly string $id,

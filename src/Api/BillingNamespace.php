@@ -41,7 +41,7 @@ final class BillingNamespace extends ApiNamespace
     /**
      * Start a Stripe Checkout session
      *
-     * Rejected with 400 for complimentary organizations — they are never billed.
+     * Rejected with 400 for complimentary organizations; they are never billed.
      *
      * _Requires permission: `billing:write`._
      *

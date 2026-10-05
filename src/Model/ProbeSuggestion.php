@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ProbeSuggestion implements \JsonSerializable
 {
     /**
-     * @param string $url Normalized to an absolute URL — bare hosts get https://.
+     * @param string $url Normalized to an absolute URL, bare hosts get https://.
      * @param PluginId::* $pluginId
      * @param string $outputKey The output/field key the URL was mined from.
      */

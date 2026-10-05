@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CommitmentCoverage implements \JsonSerializable
 {
     /**
-     * @param bool $available False when every in-scope account was excluded — 'we cannot tell' reported as unavailable, never as 0%.
+     * @param bool $available False when every in-scope account was excluded; 'we cannot tell' reported as unavailable, never as 0%.
      * @param list<CommitmentCoverageCurrency> $currencies
      * @param list<string> $excludedAccountIds Accounts whose plugin cannot tell usage from other charge types; their rows would drag coverage down for reasons unrelated to purchasing.
      */

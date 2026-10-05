@@ -59,7 +59,7 @@ final class SessionRecordingsSettingsNamespace extends ApiNamespace
     /**
      * Update the recording policy
      *
-     * Partial update — omitted fields keep their current value. Recording is opt-in and off by
+     * Partial update: omitted fields keep their current value. Recording is opt-in and off by
      * default. Audit-logged with the before/after policy.
      *
      * _Requires permission: `session-recordings:write`._

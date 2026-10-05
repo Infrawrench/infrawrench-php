@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class IncidentNote implements \JsonSerializable
 {
     /**
-     * @param string $occurredAt When the note is *about*, which may precede when it was written — a note typed at 04:00 can be dated to 03:14 and lands there on the timeline.
+     * @param string $occurredAt When the note is *about*, which may precede when it was written; a note typed at 04:00 can be dated to 03:14 and lands there on the timeline.
      */
     public function __construct(
         public readonly string $id,

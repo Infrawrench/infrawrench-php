@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class JiraIssueType implements \JsonSerializable
 {
     /**
-     * @param bool $subtask Always false — subtasks need a parent issue, so they are filtered out.
+     * @param bool $subtask Always false: subtasks need a parent issue, so they are filtered out.
      */
     public function __construct(
         public readonly string $id,

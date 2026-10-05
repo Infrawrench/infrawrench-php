@@ -33,7 +33,7 @@ final class BackupsPoliciesNamespace extends ApiNamespace
     /**
      * Create a backup policy
      *
-     * A policy must demand at least one of `maxRpoHours` and `minRetentionDays` — one that demands
+     * A policy must demand at least one of `maxRpoHours` and `minRetentionDays`: one that demands
      * nothing could never produce a finding and would read as protection while providing none. An
      * empty `resourceTypeIds` selects every stateful resource type.
      *

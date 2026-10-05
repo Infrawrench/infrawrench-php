@@ -24,7 +24,7 @@ final class SavedCostFilterInput implements \JsonSerializable
 {
     /**
      * @param list<SavedCostFilterTerm>|null $filters The structured filter. May be omitted only when `query` is sent instead.
-     * @param string|null $query The same filter written in the cost query language — an alternative spelling of `filters`, compiled server-side into exactly that structure. Sending both a query and a non-empty `filters` is a 400, not a precedence rule. Whichever spelling is used, the result must be non-empty (an empty saved filter matches everything, which is the same as no filter wearing a name) and every tag term must carry its key.
+     * @param string|null $query The same filter written in the cost query language; an alternative spelling of `filters`, compiled server-side into exactly that structure. Sending both a query and a non-empty `filters` is a 400, not a precedence rule. Whichever spelling is used, the result must be non-empty (an empty saved filter matches everything, which is the same as no filter wearing a name) and every tag term must carry its key.
      */
     public function __construct(
         public readonly string $name,

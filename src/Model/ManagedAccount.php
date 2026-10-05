@@ -22,8 +22,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 /**
  * A customer a managed service provider bills. A cost centre or cloud account belongs to at most
- * one managed account — billing the same money to two customers is refused at write time with a
- * 409 naming the other customer.
+ * one managed account; billing the same money to two customers is refused at write time with a 409
+ * naming the other customer.
  */
 final class ManagedAccount implements \JsonSerializable
 {

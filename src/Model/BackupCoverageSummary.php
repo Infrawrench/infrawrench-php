@@ -26,7 +26,7 @@ final class BackupCoverageSummary implements \JsonSerializable
      * @param int $statefulCount Stateful resources the plugin declarations can judge.
      * @param int $unprotectedCount Confirmed gaps. Excludes unassessed resources; this is what the digest counts.
      * @param int $unknownCount Resources that could not be assessed: the type declares a provider-native automated-backup signal but this instance's value was absent or unrecognised. Reported separately so 'we found no gap' and 'we could not tell' do not read alike.
-     * @param int $unattributableBackupCount Backups whose source could not be determined — the plugin syncs no source field, the field was empty, or more than one resource answered to it. Reported rather than hidden: 'we found no orphans' and 'we could not tell' are different answers.
+     * @param int $unattributableBackupCount Backups whose source could not be determined; the plugin syncs no source field, the field was empty, or more than one resource answered to it. Reported rather than hidden: 'we found no orphans' and 'we could not tell' are different answers.
      * @param float|null $orphanedMonthlyCost Null when billing data is unavailable or the orphans span several currencies.
      * @param float|null $worstRpoHours Largest RPO across resources that have a datable backup at all.
      */

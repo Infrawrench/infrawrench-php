@@ -24,7 +24,7 @@ final class DnsRecordTarget implements \JsonSerializable
 {
     /**
      * @param string $value The target as stored, lowercased with any trailing dot removed.
-     * @param 'owned'|'dangling'|'external'|'not-analysed' $classification What can be said about a record target from synced state alone. `owned` — the value is an identity of a synced resource. `dangling` — the value falls inside a provider namespace this workspace manages (an S3 endpoint, a `*.vercel.app` alias) and no synced resource claims it, which is the subdomain-takeover signature. `external` — the value points somewhere there is no declaration for; not a finding. `not-analysed` — the record type carries no host target that is reasoned about (TXT, MX, SOA, CAA, SRV).
+     * @param 'owned'|'dangling'|'external'|'not-analysed' $classification What can be said about a record target from synced state alone. `owned`: the value is an identity of a synced resource. `dangling`: the value falls inside a provider namespace this workspace manages (an S3 endpoint, a `*.vercel.app` alias) and no synced resource claims it, which is the subdomain-takeover signature. `external`: the value points somewhere there is no declaration for; not a finding. `not-analysed`: the record type carries no host target that is reasoned about (TXT, MX, SOA, CAA, SRV).
      */
     public function __construct(
         public readonly string $value,

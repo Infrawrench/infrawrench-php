@@ -34,7 +34,7 @@ final class ChangesAlertSettingsNamespace extends ApiNamespace
      * Drift notifications are batched: at most one message per organization per `cooldownMinutes`,
      * covering every change since the previous one. These settings decide which changes count and
      * how often a message may go out. Who receives it is the `resourceDrift` opt-in on push
-     * preferences, Slack channels and Teams webhooks — off by default on all three.
+     * preferences, Slack channels and Teams webhooks; off by default on all three.
      *
      * GET /api/org/{orgId}/changes/alert-settings
      *

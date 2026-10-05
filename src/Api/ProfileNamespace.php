@@ -139,7 +139,7 @@ final class ProfileNamespace extends ApiNamespace
     /**
      * Mint a password reset link for the signed-in user
      *
-     * Returns a one-time AuthKit-hosted reset URL rather than emailing it — the caller already
+     * Returns a one-time AuthKit-hosted reset URL rather than emailing it; the caller already
      * holds a valid session for the account. Also the way to set a first password on an SSO or
      * OAuth-only account.
      *

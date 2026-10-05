@@ -24,9 +24,9 @@ final class RunbookRunStep implements \JsonSerializable
 {
     /**
      * @param string $title The step's title **when the run started**. Copied rather than joined: a runbook is edited between incidents, and a postmortem showing today's wording against last month's run is not stale, it is quietly wrong.
-     * @param 'manual'|'workflow'|'link' $kind What the step does. Three kinds and not a scripting language: a runbook is written by whoever is on call for whoever is on call next, and the moment it needs a language it stops being written. `workflow` is the escape hatch — anything genuinely automated belongs in a workflow, which already has a sandbox, approvals, secrets and a history.
+     * @param 'manual'|'workflow'|'link' $kind What the step does. Three kinds and not a scripting language: a runbook is written by whoever is on call for whoever is on call next, and the moment it needs a language it stops being written. `workflow` is the escape hatch; anything genuinely automated belongs in a workflow, which already has a sandbox, approvals, secrets and a history.
      * @param 'pending'|'done'|'skipped'|'failed' $status
-     * @param string|null $note What the responder typed — output, or why it was skipped.
+     * @param string|null $note What the responder typed; output, or why it was skipped.
      * @param string|null $workflowRunId The workflow run this step kicked off. Recorded here; the run itself goes through the workflow routes with their own permission, approvals and secrets.
      */
     public function __construct(

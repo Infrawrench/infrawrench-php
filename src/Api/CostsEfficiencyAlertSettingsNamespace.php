@@ -61,7 +61,7 @@ final class CostsEfficiencyAlertSettingsNamespace extends ApiNamespace
      *
      * Takes effect on the next evaluation pass (which runs after each cost collection).
      * Already-fired alerts are not re-judged, and horizons that have already fired for a
-     * commitment's current term do not fire again — widening the horizon list warns about future
+     * commitment's current term do not fire again; widening the horizon list warns about future
      * crossings, not past ones. A PUT of the whole object, not a patch.
      *
      * _Requires permission: `costs:write`._

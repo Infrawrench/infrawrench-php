@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * Something the document asked for that this organization could not satisfy — a pin for a resource
+ * Something the document asked for that this organization could not satisfy; a pin for a resource
  * nobody has synced, an account name that does not exist here. Not fatal: the affected card,
  * clause or deletion is dropped and the rest of the document still applies.
  */

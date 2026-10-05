@@ -72,7 +72,7 @@ final class AccountsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 402: Payment required — the organization's plan does not include this
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * @param array{pluginId?: PluginId::*, displayName: string, credentials: array<string, string>, bastionId?: string|null} $body
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.

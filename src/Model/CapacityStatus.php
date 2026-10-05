@@ -25,7 +25,7 @@ final class CapacityStatus implements \JsonSerializable
     /**
      * @param bool $purchasable False when this deployment has no one-time capacity price configured; the purchase route returns 503 and clients should hide the offer.
      * @param int $priceUsd List price of one slot in whole dollars, for display copy.
-     * @param int $seats Seats from slots still inside their term, excluding lapsed and refunded. ADDITIONAL to `subscription.seatCount` — an org's capacity is the two summed, and an org can hold slots with no subscription at all.
+     * @param int $seats Seats from slots still inside their term, excluding lapsed and refunded. ADDITIONAL to `subscription.seatCount`: an org's capacity is the two summed, and an org can hold slots with no subscription at all.
      * @param list<CapacitySlot> $slots Every purchase ever made, newest first, including lapsed and refunded.
      */
     public function __construct(

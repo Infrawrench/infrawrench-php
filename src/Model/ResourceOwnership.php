@@ -25,7 +25,7 @@ final class ResourceOwnership implements \JsonSerializable
     /**
      * @param PluginId::* $pluginId
      * @param string $resourceName Resource display name, denormalized so a report can name a deleted resource.
-     * @param string|null $ownerUserId The routable owner — an org member. Alerts about this resource reach them.
+     * @param string|null $ownerUserId The routable owner; an org member. Alerts about this resource reach them.
      * @param string|null $ownerName Resolved server-side; null when unset or removed.
      * @param string|null $ownerLabel Free-text owner (a team, a rota, a contractor). Display-only, never routed.
      * @param string|null $purpose What this resource is for.

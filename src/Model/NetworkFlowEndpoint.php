@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class NetworkFlowEndpoint implements \JsonSerializable
 {
     /**
-     * @param string $ref Stable endpoint identity — a provider resource id where one could be resolved, otherwise a class token (`internet`, `aws:s3`, `infrawrench:unattributed`). Never a raw IP address: addresses churn, so the same workload would be a different row every day.
+     * @param string $ref Stable endpoint identity; a provider resource id where one could be resolved, otherwise a class token (`internet`, `aws:s3`, `infrawrench:unattributed`). Never a raw IP address: addresses churn, so the same workload would be a different row every day.
      * @param string $resourceTypeId Set when `ref` is a resource this organization syncs, so the row can link out.
      */
     public function __construct(

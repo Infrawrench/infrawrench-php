@@ -32,8 +32,8 @@ final class SavedCostFiltersNamespace extends ApiNamespace
     /**
      * Create a saved cost filter
      *
-     * Names must be unique per organization (case-insensitively) — they are how the CLI's
-     * `--filter <name>` and humans address the filter. A name collision is a 409.
+     * Names must be unique per organization (case-insensitively); they are how the CLI's `--filter
+     * <name>` and humans address the filter. A name collision is a 409.
      *
      * _Requires permission: `costs:write`._
      *
@@ -66,10 +66,10 @@ final class SavedCostFiltersNamespace extends ApiNamespace
     /**
      * Delete a saved cost filter
      *
-     * Soft delete — **refused with a 409 while anything references the filter**, with the
-     * referents in the body. Deleting a referenced filter would silently widen every referent's
-     * scope to all spend; for a budget that can fire or suppress alerts, so detaching the
-     * referents is a deliberate step, never a side effect of deletion.
+     * Soft delete: **refused with a 409 while anything references the filter**, with the referents
+     * in the body. Deleting a referenced filter would silently widen every referent's scope to all
+     * spend; for a budget that can fire or suppress alerts, so detaching the referents is a
+     * deliberate step, never a side effect of deletion.
      *
      * _Requires permission: `costs:write`._
      *
@@ -77,7 +77,7 @@ final class SavedCostFiltersNamespace extends ApiNamespace
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: Still referenced — the body lists every referent.
+     * Raises on 409: Still referenced: the body lists every referent.
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -129,7 +129,7 @@ final class SavedCostFiltersNamespace extends ApiNamespace
      *
      * Named, reusable cost filter sets. Graphs, reports and budgets reference one **by id**
      * (`savedFilterId` in their configs and in `POST /costs/query`), and the server resolves the
-     * reference at query time — so editing a saved filter changes every referent at once, and
+     * reference at query time; so editing a saved filter changes every referent at once, and
      * nothing ever holds a copy.
      *
      * _Requires permission: `costs:read`._
@@ -158,7 +158,7 @@ final class SavedCostFiltersNamespace extends ApiNamespace
     /**
      * List a saved filter's referents
      *
-     * Every budget, cost report and dashboard cost graph referencing this filter — what an edit
+     * Every budget, cost report and dashboard cost graph referencing this filter; what an edit
      * will re-scope, and what a delete would be refused over.
      *
      * _Requires permission: `costs:read`._
@@ -190,7 +190,7 @@ final class SavedCostFiltersNamespace extends ApiNamespace
      * Update a saved cost filter
      *
      * Replaces the filter's name, description and terms. This is the high-leverage write: every
-     * graph, report and budget referencing the filter runs the new terms on its next query —
+     * graph, report and budget referencing the filter runs the new terms on its next query:
      * re-scoping a referenced budget can change which alerts fire. `GET /{id}/referents` names
      * what a change will touch.
      *

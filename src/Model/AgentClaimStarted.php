@@ -24,7 +24,7 @@ final class AgentClaimStarted implements \JsonSerializable
 {
     /**
      * @param string $userCode Formatted as `XXXX-XXXX`. Show it to the user alongside `verification_uri`.
-     * @param string $verificationUriComplete The verification page with the code pre-filled. Convenient, but it puts a live bearer secret in a URL — prefer `verification_uri` plus the code shown separately.
+     * @param string $verificationUriComplete The verification page with the code pre-filled. Convenient, but it puts a live bearer secret in a URL; prefer `verification_uri` plus the code shown separately.
      * @param int $interval Minimum seconds between status polls.
      */
     public function __construct(

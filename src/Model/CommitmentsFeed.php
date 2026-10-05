@@ -25,7 +25,7 @@ final class CommitmentsFeed implements \JsonSerializable
     /**
      * @param list<CommitmentHolding> $holdings
      * @param list<CommitmentPollFailure> $failures
-     * @param list<string> $pendingAccountIds Commitment-capable accounts never yet collected — named rather than omitted.
+     * @param list<string> $pendingAccountIds Commitment-capable accounts never yet collected, named rather than omitted.
      */
     public function __construct(
         public readonly array $holdings,

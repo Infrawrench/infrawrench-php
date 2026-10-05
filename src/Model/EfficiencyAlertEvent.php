@@ -27,7 +27,7 @@ final class EfficiencyAlertEvent implements \JsonSerializable
      * @param string $subject The commitment's description, or the business metric's name.
      * @param string|null $accountId The account, for commitment kinds; null otherwise.
      * @param string|null $currency ISO 4217 of `amount`, or null when it carries none.
-     * @param float|null $amount The money at stake, in **units of `currency`** rather than cents — commitment amounts are provider-reported in currency units. Per kind: the monthly on-demand exposure for an expiry, the wasted amount for an idle commitment, the current window's spend for a regression.
+     * @param float|null $amount The money at stake, in **units of `currency`** rather than cents; commitment amounts are provider-reported in currency units. Per kind: the monthly on-demand exposure for an expiry, the wasted amount for an idle commitment, the current window's spend for a regression.
      * @param array<string, string|float|null> $detail Per-kind display facts. Free-form; nothing branches on it.
      * @param string|null $notifiedAt When the alert reached its routed destinations, or null when nothing was routed (or the routing rule held it for quiet hours and the follow-up pass has not run yet).
      */

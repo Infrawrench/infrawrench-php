@@ -32,7 +32,7 @@ final class IncidentsGetNamespace extends ApiNamespace
      * List declared incidents
      *
      * Every incident the organization has declared, newest first, each with the artefacts its
-     * declaration created — including the ones that failed.
+     * declaration created: including the ones that failed.
      *
      * _Requires permission: `incidents:read`._
      *

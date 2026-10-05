@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * A workflow. The git-webhook signing secret is deliberately absent — it is write-only, so a
+ * A workflow. The git-webhook signing secret is deliberately absent; it is write-only, so a
  * document can neither leak nor set one.
  */
 final class OrgConfigWorkflow implements \JsonSerializable

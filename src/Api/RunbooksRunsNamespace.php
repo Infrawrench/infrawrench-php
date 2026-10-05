@@ -44,7 +44,7 @@ final class RunbooksRunsNamespace extends ApiNamespace
      * Close a run out
      *
      * Closing does **not** settle outstanding steps. A run completed with three steps still
-     * pending is a true and useful record — it says the incident ended before the checklist did —
+     * pending is a true and useful record (it says the incident ended before the checklist did)
      * and quietly marking them done would erase the one thing a postmortem wants to know.
      *
      * POST /api/org/{orgId}/runbooks/runs/{runId}/close
@@ -83,7 +83,7 @@ final class RunbooksRunsNamespace extends ApiNamespace
      *
      * Takes `resources:read`, like ticking a step: performing a checklist is not an act of
      * configuration, and requiring an admin mid-incident is how a team stops using it.
-     * Deliberately not deduplicated against a run already in progress — performing the failover
+     * Deliberately not deduplicated against a run already in progress; performing the failover
      * twice in one incident is a real thing, and refusing the second would mean it goes unrecorded
      * rather than not happening.
      *

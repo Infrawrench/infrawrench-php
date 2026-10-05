@@ -23,10 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class RestoreDrill implements \JsonSerializable
 {
     /**
-     * @param string $performedAt When the drill was performed, which is **not** when it was recorded — people write these up on Monday for a drill they ran on Saturday, and every staleness computation uses this.
+     * @param string $performedAt When the drill was performed, which is **not** when it was recorded; people write these up on Monday for a drill they ran on Saturday, and every staleness computation uses this.
      * @param 'verified'|'restored-unverified'|'failed'|'blocked' $outcome How the drill ended. Only `verified` counts as evidence the backup works: a restore that produced a running system nobody looked inside is exactly how a team discovers, mid-incident, that the dump had been empty for months. `restored-unverified` is recorded because doing the restore is worth recording, but it does not reset the clock.
      * @param int|null $rtoMinutes Measured wall-clock minutes. Null when the drill never got that far; a blocked drill has no RTO, and an invented one would be the most dangerous number on the page.
-     * @param string|null $restoredFrom Snapshot id, S3 key, a date — free text.
+     * @param string|null $restoredFrom Snapshot id, S3 key, a date, free text.
      */
     public function __construct(
         public readonly string $id,

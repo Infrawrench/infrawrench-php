@@ -24,7 +24,7 @@ final class StatusPageCreate implements \JsonSerializable
 {
     /**
      * @param bool|null $published Defaults to false.
-     * @param list<StatusPageComponentInput>|null $components Order is significant — it is the public render order.
+     * @param list<StatusPageComponentInput>|null $components Order is significant; it is the public render order.
      */
     public function __construct(
         public readonly string $title,

@@ -41,7 +41,7 @@ final class CostsAnomaliesNamespace extends ApiNamespace
      * Explain a detected cost anomaly
      *
      * Record what a finding actually was, and publish that sentence as a cost annotation on
-     * **every** chart covering the anomalous day — the point being that 'we migrated the fleet' is
+     * **every** chart covering the anomalous day; the point being that 'we migrated the fleet' is
      * not a fact about whichever report somebody happened to open. The note's date (the anomalous
      * day) and its org-wide scope are derived from the anomaly and are not the caller's to choose.
      *
@@ -89,7 +89,7 @@ final class CostsAnomaliesNamespace extends ApiNamespace
      * where a provider's or service's spend exceeded its trailing 28-day baseline by a statistical
      * threshold (mean + N·stddev, with an absolute floor to ignore penny-scale noise), and a
      * `new_source`, where a provider or service with no spend at all across that window suddenly
-     * billed a material amount. Thresholds are per organization — see GET /costs/anomaly-settings.
+     * billed a material amount. Thresholds are per organization: see GET /costs/anomaly-settings.
      * Newest day first, capped at 200 rows.
      *
      * _Requires permission: `costs:read`._

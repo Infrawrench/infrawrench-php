@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * The last delivery attempt, or null when none has been made — including on an invoice marked sent
+ * The last delivery attempt, or null when none has been made; including on an invoice marked sent
  * by a deployment with no mail provider. “A person released this” and “we delivered it” are
  * different claims, and this field is only ever the second.
  *
@@ -30,10 +30,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class InvoiceDelivery implements \JsonSerializable
 {
     /**
-     * @param 'pending'|'succeeded'|'partial'|'failed'|'no_targets' $status `pending` means an attempt was claimed and its outcome never recorded — the process died mid-send, so whether the customer received it is unknown. It is not a failure and is never retried automatically.
+     * @param 'pending'|'succeeded'|'partial'|'failed'|'no_targets' $status `pending` means an attempt was claimed and its outcome never recorded; the process died mid-send, so whether the customer received it is unknown. It is not a failure and is never retried automatically.
      * @param list<string> $recipients The addresses this attempt was made to, as the customer record had them then.
      * @param int $delivered How many the mail provider accepted.
-     * @param string|null $deliveredAt The last attempt that reached at least one address, or null when none ever has. Never cleared by a later failure — it is a fact about the past, and it is what decides whether sending again is a retry or a second copy.
+     * @param string|null $deliveredAt The last attempt that reached at least one address, or null when none ever has. Never cleared by a later failure; it is a fact about the past, and it is what decides whether sending again is a retry or a second copy.
      */
     public function __construct(
         public readonly string $status,

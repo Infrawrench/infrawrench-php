@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class AgentClaimLookup implements \JsonSerializable
 {
     /**
-     * @param list<AgentClaimMergeTarget> $mergeTargets Organizations this user may merge the workspace into: ones they already belong to AND hold `accounts:write` in. A merge writes cloud credentials, so membership alone is not enough — the confirm route enforces the same rule.
+     * @param list<AgentClaimMergeTarget> $mergeTargets Organizations this user may merge the workspace into: ones they already belong to AND hold `accounts:write` in. A merge writes cloud credentials, so membership alone is not enough: the confirm route enforces the same rule.
      */
     public function __construct(
         public readonly string $registrationId,

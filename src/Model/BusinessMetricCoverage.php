@@ -21,8 +21,8 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * Null when the metric has no values at all — not an error, but every unit-cost chart drawn from
- * it is one continuous gap.
+ * Null when the metric has no values at all; not an error, but every unit-cost chart drawn from it
+ * is one continuous gap.
  *
  * The API may send `null` in place of this object.
  */
@@ -30,7 +30,7 @@ final class BusinessMetricCoverage implements \JsonSerializable
 {
     /**
      * @param string $firstDay Earliest reported day, YYYY-MM-DD.
-     * @param int $reportedDays Days carrying a value — compare against the span to spot a sparse series.
+     * @param int $reportedDays Days carrying a value; compare against the span to spot a sparse series.
      */
     public function __construct(
         public readonly string $firstDay,

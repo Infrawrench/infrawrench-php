@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * `in_app` — recorded when Infrawrench performed the action; `detected` — inferred from an
- * inventory diff on sync (the action was taken in the provider's console); `manual`; `derived` —
- * computed from billing with no stored event (commitments).
+ * `in_app`: recorded when Infrawrench performed the action; `detected`: inferred from an inventory
+ * diff on sync (the action was taken in the provider's console); `manual`; `derived`: computed
+ * from billing with no stored event (commitments).
  *
  * The values `SavingsEventSource` accepts.
  *

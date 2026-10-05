@@ -109,7 +109,7 @@ final class IacNamespace extends ApiNamespace
      * IaC status for one resource
      *
      * The managed/unmanaged badge for a resource detail page, computed against the newest state
-     * document. `status` is null when the organization has uploaded none — absence of a state is
+     * document. `status` is null when the organization has uploaded none; absence of a state is
      * not evidence of ClickOps. A query parameter rather than a path segment because composite
      * resource ids contain slashes.
      *

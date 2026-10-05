@@ -23,11 +23,11 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class WallboardResponse implements \JsonSerializable
 {
     /**
-     * @param 'ok'|'degraded'|'down' $status Three states rather than five, because at four metres a person distinguishes three colours reliably and nothing more. `down` is reserved for the two things that mean customers are affected now — a sev1 incident or a probe that is down; everything else that is wrong is `degraded`. A source that could not be read is `degraded` and never `ok`.
+     * @param 'ok'|'degraded'|'down' $status Three states rather than five, because at four metres a person distinguishes three colours reliably and nothing more. `down` is reserved for the two things that mean customers are affected now: a sev1 incident or a probe that is down; everything else that is wrong is `degraded`. A source that could not be read is `degraded` and never `ok`.
      * @param list<WallboardTile> $tiles
      * @param list<WallboardIncidentLine> $incidents Unresolved incidents, newest first.
      * @param list<WallboardFailureLine> $failures Probes that are down, query monitors breaching or unable to run, accounts that stopped syncing.
-     * @param list<string> $failedSources Sources that could not be read, **named on the screen**. A wallboard showing green because a query failed is worse than a blank one — it is actively telling the room the wrong thing.
+     * @param list<string> $failedSources Sources that could not be read, **named on the screen**. A wallboard showing green because a query failed is worse than a blank one; it is actively telling the room the wrong thing.
      */
     public function __construct(
         public readonly string $status,

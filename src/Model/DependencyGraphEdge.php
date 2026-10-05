@@ -24,7 +24,7 @@ final class DependencyGraphEdge implements \JsonSerializable
 {
     /**
      * @param string $consumerFieldKey The consumer field the reference fills. "parent" for containment edges, where the link is the resource hierarchy itself rather than a field.
-     * @param string $providerOutputKey The provider output or identity the reference reads — an output key for output references, the matched identity ("externalId", "name", "endpoint"…) for inferred edges.
+     * @param string $providerOutputKey The provider output or identity the reference reads; an output key for output references, the matched identity ("externalId", "name", "endpoint"…) for inferred edges.
      * @param 'output-ref'|'declared'|'containment'|'field-match'|null $kind Where the edge came from: `output-ref` is wired by hand, `declared` from the plugin's own `dependsOn` rule for the resource type, `containment` from the synced parent/child link, `field-match` from a field value that exactly matches another resource's identity. Absent means `output-ref`.
      * @param string|null $label How the plugin words the relationship ("in VPC", "guarded by"), when it declared one.
      */

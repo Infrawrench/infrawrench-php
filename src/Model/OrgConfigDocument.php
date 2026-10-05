@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * An organization's configuration. Every section is optional — a document that omits one leaves it
+ * An organization's configuration. Every section is optional; a document that omits one leaves it
  * entirely alone, in both apply modes.
  */
 final class OrgConfigDocument implements \JsonSerializable

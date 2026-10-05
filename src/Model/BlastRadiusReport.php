@@ -25,7 +25,7 @@ final class BlastRadiusReport implements \JsonSerializable
     /**
      * @param list<BlastRadiusDependant> $dependants Affected resources, direct first then by depth.
      * @param list<BlastRadiusReference> $references Objects naming the resource without depending on it, user-facing ones first.
-     * @param list<BlastRadiusFlowPeer> $flowPeers Measured network peers over the last 14 days, heaviest first. Empty when flow collection is off — see `unchecked`.
+     * @param list<BlastRadiusFlowPeer> $flowPeers Measured network peers over the last 14 days, heaviest first. Empty when flow collection is off, see `unchecked`.
      * @param array{bytes: float, estimatedCost: float, currency: string}|null $flowTotals Totals over `flowPeers`, or null when traffic could not be measured at all. Zeroed totals mean collection is on and the resource is quiet; null means nobody looked.
      * @param list<BlastRadiusGap> $unchecked What the report could not look at. An empty `dependants` list with a non-empty `unchecked` list is not a clean bill of health, and surfaces must not render it as one.
      * @param 'none'|'low'|'medium'|'high'|'unknown' $severity `high` for anything user-facing or five or more direct dependants; `unknown` when nothing was found but something could not be checked.

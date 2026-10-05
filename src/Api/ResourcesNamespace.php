@@ -111,7 +111,7 @@ final class ResourcesNamespace extends ApiNamespace
      *
      * Calls the plugin's `estimateCost` and returns a monthly total with the line items behind it.
      * Price a proposed resource by passing `fields`, an existing one by passing `resourceId`, or a
-     * proposed change to an existing one by passing both — `fields` is merged over the resource's
+     * proposed change to an existing one by passing both; `fields` is merged over the resource's
      * stored fields, so the caller only sends what changed. `estimate` is null when the plugin
      * cannot price the configuration; that is not the same as an estimate of zero, and it should
      * not be rendered as one.
@@ -181,7 +181,7 @@ final class ResourcesNamespace extends ApiNamespace
     /**
      * Get the dynamic create form for a resource type
      *
-     * Calls the plugin's `getCreateConfig`. The returned `CreateResourceConfig` is plugin-shaped —
+     * Calls the plugin's `getCreateConfig`. The returned `CreateResourceConfig` is plugin-shaped,
      * see `JsonObject`.
      *
      * _Requires permission: `resources:write`._

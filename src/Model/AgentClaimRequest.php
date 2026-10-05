@@ -25,7 +25,7 @@ final class AgentClaimRequest implements \JsonSerializable
     /**
      * @param 'adopt'|'merge'|null $mode `adopt` keeps the workspace as its own organization and stops the clock. `merge` moves its cloud accounts into an organization you already belong to and destroys the trial. Defaults to `adopt`.
      * @param string|null $targetOrganizationId Required when `mode` is merge.
-     * @param bool|null $moveHistory Merge only: also re-parent the trial's metrics and cost history. Off by default — it changes numbers the target organization may already be reporting on. Needs `costs:write`.
+     * @param bool|null $moveHistory Merge only: also re-parent the trial's metrics and cost history. Off by default; it changes numbers the target organization may already be reporting on. Needs `costs:write`.
      */
     public function __construct(
         public readonly string $code,

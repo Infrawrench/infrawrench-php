@@ -33,7 +33,7 @@ final class BusinessMetricsValuesNamespace extends ApiNamespace
      * Write a batch of days. **Re-reporting a day restates it rather than accumulating**, which is
      * what makes a nightly job safe to retry. Nothing lands unless the whole batch validates, so a
      * bad row is a 400 rather than half a month restated. The same guarantees back
-     * `infra.businessMetrics.write(...)` in a workflow — both go through one validator.
+     * `infra.businessMetrics.write(...)` in a workflow; both go through one validator.
      *
      * _Requires permission: `costs:write`._
      *

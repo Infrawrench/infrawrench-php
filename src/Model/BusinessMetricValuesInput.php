@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class BusinessMetricValuesInput implements \JsonSerializable
 {
     /**
-     * @param list<array{date: string, value: float, label?: string, labels?: array<string, string>}> $values Days to report. **Re-reporting a day (with the same labels) restates it rather than adding to it**, so an unattended nightly job is safe to retry — an accumulating write would double every number the first time the job re-ran. A batch naming the same day and labels twice keeps the last value, applying the same rule within a batch that restatement applies between them.
+     * @param list<array{date: string, value: float, label?: string, labels?: array<string, string>}> $values Days to report. **Re-reporting a day (with the same labels) restates it rather than adding to it**, so an unattended nightly job is safe to retry; an accumulating write would double every number the first time the job re-ran. A batch naming the same day and labels twice keeps the last value, applying the same rule within a batch that restatement applies between them.
      */
     public function __construct(
         public readonly array $values,

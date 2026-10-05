@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * Which number to sum. `cash` is what the provider charged on the day it charged it — the default,
+ * Which number to sum. `cash` is what the provider charged on the day it charged it; the default,
  * and what every query returned before this existed. `amortized` spreads a commitment's up-front
  * fee across the term it buys, so a year of capacity bought on one day is counted on the days it
  * covers. Providers that report no amortized amount fall back to their cash amount, so an

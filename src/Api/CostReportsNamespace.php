@@ -114,7 +114,7 @@ final class CostReportsNamespace extends ApiNamespace
     /**
      * Delete a cost report
      *
-     * Soft delete. Every dashboard card pointing at the report is removed with it — a card whose
+     * Soft delete. Every dashboard card pointing at the report is removed with it; a card whose
      * report is gone could only ever render as an unavailable tile.
      *
      * _Requires permission: `costs:write`._
@@ -270,7 +270,7 @@ final class CostReportsNamespace extends ApiNamespace
      * Update a cost report
      *
      * Replaces the report's name, description, config and folder. Every dashboard showing the
-     * report picks up the new config — that is what referencing a report by id buys.
+     * report picks up the new config; that is what referencing a report by id buys.
      *
      * _Requires permission: `costs:write`._
      *

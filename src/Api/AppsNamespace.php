@@ -35,7 +35,7 @@ final class AppsNamespace extends ApiNamespace
      *
      * Runs a read-only shell probe over SSH and reports what the host is missing, plus the
      * packages and commands that would fix it. A POST because it opens a connection to the named
-     * host and must never be cached — its whole value is saying what the host is now.
+     * host and must never be cached; its whole value is saying what the host is now.
      *
      * POST /api/org/{orgId}/apps/check
      *
@@ -71,7 +71,7 @@ final class AppsNamespace extends ApiNamespace
      * Install what a host needs to run Linux applications
      *
      * Installs the named requirements using the host's own package manager, then re-probes and
-     * reports what the host now is. Takes requirement ids, never commands — the commands are
+     * reports what the host now is. Takes requirement ids, never commands; the commands are
      * derived server-side from a fresh probe. Needs root or passwordless sudo on the host,
      * respects change freezes, and is audited as `linux_app.host_setup`.
      *

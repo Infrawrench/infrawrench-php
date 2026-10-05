@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class NetworkFlowFeed implements \JsonSerializable
 {
     /**
-     * @param bool $estimated Always true. Flow bytes come from logs that sample or drop under load and are priced at published list rates with no free tier, no volume tier and no negotiated discount modelled — the ranking is sound, the absolute figure will not reconcile to the invoice.
+     * @param bool $estimated Always true. Flow bytes come from logs that sample or drop under load and are priced at published list rates with no free tier, no volume tier and no negotiated discount modelled: the ranking is sound, the absolute figure will not reconcile to the invoice.
      * @param array{from: string, to: string} $range
      * @param list<NetworkFlowScopeSummary> $scopes
      * @param list<NetworkFlowPair> $topFlows

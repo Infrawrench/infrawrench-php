@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class InvoiceSummary implements \JsonSerializable
 {
     /**
-     * @param string|null $number `INV-2026-0001`. Null while draft — numbers are assigned at approval so a deleted draft cannot leave a gap in the sequence.
+     * @param string|null $number `INV-2026-0001`. Null while draft: numbers are assigned at approval so a deleted draft cannot leave a gap in the sequence.
      * @param InvoiceStatus::* $status
      */
     public function __construct(

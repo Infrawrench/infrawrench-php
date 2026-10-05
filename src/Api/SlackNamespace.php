@@ -102,7 +102,7 @@ final class SlackNamespace extends ApiNamespace
     /**
      * Post a test message to every configured channel
      *
-     * Ignores routing rules — every channel gets the test. Fails with the Slack error when nothing
+     * Ignores routing rules; every channel gets the test. Fails with the Slack error when nothing
      * could be delivered (`not_in_channel` means the bot needs inviting to a private channel).
      *
      * POST /api/org/{orgId}/slack/test

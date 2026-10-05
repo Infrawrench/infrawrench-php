@@ -28,7 +28,7 @@ final class AccessRequest implements \JsonSerializable
      * @param 'pending'|'approved'|'denied'|'expired' $status `pending` (awaiting a decision), `approved`, `denied`, or `expired` (nobody decided in time, or the requester withdrew it). An approved row is only *granting* permissions while `active` is true.
      * @param string $expiresAt When an undecided request stops being decidable.
      * @param string|null $grantExpiresAt When the elevation lapses.
-     * @param bool $active True when this row is granting permissions right now. Evaluated, never swept — a grant stops applying the instant it lapses.
+     * @param bool $active True when this row is granting permissions right now. Evaluated, never swept; a grant stops applying the instant it lapses.
      */
     public function __construct(
         public readonly string $id,

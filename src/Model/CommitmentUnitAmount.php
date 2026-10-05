@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CommitmentUnitAmount implements \JsonSerializable
 {
     /**
-     * @param string $unit Provider-native unit label, untranslated — "VCPU", "MEMORY_MB", "LOCAL_SSD_GB".
+     * @param string $unit Provider-native unit label, untranslated, "VCPU", "MEMORY_MB", "LOCAL_SSD_GB".
      */
     public function __construct(
         public readonly string $unit,

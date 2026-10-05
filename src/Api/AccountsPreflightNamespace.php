@@ -32,7 +32,7 @@ final class AccountsPreflightNamespace extends ApiNamespace
      * Probe credentials before creating an account
      *
      * Runs the plugin's per-capability permission checks against the submitted credentials.
-     * Nothing is stored — use it from the add-account flow before committing.
+     * Nothing is stored; use it from the add-account flow before committing.
      *
      * _Requires permission: `accounts:write`._
      *

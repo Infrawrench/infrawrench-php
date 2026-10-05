@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostReportInput implements \JsonSerializable
 {
     /**
-     * @param string|null $folderId Folder the report is filed under (see /cost-report-folders); null is the top level of the Reports list. Moving a report is this same PUT with a different folderId; an id from another org is a 400. Deleting a folder never deletes its reports — they fall back to the top level.
+     * @param string|null $folderId Folder the report is filed under (see /cost-report-folders); null is the top level of the Reports list. Moving a report is this same PUT with a different folderId; an id from another org is a 400. Deleting a folder never deletes its reports; they fall back to the top level.
      */
     public function __construct(
         public readonly string $name,

@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostCentre implements \JsonSerializable
 {
     /**
-     * @param string|null $parentId The centre this one sits under; null is a top-level centre. Nesting is a reporting structure only — allocation still resolves each cost row to exactly one centre.
+     * @param string|null $parentId The centre this one sits under; null is a top-level centre. Nesting is a reporting structure only: allocation still resolves each cost row to exactly one centre.
      */
     public function __construct(
         public readonly string $id,

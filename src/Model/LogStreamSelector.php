@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class LogStreamSelector implements \JsonSerializable
 {
     /**
-     * @param string $resourceId Infrawrench resource id of the stream to tail — or, for a sidecar stream, the peer plugin's own resource id (not a stored row).
+     * @param string $resourceId Infrawrench resource id of the stream to tail; or, for a sidecar stream, the peer plugin's own resource id (not a stored row).
      * @param PluginId::* $pluginId
      * @param string|null $parentResourceId Set for sidecar streams (e.g. a pod inside a managed cluster): the stored parent resource whose outputs mint the peer plugin's credentials. The logs endpoint routes through the peer client when present.
      * @param string|null $container Container to fetch when the resource has more than one; omit for the default.

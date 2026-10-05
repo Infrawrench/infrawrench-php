@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * A recurring local-time window during which the rule holds its alerts. Held, not dropped — a held
+ * A recurring local-time window during which the rule holds its alerts. Held, not dropped; a held
  * alert is queued and delivered when the window closes.
  *
  * The API may send `null` in place of this object.

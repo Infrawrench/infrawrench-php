@@ -24,7 +24,7 @@ final class Runbook implements \JsonSerializable
 {
     /**
      * @param list<RunbookStep> $steps
-     * @param list<string> $resourceTypeIds Resource types this runbook is about; empty means it is not scoped to a type. Used to answer 'which runbooks apply here', **never** to restrict who may open it — a runbook nobody can find is the failure this feature exists to fix.
+     * @param list<string> $resourceTypeIds Resource types this runbook is about; empty means it is not scoped to a type. Used to answer 'which runbooks apply here', **never** to restrict who may open it; a runbook nobody can find is the failure this feature exists to fix.
      * @param string|null $tagKey Optional tag narrowing. Matched case-insensitively.
      * @param string|null $tagValue Required value of `tagKey`, matched exactly.
      * @param bool $enabled Off keeps the row and hides it from the 'what applies here' lookup. Retiring a runbook must not cost you the history of the runs performed against it.

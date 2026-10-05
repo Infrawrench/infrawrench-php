@@ -161,9 +161,9 @@ final class CostsNamespace extends ApiNamespace
      *
      * The three slow-lane cost alerts in one feed, newest first: commitments about to lapse,
      * commitments that are not being used, and business metrics whose cost per unit rose. Unlike
-     * budgets, anomalies and change alerts — all of which compare a spend total against another
-     * spend total — these read the commitment calendar and the volume the spend bought, so they
-     * see the two surprises the other three structurally cannot.
+     * budgets, anomalies and change alerts (all of which compare a spend total against another
+     * spend total) these read the commitment calendar and the volume the spend bought, so they see
+     * the two surprises the other three structurally cannot.
      *
      * _Requires permission: `costs:read`._
      *
@@ -285,9 +285,9 @@ final class CostsNamespace extends ApiNamespace
     /**
      * Push cost rows from your own systems
      *
-     * Reports spend Infrawrench has no provider plugin for — a parsed SaaS invoice, an internal
-     * chargeback, a colo bill — into the same store the provider collectors write to, so it
-     * appears in cost graphs, dimension filters, and budgets alongside everything else.
+     * Reports spend Infrawrench has no provider plugin for (a parsed SaaS invoice, an internal
+     * chargeback, a colo bill) into the same store the provider collectors write to, so it appears
+     * in cost graphs, dimension filters, and budgets alongside everything else.
      *
      * Rows are grouped under a caller-chosen `source`. Writes are idempotent per `(source, day,
      * service, region, resourceId, tags, currency)`: pushing the same day again restates that day
@@ -330,7 +330,7 @@ final class CostsNamespace extends ApiNamespace
      * even with zero spend.
      *
      * Cost centres nest, so the list is a depth-first tree. Each entry carries `totals` (spend
-     * allocated directly to it) and `subtreeTotals` (its own plus every descendant's) —
+     * allocated directly to it) and `subtreeTotals` (its own plus every descendant's).
      * "Engineering, of which Platform" needs both. Rules still evaluate first-match-wins by
      * ascending priority against a flat list, so a row is allocated exactly once even when a rule
      * targets a parent and another targets its child; at equal priority the more deeply nested
@@ -346,7 +346,7 @@ final class CostsNamespace extends ApiNamespace
      * @param string|null $from Defaults to 30 days ago.
      * @param string|null $to Defaults to today.
      * @param 'cash'|'amortized'|'blended'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys; `blended` also spreads each commitment's discount evenly over all the usage it could cover. Providers that report no amortized amount fall back to their cash amount.
-     * @param 'true'|'false'|null $adjusted Apply the organization's billing rules (see /billing-rules): markups multiply, and a reallocation moves a centre's spend onto another centre. Off by default — a chargeback report that silently showed marked-up numbers is one the receiving team could not reconcile. On, the response carries `adjustment` with the collected totals beside the adjusted ones. Fixed-amount rules are booked onto the cost centre they name (or "Unallocated" when they name none), pro-rated across the period.
+     * @param 'true'|'false'|null $adjusted Apply the organization's billing rules (see /billing-rules): markups multiply, and a reallocation moves a centre's spend onto another centre. Off by default; a chargeback report that silently showed marked-up numbers is one the receiving team could not reconcile. On, the response carries `adjustment` with the collected totals beside the adjusted ones. Fixed-amount rules are booked onto the cost centre they name (or "Unallocated" when they name none), pro-rated across the period.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
@@ -398,8 +398,8 @@ final class CostsNamespace extends ApiNamespace
      * Untagged spend over the required tag keys
      *
      * Spend on cost rows missing at least one of the org's required tag keys, overall and per key,
-     * plus the largest untagged (account, service) buckets. Empty when no tag policy is configured
-     * — untagged is only meaningful against a policy.
+     * plus the largest untagged (account, service) buckets. Empty when no tag policy is
+     * configured: untagged is only meaningful against a policy.
      *
      * _Requires permission: `costs:read`._
      *

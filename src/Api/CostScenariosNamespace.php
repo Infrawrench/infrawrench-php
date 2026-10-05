@@ -42,7 +42,7 @@ final class CostScenariosNamespace extends ApiNamespace
     /**
      * Create a scenario model
      *
-     * Names must be unique per organization (case-insensitively) — the name is what a chart prints
+     * Names must be unique per organization (case-insensitively); the name is what a chart prints
      * under its scenario line and what the CLI's `--scenario <name>` addresses, so two models
      * sharing one would make both meaningless. A model needs at least one adjustment: an empty
      * model changes nothing, which is the same as applying no scenario.
@@ -78,7 +78,7 @@ final class CostScenariosNamespace extends ApiNamespace
     /**
      * Delete a scenario model
      *
-     * Soft delete — **refused with a 409 while anything references the model**, with the referents
+     * Soft delete: **refused with a 409 while anything references the model**, with the referents
      * in the body. For a chart, deleting would silently drop the assumptions from a projection
      * somebody is reading; for a budget it would move the forecast thresholds back to the bare
      * trend, changing when people get paged. Detaching the referents is a deliberate step, never a
@@ -90,7 +90,7 @@ final class CostScenariosNamespace extends ApiNamespace
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: Still referenced — the body lists every referent.
+     * Raises on 409: Still referenced: the body lists every referent.
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -113,9 +113,9 @@ final class CostScenariosNamespace extends ApiNamespace
     /**
      * List a scenario model's referents
      *
-     * Every budget, cost report and dashboard cost graph referencing this model — what an edit
-     * will change, and what a delete would be refused over. Budgets come first: they are the
-     * referents that page people.
+     * Every budget, cost report and dashboard cost graph referencing this model; what an edit will
+     * change, and what a delete would be refused over. Budgets come first: they are the referents
+     * that page people.
      *
      * _Requires permission: `costs:read`._
      *
@@ -147,7 +147,7 @@ final class CostScenariosNamespace extends ApiNamespace
      *
      * Replaces the whole model. This is the high-leverage write: every chart drawing it, and
      * **every budget whose forecast thresholds are measured against it**, uses the new numbers on
-     * its next evaluation — which for a budget can change which alerts fire. `GET /{id}/referents`
+     * its next evaluation; which for a budget can change which alerts fire. `GET /{id}/referents`
      * names what a change will touch.
      *
      * _Requires permission: `costs:write`._

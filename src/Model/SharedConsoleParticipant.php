@@ -24,9 +24,9 @@ final class SharedConsoleParticipant implements \JsonSerializable
 {
     /**
      * @param string|null $userName Display-name snapshot taken when they joined.
-     * @param 'observer'|'driver' $role `driver` holds the keyboard; `observer` sees the terminal and cannot type into it. Exactly one participant per console is a driver at any moment, enforced by a partial unique index rather than by the application — two simultaneous handovers cannot both win.
+     * @param 'observer'|'driver' $role `driver` holds the keyboard; `observer` sees the terminal and cannot type into it. Exactly one participant per console is a driver at any moment, enforced by a partial unique index rather than by the application; two simultaneous handovers cannot both win.
      * @param 'joined'|'left'|'removed' $status `left` walked away and may resume on the same row without a new invite; `removed` was ejected or lost the permission mid-session and needs a fresh one.
-     * @param string|null $driverRequestedAt Set when this participant has asked for the keyboard and nobody has answered yet. Asking grants nothing — only the current driver or the sharer can move it.
+     * @param string|null $driverRequestedAt Set when this participant has asked for the keyboard and nobody has answered yet. Asking grants nothing; only the current driver or the sharer can move it.
      */
     public function __construct(
         public readonly string $id,

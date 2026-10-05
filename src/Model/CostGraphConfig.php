@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * The saved graph. Identical to the config an ad-hoc `cost_graph` dashboard widget stores inline —
+ * The saved graph. Identical to the config an ad-hoc `cost_graph` dashboard widget stores inline:
  * a report is that config given a name and an id.
  */
 final class CostGraphConfig implements \JsonSerializable
@@ -32,7 +32,7 @@ final class CostGraphConfig implements \JsonSerializable
      * @param array{kind: 'relative', preset: string}|array{kind: 'absolute', from: string, to: string} $dateRange
      * @param list<CostReportFilter>|null $filters
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` at query time, server-side. Editing the saved filter changes every graph, report and budget referencing it; a reference that fails to resolve makes the query error rather than silently run unfiltered.
-     * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast — known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.
+     * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast; known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.
      * @param 'cash'|'amortized'|'blended'|null $costBasis
      * @param CostMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.

@@ -28,12 +28,12 @@ final class InvoiceDerivation implements \JsonSerializable
 {
     /**
      * @param 'cash'|'amortized'|'blended' $costBasis
-     * @param string $rateDate The day the exchange rates were read — always the period's last day. One rate for the period rather than a per-day blend: “January, at the 31 January rate” is a sentence a finance team can reproduce.
+     * @param string $rateDate The day the exchange rates were read; always the period's last day. One rate for the period rather than a per-day blend: “January, at the 31 January rate” is a sentence a finance team can reproduce.
      * @param list<array{currency: string, rate: float, effectiveFrom: string}> $rates
      * @param list<string> $unconverted Currencies the organisation had stated no usable rate for. A non-empty list blocks approval: an invoice that cannot be expressed as one number in the customer's currency must not be frozen.
      * @param list<array{id: string, name: string, kind: 'percentage'|'fixed'|'reallocation'|'tiered'|'expression', summary: string}> $rules
      * @param array{costCentres: list<array{id: string, name: string}>, accounts: list<array{id: string, label: string}>} $scope
-     * @param list<string> $missingScope Scope entries that no longer exist. Recorded rather than silently skipped — an invoice that is quietly short is worse than one that says why.
+     * @param list<string> $missingScope Scope entries that no longer exist. Recorded rather than silently skipped; an invoice that is quietly short is worse than one that says why.
      * @param list<PricingEffect>|null $effects Every rule or setting that moved money, in pipeline order, with its total per currency: the per-invoice answer to which rule changed what.
      * @param list<string>|null $warnings
      * @param list<PricingExpressionFailure>|null $expressionFailures

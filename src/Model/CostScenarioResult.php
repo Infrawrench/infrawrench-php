@@ -23,10 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostScenarioResult implements \JsonSerializable
 {
     /**
-     * @param list<CostSeriesPoint> $points The adjusted projection — exactly the same days as `forecast`, never one more or fewer. A scenario modifies the projected region; it does not extend it, and it can never touch a day that already has recorded spend behind it.
+     * @param list<CostSeriesPoint> $points The adjusted projection; exactly the same days as `forecast`, never one more or fewer. A scenario modifies the projected region; it does not extend it, and it can never touch a day that already has recorded spend behind it.
      * @param list<array{adjustmentId: string, label: string, kind: 'one_off'|'recurring'|'rate_change', amount: float}> $contributions Signed total each adjustment added across the horizon, in model order.
      * @param float $totalDelta Signed difference from the baseline across the horizon.
-     * @param list<string> $outOfScope Adjustments this chart's own filters exclude, by label — a GCP commitment on an AWS-filtered chart is correctly left out, and saying so is what makes the number trustworthy rather than quietly assumed broken.
+     * @param list<string> $outOfScope Adjustments this chart's own filters exclude, by label; a GCP commitment on an AWS-filtered chart is correctly left out, and saying so is what makes the number trustworthy rather than quietly assumed broken.
      * @param string|null $convertedFrom Set when the model's amounts were converted at the org's stated rates.
      */
     public function __construct(

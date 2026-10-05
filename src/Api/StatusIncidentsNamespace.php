@@ -31,7 +31,7 @@ final class StatusIncidentsNamespace extends ApiNamespace
      * Provider incidents overlapping your resources
      *
      * The "is it me or is it them?" feed. The poller watches each provider plugin's public status
-     * feed (declared on its manifest — zero credentials, zero rate-limit risk), caches active
+     * feed (declared on its manifest; zero credentials, zero rate-limit risk), caches active
      * incidents, and this endpoint correlates them against the resources the organization holds:
      * an incident matches a resource when it is provider-wide, names the resource's region, or
      * names its resource type. Includes incidents resolved within the last 24 hours so recent

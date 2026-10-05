@@ -66,7 +66,7 @@ final class MsteamsNamespace extends ApiNamespace
     /**
      * Post a test card to every configured Teams channel
      *
-     * Ignores routing rules — every channel gets the test. Fails with the error Microsoft returned
+     * Ignores routing rules; every channel gets the test. Fails with the error Microsoft returned
      * when nothing could be delivered (HTTP 404 usually means the Workflow was deleted or turned
      * off).
      *

@@ -21,8 +21,8 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * **Null for a draft** — null, not zero. A draft's figures are recomputed on read and the list
- * does not recompute; fetch the invoice by id for a draft's current numbers.
+ * **Null for a draft**, null, not zero. A draft's figures are recomputed on read and the list does
+ * not recompute; fetch the invoice by id for a draft's current numbers.
  *
  * The API may send `null` in place of this object.
  */
@@ -32,7 +32,7 @@ final class InvoiceTotals implements \JsonSerializable
      * @param array<string, float> $collected Currency code → amount in the currency's major unit.
      * @param array<string, float> $adjustment Currency code → amount in the currency's major unit.
      * @param array<string, float> $adjusted Currency code → amount in the currency's major unit.
-     * @param array<string, float> $billed Keyed by the invoice currency, plus any currency that could not be converted — which keeps its own key so the total is never quietly short.
+     * @param array<string, float> $billed Keyed by the invoice currency, plus any currency that could not be converted; which keeps its own key so the total is never quietly short.
      */
     public function __construct(
         public readonly array $collected,

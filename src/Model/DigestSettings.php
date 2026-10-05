@@ -33,7 +33,7 @@ final class DigestSettings implements \JsonSerializable
      * @param bool $narrativeAvailable Whether this deployment has an LLM API key configured. False means enabling the narrative has no effect.
      * @param bool $emailAvailable Whether this deployment has a mail provider configured. False means email recipients are never delivered to.
      * @param int $attemptCount Delivery attempts made for lastSentWeekStart's window, including the first.
-     * @param 'pending'|'succeeded'|'partial'|'failed'|'no_targets'|null $lastStatus Outcome of the most recent delivery attempt. `partial` (some destinations took it, some failed) is deliberately never retried automatically — a retry would post the digest twice where it already landed. `failed` (nothing landed) is retried a bounded number of times with backoff, then parked until the next week.
+     * @param 'pending'|'succeeded'|'partial'|'failed'|'no_targets'|null $lastStatus Outcome of the most recent delivery attempt. `partial` (some destinations took it, some failed) is deliberately never retried automatically; a retry would post the digest twice where it already landed. `failed` (nothing landed) is retried a bounded number of times with backoff, then parked until the next week.
      * @param string|null $lastError Why the last attempt was not a clean success, for display in the settings UI.
      * @param string|null $nextAttemptAt When the next automatic retry is due, or null when none is scheduled.
      */

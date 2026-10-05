@@ -95,8 +95,8 @@ final class WorkflowsScheduleNamespace extends ApiNamespace
      * Create or replace a workflow's cron schedule
      *
      * Sets the workflow's trigger to cron with the given expression and timezone, validating both,
-     * and computes the next fire time. The workflow fires at the schedule's next occurrence —
-     * never immediately on save.
+     * and computes the next fire time. The workflow fires at the schedule's next occurrence; never
+     * immediately on save.
      *
      * Changing the schedule makes scheduled runs act with the permissions of the caller from then
      * on, the same as editing the workflow's code. When the workflow has secrets assigned, the

@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * The next person in the rotation — where an escalation goes. Resolved from the rotation and never
+ * The next person in the rotation, where an escalation goes. Resolved from the rotation and never
  * from a cover: a cover is somebody standing in for one shift.
  *
  * The API may send `null` in place of this object.

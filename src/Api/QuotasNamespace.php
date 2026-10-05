@@ -41,12 +41,12 @@ final class QuotasNamespace extends ApiNamespace
      * List provider quota utilisation across the organization
      *
      * How close each account is to the limits its provider enforces, with the trend fitted over
-     * the last 14 days of collected readings. Both halves of every row — the used figure and the
-     * limit — come from the provider; nothing is filled in from published defaults, so an account
+     * the last 14 days of collected readings. Both halves of every row (the used figure and the
+     * limit) come from the provider; nothing is filled in from published defaults, so an account
      * with an approved increase reads as having the headroom it has. This is a read over
      * already-collected snapshots: no provider API calls are made here, and the readings are as
      * fresh as the last collection pass (roughly six hours). A plugin that declares no quota
-     * capability contributes nothing rather than zero — see `unsupportedPluginIds`.
+     * capability contributes nothing rather than zero, see `unsupportedPluginIds`.
      *
      * _Requires permission: `resources:read`._
      *

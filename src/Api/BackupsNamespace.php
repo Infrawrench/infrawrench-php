@@ -46,10 +46,9 @@ final class BackupsNamespace extends ApiNamespace
      *
      * What protects the organization's stateful resources, what does not, and which backups
      * protect nothing. Derived from already-synced inventory using the `backupRole` and
-     * `backupPolicy` declarations plugins carry on their resource types — no provider API calls
-     * are made and results reflect the last sync. Findings are recomputed on every read rather
-     * than stored. Orphaned backups carry a trailing-30-day spend quote when billing data is
-     * available.
+     * `backupPolicy` declarations plugins carry on their resource types; no provider API calls are
+     * made and results reflect the last sync. Findings are recomputed on every read rather than
+     * stored. Orphaned backups carry a trailing-30-day spend quote when billing data is available.
      *
      * GET /api/org/{orgId}/backups
      *

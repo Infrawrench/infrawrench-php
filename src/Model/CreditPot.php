@@ -24,12 +24,12 @@ final class CreditPot implements \JsonSerializable
 {
     /**
      * @param PluginId::* $pluginId
-     * @param string $capabilityLabel The provider's own word for this pot — "Credits", "Balance".
-     * @param string $potKey Stable identity for this pot within the account — a currency code, a project id — so successive readings line up into a series.
+     * @param string $capabilityLabel The provider's own word for this pot, "Credits", "Balance".
+     * @param string $potKey Stable identity for this pot within the account (a currency code, a project id) so successive readings line up into a series.
      * @param float|null $granted What was granted, when the provider reports it.
      * @param string|null $creditExpiresAt Hard expiry on the credit itself, independent of burn.
-     * @param float|null $burnPerDay Spend per day over the observed span. **Null means there is not enough history to say** — never 0, which would read as 'nothing is being spent'.
-     * @param int $topUps Increases seen between consecutive readings. A top-up is recorded, never netted off the burn — subtracting the endpoints of a window containing one reports a negative burn and an infinite runway.
+     * @param float|null $burnPerDay Spend per day over the observed span. **Null means there is not enough history to say**: never 0, which would read as 'nothing is being spent'.
+     * @param int $topUps Increases seen between consecutive readings. A top-up is recorded, never netted off the burn: subtracting the endpoints of a window containing one reports a negative burn and an infinite runway.
      * @param bool $neverEmpties Nothing has been spent over the observed span.
      * @param bool $limitedByExpiry The credit's own expiry, not the burn rate, is the binding deadline.
      * @param 'critical'|'warning'|'ok'|'unknown' $urgency

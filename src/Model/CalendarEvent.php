@@ -26,9 +26,9 @@ final class CalendarEvent implements \JsonSerializable
      * @param string $id Stable across renders for the same underlying thing, because it becomes the iCalendar UID. Recurring sources (sleep windows, cron runs) key it by occurrence.
      * @param 'change-freeze'|'sleep-schedule'|'expiry'|'commitment-expiry'|'workflow-schedule'|'incident' $kind Which of the organization's own records the event was projected from. The kinds are sources rather than a severity taxonomy: a reader scanning a month wants to know that one bar is a freeze and another is a certificate.
      * @param string $startsAt Clamped to the requested window's lower bound when the underlying span began earlier; `openEnded` says so.
-     * @param string|null $endsAt Null means a point in time — a deadline, a scheduled run — or a span whose end is not known. `openEnded` distinguishes the two.
+     * @param string|null $endsAt Null means a point in time (a deadline, a scheduled run) or a span whose end is not known. `openEnded` distinguishes the two.
      * @param bool $openEnded The span continues past an edge of the window, or has no declared end at all (a freeze held until further notice, an unresolved incident).
-     * @param bool $allDay The event is meaningful only to the day — a deadline read off a date field. Rendering such a thing at the provider's stored midnight would be false precision.
+     * @param bool $allDay The event is meaningful only to the day; a deadline read off a date field. Rendering such a thing at the provider's stored midnight would be false precision.
      * @param 'critical'|'warning'|'info' $severity
      * @param array{target: 'resource', accountId: string, resourceId: string}|array{target: 'tab', tab: 'expiring'|'incidents'|'workflows'|'costs'|'settings'}|null $link
      */

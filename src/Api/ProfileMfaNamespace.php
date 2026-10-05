@@ -117,7 +117,7 @@ final class ProfileMfaNamespace extends ApiNamespace
     /**
      * List enrolled authentication factors
      *
-     * Includes factors whose enrolment was never confirmed — WorkOS does not expose a verified
+     * Includes factors whose enrolment was never confirmed; WorkOS does not expose a verified
      * flag.
      *
      * GET /api/profile/mfa

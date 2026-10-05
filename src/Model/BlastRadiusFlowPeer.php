@@ -23,10 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class BlastRadiusFlowPeer implements \JsonSerializable
 {
     /**
-     * @param string $ref The peer's flow ref — a provider resource id, or a class token like `internet`.
+     * @param string $ref The peer's flow ref; a provider resource id, or a class token like `internet`.
      * @param 'egress'|'ingress' $direction Relative to the resource being deleted, not to the row the provider captured.
      * @param string $scope The boundary the traffic crossed.
-     * @param int $days Days in the window this peer appeared on — a spike versus a standing flow.
+     * @param int $days Days in the window this peer appeared on; a spike versus a standing flow.
      */
     public function __construct(
         public readonly string $ref,

@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class IncidentActions implements \JsonSerializable
 {
     /**
-     * @param bool|null $openFreeze Open an org change freeze for the duration, lifted when the incident resolves. Defaults to false — freezing has blast radius beyond the incident. Needs `freezes:write`; without it the freeze is recorded as a failed artefact naming the permission, and the incident still stands.
-     * @param bool|null $pinMoment Pin the moment (a timestamp and a window) so `GET /moment` is one click away. Defaults to true — it cannot fail, and the investigation always wants it.
+     * @param bool|null $openFreeze Open an org change freeze for the duration, lifted when the incident resolves. Defaults to false; freezing has blast radius beyond the incident. Needs `freezes:write`; without it the freeze is recorded as a failed artefact naming the permission, and the incident still stands.
+     * @param bool|null $pinMoment Pin the moment (a timestamp and a window) so `GET /moment` is one click away. Defaults to true; it cannot fail, and the investigation always wants it.
      * @param bool|null $postSlack Announce through the org's alert routing rules under the `incidentAlerts` trigger, so channels, quiet hours, escalation and the acknowledge button all apply unchanged. Defaults to true. If no rule matches, the artefact fails and says so.
      * @param string|null $statusPageId Post a public update on this status page. Omitted means no public update.
      * @param list<string>|null $statusPageComponentIds Components on that page to mark affected. Empty means the page as a whole.

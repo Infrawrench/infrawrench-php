@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class NetworkFlowAccountStatus implements \JsonSerializable
 {
     /**
-     * @param bool $supportsFlows False when the account's provider has no flow source we can read. Such accounts are listed and excluded from the totals rather than contributing zero bytes — zero would be a claim about their network, this is a statement about our coverage.
+     * @param bool $supportsFlows False when the account's provider has no flow source we can read. Such accounts are listed and excluded from the totals rather than contributing zero bytes; zero would be a claim about their network, this is a statement about our coverage.
      * @param bool $recut True when the account's flows re-cut traffic another account may already report (a Kubernetes cluster's pods). Left out of this feed's totals unless asked for by `accountId`; see `GET /network-flows/kubernetes/{accountId}`.
      * @param list<NetworkFlowSource> $sources
      * @param float|null $lastQueryBytesScanned Log data the provider billed this account for the last collection's queries.

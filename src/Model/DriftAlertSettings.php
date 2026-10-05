@@ -24,7 +24,7 @@ final class DriftAlertSettings implements \JsonSerializable
 {
     /**
      * @param bool $notifyCreated Alert on resources that appeared.
-     * @param bool $notifyUpdated Alert on field-level updates. Defaults to false — updates are the bulk of the volume and are usually a provider restating a value.
+     * @param bool $notifyUpdated Alert on field-level updates. Defaults to false; updates are the bulk of the volume and are usually a provider restating a value.
      * @param bool $notifyDeleted Alert on resources that disappeared.
      * @param int $cooldownMinutes Least time between drift notifications for this organization. One notification per window, no matter how many changes or accounts it covers.
      * @param int $minChanges Fewest matching changes in a window worth notifying about.

@@ -19,9 +19,9 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * `rightsizing` — a resize to a smaller size; `orphan_deletion` — a resource the orphan finder
- * flags was deleted; `sleep_schedule` — a stretch of a sleep/wake schedule in force; `commitment`
- * — reservation and savings-plan discounts, derived from billing; `manual` — logged by a person.
+ * `rightsizing`: a resize to a smaller size; `orphan_deletion`: a resource the orphan finder flags
+ * was deleted; `sleep_schedule`: a stretch of a sleep/wake schedule in force; `commitment`:
+ * reservation and savings-plan discounts, derived from billing; `manual`: logged by a person.
  *
  * The values `SavingsEventKind` accepts.
  *

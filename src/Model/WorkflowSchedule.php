@@ -25,7 +25,7 @@ final class WorkflowSchedule implements \JsonSerializable
     /**
      * @param string $expression Standard 5-field cron expression (minute hour day-of-month month day-of-week). Supports `*`, lists, ranges, and steps; 3-letter month/weekday names; `7` as Sunday. When both day fields are restricted, a date matches if either does (POSIX).
      * @param string|null $timezone IANA timezone the expression's wall times are evaluated in. Omit or null for UTC.
-     * @param bool $enabled Mirrors the workflow's enabled flag — a disabled workflow's schedule never fires.
+     * @param bool $enabled Mirrors the workflow's enabled flag; a disabled workflow's schedule never fires.
      * @param string|null $lastRunAt When the workflow last finished a run (any trigger source).
      * @param string|null $nextRunAt The persisted next fire time the scheduler will claim. Null while disabled, or when the expression never matches.
      * @param list<string> $nextRuns Preview of the next few fire times, computed at read time.

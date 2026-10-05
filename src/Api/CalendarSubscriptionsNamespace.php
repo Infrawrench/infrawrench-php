@@ -33,7 +33,7 @@ final class CalendarSubscriptionsNamespace extends ApiNamespace
      * Mint an iCalendar subscription URL
      *
      * Returns the only copy of the feed URL. The token in it is 32 random bytes, stored as a
-     * SHA-256 hash, and is the sole credential on a route that runs outside every auth layer —
+     * SHA-256 hash, and is the sole credential on a route that runs outside every auth layer;
      * treat the URL as a secret. The URL deliberately contains no organization id.
      *
      * An organization may hold 25 live subscriptions; revoking makes room.
@@ -92,7 +92,7 @@ final class CalendarSubscriptionsNamespace extends ApiNamespace
     /**
      * List the organization's iCalendar subscriptions
      *
-     * Feed URLs that have been minted, including revoked ones — a revoked row is kept so the audit
+     * Feed URLs that have been minted, including revoked ones; a revoked row is kept so the audit
      * trail still resolves. The token itself is never returned.
      *
      * GET /api/org/{orgId}/calendar/subscriptions

@@ -25,10 +25,10 @@ final class MomentEvent implements \JsonSerializable
     /**
      * @param string $id Stable synthetic id, unique within a response (`feed:rowId[:phase]`).
      * @param MomentFeedId::* $feed
-     * @param string $kind Fine-grained `<noun>.<verb>` kind, e.g. `change.created`, `incident.started`, `workflow-run.failed`, `deployment.finished`, `freeze.started`, `drift-alert.sent`. Open set — render unknown kinds generically.
+     * @param string $kind Fine-grained `<noun>.<verb>` kind, e.g. `change.created`, `incident.started`, `workflow-run.failed`, `deployment.finished`, `freeze.started`, `drift-alert.sent`. Open set: render unknown kinds generically.
      * @param string $title One-line headline.
      * @param MomentSeverity::* $severity
-     * @param string|null $detail Optional second line — diff summary, actor, error text.
+     * @param string|null $detail Optional second line; diff summary, actor, error text.
      */
     public function __construct(
         public readonly string $id,

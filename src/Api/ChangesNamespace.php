@@ -52,7 +52,7 @@ final class ChangesNamespace extends ApiNamespace
      * window after, and reports the difference as a run-rate delta.
      *
      * A POST because it takes a list of ids, not because it writes: nothing is stored. The answer
-     * is recomputed on every call, deliberately — provider cost arrives late and is then restated,
+     * is recomputed on every call, deliberately; provider cost arrives late and is then restated,
      * so a stored number would be a wrong number that never corrects itself.
      *
      * Both windows exclude the change's own day (spend on it is half old shape, half new) and
@@ -90,8 +90,8 @@ final class ChangesNamespace extends ApiNamespace
      *
      * Change events recorded by the resource poller: each poll cycle diffs the freshly fetched
      * state against the stored snapshot and records resources that appeared, changed a stored
-     * field, or disappeared upstream. Cross-provider by construction — the diff runs on the
-     * generic stored record, so every plugin's resources show up here.
+     * field, or disappeared upstream. Cross-provider by construction; the diff runs on the generic
+     * stored record, so every plugin's resources show up here.
      *
      * _Requires permission: `resources:read`._
      *

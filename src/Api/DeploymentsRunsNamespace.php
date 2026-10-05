@@ -47,7 +47,7 @@ final class DeploymentsRunsNamespace extends ApiNamespace
      * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param ChangeCostBasis::*|null $costBasis Which charge-type basis both windows are read on. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys; `blended` also spreads each commitment's discount evenly over the usage it could cover. It is echoed on every response because a delta whose basis is unstated is unreadable — an amortized 'after' against a cash 'before' looks exactly like a saving.
+     * @param ChangeCostBasis::*|null $costBasis Which charge-type basis both windows are read on. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys; `blended` also spreads each commitment's discount evenly over the usage it could cover. It is echoed on every response because a delta whose basis is unstated is unreadable: an amortized 'after' against a cash 'before' looks exactly like a saving.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
@@ -168,11 +168,11 @@ final class DeploymentsRunsNamespace extends ApiNamespace
     /**
      * Roll back to a previous deployment
      *
-     * Re-runs that run's `deploy()` with the image and plan it recorded, building nothing — the
+     * Re-runs that run's `deploy()` with the image and plan it recorded, building nothing; the
      * exact artifact that was known good ships again. The Infrafile is read at the commit that run
      * deployed, not at the branch head. Only a successful run that produced an image can be rolled
      * back to. With `deleteCreated`, resources that runs after the target created through
-     * `infra.accounts` are deleted once the rollback has succeeded — undoing the provisioning, not
+     * `infra.accounts` are deleted once the rollback has succeeded; undoing the provisioning, not
      * just the shipping. Deletions are best-effort and reported in the result's notes.
      *
      * _Requires permission: `deployments:write`._
@@ -183,7 +183,7 @@ final class DeploymentsRunsNamespace extends ApiNamespace
      *
      * Raises on 401: Unauthenticated
      *
-     * Raises on 402: Payment required — the organization's plan does not include this
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 403: Forbidden
      *

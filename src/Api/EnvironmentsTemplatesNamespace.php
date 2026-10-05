@@ -37,7 +37,7 @@ final class EnvironmentsTemplatesNamespace extends ApiNamespace
      * Create an environment template
      *
      * Save a capture draft as a template. Member keys must be unique, every parameter and member
-     * reference must resolve, and the members must be orderable — a dependency cycle is rejected
+     * reference must resolve, and the members must be orderable; a dependency cycle is rejected
      * here rather than half-way through an apply. Audit-logged.
      *
      * _Requires permission: `resources:write`._
@@ -71,9 +71,9 @@ final class EnvironmentsTemplatesNamespace extends ApiNamespace
     /**
      * Delete an environment template
      *
-     * Live instances keep running and keep their TTL — they own real resources, and the template
-     * is only where they came from. Their `templateId` becomes null; the denormalized
-     * `templateName` is what the surface reads. Audit-logged.
+     * Live instances keep running and keep their TTL; they own real resources, and the template is
+     * only where they came from. Their `templateId` becomes null; the denormalized `templateName`
+     * is what the surface reads. Audit-logged.
      *
      * _Requires permission: `resources:write`._
      *
@@ -102,7 +102,7 @@ final class EnvironmentsTemplatesNamespace extends ApiNamespace
      * Price an instantiation before it runs
      *
      * Runs each member's create fields through the plugin's own `estimateCost`. A member the
-     * plugin cannot price is counted in `unpricedCount` and makes the total `partial` — `null` is
+     * plugin cannot price is counted in `unpricedCount` and makes the total `partial`: `null` is
      * never rounded to zero.
      *
      * _Requires permission: `resources:read`._

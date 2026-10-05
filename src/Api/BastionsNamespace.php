@@ -60,7 +60,7 @@ final class BastionsNamespace extends ApiNamespace
     }
 
     /**
-     * Revoke a bastion — accounts referencing it have their bastion binding cleared
+     * Revoke a bastion; accounts referencing it have their bastion binding cleared
      *
      * _Requires permission: `bastions:write`._
      *

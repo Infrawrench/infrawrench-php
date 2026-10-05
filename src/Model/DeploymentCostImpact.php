@@ -24,7 +24,7 @@ final class DeploymentCostImpact implements \JsonSerializable
 {
     /**
      * @param ChangeCostBasis::* $costBasis
-     * @param string $eventDay The run's start day, UTC — what both windows hang off.
+     * @param string $eventDay The run's start day, UTC; what both windows hang off.
      * @param list<DeploymentCostImpactResource> $resources One row per resource the run provisioned through `infra.accounts.*.create(...)`. That is the only set attributable to a run with certainty: a deploy that merely re-shipped an image links to nothing and honestly reports an empty breakdown.
      * @param list<array{currency: string, deltaPerDay: float}> $total Summed `deltaPerDay` per currency across the **measured** rows only, so the breakdown always adds up to it. An unmeasurable resource contributes nothing rather than zero.
      * @param int $unknownResources Rows excluded from `total` because their impact could not be measured.

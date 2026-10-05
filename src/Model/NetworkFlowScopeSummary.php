@@ -23,9 +23,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class NetworkFlowScopeSummary implements \JsonSerializable
 {
     /**
-     * @param string $scope Which billing boundary the traffic crossed. `unknown` means the provider's record did not determine one — it is priced at zero and labelled rather than folded into a neighbouring boundary.
+     * @param string $scope Which billing boundary the traffic crossed. `unknown` means the provider's record did not determine one; it is priced at zero and labelled rather than folded into a neighbouring boundary.
      * @param 'egress'|'ingress' $direction
-     * @param float $unattributedBytes Bytes inside `bytes` whose endpoints could not be tied to a workload. A subset, not an addition — nothing here has been apportioned across the attributed rows.
+     * @param float $unattributedBytes Bytes inside `bytes` whose endpoints could not be tied to a workload. A subset, not an addition: nothing here has been apportioned across the attributed rows.
      * @param float $truncatedBytes Bytes inside `bytes` that fell below the stored top-N pair cap, computed by subtraction against the provider's exact totals rather than estimated.
      */
     public function __construct(

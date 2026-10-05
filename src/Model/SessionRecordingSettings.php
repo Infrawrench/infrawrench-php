@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class SessionRecordingSettings implements \JsonSerializable
 {
     /**
-     * @param bool $captureInput Also record keystrokes. Separate from `enabled` because it captures input at prompts the remote host chose not to echo — a sudo password, a pasted token — which is a materially different promise to the people being recorded.
+     * @param bool $captureInput Also record keystrokes. Separate from `enabled` because it captures input at prompts the remote host chose not to echo (a sudo password, a pasted token) which is a materially different promise to the people being recorded.
      */
     public function __construct(
         public readonly bool $enabled,

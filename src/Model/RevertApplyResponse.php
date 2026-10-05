@@ -24,8 +24,8 @@ final class RevertApplyResponse implements \JsonSerializable
 {
     /**
      * @param list<string> $appliedFields The fields written, in plan order. Empty on a reconciliation.
-     * @param bool|null $reconciled True when this request wrote nothing and instead recorded an *earlier* interrupted attempt's write — the resource was already back, and the event is now marked reverted. Nothing was sent to the provider by this request.
-     * @param bool|null $auditRecorded Present and `false` only when the audit entry could not be written. The provider change still happened; its attribution did not reach the audit table and was written to the server log instead. Attribution is best-effort — nothing transactional spans a third-party cloud API and Infrawrench's database.
+     * @param bool|null $reconciled True when this request wrote nothing and instead recorded an *earlier* interrupted attempt's write: the resource was already back, and the event is now marked reverted. Nothing was sent to the provider by this request.
+     * @param bool|null $auditRecorded Present and `false` only when the audit entry could not be written. The provider change still happened; its attribution did not reach the audit table and was written to the server log instead. Attribution is best-effort; nothing transactional spans a third-party cloud API and Infrawrench's database.
      */
     public function __construct(
         public readonly string $changeId,

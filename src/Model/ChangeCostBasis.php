@@ -22,7 +22,7 @@ namespace Infrawrench\Sdk\Model;
  * Which charge-type basis both windows are read on. `cash` (the default) is what the provider
  * charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the
  * term it buys; `blended` also spreads each commitment's discount evenly over the usage it could
- * cover. It is echoed on every response because a delta whose basis is unstated is unreadable — an
+ * cover. It is echoed on every response because a delta whose basis is unstated is unreadable: an
  * amortized 'after' against a cash 'before' looks exactly like a saving.
  *
  * The values `ChangeCostBasis` accepts.

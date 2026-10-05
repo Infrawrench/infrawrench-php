@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class AgentRevoked implements \JsonSerializable
 {
     /**
-     * @param bool $revoked False when the registration was already revoked. The request still succeeds — revocation is idempotent — but nothing changed.
+     * @param bool $revoked False when the registration was already revoked. The request still succeeds (revocation is idempotent) but nothing changed.
      */
     public function __construct(
         public readonly bool $ok,

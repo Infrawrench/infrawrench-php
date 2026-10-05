@@ -32,7 +32,7 @@ final class ResourceOwnerAnnotation implements \JsonSerializable
     /**
      * @param string|null $userId Set when a routable org member owns it.
      * @param string $displayName The member's name, or the free-text owner.
-     * @param bool $isLabel True when the owner is free text — nothing can be routed to it.
+     * @param bool $isLabel True when the owner is free text; nothing can be routed to it.
      */
     public function __construct(
         public readonly ?string $userId,

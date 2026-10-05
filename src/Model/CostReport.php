@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostReport implements \JsonSerializable
 {
     /**
-     * @param string|null $folderId Folder the report is filed under (see /cost-report-folders); null is the top level of the Reports list. Moving a report is this same PUT with a different folderId; an id from another org is a 400. Deleting a folder never deletes its reports — they fall back to the top level.
-     * @param list<CostReportPlacement> $placements The dashboards carrying a `cost_report` card for this report. Empty is normal — a report exists, and can be run, whether or not any dashboard shows it. Deleting the report removes these cards; removing a card leaves the report alone.
+     * @param string|null $folderId Folder the report is filed under (see /cost-report-folders); null is the top level of the Reports list. Moving a report is this same PUT with a different folderId; an id from another org is a 400. Deleting a folder never deletes its reports; they fall back to the top level.
+     * @param list<CostReportPlacement> $placements The dashboards carrying a `cost_report` card for this report. Empty is normal: a report exists, and can be run, whether or not any dashboard shows it. Deleting the report removes these cards; removing a card leaves the report alone.
      */
     public function __construct(
         public readonly string $id,

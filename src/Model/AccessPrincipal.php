@@ -26,12 +26,12 @@ final class AccessPrincipal implements \JsonSerializable
      * @param string $resourceId Infrawrench resource id.
      * @param PluginId::* $pluginId
      * @param string|null $externalId Provider-native id, when known.
-     * @param 'user'|'group'|'role'|'service-account'|'key'|'binding' $role What kind of identity the principal is, from the resource type's `principalRole` declaration. Grouping and labels only — it is not a permission model.
+     * @param 'user'|'group'|'role'|'service-account'|'key'|'binding' $role What kind of identity the principal is, from the resource type's `principalRole` declaration. Grouping and labels only; it is not a permission model.
      * @param string|null $lastUsedAt When the principal was last used, or null when the review has no evidence.
-     * @param 'active'|'stale'|'unknown' $activity What could be established about the principal's last use. `unknown` means the resource type declares no last-used field, or the provider stored nothing parseable — it is a first-class answer and is never reported as `stale`.
+     * @param 'active'|'stale'|'unknown' $activity What could be established about the principal's last use. `unknown` means the resource type declares no last-used field, or the provider stored nothing parseable; it is a first-class answer and is never reported as `stale`.
      * @param bool|null $admin True when the type's declared admin indicator matched; null when the type declares none.
-     * @param bool|null $mfa Multi-factor state, only on types that declare an MFA field. Null everywhere else — "not synced" is not "MFA is off".
-     * @param string|null $parent The principal this one hangs off — a key's owner, a binding's subject.
+     * @param bool|null $mfa Multi-factor state, only on types that declare an MFA field. Null everywhere else; "not synced" is not "MFA is off".
+     * @param string|null $parent The principal this one hangs off; a key's owner, a binding's subject.
      * @param string|null $revokeActionId The plugin action that revokes this principal, when the type declares one. Dispatch it through POST /resources/invoke-action; null means the provider offers no revocation Infrawrench can invoke.
      */
     public function __construct(

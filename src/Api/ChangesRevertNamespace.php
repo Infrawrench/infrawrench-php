@@ -31,8 +31,8 @@ final class ChangesRevertNamespace extends ApiNamespace
     /**
      * Revert one change event
      *
-     * Applies the inverse patch through the plugin's ordinary `updateResource` path — the same
-     * call the Edit form makes — and only for the fields the dry run marked `revertible`.
+     * Applies the inverse patch through the plugin's ordinary `updateResource` path (the same call
+     * the Edit form makes) and only for the fields the dry run marked `revertible`.
      *
      * The plan is rebuilt against a fresh live read immediately before the write, so a field that
      * moved between the preview and the apply becomes a conflict and drops out of the patch.
@@ -52,13 +52,13 @@ final class ChangesRevertNamespace extends ApiNamespace
      *
      * The claim carries an owner token, and every write that ends a revert is fenced on it. An
      * attempt whose provider call outlives the lease can therefore neither release nor complete
-     * the claim that replaced it — it gets `409` with `appliedFields` naming what it did write, so
+     * the claim that replaced it; it gets `409` with `appliedFields` naming what it did write, so
      * the caller can reconcile rather than assume. Two attempts can overlap in that case, but they
      * cannot disagree: both invert the same recorded event to the same values, so the second one's
      * patch is a subset of the first's.
      *
      * If a write reaches the provider but recording it fails, the response is `500` with
-     * `appliedFields` — the resource moved and the timeline has not caught up. The claim is
+     * `appliedFields`: the resource moved and the timeline has not caught up. The claim is
      * deliberately held in that case, and the next attempt after the lease expires finds every
      * field already back and records the revert without touching the provider again, answering
      * `200` with `reconciled: true` and an empty `appliedFields`. A resource put back by hand is
@@ -67,7 +67,7 @@ final class ChangesRevertNamespace extends ApiNamespace
      *
      * Blocked with `423` while an org change freeze is in effect. Every attempt whose write
      * reached the provider is audit-logged as `resource.change_revert`, including one that lost
-     * its claim or could not record — the entry's `outcome` is `recorded`, `superseded`,
+     * its claim or could not record; the entry's `outcome` is `recorded`, `superseded`,
      * `unrecorded` or `reconciled`, so a contested outcome reads as one mutation rather than as
      * several reverts. An attempt that neither wrote nor recorded anything logs nothing.
      * Attribution is best-effort: no transaction spans a third-party cloud API and Infrawrench's
@@ -120,7 +120,7 @@ final class ChangesRevertNamespace extends ApiNamespace
      *
      * Inverts the recorded diff and reconciles it against the resource's *current* live fields,
      * which is the whole point: the poller may have recorded this hours ago and the world may have
-     * moved on. Read-only — it reads from the provider and writes nothing.
+     * moved on. Read-only: it reads from the provider and writes nothing.
      *
      * Only `updated` events with a field diff can be reverted. `outputs.*` entries are
      * provider-derived and are never written back, and whether a field is writable at all is the

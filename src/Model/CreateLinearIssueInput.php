@@ -26,7 +26,7 @@ final class CreateLinearIssueInput implements \JsonSerializable
      * @param LinearSourceKind::* $sourceKind
      * @param string $sourceId The finding's own id, as the detector reports it.
      * @param string $teamId Team to file into. Every Linear issue belongs to exactly one team.
-     * @param string|null $description Markdown, passed to Linear as-is — unlike Jira, where the server converts plain text to Atlassian Document Format.
+     * @param string|null $description Markdown, passed to Linear as-is; unlike Jira, where the server converts plain text to Atlassian Document Format.
      * @param list<string>|null $labelIds Ids of existing labels in the workspace. Linear cannot create labels here.
      * @param string|null $projectId Optional project to attach the issue to.
      */

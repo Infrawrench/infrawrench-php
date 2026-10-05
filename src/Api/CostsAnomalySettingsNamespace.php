@@ -31,8 +31,8 @@ final class CostsAnomalySettingsNamespace extends ApiNamespace
     /**
      * Get the organization's anomaly detection thresholds
      *
-     * The tunable part of cost anomaly detection. Everything else about the model — the 28-day
-     * baseline, the 7-day notification cooldown, the minimum history a baseline needs — is fixed.
+     * The tunable part of cost anomaly detection. Everything else about the model (the 28-day
+     * baseline, the 7-day notification cooldown, the minimum history a baseline needs ) is fixed.
      * An organization that has never changed a threshold reads back the defaults. The response
      * also carries the derived, read-only `smsConfigured`.
      *
@@ -62,8 +62,8 @@ final class CostsAnomalySettingsNamespace extends ApiNamespace
      * Update the organization's anomaly detection thresholds
      *
      * Takes effect on the next detection pass (which runs after each cost collection). Anomalies
-     * already stored are not re-judged. The four threshold fields are required — this is a PUT of
-     * the whole settings object, not a patch — and `smsAlerts` deliberately has no server-side
+     * already stored are not re-judged. The four threshold fields are required (this is a PUT of
+     * the whole settings object, not a patch) and `smsAlerts` deliberately has no server-side
      * default, so a client that omits it is rejected rather than silently switching an
      * organization's SMS paging back off. `smsConfigured` is derived and is not accepted here.
      *

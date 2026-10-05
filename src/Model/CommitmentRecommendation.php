@@ -24,10 +24,10 @@ final class CommitmentRecommendation implements \JsonSerializable
 {
     /**
      * @param PluginId::* $pluginId
-     * @param float $recommendedDailyCommitment p10 of daily uncovered usage spend, nearest-rank — the floor, not the average.
-     * @param 'range'|'upper_bound' $savingBasis Published discounts are "up to" figures. `range` renders "$X–$Y"; `upper_bound` renders "up to $Y" — never a bare "$Y".
+     * @param float $recommendedDailyCommitment p10 of daily uncovered usage spend, nearest-rank; the floor, not the average.
+     * @param 'range'|'upper_bound' $savingBasis Published discounts are "up to" figures. `range` renders "$X–$Y"; `upper_bound` renders "up to $Y"; never a bare "$Y".
      * @param float $breakEvenUtilization 1 − discount: below this utilization the commitment loses to on-demand. Equivalently, the workload can shrink by the discount before committing was a mistake.
-     * @param float $annualLossIfUsageHalves max(0, annualCommitment × (0.5 − discount)) at the shallow end of the published discount — a ceiling on regret where no floor rate is published.
+     * @param float $annualLossIfUsageHalves max(0, annualCommitment × (0.5 − discount)) at the shallow end of the published discount: a ceiling on regret where no floor rate is published.
      */
     public function __construct(
         public readonly string $pluginId,

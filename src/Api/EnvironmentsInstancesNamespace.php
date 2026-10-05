@@ -31,7 +31,7 @@ final class EnvironmentsInstancesNamespace extends ApiNamespace
     /**
      * Forget a torn-down environment
      *
-     * Removes the record. Refuses while the instance still owns resources — the row is the only
+     * Removes the record. Refuses while the instance still owns resources; the row is the only
      * thing that knows they exist. Audit-logged.
      *
      * _Requires permission: `resources:write`._
@@ -40,7 +40,7 @@ final class EnvironmentsInstancesNamespace extends ApiNamespace
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: The environment is still live — tear it down first
+     * Raises on 409: The environment is still live; tear it down first
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

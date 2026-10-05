@@ -24,7 +24,7 @@ final class CommitmentRejectedCell implements \JsonSerializable
 {
     /**
      * @param PluginId::* $pluginId
-     * @param 'presence'|'not_in_decline'|'floor'|'materiality' $gate First gate the cell failed, in evaluation order — the most actionable objection.
+     * @param 'presence'|'not_in_decline'|'floor'|'materiality' $gate First gate the cell failed, in evaluation order; the most actionable objection.
      */
     public function __construct(
         public readonly string $pluginId,

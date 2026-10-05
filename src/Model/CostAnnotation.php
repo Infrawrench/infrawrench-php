@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostAnnotation implements \JsonSerializable
 {
     /**
-     * @param string $startDate Inclusive first day (UTC) the note is about. Mapped to whichever bucket holds it at the chart's binning — daily and cumulative use the day itself, weekly the Monday that starts its week, monthly the first of its month.
-     * @param string|null $endDate Inclusive last day, or null for a note about a single moment. A deploy is a moment; a migration is a week, and a week spelled as seven notes misstates how many things happened. An end equal to the start is stored as null — the same fact has one spelling.
+     * @param string $startDate Inclusive first day (UTC) the note is about. Mapped to whichever bucket holds it at the chart's binning: daily and cumulative use the day itself, weekly the Monday that starts its week, monthly the first of its month.
+     * @param string|null $endDate Inclusive last day, or null for a note about a single moment. A deploy is a moment; a migration is a week, and a week spelled as seven notes misstates how many things happened. An end equal to the start is stored as null; the same fact has one spelling.
      * @param string|null $costReportId The report this note is scoped to, or null for **org-wide**. Null is the useful default: an org-wide note is drawn on every cost chart, because "we changed instance types" is not a fact about one report. An id from another org is a 400.
      * @param string|null $costAnomalyId The detected cost anomaly this note was written to explain (see POST /costs/anomalies/{anomalyId}/acknowledge), or null for a note written by hand. The reverse of the anomaly's own `acknowledgement.annotationId`, resolved from that same single link rather than stored twice.
      * @param array{budgetId: string, eventId: string}|null $budgetAlert The fired budget alert this note explains (see POST /budgets/{id}/events/{eventId}/note), or null. Resolved from the event's own `note.annotationId`, the same single link, never stored twice.

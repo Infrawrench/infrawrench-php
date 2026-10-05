@@ -26,12 +26,12 @@ final class IacState implements \JsonSerializable
      * @param string $label User-supplied name for this state, e.g. "prod / us-east-1".
      * @param string|null $accountId The account this state covers, or null when it covers the whole organization.
      * @param 'tfstate'|'show-json' $format Which document shape was uploaded: a raw state file, or `terraform show -json`.
-     * @param string $formatVersion The document's own version — "4" for a state file, "1.0"-style otherwise.
+     * @param string $formatVersion The document's own version; "4" for a state file, "1.0"-style otherwise.
      * @param int|null $serial State file serial; null for show output.
      * @param string|null $lineage State file lineage; null for show output.
      * @param int $resourceCount Managed resource instances recorded.
      * @param int $dataSourceCount Data-source entries, recorded but never matched against inventory.
-     * @param int $redactedAttributeCount Attribute values dropped because the state marked them sensitive. Redaction happens at parse time — no sensitive value is ever stored.
+     * @param int $redactedAttributeCount Attribute values dropped because the state marked them sensitive. Redaction happens at parse time; no sensitive value is ever stored.
      * @param list<string> $parseWarnings
      */
     public function __construct(

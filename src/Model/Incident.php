@@ -24,9 +24,9 @@ final class Incident implements \JsonSerializable
 {
     /**
      * @param 'sev1'|'sev2'|'sev3'|'sev4' $severity Severity in the ordinary sev1..sev4 register. `sev1` is a complete outage; `sev4` is cosmetic and tracked rather than paged.
-     * @param 'open'|'mitigated'|'resolved' $status `mitigated` is a real state, not a synonym for resolved: impact has stopped but the incident is still open for follow-up. Keeping it separate is what makes time-to-mitigate a measurement rather than a guess. Resolving runs the resolve path — the change freeze this incident opened is lifted, and the status-page update it posted is closed.
-     * @param string $startedAt Backdatable — people declare after they start firefighting.
-     * @param list<string> $affectedResourceIds Advisory. Not foreign keys — the claim must survive the resource being deleted.
+     * @param 'open'|'mitigated'|'resolved' $status `mitigated` is a real state, not a synonym for resolved: impact has stopped but the incident is still open for follow-up. Keeping it separate is what makes time-to-mitigate a measurement rather than a guess. Resolving runs the resolve path; the change freeze this incident opened is lifted, and the status-page update it posted is closed.
+     * @param string $startedAt Backdatable: people declare after they start firefighting.
+     * @param list<string> $affectedResourceIds Advisory. Not foreign keys; the claim must survive the resource being deleted.
      * @param list<string> $affectedAccountIds
      * @param string|null $issueUrl Where the write-up was filed, once anyone filed it.
      * @param list<IncidentArtifact> $artifacts

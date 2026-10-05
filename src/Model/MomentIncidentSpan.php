@@ -21,8 +21,8 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * A provider incident whose span overlaps the window — returned alongside the events so clients
- * can badge events that fall inside it ("during DigitalOcean incident").
+ * A provider incident whose span overlaps the window; returned alongside the events so clients can
+ * badge events that fall inside it ("during DigitalOcean incident").
  */
 final class MomentIncidentSpan implements \JsonSerializable
 {

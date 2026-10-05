@@ -25,7 +25,7 @@ final class CreditBurndown implements \JsonSerializable
     /**
      * @param list<CreditPot> $pots
      * @param list<CreditPollFailure> $failures
-     * @param list<string> $pendingAccountIds Credit-capable accounts never yet collected — named rather than omitted.
+     * @param list<string> $pendingAccountIds Credit-capable accounts never yet collected, named rather than omitted.
      */
     public function __construct(
         public readonly array $pots,

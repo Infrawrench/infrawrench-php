@@ -111,10 +111,10 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * List what a monitor can run against
      *
      * The editor's target picker: each account with a SQL driver of its own, plus the SQL-capable
-     * resources inside it — a database that is a *resource* (a ClickHouse service, a D1 or Turso
+     * resources inside it; a database that is a *resource* (a ClickHouse service, a D1 or Turso
      * database, a Databricks SQL warehouse, a BigQuery dataset) rather than the account's own
      * connection. Accounts with neither are omitted; a monitor pointed at one could only ever
-     * fail. Pass a resource's `id` (and optionally its `resourceTypeId` — the server fills it from
+     * fail. Pass a resource's `id` (and optionally its `resourceTypeId`: the server fills it from
      * the synced resource either way) when creating a monitor to scope the query to that resource.
      *
      * GET /api/org/{orgId}/query-monitors/targets
@@ -140,9 +140,9 @@ final class QueryMonitorsNamespace extends ApiNamespace
     /**
      * Run a query once without saving it
      *
-     * The editor's 'try it' button. Goes through the same read-only guard as a scheduled run — a
+     * The editor's 'try it' button. Goes through the same read-only guard as a scheduled run; a
      * query that could not be saved as a monitor must not be runnable through the monitor's own
-     * preview — and applies the threshold, so the answer says whether it *would* be breaching
+     * preview: and applies the threshold, so the answer says whether it *would* be breaching
      * rather than leaving the reader to compare two numbers.
      *
      * POST /api/org/{orgId}/query-monitors/test

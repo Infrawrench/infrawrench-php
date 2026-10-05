@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class EnvironmentDiffEntry implements \JsonSerializable
 {
     /**
-     * @param string $key The pairing key both sides matched on — the resource type plus the resource name with environment words removed. Stable across runs.
+     * @param string $key The pairing key both sides matched on; the resource type plus the resource name with environment words removed. Stable across runs.
      * @param 'only-in-a'|'only-in-b'|'changed' $status Whether the slot exists on side A only, side B only, or on both with a field divergence. Matched pairs that agree are counted in the type summary rather than listed.
      * @param list<EnvironmentDiffFieldChange> $changes Field divergences. Empty unless `status` is `changed`.
      * @param int $suppressedCount Divergences hidden by the identity filter (ids, links, addresses, timestamps). Always 0 when `includeIdentityFields` was requested.

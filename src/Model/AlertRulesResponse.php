@@ -24,7 +24,7 @@ final class AlertRulesResponse implements \JsonSerializable
 {
     /**
      * @param list<AlertRule> $rules
-     * @param bool $usingDefaults True when the organization has saved no rules and `rules` is the synthesized default — everything except drift, to every connected channel and to mobile push.
+     * @param bool $usingDefaults True when the organization has saved no rules and `rules` is the synthesized default; everything except drift, to every connected channel and to mobile push.
      * @param list<array{id: string, name: string, isPrivate: bool}> $slackChannels
      * @param list<array{id: string, label: string}> $msTeamsWebhooks
      * @param list<array{id: string, displayName: string, pluginId: string}> $accounts

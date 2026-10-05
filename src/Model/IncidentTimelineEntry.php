@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class IncidentTimelineEntry implements \JsonSerializable
 {
     /**
-     * @param 'incident'|'note'|'artifact'|'moment'|'probe'|'metric-alert' $source `moment` covers everything the moment union already indexes — resource changes, deployments, cost anomalies, provider status incidents, audit entries, change freezes and workflow runs. Nothing is copied into the incident's own tables; the timeline is a join, so re-reading it reflects the record as it stands today.
-     * @param string $kind `<noun>.<verb>`. Open set — render unknown kinds generically.
+     * @param 'incident'|'note'|'artifact'|'moment'|'probe'|'metric-alert' $source `moment` covers everything the moment union already indexes; resource changes, deployments, cost anomalies, provider status incidents, audit entries, change freezes and workflow runs. Nothing is copied into the incident's own tables; the timeline is a join, so re-reading it reflects the record as it stands today.
+     * @param string $kind `<noun>.<verb>`. Open set: render unknown kinds generically.
      * @param 'info'|'warning'|'critical' $severity
      * @param array{kind: string, id?: string|null, parentId?: string|null, url?: string|null}|null $link
      */

@@ -90,8 +90,8 @@ final class DigestRecipientsNamespace extends ApiNamespace
      * List the organization's digest email recipients
      *
      * Email is a digest-only transport, so its destinations are an organization-level address list
-     * rather than a per-channel trigger. Addresses need not belong to Infrawrench users — a
-     * finance alias is a valid recipient.
+     * rather than a per-channel trigger. Addresses need not belong to Infrawrench users; a finance
+     * alias is a valid recipient.
      *
      * GET /api/org/{orgId}/digest/recipients
      *

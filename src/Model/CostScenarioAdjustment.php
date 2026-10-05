@@ -25,13 +25,13 @@ final class CostScenarioAdjustment implements \JsonSerializable
     /**
      * @param string $id Stable within the model; also the key of its per-adjustment total.
      * @param string $label What this adjustment is. Named on the chart whenever the scenario moves a number.
-     * @param 'one_off'|'recurring'|'rate_change' $kind `one_off` is a single amount on a single day; `recurring` is an amount every period from a date; `rate_change` is ±X% of the trend from a date. The split between an amount and a percentage of the trend is what fixes the composition order — see the `scenario` field on the cost query response.
+     * @param 'one_off'|'recurring'|'rate_change' $kind `one_off` is a single amount on a single day; `recurring` is an amount every period from a date; `rate_change` is ±X% of the trend from a date. The split between an amount and a percentage of the trend is what fixes the composition order; see the `scenario` field on the cost query response.
      * @param string|null $endDate Inclusive last day, or null for indefinitely. Refused for `one_off`, which is one day.
-     * @param int|null $amountCents Minor units of the model's currency, for the amount kinds; null for `rate_change`. May be negative — turning off an old cluster is as real a known future cost as buying a new one.
+     * @param int|null $amountCents Minor units of the model's currency, for the amount kinds; null for `rate_change`. May be negative; turning off an old cluster is as real a known future cost as buying a new one.
      * @param string|null $currency Always the model's own currency; a model that held two would sum two kinds of money.
      * @param 'daily'|'monthly'|null $period How often a `recurring` amount charges. A monthly amount is spread evenly across each calendar month it covers rather than landing as a spike on the 1st, so a month the scenario only partly covers costs proportionally less.
      * @param float|null $percent Percent change to the trend, for `rate_change`. -20 is a fifth cheaper.
-     * @param list<CostScenarioScopeTerm> $scope Which spend this adjustment describes; empty is the whole organization. For a rate change the scope is what the percentage is *of*. For an amount it decides whether the adjustment applies to a given chart at all — a GCP commitment does not belong on a chart filtered to AWS, and one that is excluded is named in `scenario.outOfScope`.
+     * @param list<CostScenarioScopeTerm> $scope Which spend this adjustment describes; empty is the whole organization. For a rate change the scope is what the percentage is *of*. For an amount it decides whether the adjustment applies to a given chart at all; a GCP commitment does not belong on a chart filtered to AWS, and one that is excluded is named in `scenario.outOfScope`.
      */
     public function __construct(
         public readonly string $id,

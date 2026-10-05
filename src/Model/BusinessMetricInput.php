@@ -24,9 +24,9 @@ final class BusinessMetricInput implements \JsonSerializable
 {
     /**
      * @param string $key Stable lowercase slug (letters, digits, `_ . -`) that workflows and the CLI address the metric by. Unique per organization among live metrics, and independent of `name` so a rename never breaks a running job.
-     * @param string $unit Singular unit label used for display — the noun in "USD per customer".
+     * @param string $unit Singular unit label used for display; the noun in "USD per customer".
      * @param BusinessMetricKind::* $kind
-     * @param string|null $currency ISO-4217 code. **Required when `kind` is `currency`, and rejected otherwise** — a revenue metric with no currency cannot have margin computed against it, and a count metric carrying one would suggest its numbers are money when they are requests.
+     * @param string|null $currency ISO-4217 code. **Required when `kind` is `currency`, and rejected otherwise**; a revenue metric with no currency cannot have margin computed against it, and a count metric carrying one would suggest its numbers are money when they are requests.
      * @param list<BusinessMetricScopeTerm>|null $costScope The spend this metric divides, in the same filter vocabulary cost graphs and budgets use. Empty (the default) is all of the organization's spend. A unit-cost query may narrow this further but can never widen it: the scope is part of what the metric means, and a caller who could drop it would be answering a different question under the same name.
      * @param string|null $savedFilterId A saved cost filter AND-composed with `costScope`, resolved server-side at query time. A reference that fails to resolve errors the unit-cost query rather than silently widening the numerator to all spend.
      * @param list<BusinessMetricLabelMapping>|null $labelMappings Which value labels name a cost dimension. One mapping per label.

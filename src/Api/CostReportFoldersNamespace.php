@@ -93,7 +93,7 @@ final class CostReportFoldersNamespace extends ApiNamespace
     /**
      * List cost-report folders
      *
-     * The org's report folders as a flat list — build the tree from `parentFolderId`. Folders
+     * The org's report folders as a flat list; build the tree from `parentFolderId`. Folders
      * organize the Reports list and nothing else; a report's id, URL and dashboard cards are
      * unchanged by where it is filed.
      *
@@ -123,9 +123,9 @@ final class CostReportFoldersNamespace extends ApiNamespace
     /**
      * Update a cost-report folder
      *
-     * Rename and/or reparent. Filing a *report* is not here — that is `PUT /cost-reports/{id}`
-     * with a different `folderId`. Reparenting past the 3-level depth limit, or under the folder's
-     * own subtree, is a 400.
+     * Rename and/or reparent. Filing a *report* is not here; that is `PUT /cost-reports/{id}` with
+     * a different `folderId`. Reparenting past the 3-level depth limit, or under the folder's own
+     * subtree, is a 400.
      *
      * _Requires permission: `costs:write`._
      *

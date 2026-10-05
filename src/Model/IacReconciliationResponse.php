@@ -24,7 +24,7 @@ final class IacReconciliationResponse implements \JsonSerializable
 {
     /**
      * @param list<IacReconciledResource> $resources
-     * @param list<IacStateOnlyResource> $stateOnly State entries with no inventory match — their own category.
+     * @param list<IacStateOnlyResource> $stateOnly State entries with no inventory match, their own category.
      * @param array{inventoryTotal: int, managed: int, drifted: int, unmanaged: int, stateOnly: int, undiffable: int, stateResources: int, dataSourcesIgnored: int} $summary
      * @param list<array{pluginId: PluginId::*, resourceTypeId: string, reason: string}> $underivable Plugin resource types whose Terraform type could not be derived from the plugin's own export mapper. Reported rather than guessed.
      */

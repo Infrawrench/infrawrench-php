@@ -32,8 +32,8 @@ final class PagesNamespace extends ApiNamespace
     /**
      * Raise an alert to the organization's on-call transports
      *
-     * Fans an alert out over whatever the org has configured — Twilio SMS (and voice on request),
-     * mobile push, Slack channels, and Microsoft Teams webhooks — honouring each recipient's
+     * Fans an alert out over whatever the org has configured (Twilio SMS (and voice on request),
+     * mobile push, Slack channels, and Microsoft Teams webhooks) honouring each recipient's
      * opt-ins. This is the same alert a workflow raises with `infra.page(...)`, for code that runs
      * somewhere Infrawrench does not: a health check, a deploy script, a cron on a box.
      *
@@ -74,7 +74,7 @@ final class PagesNamespace extends ApiNamespace
      * Clear a page key's cooldown
      *
      * Drops the cooldown for one `(source, key)` so the next page under it delivers immediately.
-     * Call it when the condition you alerted on recovers — the workflow equivalent is
+     * Call it when the condition you alerted on recovers; the workflow equivalent is
      * `infra.page.clear(key)`. Clearing a key that was never paged is not an error.
      *
      * _Requires permission: `pages:write`._
@@ -83,7 +83,7 @@ final class PagesNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * @param string $source Stable name for the system raising the page: letters, digits, `.`, `_` and `-`. It is the notification's sender, and it scopes the cooldown — two services paging under the same key never throttle each other.
+     * @param string $source Stable name for the system raising the page: letters, digits, `.`, `_` and `-`. It is the notification's sender, and it scopes the cooldown; two services paging under the same key never throttle each other.
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $key Defaults to `default`.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

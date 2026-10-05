@@ -31,14 +31,14 @@ final class CredentialHygieneNamespace extends ApiNamespace
      * Credential hygiene report
      *
      * API keys nobody uses, SSH keys nothing references, and members holding write permissions
-     * they have never exercised — derived entirely from data the server already holds. No provider
+     * they have never exercised; derived entirely from data the server already holds. No provider
      * call and nothing to enable.
      *
      * **The audit log only witnesses writes.** Reading a resource list or a cost graph leaves no
      * audit row by design, so this report draws no conclusion about read permissions: an absence
      * of evidence about them proves nothing. `permissionFindingsWithheld` is set when the
      * organization does not yet have enough audit history for the unused-permission finding to be
-     * meaningful. Both are load-bearing — a governance report that overclaims is worse than none.
+     * meaningful. Both are load-bearing; a governance report that overclaims is worse than none.
      *
      * Gated on `audit:read` rather than a permission of its own: every fact here is already
      * reachable by anyone who can read the audit log, so this is a lens rather than a new

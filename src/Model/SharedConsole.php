@@ -24,9 +24,9 @@ final class SharedConsole implements \JsonSerializable
 {
     /**
      * @param string $routingKey Load-balancer affinity hint. A guest's WebSocket must carry it as `?sid=` so the upgrade lands on the replica holding the pty. Not a secret and not authorisation.
-     * @param string $host Final hop, as the proxy dialled it — never as a client asserted it.
+     * @param string $host Final hop, as the proxy dialled it; never as a client asserted it.
      * @param bool $allowHandover False makes the share strictly read-only: nobody but the sharer can ever type. This is the one hard safety property the feature offers, as opposed to inferring intent from command text.
-     * @param 'active'|'revoked'|'ended' $status `revoked` — somebody ended the share; `ended` — the underlying SSH session closed. Either way the fan-out stops and attached guests are disconnected.
+     * @param 'active'|'revoked'|'ended' $status `revoked`: somebody ended the share; `ended`: the underlying SSH session closed. Either way the fan-out stops and attached guests are disconnected.
      * @param string|null $inviteConsumedAt Set once an invite admitted somebody new. The link stops working for anyone else at that moment; the sharer mints a replacement for the next guest.
      * @param string|null $recordingId The session recording this console is being taped into, when the org records. Participants are attributed in that recording's own metadata and as asciicast markers on its timeline.
      * @param int $ptyRows The pty's geometry, which is the **driver's** geometry. One pty has one size, so everyone else letterboxes rather than reflowing.

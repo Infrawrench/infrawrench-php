@@ -29,7 +29,7 @@ final class ResourceLease implements \JsonSerializable
      * @param string $expiresAt The lease deadline.
      * @param bool $autoDelete Whether the resource is deleted at expiry. Auto-delete is announced twice before it fires and deferred while an org change freeze is in effect.
      * @param string|null $note Why/who-for; shown on the expiry radar.
-     * @param 'active'|'deleted'|'failed'|'canceled' $status Lease lifecycle: `active` (counting down), `deleted` (auto-delete completed), `failed` (auto-delete was retried and given up on — see `lastError`), or `canceled` (called off; the resource stays).
+     * @param 'active'|'deleted'|'failed'|'canceled' $status Lease lifecycle: `active` (counting down), `deleted` (auto-delete completed), `failed` (auto-delete was retried and given up on, see `lastError`), or `canceled` (called off; the resource stays).
      * @param string|null $firstWarningAt When the first auto-delete announcement went out; null until sent.
      * @param string|null $finalWarningAt When the final auto-delete announcement went out; null until sent.
      * @param string|null $lastError Last auto-delete failure or freeze-deferral detail; never silent.

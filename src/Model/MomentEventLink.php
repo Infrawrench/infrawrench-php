@@ -27,7 +27,7 @@ final class MomentEventLink implements \JsonSerializable
      * @param string $kind Which native screen the event deep-links to.
      * @param string|null $id Target id where the kind needs one (resource id, run id, freeze id…).
      * @param string|null $parentId Parent id where the target needs one (workflow id for a run).
-     * @param string|null $url Absolute external URL — a provider's incident page. Wins when present.
+     * @param string|null $url Absolute external URL; a provider's incident page. Wins when present.
      */
     public function __construct(
         public readonly string $kind,

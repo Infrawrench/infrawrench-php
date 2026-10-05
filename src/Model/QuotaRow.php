@@ -29,12 +29,12 @@ final class QuotaRow implements \JsonSerializable
      * @param string|null $region Provider region, or null for an account-wide quota. Never the string 'global'.
      * @param float $limit The ceiling the provider will enforce, in `unit`.
      * @param float $used How much of `limit` is consumed, in the same unit.
-     * @param float $utilization used / limit. Not clamped at 1 — an over-quota reading is a real state.
+     * @param float $utilization used / limit. Not clamped at 1; an over-quota reading is a real state.
      * @param string|null $unit What is being counted, in the provider's own word.
      * @param bool|null $adjustable Whether the provider lets the customer request an increase. Null means the plugin does not know, which is not the same as `false`.
      * @param string|null $docsUrl Provider page explaining or raising this quota.
      * @param string $observedAt When this reading was collected.
-     * @param 'exhausted'|'critical'|'trending'|'ok' $severity Where the quota sits: `exhausted` (used >= limit — the provider is already refusing requests), `critical` (at or over the organization's threshold), `trending` (under the threshold, but the fitted trend reaches the limit within 30 days), or `ok`. Ordered: an exhausted quota is also over threshold and also trending, and reports as `exhausted`.
+     * @param 'exhausted'|'critical'|'trending'|'ok' $severity Where the quota sits: `exhausted` (used >= limit; the provider is already refusing requests), `critical` (at or over the organization's threshold), `trending` (under the threshold, but the fitted trend reaches the limit within 30 days), or `ok`. Ordered: an exhausted quota is also over threshold and also trending, and reports as `exhausted`.
      */
     public function __construct(
         public readonly string $key,

@@ -71,7 +71,7 @@ final class DigestNamespace extends ApiNamespace
     /**
      * Compose and send last week's digest now
      *
-     * Ignores the schedule and the enabled flag — composes the digest for the last complete week
+     * Ignores the schedule and the enabled flag; composes the digest for the last complete week
      * and sends it to every opted-in channel and email recipient. This is also the manual recovery
      * for a partial delivery, which is never retried automatically. Fails when nothing is routed
      * to receive the digest, or when every destination rejected it.
@@ -102,7 +102,7 @@ final class DigestNamespace extends ApiNamespace
      * Update the weekly digest settings
      *
      * Every field is optional. Enabling schedules the first digest for the next configured send
-     * time rather than sending immediately — use POST /digest/send for an immediate one. The week
+     * time rather than sending immediately; use POST /digest/send for an immediate one. The week
      * boundary follows `timezone`, so the reported window is always the organization's own local
      * Monday-to-Sunday week. Changing the schedule clears any parked failure state but never
      * replays a week that already went out.

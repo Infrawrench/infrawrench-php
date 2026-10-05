@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class WorkflowTypingsResponse implements \JsonSerializable
 {
     /**
-     * @param string $dts Ambient TypeScript declarations for this workflow's `infra` API — the same file the Monaco editor and `check` endpoint type against.
+     * @param string $dts Ambient TypeScript declarations for this workflow's `infra` API; the same file the Monaco editor and `check` endpoint type against.
      */
     public function __construct(
         public readonly string $dts,

@@ -32,8 +32,8 @@ final class DeploymentsTriggersNamespace extends ApiNamespace
     /**
      * Deploy an environment whenever a branch moves
      *
-     * Arming a trigger records the branch's current commit WITHOUT deploying it — the trigger
-     * fires on the next push, not on the state at the moment it was created. The environment is
+     * Arming a trigger records the branch's current commit WITHOUT deploying it; the trigger fires
+     * on the next push, not on the state at the moment it was created. The environment is
      * validated against the Infrafile at that branch head, so a typo fails here rather than
      * silently never firing.
      *

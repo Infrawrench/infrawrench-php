@@ -27,7 +27,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class InvoiceInput implements \JsonSerializable
 {
     /**
-     * @param string|null $supersedesInvoiceId The void invoice this one corrects. The original must already be void — a correction that leaves the original standing means the customer holds two live invoices for one period.
+     * @param string|null $supersedesInvoiceId The void invoice this one corrects. The original must already be void; a correction that leaves the original standing means the customer holds two live invoices for one period.
      */
     public function __construct(
         public readonly string $managedAccountId,

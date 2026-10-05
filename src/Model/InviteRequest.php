@@ -24,7 +24,7 @@ final class InviteRequest implements \JsonSerializable
 {
     /**
      * @param OrganizationRole::*|null $role
-     * @param bool|null $addSeat When the paid plan is full (409 seat_limit_reached), retry with this set to buy one more monthly seat and send the invitation. Requires billing:write. Only works when the 409 reported `canAddSeat: true` — an org whose capacity is entirely prepaid capacity slots has no monthly seat to add.
+     * @param bool|null $addSeat When the paid plan is full (409 seat_limit_reached), retry with this set to buy one more monthly seat and send the invitation. Requires billing:write. Only works when the 409 reported `canAddSeat: true`: an org whose capacity is entirely prepaid capacity slots has no monthly seat to add.
      */
     public function __construct(
         public readonly string $email,

@@ -45,7 +45,7 @@ final class OnCallNamespace extends ApiNamespace
      * Who is on call right now
      *
      * One entry per rotation: the shift in effect, and the next person in the rotation. Takes
-     * `team:read` — knowing who is on call is something every member needs and nobody should have
+     * `team:read`: knowing who is on call is something every member needs and nobody should have
      * to ask an admin for.
      *
      * GET /api/org/{orgId}/on-call/now

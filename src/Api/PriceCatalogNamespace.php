@@ -45,7 +45,7 @@ final class PriceCatalogNamespace extends ApiNamespace
      *
      * Raises on 401: Unauthenticated
      *
-     * Raises on 402: Payment required — the organization's plan does not include this
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 403: Forbidden
      *
@@ -101,7 +101,7 @@ final class PriceCatalogNamespace extends ApiNamespace
      *
      * Raises on 401: Unauthenticated
      *
-     * Raises on 402: Payment required — the organization's plan does not include this
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 403: Forbidden
      *
@@ -150,7 +150,7 @@ final class PriceCatalogNamespace extends ApiNamespace
      *
      * Raises on 401: Unauthenticated
      *
-     * Raises on 402: Payment required — the organization's plan does not include this
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 403: Forbidden
      *

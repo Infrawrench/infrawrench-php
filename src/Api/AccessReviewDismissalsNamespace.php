@@ -31,7 +31,7 @@ final class AccessReviewDismissalsNamespace extends ApiNamespace
     /**
      * Dismiss an access review finding
      *
-     * Accept a finding — that break-glass role really is meant to be admin, that shared key really
+     * Accept a finding; that break-glass role really is meant to be admin, that shared key really
      * is rotated out of band. The finding leaves `findings` and stops feeding the security alerts,
      * but the rule keeps being evaluated and the finding is reported back under `dismissed` for as
      * long as it still matches. The principal itself stays in `principals` either way. Idempotent:

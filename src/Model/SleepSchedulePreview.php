@@ -26,7 +26,7 @@ final class SleepSchedulePreview implements \JsonSerializable
      * @param float $offFraction Fraction of the week (0–1) the schedule keeps the resource stopped.
      * @param float|null $monthlyCost Trailing spend normalized to a month; null when billing holds no rows.
      * @param int $costWindowDays Days of billing data the estimate was computed over (0 = none found).
-     * @param list<ScheduleTransition> $nextTransitions The next few transitions, soonest first — a timezone sanity check.
+     * @param list<ScheduleTransition> $nextTransitions The next few transitions, soonest first; a timezone sanity check.
      */
     public function __construct(
         public readonly float $offFraction,

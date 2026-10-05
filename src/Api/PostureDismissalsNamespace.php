@@ -31,7 +31,7 @@ final class PostureDismissalsNamespace extends ApiNamespace
     /**
      * Dismiss a posture finding
      *
-     * Accept a finding — the bucket really is meant to be public, the key really is rotated out of
+     * Accept a finding; the bucket really is meant to be public, the key really is rotated out of
      * band. The finding leaves `findings` and stops feeding the daily posture alerts, but the rule
      * keeps being evaluated and the finding is reported back under `dismissed` for as long as it
      * still matches. Idempotent: dismissing an already-dismissed finding rewrites the note and the

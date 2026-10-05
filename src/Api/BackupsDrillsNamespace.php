@@ -33,7 +33,7 @@ final class BackupsDrillsNamespace extends ApiNamespace
      * Record a restore drill
      *
      * A `verified` drill **must** carry the measured time: an RPO comes from the backup, and an
-     * RTO can only come from somebody with a stopwatch — that number is the entire point of the
+     * RTO can only come from somebody with a stopwatch; that number is the entire point of the
      * exercise. A `blocked` drill must not carry one, because it never started.
      *
      * Takes `resources:write`, not a settings permission: recording a drill is reporting what you
@@ -67,7 +67,7 @@ final class BackupsDrillsNamespace extends ApiNamespace
     /**
      * Delete a recorded drill
      *
-     * For one recorded against the wrong resource or the wrong date. Audited — deleting evidence
+     * For one recorded against the wrong resource or the wrong date. Audited: deleting evidence
      * that a restore failed is exactly the edit a reviewer would want to know about.
      *
      * DELETE /api/org/{orgId}/backups/drills/{drillId}
@@ -95,7 +95,7 @@ final class BackupsDrillsNamespace extends ApiNamespace
      * Where every protected resource stands on restore
      *
      * Backup coverage answers 'is there a backup'. This answers 'does it restore, and how long
-     * does it take' — a different question, and the one routinely answered wrongly on the day.
+     * does it take'; a different question, and the one routinely answered wrongly on the day.
      *
      * A drill is a **record that somebody tried**, not an automated restore: restoring a
      * customer's database unattended costs real money, can collide with production, and cannot be

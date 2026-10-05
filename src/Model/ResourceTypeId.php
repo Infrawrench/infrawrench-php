@@ -19,7 +19,7 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * Resource type id. Note: not every plugin exposes every type — see the plugin's `resourceTypes`
+ * Resource type id. Note: not every plugin exposes every type; see the plugin's `resourceTypes`
  * for the valid (pluginId, typeId) pairs.
  *
  * The values `ResourceTypeId` accepts.

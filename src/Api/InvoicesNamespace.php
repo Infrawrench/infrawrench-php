@@ -36,7 +36,7 @@ use Infrawrench\Sdk\RequestOptions;
 final class InvoicesNamespace extends ApiNamespace
 {
     /**
-     * Approve an invoice — freeze its figures
+     * Approve an invoice; freeze its figures
      *
      * Computes the figures one last time and writes them onto the invoice together with the
      * exchange rates, the day they were read, the billing rules in force and the names everything
@@ -49,7 +49,7 @@ final class InvoicesNamespace extends ApiNamespace
      * invoice has to be quotable as one number in the customer's currency.
      *
      * Refused with 409, too, when the draft or its customer changed while the figures were being
-     * computed — a different period, scope, currency, cost basis or billing-rules setting. Nothing
+     * computed: a different period, scope, currency, cost basis or billing-rules setting. Nothing
      * is approved in that case: freezing figures that describe a different question would be worse
      * than making the caller look again.
      *
@@ -151,7 +151,7 @@ final class InvoicesNamespace extends ApiNamespace
      * Download an invoice as CSV
      *
      * The derivation, not a rendered document: what was collected, what the rules added, the rate
-     * and the day it was read, and the final figure — every column an accounts-payable clerk needs
+     * and the day it was read, and the final figure; every column an accounts-payable clerk needs
      * to check the arithmetic. Same RFC 4180 quoting as the scheduled cost exports.
      *
      * _Requires permission: `invoices:read`._
@@ -214,7 +214,7 @@ final class InvoicesNamespace extends ApiNamespace
     /**
      * List invoices
      *
-     * Summaries, newest period first. A draft's `totals` is null here rather than recomputed —
+     * Summaries, newest period first. A draft's `totals` is null here rather than recomputed;
      * recomputing every draft would make opening the list one cost-data scan per draft, and zero
      * would be a lie the reader cannot detect.
      *
@@ -248,15 +248,15 @@ final class InvoicesNamespace extends ApiNamespace
     /**
      * Send an invoice to its customer
      *
-     * Changes no figure — the document was frozen at approval. It records the **release** (this
-     * may go to the customer, and this person said so), then emails the invoice to the customer's
+     * Changes no figure; the document was frozen at approval. It records the **release** (this may
+     * go to the customer, and this person said so), then emails the invoice to the customer's
      * contact addresses with the CSV attached.
      *
      * **200 even when delivery failed.** The release happened and is recorded either way;
      * `delivery` says what became of the transport. An error status would leave the caller unable
      * to tell which of the two failed. A failed delivery is visible, and re-sending retries it.
      *
-     * Sending again needs `resend: true` only when the last attempt reached somebody — see
+     * Sending again needs `resend: true` only when the last attempt reached somebody, see
      * `InvoiceSendRequest`. The body may be omitted entirely for a first send.
      *
      * _Requires permission: `invoices:issue`._
@@ -293,7 +293,7 @@ final class InvoicesNamespace extends ApiNamespace
      * Edit a draft invoice
      *
      * Draft only. An approved, sent or void invoice is refused with 409 by the service, not merely
-     * hidden by the UI — an issued invoice that silently changed after the customer received it is
+     * hidden by the UI; an issued invoice that silently changed after the customer received it is
      * the worst outcome this feature could produce.
      *
      * _Requires permission: `invoices:write`._
@@ -329,7 +329,7 @@ final class InvoicesNamespace extends ApiNamespace
     /**
      * Void an issued invoice
      *
-     * The only correction there is. The original keeps every figure it was sent with — “we billed
+     * The only correction there is. The original keeps every figure it was sent with: “we billed
      * you this, it was wrong, here is the corrected one” is a story a customer can follow, and “we
      * changed the invoice” is not.
      *

@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class NetworkFlowPair implements \JsonSerializable
 {
     /**
-     * @param string $scope Which billing boundary the traffic crossed. `unknown` means the provider's record did not determine one — it is priced at zero and labelled rather than folded into a neighbouring boundary.
+     * @param string $scope Which billing boundary the traffic crossed. `unknown` means the provider's record did not determine one; it is priced at zero and labelled rather than folded into a neighbouring boundary.
      * @param 'egress'|'ingress' $direction
      * @param 'resolved'|'unattributed' $attribution
      * @param int $days Days in the range this pair appeared on.

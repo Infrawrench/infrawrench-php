@@ -26,7 +26,7 @@ final class LinuxAppHostPreflight implements \JsonSerializable
      * @param 'apt-get'|'dnf'|'yum'|'apk'|'pacman'|'zypper'|null $packageManager
      * @param 'root'|'sudo'|'sudo-password'|'none' $privilege
      * @param list<LinuxAppRequirement> $requirements
-     * @param bool $staging A writable, exec-capable directory was found to stage the app server in. False means every candidate is missing, unwritable, or mounted noexec — which no package fixes.
+     * @param bool $staging A writable, exec-capable directory was found to stage the app server in. False means every candidate is missing, unwritable, or mounted noexec, which no package fixes.
      */
     public function __construct(
         public readonly string $arch,

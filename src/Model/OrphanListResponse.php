@@ -24,7 +24,7 @@ final class OrphanListResponse implements \JsonSerializable
 {
     /**
      * @param list<OrphanAccountGroup> $accounts Groups sorted by account name.
-     * @param int $unownedCount Flagged resources with no recorded owner — the 'nobody to ask' count.
+     * @param int $unownedCount Flagged resources with no recorded owner; the 'nobody to ask' count.
      * @param int $costWindowDays Days of trailing spend the annotations cover.
      */
     public function __construct(

@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 /**
  * What the metric's numbers are. `count` is a unit-less quantity (customers, requests, GB) and
  * supports unit cost only. `currency` is money the business took in, denominated in the metric's
- * own `currency`, and is the only kind margin can be computed against — `(revenue − cost) ÷
+ * own `currency`, and is the only kind margin can be computed against, `(revenue − cost) ÷
  * revenue` subtracts money from money and is undefined otherwise.
  *
  * The values `BusinessMetricKind` accepts.

@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class SignSshKeyResponse implements \JsonSerializable
 {
     /**
-     * @param string $signature Raw signature bytes, base64-encoded — Ed25519/RSA as-is, ECDSA in DER as node produces it.
+     * @param string $signature Raw signature bytes, base64-encoded; Ed25519/RSA as-is, ECDSA in DER as node produces it.
      * @param SshSignAlgorithm::* $algorithm
      */
     public function __construct(

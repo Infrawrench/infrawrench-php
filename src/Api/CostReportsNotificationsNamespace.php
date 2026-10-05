@@ -34,7 +34,7 @@ final class CostReportsNotificationsNamespace extends ApiNamespace
     /**
      * Create a delivery schedule
      *
-     * On its cadence the server runs the report and sends a composed text summary — period total
+     * On its cadence the server runs the report and sends a composed text summary; period total
      * (converted to the org's display currency where configured, with the conversion caveat),
      * change vs the previous period, top groups, and a deep link. No chart images. An empty result
      * still sends, saying so.
@@ -127,7 +127,7 @@ final class CostReportsNotificationsNamespace extends ApiNamespace
      *
      * Runs the report and delivers it to this schedule's destinations immediately, ignoring the
      * schedule and its enabled flag. Fails with a 400 naming the reason when nothing could be
-     * delivered. A successful manual send clears a parked failure — it is the documented recovery
+     * delivered. A successful manual send clears a parked failure; it is the documented recovery
      * for a partial delivery.
      *
      * _Requires permission: `org:settings:write`._
@@ -160,7 +160,7 @@ final class CostReportsNotificationsNamespace extends ApiNamespace
      * List the destinations a schedule can deliver to
      *
      * The org's live Slack channels and Teams webhooks, and whether this deployment can send mail.
-     * Destinations are picked from here — a schedule can only point at surfaces the org already
+     * Destinations are picked from here; a schedule can only point at surfaces the org already
      * connected.
      *
      * _Requires permission: `org:settings:write`._

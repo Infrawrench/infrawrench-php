@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CreateSharedConsole implements \JsonSerializable
 {
     /**
-     * @param string $liveConsoleId The pty to share, as the terminal's WebSocket reported it in its `ssh:connected` frame. Everything else about the session — host, account, recording — is read from the proxy's own registration rather than from this body.
+     * @param string $liveConsoleId The pty to share, as the terminal's WebSocket reported it in its `ssh:connected` frame. Everything else about the session (host, account, recording) is read from the proxy's own registration rather than from this body.
      * @param bool|null $allowHandover Defaults to true.
      * @param int|null $inviteTtlMinutes Defaults to 15.
      */

@@ -29,7 +29,7 @@ final class UnitCostQueryRequest implements \JsonSerializable
      * @param list<UnitCostLabelFilter>|null $labelFilters Keep only values carrying these labels. In a ratio mode each label must be mapped, and the spend is narrowed to the same values on the mapped dimension.
      * @param string|null $groupByLabel One series per value of this label (the 25 largest by metric total; the rest fold into `Other`). In a ratio mode the label must be mapped.
      * @param string|null $usageUnit `usage_unit_cost` only, and required there: the provider usage unit to divide by. See `GET /business-metrics/usage-units`.
-     * @param list<BusinessMetricScopeTerm>|null $filters Narrowing on top of the metric's own `costScope` — AND-composed, never a replacement.
+     * @param list<BusinessMetricScopeTerm>|null $filters Narrowing on top of the metric's own `costScope`: AND-composed, never a replacement.
      * @param string|null $query The same narrowing as cost-query-language text.
      * @param 'cash'|'amortized'|'blended'|null $costBasis
      * @param list<string>|null $chargeTypes

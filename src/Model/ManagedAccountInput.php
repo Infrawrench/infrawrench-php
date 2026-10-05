@@ -23,12 +23,12 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ManagedAccountInput implements \JsonSerializable
 {
     /**
-     * @param string $billingCurrency ISO 4217 code the customer is invoiced in. Spend collected in another currency is converted through the organisation's own stated exchange rates, and the rate used is frozen onto every invoice — so restating a rate later cannot restate history.
+     * @param string $billingCurrency ISO 4217 code the customer is invoiced in. Spend collected in another currency is converted through the organisation's own stated exchange rates, and the rate used is frozen onto every invoice; so restating a rate later cannot restate history.
      * @param 'cash'|'amortized'|'blended'|null $costBasis Defaults to `amortized`. Charging a customer the whole cash value of a three-year commitment in the month it was signed is not a bill anyone can budget against. `blended` spreads each commitment's discount evenly over all the usage it could cover, so a customer is not billed more or less depending on which account the provider happened to apply a shared commitment to.
      * @param bool|null $applyBillingRules Defaults to true. False is a pass-through contract: the customer is billed exactly what the providers charged, with no markup, discount or fixed fee applied.
-     * @param list<string>|null $costCentreIds Cost centres whose spend belongs to this customer. **Subtrees are included** — naming a parent bills every descendant, and naming both a parent and its child bills the child once, not twice.
+     * @param list<string>|null $costCentreIds Cost centres whose spend belongs to this customer. **Subtrees are included**; naming a parent bills every descendant, and naming both a parent and its child bills the child once, not twice.
 
-This is deliberately a list of existing cost centres rather than a rule of its own. Which spend lands in which centre is already decided by the organisation's allocation rules, and a second vocabulary over the same data would eventually disagree with the first — at which point an invoice would stop matching the showback report the customer was shown.
+This is deliberately a list of existing cost centres rather than a rule of its own. Which spend lands in which centre is already decided by the organisation's allocation rules, and a second vocabulary over the same data would eventually disagree with the first: at which point an invoice would stop matching the showback report the customer was shown.
      * @param list<string>|null $accountIds Cloud accounts whose spend belongs to this customer. Evaluated **after** every allocation rule, so an account in scope claims only the spend no cost centre already claimed. Every cost row therefore resolves exactly once: nothing is billed twice and nothing goes missing.
      */
     public function __construct(

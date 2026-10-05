@@ -43,7 +43,7 @@ final class CalendarNamespace extends ApiNamespace
      * One time axis over six things the organization already stores: change freezes, sleep/wake
      * schedules, declared deadlines (certificates, domains, keys and resource leases), commitment
      * term ends, cron-triggered workflow runs, and declared incidents. Nothing here is a new
-     * record — the calendar is recomputed on every read, exactly as posture findings and backup
+     * record; the calendar is recomputed on every read, exactly as posture findings and backup
      * coverage are.
      *
      * The window defaults to the last 7 and next 35 days and may span at most 400. Recurring

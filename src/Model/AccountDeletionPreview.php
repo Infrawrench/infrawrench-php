@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class AccountDeletionPreview implements \JsonSerializable
 {
     /**
-     * @param list<OrganizationRef> $organizationsToDelete Deleted with the account — the caller is their only member.
+     * @param list<OrganizationRef> $organizationsToDelete Deleted with the account; the caller is their only member.
      * @param list<OrganizationRef> $organizationsToLeave Survive; the caller's membership is removed.
      * @param list<OwnershipBlocker> $blockers Non-empty means DELETE /api/profile will refuse until another owner is promoted.
      */

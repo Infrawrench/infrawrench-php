@@ -24,8 +24,8 @@ final class RunbookStep implements \JsonSerializable
 {
     /**
      * @param string $id Stable across edits, because a run's per-step records reference it. Reordering or retitling keeps the same step; deleting one orphans its history, which is why runs keep the title they saw.
-     * @param 'manual'|'workflow'|'link' $kind What the step does. Three kinds and not a scripting language: a runbook is written by whoever is on call for whoever is on call next, and the moment it needs a language it stops being written. `workflow` is the escape hatch — anything genuinely automated belongs in a workflow, which already has a sandbox, approvals, secrets and a history.
-     * @param string $body Markdown — the detail nobody remembers at 03:00.
+     * @param 'manual'|'workflow'|'link' $kind What the step does. Three kinds and not a scripting language: a runbook is written by whoever is on call for whoever is on call next, and the moment it needs a language it stops being written. `workflow` is the escape hatch; anything genuinely automated belongs in a workflow, which already has a sandbox, approvals, secrets and a history.
+     * @param string $body Markdown: the detail nobody remembers at 03:00.
      * @param string|null $workflowId For `workflow` steps: which workflow the button runs.
      * @param string|null $url For `link` steps. `https:` only.
      */

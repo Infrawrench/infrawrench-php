@@ -26,7 +26,7 @@ final class DnsZone implements \JsonSerializable
      * @param PluginId::* $pluginId
      * @param bool $isPrivate Split-horizon/internal zone; listed but never analysed for takeover.
      * @param int $recordCount Records synced into this zone.
-     * @param int|null $providerRecordCount The provider's own record count, when reported. May exceed `recordCount` — several plugins list zones without listing their records.
+     * @param int|null $providerRecordCount The provider's own record count, when reported. May exceed `recordCount`: several plugins list zones without listing their records.
      */
     public function __construct(
         public readonly string $resourceId,

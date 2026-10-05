@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class RegisteredAgent implements \JsonSerializable
 {
     /**
-     * @param string $credential Bearer credential for this registration. Format `iwa_<base64url>`. Returned once and never recoverable — there is no route that can show it again.
+     * @param string $credential Bearer credential for this registration. Format `iwa_<base64url>`. Returned once and never recoverable: there is no route that can show it again.
      * @param string $trialExpiresAt When the trial workspace is deleted unless a person claims it.
      * @param string $notice Human-readable summary of the trial terms, meant to be relayed to the user.
      */

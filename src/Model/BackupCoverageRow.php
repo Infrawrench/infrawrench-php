@@ -24,10 +24,10 @@ final class BackupCoverageRow implements \JsonSerializable
 {
     /**
      * @param PluginId::* $pluginId
-     * @param 'protected'|'automated'|'stale'|'unknown'|'unprotected' $state How the resource reads at a glance. `automated` means the provider is taking backups we cannot enumerate, so there is a restore point but no listable one. `unknown` means the resource type declares a provider-native automated-backup signal but this instance's value could not be read — it is unassessed, not a confirmed gap, and never produces a finding.
+     * @param 'protected'|'automated'|'stale'|'unknown'|'unprotected' $state How the resource reads at a glance. `automated` means the provider is taking backups we cannot enumerate, so there is a restore point but no listable one. `unknown` means the resource type declares a provider-native automated-backup signal but this instance's value could not be read; it is unassessed, not a confirmed gap, and never produces a finding.
      * @param int $backupCount Backups in the inventory that protect this resource.
-     * @param bool|null $automatedBackups Whether provider-native automated backups are on. Null means the plugin syncs no signal either way — which never counts as protection and never counts as a fault.
-     * @param string|null $rpoPolicyId The policy supplying `maxRpoHours` — the strictest RPO among those selecting this resource. Tracked separately from the retention policy because the two strictest demands routinely come from different policies.
+     * @param bool|null $automatedBackups Whether provider-native automated backups are on. Null means the plugin syncs no signal either way; which never counts as protection and never counts as a fault.
+     * @param string|null $rpoPolicyId The policy supplying `maxRpoHours`: the strictest RPO among those selecting this resource. Tracked separately from the retention policy because the two strictest demands routinely come from different policies.
      * @param string|null $retentionPolicyId The policy supplying `minRetentionDays`.
      */
     public function __construct(

@@ -139,7 +139,7 @@ final class LinearNamespace extends ApiNamespace
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param LinearSourceKind::*|null $sourceKind
-     * @param list<string>|null $sourceId Repeat to narrow to specific findings. Omit to return every link of the kind — this is the batch lookup a list view makes once instead of one request per row.
+     * @param list<string>|null $sourceId Repeat to narrow to specific findings. Omit to return every link of the kind; this is the batch lookup a list view makes once instead of one request per row.
      * @return list<LinearIssueLink>
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
@@ -162,7 +162,7 @@ final class LinearNamespace extends ApiNamespace
     /**
      * List Linear teams
      *
-     * Backs the team picker, so nobody has to know a team id by hand — issueCreate requires one,
+     * Backs the team picker, so nobody has to know a team id by hand; issueCreate requires one,
      * and every issue belongs to exactly one team.
      *
      * _Requires permission: `linear:read`._

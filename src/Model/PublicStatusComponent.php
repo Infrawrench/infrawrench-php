@@ -24,7 +24,7 @@ final class PublicStatusComponent implements \JsonSerializable
 {
     /**
      * @param string $id Stable per page. Deliberately not the probe id.
-     * @param 'operational'|'degraded'|'down'|'unknown' $state A component's public state. A paused probe reads `unknown` regardless of its last result — the page is a claim about what is being checked now.
+     * @param 'operational'|'degraded'|'down'|'unknown' $state A component's public state. A paused probe reads `unknown` regardless of its last result: the page is a claim about what is being checked now.
      * @param list<StatusHistoryDay> $history Oldest first; empty when history is hidden.
      */
     public function __construct(

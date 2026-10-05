@@ -147,7 +147,7 @@ final class SshKeysNamespace extends ApiNamespace
      * Sign an SSH auth challenge with a cloud-held key (the cloud as an SSH agent)
      *
      * Signs one publickey-authentication challenge with a server-generated org key whose private
-     * half never leaves Infrawrench Cloud. Requires the `resources:execute` permission — producing
+     * half never leaves Infrawrench Cloud. Requires the `resources:execute` permission: producing
      * an auth signature is the same authority as opening a shell. Imported keys cannot sign (only
      * their public half is stored). Every call is audited.
      *

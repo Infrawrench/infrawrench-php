@@ -24,7 +24,7 @@ final class IacReconciledResource implements \JsonSerializable
 {
     /**
      * @param PluginId::* $pluginId
-     * @param 'managed'|'drifted'|'unmanaged' $status `managed`: matched a state entry and agrees with it. `drifted`: matched, but live fields differ. `unmanaged`: in inventory, absent from state — somebody made it by hand.
+     * @param 'managed'|'drifted'|'unmanaged' $status `managed`: matched a state entry and agrees with it. `drifted`: matched, but live fields differ. `unmanaged`: in inventory, absent from state; somebody made it by hand.
      * @param 'import-id'|'external-id'|'identifier'|null $matchedBy How the match was made, so it can be argued with.
      * @param list<IacFieldChange> $drift
      * @param string|null $unmappableReason Set when no Terraform block could be produced for this resource, which makes its drift unknowable. Never reported as "no drift".

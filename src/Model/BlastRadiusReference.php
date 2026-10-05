@@ -26,7 +26,7 @@ final class BlastRadiusReference implements \JsonSerializable
      * @param string $kind What kind of object names the resource.
      * @param string $id The referring object's own id.
      * @param string|null $detail One extra clause of context.
-     * @param bool|null $userFacing Set when the reference is visible outside the organization — a published status page component, or the probe behind one. Any user-facing reference makes the report high severity on its own.
+     * @param bool|null $userFacing Set when the reference is visible outside the organization; a published status page component, or the probe behind one. Any user-facing reference makes the report high severity on its own.
      */
     public function __construct(
         public readonly string $kind,

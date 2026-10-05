@@ -29,7 +29,7 @@ final class AccountsCredentialsNamespace extends ApiNamespace
     /**
      * Fetch the decrypted credentials for an account
      *
-     * Returns the credentials map as it was originally submitted. Sensitive — gate access
+     * Returns the credentials map as it was originally submitted. Sensitive: gate access
      * carefully.
      *
      * _Requires permission: `secrets:read`._

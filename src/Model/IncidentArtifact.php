@@ -27,9 +27,9 @@ final class IncidentArtifact implements \JsonSerializable
      * @param 'created'|'failed'|'closed'|'close_failed' $status `failed` is a stored state, not an error: declaring writes the incident first and attempts each opted-in side effect afterwards, so a Slack outage costs the announcement and never the incident. A failed artefact carries its error and can be retried.
 
 `close_failed` is the other half and is deliberately distinct: the artefact **was** created and resolving could not put it away, so the change freeze is still in force or the public notice still reports an outage. Retrying a `failed` artefact re-creates it; retrying a `close_failed` one re-closes it. Collapsing the two would either strand the incident with a live freeze nothing can lift, or open a second freeze.
-     * @param string|null $label Human label — the freeze name, the destination count.
+     * @param string|null $label Human label: the freeze name, the destination count.
      * @param string|null $refId Freeze id, notice id, Slack channel id…
-     * @param string|null $refSecondary Second half of a compound reference — a Slack message ts, a window width.
+     * @param string|null $refSecondary Second half of a compound reference; a Slack message ts, a window width.
      * @param string|null $error Why it failed. Null unless `status` is `failed` or `close_failed`.
      */
     public function __construct(

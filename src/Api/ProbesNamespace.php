@@ -165,8 +165,8 @@ final class ProbesNamespace extends ApiNamespace
      * Suggest endpoints from synced resources
      *
      * Endpoint candidates mined from the organization's synced resource outputs and fields (keys
-     * like url, endpoint, host, domain, publicIp). A cheap read over stored state — no provider
-     * API calls. Deduplicated by URL.
+     * like url, endpoint, host, domain, publicIp). A cheap read over stored state; no provider API
+     * calls. Deduplicated by URL.
      *
      * _Requires permission: `resources:read`._
      *
@@ -194,7 +194,7 @@ final class ProbesNamespace extends ApiNamespace
      * Update or disable a probe
      *
      * Edit settings and/or toggle `enabled`. Changing the URL or method resets the probe's state
-     * to `unknown` — the history belongs to the old endpoint. Audit-logged.
+     * to `unknown`: the history belongs to the old endpoint. Audit-logged.
      *
      * _Requires permission: `resources:write`._
      *

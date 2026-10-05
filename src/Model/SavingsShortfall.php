@@ -24,7 +24,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class SavingsShortfall implements \JsonSerializable
 {
     /**
-     * @param 'below_projection'|'grew_back' $kind `below_projection` — the trailing realized rate is under the org's threshold share of the projected rate; `grew_back` — post-action spend is above the pre-action baseline.
+     * @param 'below_projection'|'grew_back' $kind `below_projection`: the trailing realized rate is under the org's threshold share of the projected rate; `grew_back`: post-action spend is above the pre-action baseline.
      * @param float $realizedPerDay Currency units (not cents), in the row's currency.
      * @param float|null $projectedPerDay Currency units (not cents), in the row's currency.
      */

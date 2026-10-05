@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ReportDeliveryTargetOption implements \JsonSerializable
 {
     /**
-     * @param string $id The stored row id — what the schedule input carries.
+     * @param string $id The stored row id; what the schedule input carries.
      * @param string $label Display label: `#channel` for Slack, the saved label for Teams.
      */
     public function __construct(

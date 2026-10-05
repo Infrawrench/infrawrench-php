@@ -29,7 +29,7 @@ final class ReportNotification implements \JsonSerializable
      * @param list<string> $emailRecipients
      * @param string|null $nextSendAt When the next scheduled send is due; null while disabled.
      * @param string|null $lastSentAt When a delivery last actually reached at least one destination.
-     * @param 'pending'|'succeeded'|'partial'|'failed'|'no_targets'|null $lastStatus What the last attempt did. `partial` means some destinations took it and some failed — never retried automatically, because a retry would double-post where it landed.
+     * @param 'pending'|'succeeded'|'partial'|'failed'|'no_targets'|null $lastStatus What the last attempt did. `partial` means some destinations took it and some failed; never retried automatically, because a retry would double-post where it landed.
      */
     public function __construct(
         public readonly string $id,

@@ -24,7 +24,7 @@ final class StorageObject implements \JsonSerializable
 {
     /**
      * @param string $key Full path within the bucket.
-     * @param string $name Last path segment — what the browser renders.
+     * @param string $name Last path segment, what the browser renders.
      */
     public function __construct(
         public readonly string $key,

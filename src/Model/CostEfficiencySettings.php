@@ -25,15 +25,15 @@ final class CostEfficiencySettings implements \JsonSerializable
     /**
      * @param bool $commitmentExpiryEnabled Whether commitments approaching their term end raise alerts. Defaults to true.
      * @param list<int> $commitmentExpiryHorizonDays Days of notice, each firing at most once per commitment per term end. Defaults to [60, 30, 7]. A commitment fires at the *smallest* horizon it has reached, so an account connected 30 days before a term ends gets one alert, not two.
-     * @param bool $commitmentExpiryAlertOnExpired Whether a commitment that lapsed without any horizon warning having fired raises one alert anyway. Defaults to true, and bounded to terms that ended within the last 90 days — connecting an account with years of dead reservations produces one pass of recent news, not an archive.
+     * @param bool $commitmentExpiryAlertOnExpired Whether a commitment that lapsed without any horizon warning having fired raises one alert anyway. Defaults to true, and bounded to terms that ended within the last 90 days: connecting an account with years of dead reservations produces one pass of recent news, not an archive.
      * @param bool $commitmentIdleEnabled Whether under-used commitments raise alerts. Defaults to true.
-     * @param int $commitmentIdleThresholdPercent Utilization percent the whole window must stay under. Defaults to 70 — roughly where a 1-year no-upfront commitment stops beating on-demand for the usage it covers.
+     * @param int $commitmentIdleThresholdPercent Utilization percent the whole window must stay under. Defaults to 70; roughly where a 1-year no-upfront commitment stops beating on-demand for the usage it covers.
      * @param int $commitmentIdleWindowDays Trailing days utilization is aggregated over. Defaults to 30. Aggregated, never sampled per day: a weekday-only workload reads about 71% over a month and does not fire, which is the point.
-     * @param int $commitmentIdleMinMeasuredDays Window days that must carry cost data before anything is judged. Defaults to 14. A commitment whose utilization cannot be measured at all — a unit-denominated GCP CUD, or an account whose plugin reports no commitment attribution — never alerts, regardless of this value.
+     * @param int $commitmentIdleMinMeasuredDays Window days that must carry cost data before anything is judged. Defaults to 14. A commitment whose utilization cannot be measured at all (a unit-denominated GCP CUD, or an account whose plugin reports no commitment attribution) never alerts, regardless of this value.
      * @param int $commitmentIdleMinWasteCents Least wasted money (obligation − delivered) before alerting, in USD cents, restated per currency. Defaults to 5000 ($50).
      * @param bool $unitCostRegressionEnabled Whether rising cost per business-metric unit raises alerts. Defaults to true.
      * @param int $unitCostThresholdPercent Percent the unit cost must rise versus the prior window. Defaults to 20.
-     * @param int $unitCostWindowDays Length of each of the two compared windows. Defaults to 14 — two whole weekly cycles a side, so a weekday-shaped unit cost compares like with like.
+     * @param int $unitCostWindowDays Length of each of the two compared windows. Defaults to 14; two whole weekly cycles a side, so a weekday-shaped unit cost compares like with like.
      * @param int $unitCostMinReportedDays Days inside **each** window that must carry a reported, positive metric value. Defaults to 10. A day with no reported value is a gap and contributes to neither the numerator nor the denominator; a window that fails this bar produces no comparison at all rather than a comparison against a gap.
      * @param int $unitCostMinSpendCents Least spend in the current window before alerting, in USD cents, restated per currency. Defaults to 10000 ($100).
      */

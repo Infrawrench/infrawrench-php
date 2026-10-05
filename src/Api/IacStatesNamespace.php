@@ -91,7 +91,7 @@ final class IacStatesNamespace extends ApiNamespace
      * List uploaded Terraform state documents
      *
      * Every state document the organization has uploaded, newest first. The documents themselves
-     * are never stored — only the parsed, redacted projection.
+     * are never stored; only the parsed, redacted projection.
      *
      * GET /api/org/{orgId}/iac/states
      *

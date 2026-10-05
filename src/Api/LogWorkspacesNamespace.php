@@ -131,8 +131,8 @@ final class LogWorkspacesNamespace extends ApiNamespace
     /**
      * List log-capable resources
      *
-     * Synced resources whose rendered detail declares the logs capability — the candidates a log
-     * workspace can tail — plus sidecar streams reached through a peer integration (pods and
+     * Synced resources whose rendered detail declares the logs capability (the candidates a log
+     * workspace can tail) plus sidecar streams reached through a peer integration (pods and
      * workloads inside a managed cluster, listed live from the provider and marked with
      * `parentResourceId`). Discovered from the plugin contract (never a hardcoded provider list),
      * capped at 500 results.

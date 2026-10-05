@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class LinearTeam implements \JsonSerializable
 {
     /**
-     * @param string $id Team id (UUID) — what issueCreate wants.
+     * @param string $id Team id (UUID), what issueCreate wants.
      * @param string $key Short prefix issue identifiers are built from.
      */
     public function __construct(

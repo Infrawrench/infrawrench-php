@@ -32,7 +32,7 @@ final class SharedConsolesParticipantsNamespace extends ApiNamespace
      *
      * Their socket is closed immediately on the replica holding the pty, and within one two-second
      * sweep on any other. They are marked `removed` rather than `left`, so they cannot resume
-     * without a fresh invite. The sharer cannot be removed — revoke the share.
+     * without a fresh invite. The sharer cannot be removed, revoke the share.
      *
      * DELETE /api/org/{orgId}/shared-consoles/{consoleId}/participants/{participantId}
      *

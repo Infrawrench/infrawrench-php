@@ -29,7 +29,7 @@ final class ExpiryItem implements \JsonSerializable
      * @param string $fieldKey The declared field the deadline came from.
      * @param string $kind Grouping bucket for the kind of deadline.
      * @param string $label Plugin-authored caption for the deadline.
-     * @param 'expiry'|'age' $basis `expiry` — the field held the deadline itself; `age` — the deadline was derived from a creation/rotation date plus an age budget.
+     * @param 'expiry'|'age' $basis `expiry`: the field held the deadline itself; `age`: the deadline was derived from a creation/rotation date plus an age budget.
      * @param string $dueAt The deadline.
      * @param int $daysRemaining Whole days until dueAt (floor); negative once expired.
      * @param 'expired'|'critical'|'warning'|'upcoming'|'ok' $severity How close the deadline is: `expired` (in the past), `critical` (due within 7 days), `warning` (within 30 days), `upcoming` (within the organization's lead time), or `ok` (tracked, but further out than the lead time).

@@ -151,7 +151,7 @@ final class CostExportsNamespace extends ApiNamespace
      *
      * Runs the export immediately against the same code path the poller uses, writing every period
      * in the restatement window. Answers 200 with `status: "failed"` and a message rather than an
-     * error status when the destination rejects the write — the caller wants the reason, and the
+     * error status when the destination rejects the write; the caller wants the reason, and the
      * same failure is recorded on the export.
      *
      * _Requires permission: `org:settings:write`._

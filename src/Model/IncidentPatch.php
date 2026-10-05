@@ -24,7 +24,7 @@ final class IncidentPatch implements \JsonSerializable
 {
     /**
      * @param 'sev1'|'sev2'|'sev3'|'sev4'|null $severity Severity in the ordinary sev1..sev4 register. `sev1` is a complete outage; `sev4` is cosmetic and tracked rather than paged.
-     * @param 'open'|'mitigated'|'resolved'|null $status `mitigated` is a real state, not a synonym for resolved: impact has stopped but the incident is still open for follow-up. Keeping it separate is what makes time-to-mitigate a measurement rather than a guess. Resolving runs the resolve path — the change freeze this incident opened is lifted, and the status-page update it posted is closed.
+     * @param 'open'|'mitigated'|'resolved'|null $status `mitigated` is a real state, not a synonym for resolved: impact has stopped but the incident is still open for follow-up. Keeping it separate is what makes time-to-mitigate a measurement rather than a guess. Resolving runs the resolve path; the change freeze this incident opened is lifted, and the status-page update it posted is closed.
      * @param list<string>|null $affectedResourceIds
      * @param list<string>|null $affectedAccountIds
      */

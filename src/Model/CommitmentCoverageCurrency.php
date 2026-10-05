@@ -24,7 +24,7 @@ final class CommitmentCoverageCurrency implements \JsonSerializable
 {
     /**
      * @param float $coveredAmount Usage spend on rows stamped with a commitment id.
-     * @param float $uncoveredEligibleAmount Uncovered usage in cells where a commitment landed in the window — provider evidence of committability, not a hand-maintained service table.
+     * @param float $uncoveredEligibleAmount Uncovered usage in cells where a commitment landed in the window; provider evidence of committability, not a hand-maintained service table.
      * @param float|null $broadRatio Lower bound: covered ÷ (covered + all uncovered usage).
      * @param float|null $narrowRatio Upper bound: covered ÷ (covered + uncovered usage in eligible cells).
      */

@@ -31,7 +31,7 @@ final class ProfileSessionsNamespace extends ApiNamespace
     /**
      * Revoke one session
      *
-     * Refuses the session making the request — use sign-out for that.
+     * Refuses the session making the request, use sign-out for that.
      *
      * DELETE /api/profile/sessions/{sessionId}
      *

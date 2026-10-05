@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * A full replace, like a report's own PUT. At least one destination is required — a schedule with
+ * A full replace, like a report's own PUT. At least one destination is required; a schedule with
  * nowhere to deliver would only ever record failures.
  */
 final class ReportNotificationInput implements \JsonSerializable

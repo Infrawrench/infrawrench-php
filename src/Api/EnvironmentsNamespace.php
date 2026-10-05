@@ -49,7 +49,7 @@ final class EnvironmentsNamespace extends ApiNamespace
     /**
      * Preview a template capture
      *
-     * Turn a selection of live resources into a draft template. **Persists nothing** — the editor
+     * Turn a selection of live resources into a draft template. **Persists nothing**: the editor
      * shows the draft so the user can choose which fields to vary before saving. The shape of
      * every member comes from the plugin's own `getCreateConfig`: a captured value with no
      * matching create field is dropped, and a resource type the plugin cannot create is reported

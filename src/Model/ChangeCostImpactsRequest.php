@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ChangeCostImpactsRequest implements \JsonSerializable
 {
     /**
-     * @param list<string> $changeIds Change ids from `GET /changes`. At most 50 — one feed page.
+     * @param list<string> $changeIds Change ids from `GET /changes`. At most 50: one feed page.
      * @param int|null $windowDays Days either side of the change. Default 7; clamped server-side.
      * @param ChangeCostBasis::*|null $costBasis
      */

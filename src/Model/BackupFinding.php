@@ -27,14 +27,14 @@ final class BackupFinding implements \JsonSerializable
      * @param PluginId::* $pluginId
      * @param string|null $externalId Provider-native id, when known.
      * @param 'unprotected'|'rpo-breach'|'retention-below-policy'|'orphaned-snapshot' $kind What the finding describes: nothing protects the resource; the newest backup is older than the policy's RPO; the provider-native retention window is shorter than the policy asks; or a backup whose source resource no longer exists.
-     * @param 'critical'|'high'|'medium'|'low' $severity How bad the gap is. Orphaned backups are always `low` — they cost money, not data.
+     * @param 'critical'|'high'|'medium'|'low' $severity How bad the gap is. Orphaned backups are always `low`: they cost money, not data.
      * @param string $detail Sentence explaining the gap and what would close it.
-     * @param string|null $policyId The policy supplying the objective this finding breaches — the RPO policy for `rpo-breach`, the retention policy for `retention-below-policy`. Null when no policy applies.
+     * @param string|null $policyId The policy supplying the objective this finding breaches; the RPO policy for `rpo-breach`, the retention policy for `retention-below-policy`. Null when no policy applies.
      * @param float|null $rpoHours Hours since the newest backup protecting the resource; null when there is none.
      * @param int|null $maxRpoHours The policy's allowance, when one applied.
      * @param float|null $retentionDays Provider-native retention window in days, when the plugin syncs one.
      * @param float|null $sizeGb Size of an orphaned backup in GiB, when the plugin syncs one.
-     * @param float|null $monthlyCost Trailing-30-day spend on an orphaned backup. Null means the cost could not be determined — never that the backup is free.
+     * @param float|null $monthlyCost Trailing-30-day spend on an orphaned backup. Null means the cost could not be determined: never that the backup is free.
      */
     public function __construct(
         public readonly string $resourceId,

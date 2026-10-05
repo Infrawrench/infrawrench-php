@@ -24,14 +24,14 @@ final class CostAnomaly implements \JsonSerializable
 {
     /**
      * @param string $day The anomalous UTC day.
-     * @param 'spike'|'new_source' $kind Which detection produced the row. `spike` is spend far above the key's own trailing baseline; `new_source` is a provider or service with no spend at all across the trailing window that suddenly has material spend — it can never be a `spike`, since a zero baseline has no mean or deviation to exceed. Rows written before new-source detection existed read as `spike`.
+     * @param 'spike'|'new_source' $kind Which detection produced the row. `spike` is spend far above the key's own trailing baseline; `new_source` is a provider or service with no spend at all across the trailing window that suddenly has material spend; it can never be a `spike`, since a zero baseline has no mean or deviation to exceed. Rows written before new-source detection existed read as `spike`.
      * @param 'provider'|'service' $dimension
-     * @param string $dimensionKey The dimension's value — a plugin id or a service name.
-     * @param int $baselineCents Mean daily spend over the trailing 28-day baseline, in cents. Zero, or near it, for a `new_source` — clients must not compute a percentage change from it.
+     * @param string $dimensionKey The dimension's value; a plugin id or a service name.
+     * @param int $baselineCents Mean daily spend over the trailing 28-day baseline, in cents. Zero, or near it, for a `new_source`: clients must not compute a percentage change from it.
      * @param int $thresholdCents The detection bar the day cleared, in cents: baseline mean + N·stddev for a `spike`, the new-source floor for a `new_source`.
      * @param string|null $notifiedAt When the anomaly was delivered to a notification channel; null when delivery failed or a recent anomaly for the same key suppressed it.
      * @param list<string> $hints Root-cause hints computed when the anomaly fired: human-readable facts from the change timeline and audit log for the anomalous day and the day before (e.g. "12 gce-instance resources appeared", a workflow run, a lifted change freeze), ranked by likely relevance and capped at three. Empty when nothing notable happened in the window or the anomaly predates hint collection.
-     * @param array{explanation: string, acknowledgedAt: string, acknowledgedByUserId: string|null, annotationId: string|null}|null $acknowledgement Present once somebody has explained this finding, null while it is still an open question. Acknowledging does not suppress detection — the same key spiking again on a later day is a new anomaly and fires as normal.
+     * @param array{explanation: string, acknowledgedAt: string, acknowledgedByUserId: string|null, annotationId: string|null}|null $acknowledgement Present once somebody has explained this finding, null while it is still an open question. Acknowledging does not suppress detection; the same key spiking again on a later day is a new anomaly and fires as normal.
      * @param string|null $suppressionId The suppression that explained this finding when detection judged it. A suppressed finding is stored but never alerted on, so its `notifiedAt` stays null. Null once the suppression is deleted.
      */
     public function __construct(

@@ -19,12 +19,12 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * What a revert would do to one field. `revertible` — the field still holds the value the change
- * set, and the plugin's edit form can write the old one back. `already-reverted` — it is already
- * at the old value; nothing to do. `conflict` — it changed again since, so reverting would discard
- * the newer value. `not-writable` — outside the plugin's editable surface, or the old value is not
- * something the edit form can submit. `provider-derived` — an `outputs.*` entry, which the
- * provider computes rather than accepts.
+ * What a revert would do to one field. `revertible`: the field still holds the value the change
+ * set, and the plugin's edit form can write the old one back. `already-reverted`: it is already at
+ * the old value; nothing to do. `conflict`: it changed again since, so reverting would discard the
+ * newer value. `not-writable`: outside the plugin's editable surface, or the old value is not
+ * something the edit form can submit. `provider-derived`: an `outputs.*` entry, which the provider
+ * computes rather than accepts.
  *
  * The values `RevertFieldStatus` accepts.
  *

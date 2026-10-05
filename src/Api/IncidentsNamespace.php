@@ -84,7 +84,7 @@ final class IncidentsNamespace extends ApiNamespace
      * Delete an incident
      *
      * Removes the incident, its notes and its artefact records. It does not lift a freeze or close
-     * a status-page update — resolve for that; deleting is for a mis-declaration. Audit-logged.
+     * a status-page update, resolve for that; deleting is for a mis-declaration. Audit-logged.
      *
      * _Requires permission: `incidents:write`._
      *
@@ -113,7 +113,7 @@ final class IncidentsNamespace extends ApiNamespace
      * Export a pre-filled postmortem
      *
      * Markdown with the timeline, the affected resources, the duration, the time to mitigate and
-     * the notes already filled in. The analysis headings — impact, root cause, action items — are
+     * the notes already filled in. The analysis headings (impact, root cause, action items) are
      * deliberately left blank: a generated document that guesses at a root cause is worse than one
      * that leaves a heading.
      *
@@ -146,7 +146,7 @@ final class IncidentsNamespace extends ApiNamespace
      *
      * Re-runs only the side effects whose artefact is in a failure state, replacing each failure
      * rather than queueing a second attempt beside it. A `failed` artefact is **re-created**; a
-     * `close_failed` one is **re-closed** — re-creating the latter would open a second change
+     * `close_failed` one is **re-closed**; re-creating the latter would open a second change
      * freeze or post a duplicate public notice. A status-page retry reuses the components recorded
      * on the artefact's `request`, so the announcement keeps its original scope. Its own endpoint
      * rather than a flag on PATCH, because it writes into three external systems. Audit-logged.
@@ -182,7 +182,7 @@ final class IncidentsNamespace extends ApiNamespace
      * resolution: resource changes, deployments, cost anomalies, provider status incidents, audit
      * entries, change freezes and workflow runs (all via the same union the Moment screen uses),
      * plus probe state transitions, metric-alert firings, the incident's own life events, its
-     * artefacts and its operator notes. Nothing is copied — a correction upstream shows up here on
+     * artefacts and its operator notes. Nothing is copied; a correction upstream shows up here on
      * the next read.
      *
      * Probe transitions are an approximation: `synthetic_probes` keeps only a single
@@ -217,7 +217,7 @@ final class IncidentsNamespace extends ApiNamespace
      * Edit or transition an incident
      *
      * Omitted fields keep their value. Setting `status` stamps the matching timestamp, and
-     * resolving undoes exactly what this incident created — the freeze whose id is on its own
+     * resolving undoes exactly what this incident created; the freeze whose id is on its own
      * artefact, not whatever freeze happens to be in effect. Resolving an incident that was never
      * marked mitigated back-fills `mitigatedAt` from `resolvedAt`. Audit-logged.
      *

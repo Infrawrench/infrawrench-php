@@ -24,7 +24,7 @@ final class SharedConsoleCreated implements \JsonSerializable
 {
     /**
      * @param list<SharedConsoleParticipant> $participants
-     * @param string $inviteToken The invite, returned exactly once. Only its sha256 is stored, so it cannot be shown again — mint a replacement instead.
+     * @param string $inviteToken The invite, returned exactly once. Only its sha256 is stored, so it cannot be shown again: mint a replacement instead.
      */
     public function __construct(
         public readonly SharedConsole $share,

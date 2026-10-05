@@ -26,7 +26,7 @@ final class EnvironmentDiffResponse implements \JsonSerializable
      * @param PluginId::* $pluginId
      * @param list<EnvironmentDiffTypeSummary> $types Every resource type present on either side, most-divergent first.
      * @param list<EnvironmentDiffEntry> $entries Only the slots that differ; identical pairs are counted, not listed.
-     * @param list<EnvironmentDiffUnavailableType> $unavailableTypes Resource types excluded because they could not be listed. Always empty over this API — it reads already-synced rows, which cannot half-fail — and populated only by the desktop and CLI local modes, which list live.
+     * @param list<EnvironmentDiffUnavailableType> $unavailableTypes Resource types excluded because they could not be listed. Always empty over this API; it reads already-synced rows, which cannot half-fail; and populated only by the desktop and CLI local modes, which list live.
      */
     public function __construct(
         public readonly EnvironmentDiffSideSummary $a,

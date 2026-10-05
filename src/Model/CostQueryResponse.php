@@ -25,7 +25,7 @@ final class CostQueryResponse implements \JsonSerializable
     /**
      * @param list<CostQuerySeries> $series
      * @param list<string> $currencies
-     * @param array<string, float> $totals Period total per currency, and always exactly the sum of `series`. Fixed-amount billing-rule charges are deliberately **not** folded in here — they have no series behind them and are reported in `adjustment.fixedTotals` instead.
+     * @param array<string, float> $totals Period total per currency, and always exactly the sum of `series`. Fixed-amount billing-rule charges are deliberately **not** folded in here; they have no series behind them and are reported in `adjustment.fixedTotals` instead.
      * @param list<CostQuerySeries>|null $comparison
      * @param list<CostSeriesPoint>|null $forecast The **unadjusted trend** projection. Stays the trend even when a scenario is applied, so a reader can always see what the fit said before anybody's assumptions touched it.
      * @param array<string, float>|null $previousTotals

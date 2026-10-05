@@ -25,7 +25,7 @@ final class ChangeCostImpactSeries implements \JsonSerializable
     /**
      * @param string $currency ISO 4217 code. Currencies are never summed.
      * @param float $deltaPerDay `afterPerDay - beforePerDay`. Positive means the change costs more.
-     * @param float|null $deltaPercent Null when the before window spent nothing — there is no percentage.
+     * @param float|null $deltaPercent Null when the before window spent nothing; there is no percentage.
      */
     public function __construct(
         public readonly string $currency,

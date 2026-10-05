@@ -32,7 +32,7 @@ final class CreditsNamespace extends ApiNamespace
      *
      * Every prepaid pot the organization holds, most urgent first. A provider that bills in
      * arrears sends an invoice you can argue with; a prepaid pot that empties simply stops
-     * answering — so this is an availability number as much as a finance one.
+     * answering: so this is an availability number as much as a finance one.
      *
      * The burn rate is measured from the server's own series of readings rather than reported by
      * the provider, and it is the sum of the **decreases** between consecutive readings: a top-up

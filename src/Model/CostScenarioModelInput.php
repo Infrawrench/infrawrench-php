@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostScenarioModelInput implements \JsonSerializable
 {
     /**
-     * @param string $currency Three-letter code. Every amount in the model must be in it — a model that mixed two would produce a projection that is the sum of two kinds of money, so this is refused rather than converted behind the caller's back.
+     * @param string $currency Three-letter code. Every amount in the model must be in it; a model that mixed two would produce a projection that is the sum of two kinds of money, so this is refused rather than converted behind the caller's back.
      * @param list<CostScenarioAdjustment> $adjustments
      */
     public function __construct(

@@ -46,8 +46,8 @@ final class RunbooksNamespace extends ApiNamespace
     /**
      * Write a runbook
      *
-     * Editing takes `org:settings:write` — a procedure is an org-wide statement about how
-     * something is done, and it is read by strangers under pressure. Names are unique within an
+     * Editing takes `org:settings:write`: a procedure is an org-wide statement about how something
+     * is done, and it is read by strangers under pressure. Names are unique within an
      * organization: two runbooks called "Failover" is how the wrong one gets run.
      *
      * POST /api/org/{orgId}/runbooks

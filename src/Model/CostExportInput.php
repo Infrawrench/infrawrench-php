@@ -24,7 +24,7 @@ final class CostExportInput implements \JsonSerializable
 {
     /**
      * @param 'csv'|'ndjson' $format
-     * @param 'daily'|'weekly'|'monthly' $cadence How often a run happens and — because a run writes one object per period — what a period is: a calendar day, an ISO week (Monday-start), or a calendar month.
+     * @param 'daily'|'weekly'|'monthly' $cadence How often a run happens and (because a run writes one object per period) what a period is: a calendar day, an ISO week (Monday-start), or a calendar month.
      * @param int $hour Local hour in `timezone` a run fires at.
      * @param string $timezone IANA zone, e.g. `Europe/Berlin`. Validated against `Intl`.
      * @param int $restatementDays Trailing days of already-written periods each run re-exports. Providers restate spend for days after the fact, so the object written for yesterday is not final; every period overlapping this window is rebuilt in full at its existing key, which overwrites rather than duplicates. 0 disables it and is only correct for an org whose providers never revise.
@@ -32,7 +32,7 @@ final class CostExportInput implements \JsonSerializable
      * @param CostExportSchema::*|null $schema
      * @param string|null $accessKeyId S3 only. Write-only; omit on update to keep the stored credential.
      * @param string|null $secretAccessKey S3 only. Write-only, never returned.
-     * @param string|null $url HTTPS destinations only. Write-only, never returned — a signed URL carries its own signature, so it is treated as a bearer credential.
+     * @param string|null $url HTTPS destinations only. Write-only, never returned; a signed URL carries its own signature, so it is treated as a bearer credential.
      */
     public function __construct(
         public readonly string $name,

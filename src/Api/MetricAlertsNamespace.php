@@ -170,7 +170,7 @@ final class MetricAlertsNamespace extends ApiNamespace
      * List metric series that actually exist
      *
      * The series labels resources reported in the last 7 days, optionally narrowed to one plugin
-     * and resource type — what the rule builder's metric picker is fed from.
+     * and resource type; what the rule builder's metric picker is fed from.
      *
      * GET /api/org/{orgId}/metric-alerts/metric-keys
      *

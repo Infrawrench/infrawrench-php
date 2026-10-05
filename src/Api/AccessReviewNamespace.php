@@ -84,7 +84,7 @@ final class AccessReviewNamespace extends ApiNamespace
      * permissions, past the rotation budget their plugin declares, carrying no recorded owner, or
      * signing in without a second factor.
      *
-     * This is about principals in **your** clouds — it is neither your Infrawrench team's roles
+     * This is about principals in **your** clouds; it is neither your Infrawrench team's roles
      * (`/team`) nor the credentials Infrawrench stores for you (`/credential-hygiene`).
      *
      * No provider API calls are made: everything is computed from already-synced fields, so a

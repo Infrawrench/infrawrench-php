@@ -35,7 +35,7 @@ final class OrgStatusIncident implements \JsonSerializable
      * @param int $affectedResourceCount How many of the organization's resources the incident overlaps.
      * @param list<string> $affectedRegions The subset of `regions` where the organization actually holds resources.
      * @param list<ProviderIncidentResourceSample> $sampleResources Up to five of the overlapped resources, for display.
-     * @param int $overlappingChangeCount Change-timeline events recorded on this provider during the incident window — "these N changes happened during an incident".
+     * @param int $overlappingChangeCount Change-timeline events recorded on this provider during the incident window; "these N changes happened during an incident".
      */
     public function __construct(
         public readonly string $id,

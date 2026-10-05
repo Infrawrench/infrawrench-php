@@ -23,12 +23,12 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CommitmentUtilization implements \JsonSerializable
 {
     /**
-     * @param float|null $utilization delivered ÷ obligation, unclamped (values above 1 mean spend past the commitment). **Null means not measurable** — never 0, which would read as 'unused'; the reason field says why.
+     * @param float|null $utilization delivered ÷ obligation, unclamped (values above 1 mean spend past the commitment). **Null means not measurable**; never 0, which would read as 'unused'; the reason field says why.
      * @param float|null $obligationAmount hourlyCommitmentAmount × 24 × measuredDays, in the commitment's currency.
      * @param int $activeDays Days of the window the commitment was active.
-     * @param int $measuredDays Active days with cost data — the only days in the obligation. Counting a day the collection never ran would make a fully-used plan read as under-utilized.
+     * @param int $measuredDays Active days with cost data; the only days in the obligation. Counting a day the collection never ran would make a fully-used plan read as under-utilized.
      * @param int $missingDays Active days without cost data, reported rather than silently counted.
-     * @param 'unit_denominated'|'no_active_days'|'no_data_days'|'unattributed_rows'|null $reason Why utilization is null: `unit_denominated` — the commitment is in resource units (GCP CUDs) and cost rows cannot say how many ran; `no_active_days` — the term does not intersect the window; `no_data_days` — no cost data was collected on any active day; `unattributed_rows` — the account's plugin does not stamp commitment ids onto cost rows, so delivered spend would falsely read as zero.
+     * @param 'unit_denominated'|'no_active_days'|'no_data_days'|'unattributed_rows'|null $reason Why utilization is null: `unit_denominated`: the commitment is in resource units (GCP CUDs) and cost rows cannot say how many ran; `no_active_days`: the term does not intersect the window; `no_data_days`: no cost data was collected on any active day; `unattributed_rows`: the account's plugin does not stamp commitment ids onto cost rows, so delivered spend would falsely read as zero.
      */
     public function __construct(
         public readonly ?float $utilization,

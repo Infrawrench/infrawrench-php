@@ -24,7 +24,7 @@ final class EnvironmentCostEstimate implements \JsonSerializable
 {
     /**
      * @param float|null $monthlyAmount Null means 'could not be priced', which is not the same as zero.
-     * @param bool $partial True when at least one member is unpriced — read as 'at least'.
+     * @param bool $partial True when at least one member is unpriced, read as 'at least'.
      * @param float|null $monthlyKgCo2e Estimated monthly kg CO2e of the members that could be placed against a published grid figure. Null when none could. See the Carbon tag for the method.
      * @param int $uncarbonedCount Sized compute members whose carbon could not be estimated.
      * @param list<array{memberKey: string, displayName: string, monthlyAmount: float|null, currency: string|null, monthlyKgCo2e: float|null}> $members

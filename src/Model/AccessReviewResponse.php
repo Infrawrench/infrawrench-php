@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class AccessReviewResponse implements \JsonSerializable
 {
     /**
-     * @param list<AccessPrincipal> $principals Every synced principal, by account then type then name. Never filtered by dismissals — accepting a finding must not remove a principal from the inventory.
+     * @param list<AccessPrincipal> $principals Every synced principal, by account then type then name. Never filtered by dismissals; accepting a finding must not remove a principal from the inventory.
      * @param list<AccessFinding> $findings Live findings, worst severity first. Dismissed findings are not included.
      * @param int $totalCount Live finding count; dismissals excluded.
      * @param list<DismissedAccessFinding> $dismissed Findings a dismissal is currently suppressing, most recently dismissed first. Only dismissals whose rule still matches appear.

@@ -25,7 +25,7 @@ final class StatusPageComponent implements \JsonSerializable
     /**
      * @param string|null $label Public name; null falls back to the probe's own name.
      * @param int $position Ascending display order.
-     * @param string $probeName The probe's internal name — editor-only.
+     * @param string $probeName The probe's internal name, editor-only.
      * @param 'up'|'down'|'unknown' $probeStatus
      * @param bool $probeEnabled False when the probe is paused.
      */

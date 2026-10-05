@@ -24,7 +24,7 @@ final class UnitCostSeries implements \JsonSerializable
 {
     /**
      * @param list<UnitCostPoint> $points
-     * @param float|null $overallValue The period ratio: **summed numerator ÷ summed denominator**, not the mean of the per-bucket ratios — the mean weights a quiet Sunday exactly as heavily as a peak Monday. Only buckets that produced a ratio contribute, on both sides.
+     * @param float|null $overallValue The period ratio: **summed numerator ÷ summed denominator**, not the mean of the per-bucket ratios: the mean weights a quiet Sunday exactly as heavily as a peak Monday. Only buckets that produced a ratio contribute, on both sides.
      * @param array{key: string, value: string|null, other?: bool}|null $label Set when the query grouped by a label.
      */
     public function __construct(

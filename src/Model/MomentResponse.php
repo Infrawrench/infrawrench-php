@@ -25,7 +25,7 @@ final class MomentResponse implements \JsonSerializable
     /**
      * @param string $at The centre timestamp, normalized to ISO.
      * @param int $windowMinutes The half-window actually applied, after clamping to 1–4320 minutes.
-     * @param list<MomentFeedStatus> $feeds One entry per feed, in canonical order — including omitted and errored feeds.
+     * @param list<MomentFeedStatus> $feeds One entry per feed, in canonical order; including omitted and errored feeds.
      * @param list<MomentEvent> $events Chronological, oldest first.
      * @param list<MomentIncidentSpan> $incidents
      */

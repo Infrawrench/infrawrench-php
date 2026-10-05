@@ -58,7 +58,7 @@ final class EnvironmentsSettingsNamespace extends ApiNamespace
     /**
      * Set the organization's environment TTL rails
      *
-     * `org:settings:write`, not `resources:write` — this is a governance decision about how long
+     * `org:settings:write`, not `resources:write`: this is a governance decision about how long
      * the organization is willing to pay for a throwaway environment. Clamped to a 720-hour
      * ceiling; the default is clamped to the maximum. Audit-logged.
      *

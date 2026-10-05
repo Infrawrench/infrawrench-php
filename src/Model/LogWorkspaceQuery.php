@@ -28,7 +28,7 @@ final class LogWorkspaceQuery implements \JsonSerializable
      * @param bool $alertEnabled When true the poller periodically evaluates the query and alerts on match.
      * @param string|null $lastEvalAt Last time the alert pass evaluated this query; null until it has run.
      * @param string|null $lastMatchAt Last evaluation that found at least one matching line.
-     * @param string|null $lastAlertedAt Last dispatched notification — the cooldown anchor.
+     * @param string|null $lastAlertedAt Last dispatched notification; the cooldown anchor.
      * @param string|null $lastEvalError Failure detail from the last evaluation.
      * @param string|null $lastMatchSample Truncated sample of the most recent matching line.
      */

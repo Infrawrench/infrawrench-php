@@ -30,7 +30,7 @@ final class EnvironmentDiffNamespace extends ApiNamespace
     /**
      * Compare two accounts' resource inventories
      *
-     * Compares two accounts of the same provider — typically staging against production — over
+     * Compares two accounts of the same provider (typically staging against production) over
      * already-synced state: which resource types exist in one and not the other, the per-type
      * count deltas, and the fields on which two corresponding resources disagree (instance class,
      * engine version, feature flags).
@@ -38,7 +38,7 @@ final class EnvironmentDiffNamespace extends ApiNamespace
      * Resources are paired by resource type plus name with environment words removed, so
      * `api-staging` lines up with `api-prod` without any naming convention to configure. By
      * default the comparison hides divergences that are artefacts of being two different resources
-     * — ids, links, network addresses and timestamps — because every resource has different ones;
+     * (ids, links, network addresses and timestamps) because every resource has different ones;
      * pass `includeIdentityFields=true` to see them.
      *
      * Read-only and cheap: no provider API calls are made, so results reflect the last sync.
@@ -51,7 +51,7 @@ final class EnvironmentDiffNamespace extends ApiNamespace
      *
      * Raises on 404: Not found
      *
-     * @param string $a Baseline account id — by convention the environment that works.
+     * @param string $a Baseline account id; by convention the environment that works.
      * @param string $b Compared account id. Must differ from `a` and use the same provider.
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $resourceTypeId Compare one resource type only.

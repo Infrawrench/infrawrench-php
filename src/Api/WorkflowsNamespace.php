@@ -48,7 +48,7 @@ final class WorkflowsNamespace extends ApiNamespace
      * this organization's connected accounts, resource types, SSH key names, and the workflow's
      * trigger + metrics. Default is the fast static surface (`create` fields are `Record<string,
      * string>`). Pass `enrich=1` for a second pass that hits provider APIs for precise create()
-     * field unions and live sidecar capability flags — the editor loads static first and upgrades
+     * field unions and live sidecar capability flags; the editor loads static first and upgrades
      * when that finishes.
      *
      * _Requires permission: `workflows:read`._

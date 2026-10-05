@@ -24,7 +24,7 @@ final class SyntheticProbe implements \JsonSerializable
 {
     /**
      * @param string $url Absolute http(s) URL the check hits from the edge proxy.
-     * @param string $method HTTP method the probe uses — GET, HEAD or OPTIONS. Unknown values become GET.
+     * @param string $method HTTP method the probe uses, GET, HEAD or OPTIONS. Unknown values become GET.
      * @param int $intervalSeconds Seconds between checks. Clamped server-side to 60–86400.
      * @param int $timeoutMs Per-check timeout in milliseconds. Clamped server-side to 1000–60000.
      * @param int $failureThreshold Consecutive failures before the probe flips to `down` and notifies. Clamped 1–20.

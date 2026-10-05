@@ -23,9 +23,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostAlertEvent implements \JsonSerializable
 {
     /**
-     * @param string $periodKey The cadence period the firing belongs to — a day, an ISO week (2026-W32) or a month (2026-08). One period fires at most once per group and currency.
+     * @param string $periodKey The cadence period the firing belongs to; a day, an ISO week (2026-W32) or a month (2026-08). One period fires at most once per group and currency.
      * @param string $groupKey The offending group; empty when the alert watches one total.
-     * @param int|null $changePercent Signed percent change. Null when the prior window had no spend at all (new spend — the change is infinite); -100 when the group vanished.
+     * @param int|null $changePercent Signed percent change. Null when the prior window had no spend at all (new spend; the change is infinite); -100 when the group vanished.
      * @param 'increase'|'decrease' $direction
      */
     public function __construct(

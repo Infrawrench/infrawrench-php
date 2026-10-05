@@ -22,14 +22,14 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 /**
  * What an adjusted answer did. Present whenever the request asked to be adjusted, even for an
- * organisation with no rules — its absence means, and can only mean, that every figure in the
+ * organisation with no rules; its absence means, and can only mean, that every figure in the
  * response is exactly what the providers charged.
  */
 final class CostAdjustmentSummary implements \JsonSerializable
 {
     /**
      * @param list<array{id: string, name: string, kind: 'percentage'|'fixed'|'reallocation'|'tiered'|'expression', summary: string}> $rules The enabled rules in force for this answer, in evaluation order.
-     * @param array<string, float> $rawTotals The collected, unadjusted totals for exactly the same rows, summed in the same scan. Always present on an adjusted answer — this is the figure that reconciles against an invoice. Per-series raw figures are deliberately not offered: after a reallocation the series are a different partition of the same money.
+     * @param array<string, float> $rawTotals The collected, unadjusted totals for exactly the same rows, summed in the same scan. Always present on an adjusted answer; this is the figure that reconciles against an invoice. Per-series raw figures are deliberately not offered: after a reallocation the series are a different partition of the same money.
      * @param array<string, float> $fixedTotals Fixed-amount charges over the period, pro-rated. On a cost query these are reported here and **not** folded into `totals`, which stays the sum of the series; the figure an organisation reports internally is the adjusted total plus this. On a showback report they are additionally booked onto the cost centre the rule names.
      */
     public function __construct(

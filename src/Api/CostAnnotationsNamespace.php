@@ -36,7 +36,7 @@ final class CostAnnotationsNamespace extends ApiNamespace
      *
      * Writes the finding as a cost annotation, so the step in the run rate is explained on the
      * graph where it shows. Re-posting the same subject **rewords the existing note** rather than
-     * adding a second — which is what makes it safe to pin a finding again once the provider has
+     * adding a second; which is what makes it safe to pin a finding again once the provider has
      * finished restating. The note's date and report scope are never rewritten: they may have been
      * edited deliberately.
      *
@@ -134,7 +134,7 @@ final class CostAnnotationsNamespace extends ApiNamespace
      *
      * Dated notes drawn over cost charts. With `reportId`, the set a chart for that report draws:
      * the org-wide notes plus that report's own. Without it, every annotation in the org.
-     * Annotations are an overlay — they never appear in a series, a total, or an axis.
+     * Annotations are an overlay; they never appear in a series, a total, or an axis.
      *
      * _Requires permission: `costs:read`._
      *

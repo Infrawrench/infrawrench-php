@@ -147,7 +147,7 @@ final class JiraNamespace extends ApiNamespace
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param JiraSourceKind::*|null $sourceKind
-     * @param list<string>|null $sourceId Repeat to narrow to specific findings. Omit to return every link of the kind — this is the batch lookup a list view makes once instead of one request per row.
+     * @param list<string>|null $sourceId Repeat to narrow to specific findings. Omit to return every link of the kind; this is the batch lookup a list view makes once instead of one request per row.
      * @return list<JiraIssueLink>
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.

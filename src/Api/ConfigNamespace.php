@@ -33,7 +33,7 @@ final class ConfigNamespace extends ApiNamespace
     /**
      * Apply a configuration document
      *
-     * Applies the document in a single transaction and returns the plan that was executed — all or
+     * Applies the document in a single transaction and returns the plan that was executed; all or
      * nothing, so a failure never leaves the organization halfway between two configurations.
      *
      * Requires the write permission of every section the document carries, so this cannot be used
@@ -45,7 +45,7 @@ final class ConfigNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 402: Payment required — the organization's plan does not include this
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 403: Forbidden
      *
@@ -77,7 +77,7 @@ final class ConfigNamespace extends ApiNamespace
      * than row ids so the result applies to any organization.
      *
      * Credentials, accounts, resources and workflow signing secrets are never included. Ordering
-     * is stable, so re-exporting an unchanged organization produces the same bytes — commit it to
+     * is stable, so re-exporting an unchanged organization produces the same bytes; commit it to
      * git and the diff is the change.
      *
      * Requires the read permission of every section exported; it refuses rather than silently

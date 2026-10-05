@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class SyntheticProbeCreate implements \JsonSerializable
 {
     /**
-     * @param string|null $method HTTP method the probe uses — GET, HEAD or OPTIONS. Unknown values become GET.
+     * @param string|null $method HTTP method the probe uses, GET, HEAD or OPTIONS. Unknown values become GET.
      * @param int|null $intervalSeconds Seconds between checks. Clamped server-side to 60–86400.
      * @param int|null $timeoutMs Per-check timeout in milliseconds. Clamped server-side to 1000–60000.
      * @param int|null $failureThreshold Consecutive failures before the probe flips to `down` and notifies. Clamped 1–20.

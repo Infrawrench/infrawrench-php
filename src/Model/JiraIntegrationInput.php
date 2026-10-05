@@ -24,7 +24,7 @@ final class JiraIntegrationInput implements \JsonSerializable
 {
     /**
      * @param string $siteUrl Jira Cloud site address. Must resolve to a .atlassian.net (or legacy .jira.com) host; a bare hostname and a pasted board or issue URL are both accepted and normalized.
-     * @param string $accountEmail Atlassian account email — the username half of the basic-auth pair.
+     * @param string $accountEmail Atlassian account email; the username half of the basic-auth pair.
      * @param string|null $apiToken API token from id.atlassian.com. Omit to keep the stored token; required on first connect.
      */
     public function __construct(

@@ -30,16 +30,16 @@ final class CommitmentsNamespace extends ApiNamespace
     /**
      * Reservations, savings plans and committed-use discounts
      *
-     * The organization's purchased commitments — reserved instances, savings plans, committed-use
-     * discounts — with three derived readings.
+     * The organization's purchased commitments (reserved instances, savings plans, committed-use
+     * discounts) with three derived readings.
      *
      * **Coverage** is a range, not a number: the broad ratio counts every uncovered usage dollar
-     * in the denominator (a lower bound — egress and per-request charges can never be committed
+     * in the denominator (a lower bound; egress and per-request charges can never be committed
      * against), the narrow ratio only uncovered usage in cells where a commitment demonstrably
      * landed (an upper bound). Accounts whose plugin cannot distinguish charge types are excluded
      * and listed; a scope where every account is excluded reports unavailable, not 0%.
      *
-     * **Utilization** is measured only over days cost data was actually collected — a collection
+     * **Utilization** is measured only over days cost data was actually collected; a collection
      * gap is reported as missing days, never counted as idle commitment. Unit-denominated
      * commitments (GCP) report null with a reason, never 0%. Azure's own reported utilization
      * rides on each holding separately and is never blended with the derived figure.

@@ -53,10 +53,10 @@ final class SharedConsolesNamespace extends ApiNamespace
      * the driver.
      *
      * Returns 409 `console_not_here` when the pty is held by a different server replica than the
-     * one answering this call — reopen the terminal and share again. Writing the share anyway
-     * would produce a link that authorises correctly and then finds nothing to attach to.
+     * one answering this call; reopen the terminal and share again. Writing the share anyway would
+     * produce a link that authorises correctly and then finds nothing to attach to.
      *
-     * Requires `resources:execute` — the same permission as opening the terminal. Closed to API
+     * Requires `resources:execute`: the same permission as opening the terminal. Closed to API
      * keys: sharing a shell is an act a person performs.
      *
      * _Requires permission: `resources:execute`._
@@ -92,7 +92,7 @@ final class SharedConsolesNamespace extends ApiNamespace
     /**
      * Revoke a share
      *
-     * Disconnects every guest and stops the fan-out. The sharer's own SSH session carries on —
+     * Disconnects every guest and stops the fan-out. The sharer's own SSH session carries on :
      * revoking a share is not killing a terminal.
      *
      * The sharer or a holder of `org:settings:write`. Deliberately does **not** require
@@ -127,7 +127,7 @@ final class SharedConsolesNamespace extends ApiNamespace
      * Get one shared console
      *
      * Visible to participants and to anyone who could revoke it (the sharer, or a holder of
-     * `org:settings:write`). Others get 404 — that a named colleague has a root shell open on a
+     * `org:settings:write`). Others get 404: that a named colleague has a root shell open on a
      * named production host right now is operational information.
      *
      * _Requires permission: `resources:execute`._
@@ -159,7 +159,7 @@ final class SharedConsolesNamespace extends ApiNamespace
      *
      * Authorised by the **current driver** (the keyboard is theirs to give) or by the **sharer**
      * (it is their box, and asking permission from somebody who has stopped responding is not a
-     * control). An observer cannot promote themselves — that is `/request-driver`.
+     * control). An observer cannot promote themselves; that is `/request-driver`.
      *
      * Two simultaneous grants cannot both win: the database's partial unique index decides the
      * order, and the loser gets 409 `driver-race-lost`.
@@ -202,7 +202,7 @@ final class SharedConsolesNamespace extends ApiNamespace
     /**
      * Redeem an invite and join
      *
-     * Admission needs live org membership **and** `resources:execute` — the invite is a locator,
+     * Admission needs live org membership **and** `resources:execute`: the invite is a locator,
      * never a capability, so a leaked link admits nobody who could not have opened the shell
      * themselves.
      *
@@ -309,7 +309,7 @@ final class SharedConsolesNamespace extends ApiNamespace
     /**
      * Ask for the keyboard
      *
-     * Raises a flag the driver and the sharer can see. Grants nothing on its own — that is the
+     * Raises a flag the driver and the sharer can see. Grants nothing on its own; that is the
      * point.
      *
      * _Requires permission: `resources:execute`._

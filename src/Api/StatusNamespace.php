@@ -30,7 +30,7 @@ final class StatusNamespace extends ApiNamespace
     /**
      * Read a public status page
      *
-     * **Unauthenticated.** The only endpoint in this API that takes no credentials — a status page
+     * **Unauthenticated.** The only endpoint in this API that takes no credentials; a status page
      * exists for people with no account. The payload carries labels, states and uptime history
      * only: probe URLs, resource and account ids, the organization id and error detail are never
      * included. An unpublished page and an unknown slug both answer 404, so the endpoint cannot be

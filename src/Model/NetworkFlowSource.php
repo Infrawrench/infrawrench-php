@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class NetworkFlowSource implements \JsonSerializable
 {
     /**
-     * @param string $target What the flow log is attached to — a VPC id, a network.
+     * @param string $target What the flow log is attached to; a VPC id, a network.
      * @param string|null $unusableReason Why the source cannot be read, in terms that name the fix.
      */
     public function __construct(

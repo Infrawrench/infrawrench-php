@@ -34,7 +34,7 @@ final class StatusPagesNamespace extends ApiNamespace
      * Create a status page
      *
      * Creates a page with a freshly generated slug. `published` defaults to false, so creating a
-     * page never exposes anything — publish it as a separate, deliberate step.
+     * page never exposes anything; publish it as a separate, deliberate step.
      *
      * _Requires permission: `resources:write`._
      *
@@ -123,7 +123,7 @@ final class StatusPagesNamespace extends ApiNamespace
     /**
      * Issue a new public link
      *
-     * Replaces the slug, revoking the current public URL immediately — the reroll for a link that
+     * Replaces the slug, revoking the current public URL immediately; the reroll for a link that
      * ended up somewhere unintended. The page stays published.
      *
      * _Requires permission: `resources:write`._
@@ -153,8 +153,8 @@ final class StatusPagesNamespace extends ApiNamespace
     /**
      * Update a status page
      *
-     * Omitted fields keep their value. `components`, when present, replaces the whole ordered set
-     * — which is also how a reorder is expressed.
+     * Omitted fields keep their value. `components`, when present, replaces the whole ordered set:
+     * which is also how a reorder is expressed.
      *
      * _Requires permission: `resources:write`._
      *

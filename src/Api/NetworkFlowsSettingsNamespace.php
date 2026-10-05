@@ -56,7 +56,7 @@ final class NetworkFlowsSettingsNamespace extends ApiNamespace
      * Turn network flow collection on or off
      *
      * Collection is **off by default**. Enabling it authorizes Infrawrench to run daily queries
-     * against the provider's log store — and on AWS those queries are billed to your own cloud
+     * against the provider's log store; and on AWS those queries are billed to your own cloud
      * account per GB of log data scanned, every day, until you turn them off. That is why the
      * write is governed by `org:settings:write` rather than `costs:write`, and why it is
      * audit-logged.

@@ -28,10 +28,10 @@ final class SessionRecording implements \JsonSerializable
      * @param string $host Final hop, as dialled.
      * @param int $hopCount 1 for a direct session; higher when it jumped through bastions.
      * @param bool $hasInput True when the cast also contains keystrokes (the org opted into input capture).
-     * @param 'recording'|'complete'|'truncated'|'abandoned' $status `recording` (live), `complete` (closed cleanly), `truncated` (hit the per-session capture ceiling — the tape is a genuine partial and says so), or `abandoned` (the server handling the session went away before it could close the row).
+     * @param 'recording'|'complete'|'truncated'|'abandoned' $status `recording` (live), `complete` (closed cleanly), `truncated` (hit the per-session capture ceiling: the tape is a genuine partial and says so), or `abandoned` (the server handling the session went away before it could close the row).
      * @param int $outputBytes Terminal bytes captured, before compression.
      * @param string|null $sharedConsoleId Set when this session was shared with colleagues while it ran.
-     * @param list<array{userId: string|null, userName: string|null, role: 'observer'|'driver', joinedAt: string, leftAt: string|null}>|null $participants Everyone who was attached to this session and in what role — the **highest** role they held, not their role at the end. Null or empty for an ordinary solo session. Once a session can be shared, `userId` alone stops answering 'whose hands were on this box'; this does. The cast carries the same facts in-band as asciicast `"m"` marker events, so a viewer sees *when* the keyboard moved.
+     * @param list<array{userId: string|null, userName: string|null, role: 'observer'|'driver', joinedAt: string, leftAt: string|null}>|null $participants Everyone who was attached to this session and in what role; the **highest** role they held, not their role at the end. Null or empty for an ordinary solo session. Once a session can be shared, `userId` alone stops answering 'whose hands were on this box'; this does. The cast carries the same facts in-band as asciicast `"m"` marker events, so a viewer sees *when* the keyboard moved.
      */
     public function __construct(
         public readonly string $id,

@@ -27,7 +27,7 @@ final class ChangeCostImpact implements \JsonSerializable
      * @param ChangeCostBasis::* $costBasis
      * @param int $windowDays The half-window that was requested.
      * @param int $effectiveWindowDays The half-window the data supported. Clamped symmetrically, so both means always average the same number of days.
-     * @param string $eventDay UTC day the change landed on. Excluded from both windows — it is a mixed day.
+     * @param string $eventDay UTC day the change landed on. Excluded from both windows; it is a mixed day.
      * @param list<ChangeCostImpactSeries> $series
      * @param ChangeCostImpactConfidence::* $confidence
      * @param list<ChangeCostImpactReason::*> $reasons

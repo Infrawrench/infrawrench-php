@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class RunbookStepInput implements \JsonSerializable
 {
     /**
-     * @param 'manual'|'workflow'|'link' $kind What the step does. Three kinds and not a scripting language: a runbook is written by whoever is on call for whoever is on call next, and the moment it needs a language it stops being written. `workflow` is the escape hatch — anything genuinely automated belongs in a workflow, which already has a sandbox, approvals, secrets and a history.
+     * @param 'manual'|'workflow'|'link' $kind What the step does. Three kinds and not a scripting language: a runbook is written by whoever is on call for whoever is on call next, and the moment it needs a language it stops being written. `workflow` is the escape hatch; anything genuinely automated belongs in a workflow, which already has a sandbox, approvals, secrets and a history.
      * @param string|null $id Omitted for a new step; the server assigns one.
      */
     public function __construct(

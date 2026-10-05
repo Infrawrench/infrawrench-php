@@ -98,7 +98,7 @@ final class SharedConsolesInvitesNamespace extends ApiNamespace
      *
      * What the join screen shows before anyone commits: which host, whose session, and whether you
      * may join it. Reachable with a valid token by a signed-in member who already holds
-     * `resources:execute` — the token says *which* session, never *whether*. Returns nothing from
+     * `resources:execute`: the token says *which* session, never *whether*. Returns nothing from
      * the session itself.
      *
      * _Requires permission: `resources:execute`._

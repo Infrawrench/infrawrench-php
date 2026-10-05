@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ResourceChangeEntry implements \JsonSerializable
 {
     /**
-     * @param string $displayName Resource display name at the time of the change — survives deletion.
+     * @param string $displayName Resource display name at the time of the change, survives deletion.
      * @param ResourceChangeKind::* $changeKind
      * @param list<ResourceFieldChange> $diff Changed fields for `updated` events; empty for `created` and `deleted`.
      * @param 'schedule'|null $origin Who caused the change when a non-sync writer knows: `schedule` for sleep/wake schedule transitions. Absent/null = observed by sync.

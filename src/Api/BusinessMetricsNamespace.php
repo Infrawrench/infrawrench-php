@@ -54,7 +54,7 @@ final class BusinessMetricsNamespace extends ApiNamespace
     /**
      * Create a business metric
      *
-     * Keys must be unique per organization among live metrics — they are how workflows and the CLI
+     * Keys must be unique per organization among live metrics; they are how workflows and the CLI
      * address the metric. A key collision is a 409.
      *
      * _Requires permission: `costs:write`._
@@ -254,7 +254,7 @@ final class BusinessMetricsNamespace extends ApiNamespace
      * knowing before reading it:
      *
      * - **The ratio is computed at the requested bucket**, from a summed numerator and a summed
-     * denominator — never a mean of daily ratios, which weights a quiet day as heavily as a peak
+     * denominator: never a mean of daily ratios, which weights a quiet day as heavily as a peak
      * one. The same holds for `overallValue`.
      * - **A missing or non-positive denominator is a gap** (`value: null` with a `gap` reason),
      * never 0 and never infinite.
@@ -298,9 +298,9 @@ final class BusinessMetricsNamespace extends ApiNamespace
     /**
      * Update a business metric
      *
-     * Replaces the whole definition. Changing `key` never orphans history — values are keyed on
-     * the metric's id — but it does break a workflow still writing to the old key, which is why
-     * the key is separate from the display name in the first place.
+     * Replaces the whole definition. Changing `key` never orphans history (values are keyed on the
+     * metric's id) but it does break a workflow still writing to the old key, which is why the key
+     * is separate from the display name in the first place.
      *
      * _Requires permission: `costs:write`._
      *

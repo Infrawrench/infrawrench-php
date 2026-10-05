@@ -25,7 +25,7 @@ final class DnsInventoryResponse implements \JsonSerializable
     /**
      * @param list<DnsZone> $zones Sorted by domain, then account name.
      * @param list<DnsRecord> $records Sorted worst status first, then by name.
-     * @param list<DnsSkippedNamespace> $skippedNamespaces Provider namespaces that were declared but not evaluated, and why — either no account for the plugin is connected, or no claimant resource has synced. Both are missing data rather than a clean bill of health, so they are reported rather than hidden.
+     * @param list<DnsSkippedNamespace> $skippedNamespaces Provider namespaces that were declared but not evaluated, and why; either no account for the plugin is connected, or no claimant resource has synced. Both are missing data rather than a clean bill of health, so they are reported rather than hidden.
      */
     public function __construct(
         public readonly array $zones,

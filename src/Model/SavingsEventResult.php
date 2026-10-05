@@ -41,7 +41,7 @@ final class SavingsEventResult implements \JsonSerializable
      * @param float|null $realizedInRange Currency units (not cents), in the row's currency.
      * @param float|null $projectedInRange Projected over the same accrued days in the range.
      * @param string|null $horizonEndsOn Last day a one-off action accrues on; null for recurring ones.
-     * @param 'full'|'annotate'|'none' $editable `full` — a manual entry (PUT); `annotate` — an automatic event takes a note, a cost centre, a horizon and an end date (PATCH); `none` — derived rows.
+     * @param 'full'|'annotate'|'none' $editable `full`: a manual entry (PUT); `annotate`: an automatic event takes a note, a cost centre, a horizon and an end date (PATCH); `none`: derived rows.
      */
     public function __construct(
         public readonly string $id,

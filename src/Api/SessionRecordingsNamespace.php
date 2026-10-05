@@ -43,7 +43,7 @@ final class SessionRecordingsNamespace extends ApiNamespace
      *
      * The session as an [asciicast v2](https://docs.asciinema.org/manual/asciicast/v2/) document:
      * a JSON header line followed by one `[time, code, data]` event per line. Deliberately
-     * somebody else's format — the same bytes play in `asciinema play` and in the reference web
+     * somebody else's format; the same bytes play in `asciinema play` and in the reference web
      * player, so a recording is useful to an auditor who has never seen this product.
      * `?download=1` returns it as an attachment. **Every fetch is audit-logged**, including this
      * one: an investigator has to be able to answer who has watched a given tape.
@@ -135,7 +135,7 @@ final class SessionRecordingsNamespace extends ApiNamespace
     /**
      * List recorded SSH sessions
      *
-     * Recorded sessions, newest first. Only SSH opened through the cloud is recorded — those
+     * Recorded sessions, newest first. Only SSH opened through the cloud is recorded; those
      * sessions are already proxied by the server, so recording tees a stream it holds rather than
      * requiring an agent on the host. A desktop session that dials a host directly never reaches
      * the server and cannot appear here.
@@ -147,7 +147,7 @@ final class SessionRecordingsNamespace extends ApiNamespace
      * Raises on 400: Bad request
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param 'recording'|'complete'|'truncated'|'abandoned'|null $status `recording` (live), `complete` (closed cleanly), `truncated` (hit the per-session capture ceiling — the tape is a genuine partial and says so), or `abandoned` (the server handling the session went away before it could close the row).
+     * @param 'recording'|'complete'|'truncated'|'abandoned'|null $status `recording` (live), `complete` (closed cleanly), `truncated` (hit the per-session capture ceiling: the tape is a genuine partial and says so), or `abandoned` (the server handling the session went away before it could close the row).
      * @param string|null $since Inclusive lower bound on `startedAt`.
      * @param string|null $until Exclusive upper bound on `startedAt`.
      * @return list<SessionRecording>
