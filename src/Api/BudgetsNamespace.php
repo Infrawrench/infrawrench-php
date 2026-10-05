@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.56.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.56.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -110,7 +110,7 @@ final class BudgetsNamespace extends ApiNamespace
     }
 
     /**
-     * Get a budget with current-month status
+     * Get a budget with current-period status
      *
      * GET /api/org/{orgId}/budgets/{id}
      *
@@ -120,7 +120,7 @@ final class BudgetsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function get(string $id, ?string $orgId = null, ?RequestOptions $options = null): BudgetFull
+    public function get(string $id, ?string $orgId = null, ?RequestOptions $options = null): BudgetWithStatus
     {
         $data = $this->transport->request(
             new RequestSpec(
@@ -131,11 +131,11 @@ final class BudgetsNamespace extends ApiNamespace
             $options,
         );
 
-        return BudgetFull::fromArray(Coerce::toArray($data));
+        return BudgetWithStatus::fromArray(Coerce::toArray($data));
     }
 
     /**
-     * List budgets with current-month actuals and forecasts
+     * List budgets with current-period actuals and forecasts
      *
      * GET /api/org/{orgId}/budgets
      *

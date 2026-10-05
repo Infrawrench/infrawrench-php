@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.56.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.56.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,17 @@ final class BudgetWithStatus implements \JsonSerializable
      * @param int|null $scenarioForecastCents The scenario-adjusted month forecast, set only for a budget that opted into a model, and the number its forecast thresholds are judged against. Null means the thresholds used `forecastCents`.
      * @param list<array{id: string, thresholdType: 'actual'|'forecast', thresholdPercent: int, triggeredAt: string}> $currentMonthEvents
      * @param list<array{widgetId: string, dashboardId: string, dashboardName: string}> $placements
+     * @param BudgetMeasure::* $measure
+     * @param string|null $usageUnit The usage unit a usage budget counts, exactly as the providers report it.
+     * @param float|null $usageAmount A usage budget's limit per period, in `usageUnit`.
+     * @param string|null $parentBudgetId The budget this one rolls up into. A parent's actual and forecast are the sum of its children's, each measured over the parent's period; parent and children must count the same thing (one currency, or one usage unit). Hierarchies are at most 4 levels deep. Deleting a budget moves its children up to its own parent. Updates are full replaces, so omitting it on PUT makes the budget a root.
+     * @param string|null $periodStart First day of the period being measured. Null when the budget's periods do not cover today (a cadence not started yet, a gap in an explicit list): nothing is measured.
+     * @param float|null $periodLimit This period's limit in the budget's unit: cents for a spend budget, the quantity for a usage budget. Null when no period is active.
+     * @param float|null $actualUsage Period-to-date usage, for a usage budget (whose `actualCents` is 0).
+     * @param float|null $forecastUsage Projected period-end usage, for a usage budget.
+     * @param bool $rolledUp True when the budget has children, so its figures are the sum of theirs over its period rather than a measurement of its own scope.
+     * @param int $childCount Number of direct child budgets.
+     * @param list<BudgetHierarchyWarning> $hierarchyWarnings
      */
     public function __construct(
         public readonly string $id,
@@ -55,6 +66,19 @@ final class BudgetWithStatus implements \JsonSerializable
         public readonly ?int $scenarioForecastCents,
         public readonly array $currentMonthEvents,
         public readonly array $placements,
+        public readonly string $measure,
+        public readonly ?string $usageUnit,
+        public readonly ?float $usageAmount,
+        public readonly BudgetRecurringPeriod|BudgetExplicitPeriods|null $period,
+        public readonly ?string $parentBudgetId,
+        public readonly ?string $periodStart,
+        public readonly ?string $periodEnd,
+        public readonly ?float $periodLimit,
+        public readonly ?float $actualUsage,
+        public readonly ?float $forecastUsage,
+        public readonly bool $rolledUp,
+        public readonly int $childCount,
+        public readonly array $hierarchyWarnings,
     ) {
     }
 
@@ -84,6 +108,19 @@ final class BudgetWithStatus implements \JsonSerializable
             scenarioForecastCents: Coerce::toIntOrNull($data['scenarioForecastCents'] ?? null),
             currentMonthEvents: Coerce::mapList($data['currentMonthEvents'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
             placements: Coerce::mapList($data['placements'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
+            measure: Coerce::toString($data['measure'] ?? null),
+            usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
+            usageAmount: Coerce::toFloatOrNull($data['usageAmount'] ?? null),
+            period: $data['period'] ?? null,
+            parentBudgetId: Coerce::toStringOrNull($data['parentBudgetId'] ?? null),
+            periodStart: Coerce::toStringOrNull($data['periodStart'] ?? null),
+            periodEnd: Coerce::toStringOrNull($data['periodEnd'] ?? null),
+            periodLimit: Coerce::toFloatOrNull($data['periodLimit'] ?? null),
+            actualUsage: Coerce::toFloatOrNull($data['actualUsage'] ?? null),
+            forecastUsage: Coerce::toFloatOrNull($data['forecastUsage'] ?? null),
+            rolledUp: Coerce::toBool($data['rolledUp'] ?? null),
+            childCount: Coerce::toInt($data['childCount'] ?? null),
+            hierarchyWarnings: Coerce::mapList($data['hierarchyWarnings'] ?? null, static fn (mixed $item): BudgetHierarchyWarning => BudgetHierarchyWarning::fromArray(Coerce::toArray($item))),
         );
     }
 
@@ -113,6 +150,19 @@ final class BudgetWithStatus implements \JsonSerializable
             'scenarioForecastCents' => $this->scenarioForecastCents,
             'currentMonthEvents' => $this->currentMonthEvents,
             'placements' => $this->placements,
+            'measure' => $this->measure,
+            'usageUnit' => $this->usageUnit,
+            'usageAmount' => $this->usageAmount,
+            'period' => $this->period,
+            'parentBudgetId' => $this->parentBudgetId,
+            'periodStart' => $this->periodStart,
+            'periodEnd' => $this->periodEnd,
+            'periodLimit' => $this->periodLimit,
+            'actualUsage' => $this->actualUsage,
+            'forecastUsage' => $this->forecastUsage,
+            'rolledUp' => $this->rolledUp,
+            'childCount' => $this->childCount,
+            'hierarchyWarnings' => array_map(static fn (BudgetHierarchyWarning $item): array => $item->toArray(), $this->hierarchyWarnings),
         ];
     }
 

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.56.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.56.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,7 +22,11 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class BudgetAlertEvent implements \JsonSerializable
 {
-    /** @param 'actual'|'forecast' $thresholdType */
+    /**
+     * @param 'actual'|'forecast' $thresholdType
+     * @param string|null $periodStart First day of the period the crossing was observed in; null on events from before budget periods were configurable (those are calendar months: see `month`).
+     * @param float|null $actualUsage A usage budget's period-to-date usage at the crossing (the cents fields are 0).
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $month,
@@ -31,6 +35,10 @@ final class BudgetAlertEvent implements \JsonSerializable
         public readonly int $actualAmountCents,
         public readonly ?int $forecastAmountCents,
         public readonly string $triggeredAt,
+        public readonly ?string $periodStart,
+        public readonly ?string $periodEnd,
+        public readonly ?float $actualUsage,
+        public readonly ?float $forecastUsage,
     ) {
     }
 
@@ -49,6 +57,10 @@ final class BudgetAlertEvent implements \JsonSerializable
             actualAmountCents: Coerce::toInt($data['actualAmountCents'] ?? null),
             forecastAmountCents: Coerce::toIntOrNull($data['forecastAmountCents'] ?? null),
             triggeredAt: Coerce::toString($data['triggeredAt'] ?? null),
+            periodStart: Coerce::toStringOrNull($data['periodStart'] ?? null),
+            periodEnd: Coerce::toStringOrNull($data['periodEnd'] ?? null),
+            actualUsage: Coerce::toFloatOrNull($data['actualUsage'] ?? null),
+            forecastUsage: Coerce::toFloatOrNull($data['forecastUsage'] ?? null),
         );
     }
 
@@ -67,6 +79,10 @@ final class BudgetAlertEvent implements \JsonSerializable
             'actualAmountCents' => $this->actualAmountCents,
             'forecastAmountCents' => $this->forecastAmountCents,
             'triggeredAt' => $this->triggeredAt,
+            'periodStart' => $this->periodStart,
+            'periodEnd' => $this->periodEnd,
+            'actualUsage' => $this->actualUsage,
+            'forecastUsage' => $this->forecastUsage,
         ];
     }
 

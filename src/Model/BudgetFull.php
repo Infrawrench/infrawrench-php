@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.56.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.56.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,10 @@ final class BudgetFull implements \JsonSerializable
      * @param list<BudgetThreshold> $thresholds
      * @param BudgetCostBasis::* $costBasis
      * @param bool $useAdjustedSpend Measure this budget against billing-rule-adjusted spend — the internal figure — instead of what the providers charged. False by default, and for every budget nobody opted in. The default is a deliberate refusal: a markup is organisation policy and a budget threshold pages a real person, so adding one settings row must not be able to move every on-call rota at once. Unlike a scenario this affects `actual` thresholds too — an opted-in budget is measuring the internal number, and month-to-date internal spend is as marked up as the forecast is. The alert body says the figure is adjusted and names the collected one. Updates are full replaces, so omitting it on PUT clears the opt-in.
+     * @param BudgetMeasure::* $measure
+     * @param string|null $usageUnit The usage unit a usage budget counts, exactly as the providers report it.
+     * @param float|null $usageAmount A usage budget's limit per period, in `usageUnit`.
+     * @param string|null $parentBudgetId The budget this one rolls up into. A parent's actual and forecast are the sum of its children's, each measured over the parent's period; parent and children must count the same thing (one currency, or one usage unit). Hierarchies are at most 4 levels deep. Deleting a budget moves its children up to its own parent. Updates are full replaces, so omitting it on PUT makes the budget a root.
      */
     public function __construct(
         public readonly string $id,
@@ -46,6 +50,11 @@ final class BudgetFull implements \JsonSerializable
         public readonly ?string $deletedAt,
         public readonly string $createdAt,
         public readonly string $updatedAt,
+        public readonly string $measure,
+        public readonly ?string $usageUnit,
+        public readonly ?float $usageAmount,
+        public readonly BudgetRecurringPeriod|BudgetExplicitPeriods|null $period,
+        public readonly ?string $parentBudgetId,
     ) {
     }
 
@@ -72,6 +81,11 @@ final class BudgetFull implements \JsonSerializable
             deletedAt: Coerce::toStringOrNull($data['deletedAt'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
+            measure: Coerce::toString($data['measure'] ?? null),
+            usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
+            usageAmount: Coerce::toFloatOrNull($data['usageAmount'] ?? null),
+            period: $data['period'] ?? null,
+            parentBudgetId: Coerce::toStringOrNull($data['parentBudgetId'] ?? null),
         );
     }
 
@@ -98,6 +112,11 @@ final class BudgetFull implements \JsonSerializable
             'deletedAt' => $this->deletedAt,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
+            'measure' => $this->measure,
+            'usageUnit' => $this->usageUnit,
+            'usageAmount' => $this->usageAmount,
+            'period' => $this->period,
+            'parentBudgetId' => $this->parentBudgetId,
         ];
     }
 
