@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.59.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.59.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -69,6 +69,7 @@ final class PluginId
     public const KUBERNETES = 'kubernetes';
     public const LINODE = 'linode';
     public const MEMCACHED = 'memcached';
+    public const METRONOME = 'metronome';
     public const MISTRAL = 'mistral';
     public const MODAL = 'modal';
     public const MONGODB = 'mongodb';
@@ -153,6 +154,7 @@ final class PluginId
             self::KUBERNETES,
             self::LINODE,
             self::MEMCACHED,
+            self::METRONOME,
             self::MISTRAL,
             self::MODAL,
             self::MONGODB,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.59.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.59.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -124,6 +124,7 @@ final class ResourceTypeId
     public const BIGQUERY_DATASET = 'bigquery-dataset';
     public const BIGQUERY_TABLE = 'bigquery-table';
     public const BIGTABLE_INSTANCE = 'bigtable-instance';
+    public const BILLABLE_METRIC = 'billable-metric';
     public const BILLING_ACCOUNT = 'billing-account';
     public const BILLING_GROUP = 'billing-group';
     public const BLOCK_VOLUME = 'block-volume';
@@ -191,6 +192,7 @@ final class ResourceTypeId
     public const CUSTOM_ENRICHMENT = 'custom-enrichment';
     public const CUSTOM_HOSTNAME = 'custom-hostname';
     public const CUSTOM_VOICE = 'custom-voice';
+    public const CUSTOMER = 'customer';
     public const D1_DATABASE = 'd1-database';
     public const DASHBOARD = 'dashboard';
     public const DATABASE = 'database';
@@ -767,6 +769,7 @@ final class ResourceTypeId
             self::BIGQUERY_DATASET,
             self::BIGQUERY_TABLE,
             self::BIGTABLE_INSTANCE,
+            self::BILLABLE_METRIC,
             self::BILLING_ACCOUNT,
             self::BILLING_GROUP,
             self::BLOCK_VOLUME,
@@ -834,6 +837,7 @@ final class ResourceTypeId
             self::CUSTOM_ENRICHMENT,
             self::CUSTOM_HOSTNAME,
             self::CUSTOM_VOICE,
+            self::CUSTOMER,
             self::D1_DATABASE,
             self::DASHBOARD,
             self::DATABASE,

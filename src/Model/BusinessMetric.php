@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.59.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.59.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,6 +40,7 @@ final class BusinessMetric implements \JsonSerializable
         public readonly string $createdAt,
         public readonly string $updatedAt,
         public readonly ?BusinessMetricCoverage $coverage,
+        public readonly ?BusinessMetricImporterSummary $importer,
     ) {
     }
 
@@ -64,6 +65,7 @@ final class BusinessMetric implements \JsonSerializable
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
             coverage: Coerce::nullable($data['coverage'] ?? null, static fn (mixed $value): BusinessMetricCoverage => BusinessMetricCoverage::fromArray(Coerce::toArray($value))),
+            importer: Coerce::nullable($data['importer'] ?? null, static fn (mixed $value): BusinessMetricImporterSummary => BusinessMetricImporterSummary::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -88,6 +90,7 @@ final class BusinessMetric implements \JsonSerializable
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
             'coverage' => $this->coverage?->toArray(),
+            'importer' => $this->importer?->toArray(),
         ];
     }
 

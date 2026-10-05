@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.59.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.59.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,11 +24,13 @@ final class BusinessMetricValue implements \JsonSerializable
 {
     /**
      * @param string $day UTC day, YYYY-MM-DD.
-     * @param 'api'|'workflow' $source
+     * @param string|null $label Optional breakdown label; a day's total is the sum across its labels.
+     * @param 'api'|'workflow'|'import' $source
      */
     public function __construct(
         public readonly string $day,
         public readonly float $value,
+        public readonly ?string $label,
         public readonly string $source,
         public readonly string $updatedAt,
     ) {
@@ -44,6 +46,7 @@ final class BusinessMetricValue implements \JsonSerializable
         return new self(
             day: Coerce::toString($data['day'] ?? null),
             value: Coerce::toFloat($data['value'] ?? null),
+            label: Coerce::toStringOrNull($data['label'] ?? null),
             source: Coerce::toString($data['source'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
         );
@@ -59,6 +62,7 @@ final class BusinessMetricValue implements \JsonSerializable
         return [
             'day' => $this->day,
             'value' => $this->value,
+            'label' => $this->label,
             'source' => $this->source,
             'updatedAt' => $this->updatedAt,
         ];

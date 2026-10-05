@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.59.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.59.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class BusinessMetricValuesInput implements \JsonSerializable
 {
     /**
-     * @param list<array{date: string, value: float}> $values Days to report. **Re-reporting a day restates it rather than adding to it**, so an unattended nightly job is safe to retry — an accumulating write would double every number the first time the job re-ran. A batch naming the same day twice keeps the last value, applying the same rule within a batch that restatement applies between them.
+     * @param list<array{date: string, value: float, label?: string}> $values Days to report. **Re-reporting a day restates it rather than adding to it**, so an unattended nightly job is safe to retry — an accumulating write would double every number the first time the job re-ran. A batch naming the same day twice keeps the last value, applying the same rule within a batch that restatement applies between them.
      */
     public function __construct(
         public readonly array $values,
