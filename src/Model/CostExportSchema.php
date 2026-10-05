@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.74.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.74.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,10 +20,11 @@ namespace Infrawrench\Sdk\Model;
 
 /**
  * Which columns an object carries. `native` is Infrawrench's own layout, shaped by
- * `query.dimensions` and `query.tagKeys`. `focus-1.3` writes the FinOps Open Cost and Usage
- * Specification v1.3 columns at the full row grain, with `BilledCost` (cash) and `EffectiveCost`
- * (amortized) side by side; `query.dimensions`, `query.tagKeys` and `query.costBasis` do not apply
- * to it, `query.filters` and `query.chargeTypes` still do.
+ * `query.dimensions` and `query.tagKeys`. `focus-1.4` and `focus-1.3` write the FinOps Open Cost
+ * and Usage Specification columns of that version at the full row grain (1.4 drops the deprecated
+ * `ProviderName` and `PublisherName`), with `BilledCost` (cash) and `EffectiveCost` (amortized)
+ * side by side; `query.dimensions`, `query.tagKeys` and `query.costBasis` do not apply to it,
+ * `query.filters` and `query.chargeTypes` still do.
  *
  * The values `CostExportSchema` accepts.
  *
@@ -33,6 +34,7 @@ namespace Infrawrench\Sdk\Model;
 final class CostExportSchema
 {
     public const NATIVE = 'native';
+    public const FOCUS_1_4 = 'focus-1.4';
     public const FOCUS_1_3 = 'focus-1.3';
 
     /**
@@ -44,6 +46,7 @@ final class CostExportSchema
     {
         return [
             self::NATIVE,
+            self::FOCUS_1_4,
             self::FOCUS_1_3,
         ];
     }

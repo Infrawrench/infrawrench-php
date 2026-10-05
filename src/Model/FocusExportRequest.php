@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.74.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.74.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,6 +33,7 @@ Grammar: a conjunction of equality terms joined by `AND`. A term is `dimension =
 Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. A parse failure is a 400 whose body carries `queryError` with the character `offset`, the `length` of the offending span, and the `expected` alternatives there.
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference. Resolved server-side at query time and AND-composed with whichever of `filters`/`query` is present — unlike those two it is a composition, not an alternative. An id that does not resolve to a live filter is a 400; the query is never silently run unfiltered.
      * @param list<CostChargeType::*>|null $chargeTypes Restrict to these kinds of charge. Omitted is all of them, which is what makes an unfiltered total net rather than gross — credits, refunds and commitment discounts are included. Rows collected before charge types existed, and rows from providers that cannot distinguish them, are `usage`.
+     * @param '1.4'|'1.3'|null $version The FOCUS version to write. Omitted means `1.3`.
      */
     public function __construct(
         public readonly string $from,
@@ -41,6 +42,7 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         public readonly ?string $query = null,
         public readonly ?string $savedFilterId = null,
         public readonly ?array $chargeTypes = null,
+        public readonly ?string $version = null,
     ) {
     }
 
@@ -58,6 +60,7 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
             query: Coerce::toStringOrNull($data['query'] ?? null),
             savedFilterId: Coerce::toStringOrNull($data['savedFilterId'] ?? null),
             chargeTypes: Coerce::nullable($data['chargeTypes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            version: Coerce::toStringOrNull($data['version'] ?? null),
         );
     }
 
@@ -83,6 +86,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         }
         if ($this->chargeTypes !== null) {
             $payload['chargeTypes'] = $this->chargeTypes;
+        }
+        if ($this->version !== null) {
+            $payload['version'] = $this->version;
         }
 
         return $payload;

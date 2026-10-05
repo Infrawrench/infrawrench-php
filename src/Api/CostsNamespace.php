@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.73.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.74.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.73.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.74.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -194,15 +194,18 @@ final class CostsNamespace extends ApiNamespace
     }
 
     /**
-     * Download cost rows as a FOCUS 1.3 CSV
+     * Download cost rows as a FOCUS CSV
      *
      * The rows a cost query selects, written as a CSV in the FinOps Open Cost and Usage
-     * Specification (FOCUS) v1.3 layout: one row per account, service, region, resource, tag set,
-     * charge type and commitment per day, with `BilledCost` (cash) and `EffectiveCost` (amortized)
-     * side by side, `ChargeCategory`, `ServiceCategory`/`ServiceSubcategory`, `Tags` as a JSON
-     * object and the commitment columns where the provider reports a commitment. Custom columns
-     * follow, prefixed `x_`. The same mapping a `focus-1.3` scheduled export writes (see
-     * /cost-exports).
+     * Specification (FOCUS) layout of `version` (`1.4` or `1.3`; omitted means `1.3`, so scripts
+     * written before 1.4 keep their header). One row per account, service, region, resource, tag
+     * set, charge type and commitment per day, with `BilledCost` (cash) and `EffectiveCost`
+     * (amortized) side by side, `ChargeCategory`, `ServiceCategory`/`ServiceSubcategory`, `Tags`
+     * as a JSON object and the commitment columns where the provider reports a commitment. Custom
+     * columns follow, prefixed `x_`. 1.4 drops the deprecated `ProviderName` and `PublisherName`
+     * (`ServiceProviderName` and `HostProviderName` carry the same value) and sets `EffectiveCost`
+     * to `BilledCost` on tax rows. The same mapping a `focus-<version>` scheduled export writes
+     * (see /cost-exports).
      *
      * Takes the cost query's filter in either spelling (`filters` or `query`, never both), an
      * optional saved filter, and charge types. The range spans at most 366 days; for anything
