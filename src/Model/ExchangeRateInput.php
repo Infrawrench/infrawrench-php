@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,12 +26,14 @@ final class ExchangeRateInput implements \JsonSerializable
      * @param string $fromCurrency ISO 4217 code, upper-case.
      * @param string $toCurrency ISO 4217 code, upper-case.
      * @param string $rate Multiply an amount in `fromCurrency` by this to get `toCurrency`. A decimal **string**, not a number: it is stored in a `numeric(20, 10)` column so the digits your finance system used survive the round trip exactly, and a JSON number could not promise that.
+     * @param string|null $effectiveTo Omitted or `null` for open-ended. Must not be before `effectiveFrom`.
      */
     public function __construct(
         public readonly string $fromCurrency,
         public readonly string $toCurrency,
         public readonly string $rate,
         public readonly string $effectiveFrom,
+        public readonly ?string $effectiveTo = null,
     ) {
     }
 
@@ -47,6 +49,7 @@ final class ExchangeRateInput implements \JsonSerializable
             toCurrency: Coerce::toString($data['toCurrency'] ?? null),
             rate: Coerce::toString($data['rate'] ?? null),
             effectiveFrom: Coerce::toString($data['effectiveFrom'] ?? null),
+            effectiveTo: Coerce::toStringOrNull($data['effectiveTo'] ?? null),
         );
     }
 
@@ -57,12 +60,17 @@ final class ExchangeRateInput implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'fromCurrency' => $this->fromCurrency,
             'toCurrency' => $this->toCurrency,
             'rate' => $this->rate,
             'effectiveFrom' => $this->effectiveFrom,
         ];
+        if ($this->effectiveTo !== null) {
+            $payload['effectiveTo'] = $this->effectiveTo;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

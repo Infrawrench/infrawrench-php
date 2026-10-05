@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,8 +31,9 @@ final class CurrencyRatesNamespace extends ApiNamespace
     /**
      * Delete one exchange rate
      *
-     * Removing a rate makes the days it covered fall back to the next-older rate, or to
-     * unconverted if none remains. Spend never disappears — it reverts to its own currency.
+     * Removing a rate makes the days it covered fall back to the next-older rate, then the
+     * automatic feed when on, or to unconverted if none applies. Spend never disappears: it
+     * reverts to its own currency.
      *
      * _Requires permission: `org:settings:write`._
      *
@@ -62,10 +63,11 @@ final class CurrencyRatesNamespace extends ApiNamespace
     /**
      * Create or replace one exchange rate
      *
-     * Upserts on (`fromCurrency`, `toCurrency`, `effectiveFrom`) — one rate per pair per day, so
+     * Upserts on (`fromCurrency`, `toCurrency`, `effectiveFrom`): one rate per pair per day, so
      * correcting a rate replaces it rather than adding a second one whose precedence a reader
-     * would have to guess. Rates are stated to the display currency in one hop: nothing inverts a
-     * rate or chains two, because both produce a number you never stated.
+     * would have to guess. Stated rates are one hop to the display currency and are never inverted
+     * or chained. A stated rate always wins over the automatic feed for the days it covers; give
+     * it an `effectiveTo` to hand the days after back to the feed.
      *
      * _Requires permission: `org:settings:write`._
      *

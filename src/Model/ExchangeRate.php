@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class ExchangeRate implements \JsonSerializable
      * @param string $toCurrency ISO 4217 code, upper-case.
      * @param string $rate Multiply an amount in `fromCurrency` by this to get `toCurrency`. A decimal **string**, not a number: it is stored in a `numeric(20, 10)` column so the digits your finance system used survive the round trip exactly, and a JSON number could not promise that.
      * @param string $effectiveFrom Inclusive day this rate starts applying. A given day converts at the rate with the greatest `effectiveFrom` on or before it, so historical periods keep the rate that applied then. A day earlier than every stated rate has no rate.
+     * @param string|null $effectiveTo Inclusive last day this rate applies, or `null` for open-ended (until a later stated rate). Past it, the automatic feed takes over when on; otherwise those days are unconverted. An older stated rate never resurfaces past an end date.
      */
     public function __construct(
         public readonly string $id,
@@ -34,6 +35,7 @@ final class ExchangeRate implements \JsonSerializable
         public readonly string $toCurrency,
         public readonly string $rate,
         public readonly string $effectiveFrom,
+        public readonly ?string $effectiveTo,
         public readonly ?string $createdBy,
         public readonly string $createdAt,
         public readonly string $updatedAt,
@@ -53,6 +55,7 @@ final class ExchangeRate implements \JsonSerializable
             toCurrency: Coerce::toString($data['toCurrency'] ?? null),
             rate: Coerce::toString($data['rate'] ?? null),
             effectiveFrom: Coerce::toString($data['effectiveFrom'] ?? null),
+            effectiveTo: Coerce::toStringOrNull($data['effectiveTo'] ?? null),
             createdBy: Coerce::toStringOrNull($data['createdBy'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
@@ -72,6 +75,7 @@ final class ExchangeRate implements \JsonSerializable
             'toCurrency' => $this->toCurrency,
             'rate' => $this->rate,
             'effectiveFrom' => $this->effectiveFrom,
+            'effectiveTo' => $this->effectiveTo,
             'createdBy' => $this->createdBy,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,11 +24,15 @@ final class CurrencyConfig implements \JsonSerializable
 {
     /**
      * @param string|null $displayCurrency ISO 4217 code, upper-case.
+     * @param 'daily'|'month_end' $rateBasis Which automatic (feed) rate converts a day's spend. `daily`: the rate published for that day, carried forward over weekends and holidays. `month_end`: the rate in force on the last day of that day's month, so a whole month converts at one rate. Stated rates always apply to the days their own dates cover, whatever the basis.
      * @param list<ExchangeRate> $rates
      */
     public function __construct(
         public readonly ?string $displayCurrency,
+        public readonly bool $autoRates,
+        public readonly string $rateBasis,
         public readonly array $rates,
+        public readonly FxFeedStatus $feed,
     ) {
     }
 
@@ -41,7 +45,10 @@ final class CurrencyConfig implements \JsonSerializable
     {
         return new self(
             displayCurrency: Coerce::toStringOrNull($data['displayCurrency'] ?? null),
+            autoRates: Coerce::toBool($data['autoRates'] ?? null),
+            rateBasis: Coerce::toString($data['rateBasis'] ?? null),
             rates: Coerce::mapList($data['rates'] ?? null, static fn (mixed $item): ExchangeRate => ExchangeRate::fromArray(Coerce::toArray($item))),
+            feed: FxFeedStatus::fromArray(Coerce::toArray($data['feed'] ?? null)),
         );
     }
 
@@ -54,7 +61,10 @@ final class CurrencyConfig implements \JsonSerializable
     {
         return [
             'displayCurrency' => $this->displayCurrency,
+            'autoRates' => $this->autoRates,
+            'rateBasis' => $this->rateBasis,
             'rates' => array_map(static fn (ExchangeRate $item): array => $item->toArray(), $this->rates),
+            'feed' => $this->feed->toArray(),
         ];
     }
 
