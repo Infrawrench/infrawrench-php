@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.59.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.59.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -61,6 +61,7 @@ use Infrawrench\Sdk\Api\CostsNamespace;
 use Infrawrench\Sdk\Api\CredentialHygieneNamespace;
 use Infrawrench\Sdk\Api\CreditsNamespace;
 use Infrawrench\Sdk\Api\CurrencyNamespace;
+use Infrawrench\Sdk\Api\CustomCostSourcesNamespace;
 use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardNotificationsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
@@ -276,6 +277,9 @@ final class APIV1Client
 
     /** `$client->currency` */
     public readonly CurrencyNamespace $currency;
+
+    /** `$client->customCostSources` */
+    public readonly CustomCostSourcesNamespace $customCostSources;
 
     /** `$client->customGraphs` */
     public readonly CustomGraphsNamespace $customGraphs;
@@ -530,6 +534,7 @@ final class APIV1Client
         $this->credentialHygiene = new CredentialHygieneNamespace($this->transport);
         $this->credits = new CreditsNamespace($this->transport);
         $this->currency = new CurrencyNamespace($this->transport);
+        $this->customCostSources = new CustomCostSourcesNamespace($this->transport);
         $this->customGraphs = new CustomGraphsNamespace($this->transport);
         $this->dashboardNotifications = new DashboardNotificationsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
