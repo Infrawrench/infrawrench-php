@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,8 @@ final class CostQueryResponse implements \JsonSerializable
      * @param list<CostQuerySeries>|null $comparison
      * @param list<CostSeriesPoint>|null $forecast The **unadjusted trend** projection. Stays the trend even when a scenario is applied, so a reader can always see what the fit said before anybody's assumptions touched it.
      * @param array<string, float>|null $previousTotals
+     * @param 'usage'|'count'|null $measure Set when the request measured something other than money; absent means every amount is money in its series' currency. For both, series carry `currency: ""` and the totals are keyed by `""`.
+     * @param string|null $usageUnit The unit a `usage` response is in.
      */
     public function __construct(
         public readonly array $series,
@@ -39,6 +41,8 @@ final class CostQueryResponse implements \JsonSerializable
         public readonly ?CostScenarioResult $scenario = null,
         public readonly ?array $previousTotals = null,
         public readonly ?CostAdjustmentSummary $adjustment = null,
+        public readonly ?string $measure = null,
+        public readonly ?string $usageUnit = null,
     ) {
     }
 
@@ -58,6 +62,8 @@ final class CostQueryResponse implements \JsonSerializable
             scenario: Coerce::nullable($data['scenario'] ?? null, static fn (mixed $value): CostScenarioResult => CostScenarioResult::fromArray(Coerce::toArray($value))),
             previousTotals: Coerce::nullable($data['previousTotals'] ?? null, static fn (mixed $value): array => Coerce::mapValues($value, static fn (mixed $item): float => Coerce::toFloat($item))),
             adjustment: Coerce::nullable($data['adjustment'] ?? null, static fn (mixed $value): CostAdjustmentSummary => CostAdjustmentSummary::fromArray(Coerce::toArray($value))),
+            measure: Coerce::toStringOrNull($data['measure'] ?? null),
+            usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
         );
     }
 
@@ -87,6 +93,12 @@ final class CostQueryResponse implements \JsonSerializable
         }
         if ($this->adjustment !== null) {
             $payload['adjustment'] = $this->adjustment->toArray();
+        }
+        if ($this->measure !== null) {
+            $payload['measure'] = $this->measure;
+        }
+        if ($this->usageUnit !== null) {
+            $payload['usageUnit'] = $this->usageUnit;
         }
 
         return $payload;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,13 +27,16 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostGraphConfig implements \JsonSerializable
 {
     /**
-     * @param 'stacked_bar'|'multi_bar'|'line'|'area'|'pie' $chartType
-     * @param 'daily'|'weekly'|'monthly'|'cumulative' $binning
+     * @param 'stacked_bar'|'multi_bar'|'line'|'area'|'pie'|'donut'|'table' $chartType How the series are drawn. `pie` and `donut` draw period totals per group; `table` lists every bucket as a row with a column per series and a total.
+     * @param CostBinning::* $binning
      * @param array{kind: 'relative', preset: string}|array{kind: 'absolute', from: string, to: string} $dateRange
      * @param list<CostReportFilter>|null $filters
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` at query time, server-side. Editing the saved filter changes every graph, report and budget referencing it; a reference that fails to resolve makes the query error rather than silently run unfiltered.
      * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast — known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.
      * @param 'cash'|'amortized'|null $costBasis
+     * @param CostMeasure::*|null $measure
+     * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
+     * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.
      */
     public function __construct(
         public readonly float $version,
@@ -49,6 +52,9 @@ final class CostGraphConfig implements \JsonSerializable
         public readonly ?bool $showForecast = null,
         public readonly ?string $scenarioModelId = null,
         public readonly ?string $costBasis = null,
+        public readonly ?string $measure = null,
+        public readonly ?string $usageUnit = null,
+        public readonly ?bool $cumulative = null,
     ) {
     }
 
@@ -73,6 +79,9 @@ final class CostGraphConfig implements \JsonSerializable
             showForecast: Coerce::toBoolOrNull($data['showForecast'] ?? null),
             scenarioModelId: Coerce::toStringOrNull($data['scenarioModelId'] ?? null),
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
+            measure: Coerce::toStringOrNull($data['measure'] ?? null),
+            usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
+            cumulative: Coerce::toBoolOrNull($data['cumulative'] ?? null),
         );
     }
 
@@ -113,6 +122,15 @@ final class CostGraphConfig implements \JsonSerializable
         }
         if ($this->costBasis !== null) {
             $payload['costBasis'] = $this->costBasis;
+        }
+        if ($this->measure !== null) {
+            $payload['measure'] = $this->measure;
+        }
+        if ($this->usageUnit !== null) {
+            $payload['usageUnit'] = $this->usageUnit;
+        }
+        if ($this->cumulative !== null) {
+            $payload['cumulative'] = $this->cumulative;
         }
 
         return $payload;

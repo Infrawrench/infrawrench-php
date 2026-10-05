@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\CostReport;
 use Infrawrench\Sdk\Model\CostReportInput;
+use Infrawrench\Sdk\Model\CostReportRunOverrides;
 use Infrawrench\Sdk\Model\CostReportRunResult;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\RequestOptions;
@@ -190,8 +191,11 @@ final class CostReportsNamespace extends ApiNamespace
      * Run a cost report
      *
      * Executes the report's saved config and returns the series, along with the inclusive window a
-     * relative preset resolved to. Takes no body: the report *is* the query, so a caller never has
-     * to reassemble its config to get the numbers.
+     * relative preset resolved to. The body is optional: the report *is* the query, so a caller
+     * never has to reassemble its config to get the numbers. It may carry one-off display
+     * overrides (`measure`, `usageUnit`, `binning`, `cumulative`) that apply to this run only and
+     * are never saved; switching a run to `usage` or `count` drops the saved forecast, scenario
+     * and billing rules, which only apply to money.
      *
      * _Requires permission: `costs:read`._
      *
@@ -205,13 +209,15 @@ final class CostReportsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function run(string $id, ?string $orgId = null, ?RequestOptions $options = null): CostReportRunResult
+    public function run(string $id, ?string $orgId = null, ?CostReportRunOverrides $body = null, ?RequestOptions $options = null): CostReportRunResult
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/cost-reports/{id}/run',
                 pathParams: ['orgId' => $orgId, 'id' => $id],
+                body: $body?->toArray(),
+                hasBody: $body !== null,
             ),
             $options,
         );

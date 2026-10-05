@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,7 @@ final class UnitCostQueryResponse implements \JsonSerializable
     /**
      * @param array{id: string, key: string, name: string, unit: string, kind: BusinessMetricKind::*, currency: string|null} $metric
      * @param 'unit_cost'|'margin' $mode
-     * @param 'daily'|'weekly'|'monthly'|'cumulative' $binning
+     * @param 'hourly'|'daily'|'weekly'|'monthly'|'quarterly'|'cumulative' $binning
      * @param list<UnitCostSeries> $series One series per currency the numerator ended up in — usually one. More than one means the organization has spend in a currency it holds no rate for; rather than dropping that spend (understating every unit cost) or adding it to another currency (inventing a number), each currency divides the same denominator on its own.
      * @param int $gapBuckets Buckets on the axis that produced no ratio at all.
      * @param int $partialBuckets Buckets whose denominator covers only part of the bucket.

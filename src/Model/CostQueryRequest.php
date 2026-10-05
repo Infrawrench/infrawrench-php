@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostQueryRequest implements \JsonSerializable
 {
     /**
-     * @param 'daily'|'weekly'|'monthly'|'cumulative' $binning
+     * @param CostBinning::* $binning
      * @param list<CostFilter>|null $filters
      * @param string|null $query The same filter written as text, in the cost query language — an alternative to `filters`, compiled server-side into exactly that structure.
 
@@ -37,6 +37,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
      * @param CostBasis::*|null $costBasis
      * @param list<CostChargeType::*>|null $chargeTypes Restrict to these kinds of charge. Omitted is all of them, which is what makes an unfiltered total net rather than gross — credits, refunds and commitment discounts are included. Rows collected before charge types existed, and rows from providers that cannot distinguish them, are `usage`.
      * @param bool|null $adjusted Apply the organization's billing rules (see /billing-rules) — markups, discounts, reallocations. Omitted (the default, and what every unattended reader sends) is raw collected spend. Present, the response carries `adjustment` with the collected totals beside the adjusted ones and the rules that moved them; it is set even for an organization with no rules, because the absence of that field is the only signal that a figure is unadjusted.
+     * @param CostMeasure::*|null $measure
+     * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
+     * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.
      */
     public function __construct(
         public readonly string $from,
@@ -54,6 +57,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         public readonly ?string $costBasis = null,
         public readonly ?array $chargeTypes = null,
         public readonly ?bool $adjusted = null,
+        public readonly ?string $measure = null,
+        public readonly ?string $usageUnit = null,
+        public readonly ?bool $cumulative = null,
     ) {
     }
 
@@ -80,6 +86,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
             chargeTypes: Coerce::nullable($data['chargeTypes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             adjusted: Coerce::toBoolOrNull($data['adjusted'] ?? null),
+            measure: Coerce::toStringOrNull($data['measure'] ?? null),
+            usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
+            cumulative: Coerce::toBoolOrNull($data['cumulative'] ?? null),
         );
     }
 
@@ -128,6 +137,15 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         }
         if ($this->adjusted !== null) {
             $payload['adjusted'] = $this->adjusted;
+        }
+        if ($this->measure !== null) {
+            $payload['measure'] = $this->measure;
+        }
+        if ($this->usageUnit !== null) {
+            $payload['usageUnit'] = $this->usageUnit;
+        }
+        if ($this->cumulative !== null) {
+            $payload['cumulative'] = $this->cumulative;
         }
 
         return $payload;

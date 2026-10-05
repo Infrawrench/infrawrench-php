@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.57.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.58.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.57.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.58.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class UnitCostQueryRequest implements \JsonSerializable
 {
     /**
      * @param string $from Inclusive, YYYY-MM-DD.
-     * @param 'daily'|'weekly'|'monthly'|'cumulative' $binning
+     * @param 'hourly'|'daily'|'weekly'|'monthly'|'quarterly'|'cumulative' $binning
      * @param 'unit_cost'|'margin'|null $mode Absent is `unit_cost` (spend ÷ metric value). `margin` is `(revenue − spend) ÷ revenue` as a fraction, and is a 400 for a metric whose `kind` is not `currency`.
      * @param list<BusinessMetricScopeTerm>|null $filters Narrowing on top of the metric's own `costScope` — AND-composed, never a replacement.
      * @param string|null $query The same narrowing as cost-query-language text.
