@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class CredentialField implements \JsonSerializable
 {
     /**
      * @param list<CredentialFieldRegion>|null $regions
-     * @param array{dependsOn: list<string>, emptyLabel?: string}|null $providerOptions Present when the field's choices come from the provider. Once every field in `dependsOn` has a value, `POST /accounts/credential-options` returns them.
+     * @param array{dependsOn: list<string>, emptyLabel?: string, multiple?: bool}|null $providerOptions Present when the field's choices come from the provider. Once every field in `dependsOn` has a value, `POST /accounts/credential-options` returns them.
      * @param array{label: string, url: string}|null $helpLink
      */
     public function __construct(

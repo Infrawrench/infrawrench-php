@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class CostAnnotation implements \JsonSerializable
      * @param string|null $endDate Inclusive last day, or null for a note about a single moment. A deploy is a moment; a migration is a week, and a week spelled as seven notes misstates how many things happened. An end equal to the start is stored as null — the same fact has one spelling.
      * @param string|null $costReportId The report this note is scoped to, or null for **org-wide**. Null is the useful default: an org-wide note is drawn on every cost chart, because "we changed instance types" is not a fact about one report. An id from another org is a 400.
      * @param string|null $costAnomalyId The detected cost anomaly this note was written to explain (see POST /costs/anomalies/{anomalyId}/acknowledge), or null for a note written by hand. The reverse of the anomaly's own `acknowledgement.annotationId`, resolved from that same single link rather than stored twice.
+     * @param array{budgetId: string, eventId: string}|null $budgetAlert The fired budget alert this note explains (see POST /budgets/{id}/events/{eventId}/note), or null. Resolved from the event's own `note.annotationId`, the same single link, never stored twice.
      */
     public function __construct(
         public readonly string $id,
@@ -38,6 +39,7 @@ final class CostAnnotation implements \JsonSerializable
         public readonly string $createdAt,
         public readonly string $updatedAt,
         public readonly ?string $costAnomalyId,
+        public readonly ?array $budgetAlert,
     ) {
     }
 
@@ -58,6 +60,7 @@ final class CostAnnotation implements \JsonSerializable
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
             costAnomalyId: Coerce::toStringOrNull($data['costAnomalyId'] ?? null),
+            budgetAlert: Coerce::toArrayOrNull($data['budgetAlert'] ?? null),
         );
     }
 
@@ -78,6 +81,7 @@ final class CostAnnotation implements \JsonSerializable
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
             'costAnomalyId' => $this->costAnomalyId,
+            'budgetAlert' => $this->budgetAlert,
         ];
     }
 

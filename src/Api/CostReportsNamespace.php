@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,6 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\CostReport;
+use Infrawrench\Sdk\Model\CostReportBulkResult;
 use Infrawrench\Sdk\Model\CostReportInput;
 use Infrawrench\Sdk\Model\CostReportRunOverrides;
 use Infrawrench\Sdk\Model\CostReportRunResult;
@@ -39,6 +40,44 @@ final class CostReportsNamespace extends ApiNamespace
     {
         parent::__construct($transport);
         $this->notifications = new CostReportsNotificationsNamespace($this->transport);
+    }
+
+    /**
+     * Move or delete many reports and folders at once
+     *
+     * All or nothing. Every item is checked first: it exists, the caller's per-object sharing
+     * allows the action (editor to move, owner to delete, or editor when nobody owns it), and for
+     * a move, the folder tree that would result keeps every folder within the three-level nesting
+     * limit and free of cycles. Any problem is a 400 listing each blocking item, and nothing is
+     * written. Deleting a report removes its dashboard cards and pauses its delivery schedules;
+     * deleting a folder drops whatever remains inside it to the top level. One audit entry is
+     * written per item.
+     *
+     * _Requires permission: `costs:write`._
+     *
+     * POST /api/org/{orgId}/cost-reports/bulk
+     *
+     * Raises on 400: Refused; nothing was changed
+     *
+     * @param array{action: 'move', reportIds: list<string>, folderIds: list<string>, targetFolderId: string|null}|array{action: 'delete', reportIds: list<string>, folderIds: list<string>} $body
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function bulk(array $body, ?string $orgId = null, ?RequestOptions $options = null): CostReportBulkResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/cost-reports/bulk',
+                pathParams: ['orgId' => $orgId],
+                body: $body,
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return CostReportBulkResult::fromArray(Coerce::toArray($data));
     }
 
     /**

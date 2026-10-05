@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,12 +21,22 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\CostAnomaly;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->costs->anomalies` */
 final class CostsAnomaliesNamespace extends ApiNamespace
 {
+    /** `$client->costs->anomalies->feedback` */
+    public readonly CostsAnomaliesFeedbackNamespace $feedback;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->feedback = new CostsAnomaliesFeedbackNamespace($this->transport);
+    }
+
     /**
      * Explain a detected cost anomaly
      *

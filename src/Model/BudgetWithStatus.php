@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,7 +33,7 @@ final class BudgetWithStatus implements \JsonSerializable
      * @param int|null $rawActualCents Month-to-date **collected** spend, non-null only for a budget measuring adjusted spend. Null on an unadjusted budget rather than a copy of `actualCents`: "there is no separate collected figure because this one is it" and "the collected figure happens to equal the adjusted one" are different facts, and captioning every budget in the organisation would make the adjusted ones invisible.
      * @param int|null $forecastCents The **unadjusted trend** forecast, whether or not a scenario is applied — so both numbers are always comparable.
      * @param int|null $scenarioForecastCents The scenario-adjusted month forecast, set only for a budget that opted into a model, and the number its forecast thresholds are judged against. Null means the thresholds used `forecastCents`.
-     * @param list<array{id: string, thresholdType: 'actual'|'forecast', thresholdPercent: int, triggeredAt: string}> $currentMonthEvents
+     * @param list<array{id: string, thresholdType: 'actual'|'forecast', thresholdPercent: int, triggeredAt: string, note?: array<string, mixed>|null}> $currentMonthEvents
      * @param list<array{widgetId: string, dashboardId: string, dashboardName: string}> $placements
      * @param BudgetMeasure::* $measure
      * @param string|null $usageUnit The usage unit a usage budget counts, exactly as the providers report it.

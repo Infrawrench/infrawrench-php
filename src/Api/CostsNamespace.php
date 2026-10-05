@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,8 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
+use Infrawrench\Sdk\Model\CostAnomalyPrecisionReport;
+use Infrawrench\Sdk\Model\CostAnomalySensitivity;
 use Infrawrench\Sdk\Model\CostDimensionValues;
 use Infrawrench\Sdk\Model\CostPushRequest;
 use Infrawrench\Sdk\Model\CostPushResponse;
@@ -41,6 +43,9 @@ final class CostsNamespace extends ApiNamespace
     /** `$client->costs->anomalySettings` */
     public readonly CostsAnomalySettingsNamespace $anomalySettings;
 
+    /** `$client->costs->anomalySuppressions` */
+    public readonly CostsAnomalySuppressionsNamespace $anomalySuppressions;
+
     /** `$client->costs->efficiencyAlertSettings` */
     public readonly CostsEfficiencyAlertSettingsNamespace $efficiencyAlertSettings;
 
@@ -49,7 +54,68 @@ final class CostsNamespace extends ApiNamespace
         parent::__construct($transport);
         $this->anomalies = new CostsAnomaliesNamespace($this->transport);
         $this->anomalySettings = new CostsAnomalySettingsNamespace($this->transport);
+        $this->anomalySuppressions = new CostsAnomalySuppressionsNamespace($this->transport);
         $this->efficiencyAlertSettings = new CostsEfficiencyAlertSettingsNamespace($this->transport);
+    }
+
+    /**
+     * Anomaly detection precision over time
+     *
+     * Per month of the anomalous day: findings detected, suppressed, and marked expected or
+     * unexpected, and precision (the share of reviewed findings that were real problems).
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/costs/anomaly-precision
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param string|null $months Months to cover, 1-24. Defaults to 6.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function anomalyPrecision(?string $orgId = null, ?string $months = null, ?RequestOptions $options = null): CostAnomalyPrecisionReport
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/costs/anomaly-precision',
+                pathParams: ['orgId' => $orgId],
+                query: ['months' => $months],
+            ),
+            $options,
+        );
+
+        return CostAnomalyPrecisionReport::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Per-key sensitivity learned from feedback
+     *
+     * Every provider or service with a verdict in the last 90 days, the σ its spikes are judged
+     * against, and one sentence saying why.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/costs/anomaly-sensitivity
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function anomalySensitivity(?string $orgId = null, ?RequestOptions $options = null): CostAnomalySensitivity
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/costs/anomaly-sensitivity',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return CostAnomalySensitivity::fromArray(Coerce::toArray($data));
     }
 
     /**

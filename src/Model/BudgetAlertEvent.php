@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -39,6 +39,7 @@ final class BudgetAlertEvent implements \JsonSerializable
         public readonly ?string $periodEnd,
         public readonly ?float $actualUsage,
         public readonly ?float $forecastUsage,
+        public readonly ?BudgetAlertNote $note,
     ) {
     }
 
@@ -61,6 +62,7 @@ final class BudgetAlertEvent implements \JsonSerializable
             periodEnd: Coerce::toStringOrNull($data['periodEnd'] ?? null),
             actualUsage: Coerce::toFloatOrNull($data['actualUsage'] ?? null),
             forecastUsage: Coerce::toFloatOrNull($data['forecastUsage'] ?? null),
+            note: Coerce::nullable($data['note'] ?? null, static fn (mixed $value): BudgetAlertNote => BudgetAlertNote::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -83,6 +85,7 @@ final class BudgetAlertEvent implements \JsonSerializable
             'periodEnd' => $this->periodEnd,
             'actualUsage' => $this->actualUsage,
             'forecastUsage' => $this->forecastUsage,
+            'note' => $this->note?->toArray(),
         ];
     }
 

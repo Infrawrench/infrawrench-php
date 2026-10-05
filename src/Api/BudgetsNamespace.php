@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,7 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
-use Infrawrench\Sdk\Model\BudgetAlertEvent;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\BudgetFull;
 use Infrawrench\Sdk\Model\BudgetInput;
 use Infrawrench\Sdk\Model\BudgetWithStatus;
@@ -31,6 +31,15 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->budgets` */
 final class BudgetsNamespace extends ApiNamespace
 {
+    /** `$client->budgets->events` */
+    public readonly BudgetsEventsNamespace $events;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->events = new BudgetsEventsNamespace($this->transport);
+    }
+
     /**
      * Create a budget
      *
@@ -81,32 +90,6 @@ final class BudgetsNamespace extends ApiNamespace
         );
 
         return Ok::fromArray(Coerce::toArray($data));
-    }
-
-    /**
-     * Alert event history for a budget
-     *
-     * GET /api/org/{orgId}/budgets/{id}/events
-     *
-     * Raises on 404: Not found
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return list<BudgetAlertEvent>
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function events(string $id, ?string $orgId = null, ?RequestOptions $options = null): array
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'GET',
-                path: '/api/org/{orgId}/budgets/{id}/events',
-                pathParams: ['orgId' => $orgId, 'id' => $id],
-            ),
-            $options,
-        );
-
-        return Coerce::mapList($data, static fn (mixed $item): BudgetAlertEvent => BudgetAlertEvent::fromArray(Coerce::toArray($item)));
     }
 
     /**

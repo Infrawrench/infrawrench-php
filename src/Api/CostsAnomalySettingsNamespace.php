@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -62,10 +62,10 @@ final class CostsAnomalySettingsNamespace extends ApiNamespace
      * Update the organization's anomaly detection thresholds
      *
      * Takes effect on the next detection pass (which runs after each cost collection). Anomalies
-     * already stored are not re-judged. All four fields are required — this is a PUT of the whole
-     * settings object, not a patch — and `smsAlerts` deliberately has no server-side default, so a
-     * client that omits it is rejected rather than silently switching an organization's SMS paging
-     * back off. `smsConfigured` is derived and is not accepted here.
+     * already stored are not re-judged. The four threshold fields are required — this is a PUT of
+     * the whole settings object, not a patch — and `smsAlerts` deliberately has no server-side
+     * default, so a client that omits it is rejected rather than silently switching an
+     * organization's SMS paging back off. `smsConfigured` is derived and is not accepted here.
      *
      * _Requires permission: `costs:write`._
      *

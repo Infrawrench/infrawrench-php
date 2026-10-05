@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.63.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.63.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class CostAnomalySettingsView implements \JsonSerializable
      * @param int $newSourceMinCents Minimum first-day spend before a new spend source alerts, in USD cents. A key with no prior spend has no statistical bar to clear, so this absolute floor is the only thing keeping a new $0.02/day service quiet. Defaults to 2500 ($25).
      * @param 'off'|'new_source'|'all' $smsAlerts Which anomalies also text the organization's Twilio recipients. Defaults to `off` — an organization with Twilio configured for budgets does not start receiving anomaly texts until it asks to. `new_source` texts only about spend appearing from nothing, which is what a leaked key looks like on a bill; `all` adds spikes on existing lines. Delivery is batched — one SMS per detection pass summarizing what it alerted on, at most one every six hours per organization — and never places a voice call. Push, Slack and Teams delivery is unaffected by this setting.
      * @param bool $smsConfigured Whether an SMS raised right now could be delivered: paging enabled for the organization, Twilio credentials and a from-number stored, and at least one recipient opted into SMS. Read-only and derived — it is not accepted on PUT.
+     * @param bool|null $feedbackTuning Whether repeated `expected` feedback on a provider or service raises its spike threshold: half a standard deviation per expected verdict after the first within 90 days, at most +2σ and never past 10σ, cancelled by any `unexpected` verdict on the same key. Defaults to true. Optional on PUT: omitting it keeps the stored value. Always present on a read.
      */
     public function __construct(
         public readonly float $sigmas,
@@ -35,6 +36,7 @@ final class CostAnomalySettingsView implements \JsonSerializable
         public readonly int $newSourceMinCents,
         public readonly string $smsAlerts,
         public readonly bool $smsConfigured,
+        public readonly ?bool $feedbackTuning = null,
     ) {
     }
 
@@ -51,6 +53,7 @@ final class CostAnomalySettingsView implements \JsonSerializable
             newSourceMinCents: Coerce::toInt($data['newSourceMinCents'] ?? null),
             smsAlerts: Coerce::toString($data['smsAlerts'] ?? null),
             smsConfigured: Coerce::toBool($data['smsConfigured'] ?? null),
+            feedbackTuning: Coerce::toBoolOrNull($data['feedbackTuning'] ?? null),
         );
     }
 
@@ -61,13 +64,18 @@ final class CostAnomalySettingsView implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'sigmas' => $this->sigmas,
             'minDeltaCents' => $this->minDeltaCents,
             'newSourceMinCents' => $this->newSourceMinCents,
             'smsAlerts' => $this->smsAlerts,
             'smsConfigured' => $this->smsConfigured,
         ];
+        if ($this->feedbackTuning !== null) {
+            $payload['feedbackTuning'] = $this->feedbackTuning;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
