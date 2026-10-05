@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.48.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.49.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.48.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.49.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,6 +33,7 @@ final class PluginId
     public const ASSEMBLYAI = 'assemblyai';
     public const AWS = 'aws';
     public const AZURE = 'azure';
+    public const BASETEN = 'baseten';
     public const CARTESIA = 'cartesia';
     public const CIRCLECI = 'circleci';
     public const CLICKHOUSE = 'clickhouse';
@@ -116,6 +117,7 @@ final class PluginId
             self::ASSEMBLYAI,
             self::AWS,
             self::AZURE,
+            self::BASETEN,
             self::CARTESIA,
             self::CIRCLECI,
             self::CLICKHOUSE,

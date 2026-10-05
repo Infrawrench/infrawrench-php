@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.48.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.49.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.48.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.49.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -144,6 +144,7 @@ final class ResourceTypeId
     public const CH_MEMBER = 'ch-member';
     public const CH_POSTGRES = 'ch-postgres';
     public const CH_SERVICE = 'ch-service';
+    public const CHAIN = 'chain';
     public const CKS_CLUSTER = 'cks-cluster';
     public const CLIENT_KEY = 'client-key';
     public const CLOUD = 'cloud';
@@ -397,6 +398,7 @@ final class ResourceTypeId
     public const MISTRAL_MODEL = 'mistral-model';
     public const MISTRAL_VOICE = 'mistral-voice';
     public const MODEL = 'model';
+    public const MODEL_API = 'model-api';
     public const MODEL_API_KEY = 'model-api-key';
     public const MODEL_ENDPOINT = 'model-endpoint';
     public const MODEL_VERSION = 'model-version';
@@ -598,6 +600,8 @@ final class ResourceTypeId
     public const TOPIC_JOB = 'topic-job';
     public const TRAFFIC_FILTER = 'traffic-filter';
     public const TRAINING = 'training';
+    public const TRAINING_JOB = 'training-job';
+    public const TRAINING_PROJECT = 'training-project';
     public const TRANSCRIPT = 'transcript';
     public const TRANSCRIPTION = 'transcription';
     public const TRANSFORMATION = 'transformation';
@@ -783,6 +787,7 @@ final class ResourceTypeId
             self::CH_MEMBER,
             self::CH_POSTGRES,
             self::CH_SERVICE,
+            self::CHAIN,
             self::CKS_CLUSTER,
             self::CLIENT_KEY,
             self::CLOUD,
@@ -1036,6 +1041,7 @@ final class ResourceTypeId
             self::MISTRAL_MODEL,
             self::MISTRAL_VOICE,
             self::MODEL,
+            self::MODEL_API,
             self::MODEL_API_KEY,
             self::MODEL_ENDPOINT,
             self::MODEL_VERSION,
@@ -1237,6 +1243,8 @@ final class ResourceTypeId
             self::TOPIC_JOB,
             self::TRAFFIC_FILTER,
             self::TRAINING,
+            self::TRAINING_JOB,
+            self::TRAINING_PROJECT,
             self::TRANSCRIPT,
             self::TRANSCRIPTION,
             self::TRANSFORMATION,
