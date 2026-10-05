@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,8 @@ final class AllocationRuleMatch implements \JsonSerializable
 {
     /**
      * @param string|null $tagValue Only meaningful with tagKey; alone, tagKey matches rows carrying the key.
+     * @param string|null $virtualTagKey One of the organization's virtual tags, by key. Alone it matches rows where the tag is set; a split virtual tag routes each share separately.
+     * @param string|null $virtualTagValue Only meaningful with virtualTagKey.
      */
     public function __construct(
         public readonly ?string $tagKey = null,
@@ -35,6 +37,8 @@ final class AllocationRuleMatch implements \JsonSerializable
         public readonly ?string $accountId = null,
         public readonly ?string $pluginId = null,
         public readonly ?string $service = null,
+        public readonly ?string $virtualTagKey = null,
+        public readonly ?string $virtualTagValue = null,
     ) {
     }
 
@@ -51,6 +55,8 @@ final class AllocationRuleMatch implements \JsonSerializable
             accountId: Coerce::toStringOrNull($data['accountId'] ?? null),
             pluginId: Coerce::toStringOrNull($data['pluginId'] ?? null),
             service: Coerce::toStringOrNull($data['service'] ?? null),
+            virtualTagKey: Coerce::toStringOrNull($data['virtualTagKey'] ?? null),
+            virtualTagValue: Coerce::toStringOrNull($data['virtualTagValue'] ?? null),
         );
     }
 
@@ -77,6 +83,12 @@ final class AllocationRuleMatch implements \JsonSerializable
         }
         if ($this->service !== null) {
             $payload['service'] = $this->service;
+        }
+        if ($this->virtualTagKey !== null) {
+            $payload['virtualTagKey'] = $this->virtualTagKey;
+        }
+        if ($this->virtualTagValue !== null) {
+            $payload['virtualTagValue'] = $this->virtualTagValue;
         }
 
         return $payload;

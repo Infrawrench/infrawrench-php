@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,7 +22,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CostDimensionValues implements \JsonSerializable
 {
-    /** @param list<string|array{value: string, label: string}> $values */
+    /**
+     * @param list<string|array{value: string, label: string, preferred?: bool, hidden?: bool}> $values
+     */
     public function __construct(
         public readonly array $values,
     ) {

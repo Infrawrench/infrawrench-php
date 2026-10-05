@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,11 +24,13 @@ final class MetricAlertSelectorOptions implements \JsonSerializable
 {
     /**
      * @param list<array{pluginId: string, resourceTypeIds: list<string>}> $plugins
-     * @param list<string> $tagKeys
+     * @param list<string> $tagKeys Tag keys on the org's resources, with its tag key settings applied: preferred keys first, hidden keys omitted.
+     * @param list<string> $preferredTagKeys The subset of `tagKeys` the org pins, in its order.
      */
     public function __construct(
         public readonly array $plugins,
         public readonly array $tagKeys,
+        public readonly array $preferredTagKeys,
     ) {
     }
 
@@ -42,6 +44,7 @@ final class MetricAlertSelectorOptions implements \JsonSerializable
         return new self(
             plugins: Coerce::mapList($data['plugins'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
             tagKeys: Coerce::mapList($data['tagKeys'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            preferredTagKeys: Coerce::mapList($data['preferredTagKeys'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
         );
     }
 
@@ -55,6 +58,7 @@ final class MetricAlertSelectorOptions implements \JsonSerializable
         return [
             'plugins' => $this->plugins,
             'tagKeys' => $this->tagKeys,
+            'preferredTagKeys' => $this->preferredTagKeys,
         ];
     }
 

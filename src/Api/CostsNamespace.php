@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -55,12 +55,14 @@ final class CostsNamespace extends ApiNamespace
     /**
      * List distinct values for a cost dimension
      *
-     * Feeds the filter and group-by pickers. Pass dimension=tag-keys for tag keys, or
-     * dimension=usage-units for the usage units providers report (a usage budget's unit);
-     * dimension=tag requires tagKey. `charge_type` answers from the fixed set of charge types
-     * rather than from the stored data, so the picker is populated before any provider has
-     * reported one. `usage-units` lists the usage units present in the cost data, most common
-     * first, for the `usage` measure's unit picker.
+     * Feeds the filter and group-by pickers. Pass dimension=tag-keys for tag keys, which follow
+     * the org's tag key settings (preferred keys first and flagged, hidden keys omitted unless
+     * includeHidden=true), dimension=virtual-tag-keys for the organization's virtual tag keys
+     * (labelled by name), or dimension=usage-units for the usage units providers report (a usage
+     * budget's unit); dimension=tag and dimension=virtual_tag require tagKey. `charge_type`
+     * answers from the fixed set of charge types rather than from the stored data, so the picker
+     * is populated before any provider has reported one. `usage-units` lists the usage units
+     * present in the cost data, most common first, for the `usage` measure's unit picker.
      *
      * _Requires permission: `costs:read`._
      *
@@ -69,17 +71,18 @@ final class CostsNamespace extends ApiNamespace
      * Raises on 400: Bad request
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param 'true'|'false'|null $includeHidden dimension=tag-keys only: also list keys the org hides, flagged `hidden`.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function dimensions(string $dimension, ?string $orgId = null, ?string $tagKey = null, ?RequestOptions $options = null): CostDimensionValues
+    public function dimensions(string $dimension, ?string $orgId = null, ?string $tagKey = null, ?string $includeHidden = null, ?RequestOptions $options = null): CostDimensionValues
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'GET',
                 path: '/api/org/{orgId}/costs/dimensions',
                 pathParams: ['orgId' => $orgId],
-                query: ['dimension' => $dimension, 'tagKey' => $tagKey],
+                query: ['dimension' => $dimension, 'tagKey' => $tagKey, 'includeHidden' => $includeHidden],
             ),
             $options,
         );

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,7 @@ final class CostAlertInput implements \JsonSerializable
      * @param CostChangeCadence::* $cadence
      * @param CostChangeDirection::* $direction
      * @param list<CostAlertFilter>|null $filters
-     * @param 'provider'|'account'|'service'|'region'|'resource'|'tag'|'charge_type'|'commitment'|null $groupBy Per-group fan-out. Null watches the scope's one total; a dimension watches each group against its own prior window, and each offending group fires its own event.
+     * @param string|null $groupBy Per-group fan-out. Null watches the scope's one total; a dimension watches each group against its own prior window, and each offending group fires its own event.
      * @param string|null $groupByTagKey Required when groupBy is tag.
      * @param int|null $thresholdPercent Percent of the prior window's spend the change must reach. At least one of the two thresholds must be set; when both are, BOTH must hold before the alert fires.
      * @param int|null $thresholdAmountCents Cents the change must reach.

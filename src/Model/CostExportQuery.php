@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,9 +27,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostExportQuery implements \JsonSerializable
 {
     /**
-     * @param list<'provider'|'account'|'service'|'region'|'resource'|'tag'|'charge_type'|'commitment'> $dimensions Row-identity columns kept in the output. Dropping one aggregates over it — an export grouped to provider + service is orders of magnitude smaller than a per-resource one.
+     * @param list<string> $dimensions Row-identity columns kept in the output. Dropping one aggregates over it — an export grouped to provider + service is orders of magnitude smaller than a per-resource one.
      * @param list<string> $tagKeys Tag keys emitted as their own `tag_<key>` columns.
      * @param list<CostExportFilter> $filters
+     * @param list<string>|null $virtualTagKeys Virtual tag keys emitted as their own `vtag_<key>` columns. A row a split rule divides is exported once per share with weighted amounts, so the file still sums to the total.
      * @param list<string>|null $chargeTypes
      * @param 'cash'|'amortized'|null $costBasis
      */
@@ -38,6 +39,7 @@ final class CostExportQuery implements \JsonSerializable
         public readonly array $dimensions,
         public readonly array $tagKeys,
         public readonly array $filters,
+        public readonly ?array $virtualTagKeys = null,
         public readonly ?array $chargeTypes = null,
         public readonly ?string $costBasis = null,
     ) {
@@ -55,6 +57,7 @@ final class CostExportQuery implements \JsonSerializable
             dimensions: Coerce::mapList($data['dimensions'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             tagKeys: Coerce::mapList($data['tagKeys'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             filters: Coerce::mapList($data['filters'] ?? null, static fn (mixed $item): CostExportFilter => CostExportFilter::fromArray(Coerce::toArray($item))),
+            virtualTagKeys: Coerce::nullable($data['virtualTagKeys'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             chargeTypes: Coerce::nullable($data['chargeTypes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
         );
@@ -73,6 +76,9 @@ final class CostExportQuery implements \JsonSerializable
             'tagKeys' => $this->tagKeys,
             'filters' => array_map(static fn (CostExportFilter $item): array => $item->toArray(), $this->filters),
         ];
+        if ($this->virtualTagKeys !== null) {
+            $payload['virtualTagKeys'] = $this->virtualTagKeys;
+        }
         if ($this->chargeTypes !== null) {
             $payload['chargeTypes'] = $this->chargeTypes;
         }

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.60.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.62.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.60.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.62.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -118,8 +118,10 @@ use Infrawrench\Sdk\Api\StatusIncidentsNamespace;
 use Infrawrench\Sdk\Api\StatusNamespace;
 use Infrawrench\Sdk\Api\StatusPagesNamespace;
 use Infrawrench\Sdk\Api\StorageNamespace;
+use Infrawrench\Sdk\Api\TagKeysNamespace;
 use Infrawrench\Sdk\Api\TagPolicyNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
+use Infrawrench\Sdk\Api\VirtualTagsNamespace;
 use Infrawrench\Sdk\Api\WallboardNamespace;
 use Infrawrench\Sdk\Api\WorkflowApprovalsNamespace;
 use Infrawrench\Sdk\Api\WorkflowSecretsNamespace;
@@ -449,11 +451,17 @@ final class APIV1Client
     /** `$client->storage` */
     public readonly StorageNamespace $storage;
 
+    /** `$client->tagKeys` */
+    public readonly TagKeysNamespace $tagKeys;
+
     /** `$client->tagPolicy` */
     public readonly TagPolicyNamespace $tagPolicy;
 
     /** `$client->team` */
     public readonly TeamNamespace $team;
+
+    /** `$client->virtualTags` */
+    public readonly VirtualTagsNamespace $virtualTags;
 
     /** `$client->wallboard` */
     public readonly WallboardNamespace $wallboard;
@@ -591,8 +599,10 @@ final class APIV1Client
         $this->statusIncidents = new StatusIncidentsNamespace($this->transport);
         $this->statusPages = new StatusPagesNamespace($this->transport);
         $this->storage = new StorageNamespace($this->transport);
+        $this->tagKeys = new TagKeysNamespace($this->transport);
         $this->tagPolicy = new TagPolicyNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);
+        $this->virtualTags = new VirtualTagsNamespace($this->transport);
         $this->wallboard = new WallboardNamespace($this->transport);
         $this->workflowApprovals = new WorkflowApprovalsNamespace($this->transport);
         $this->workflowSecrets = new WorkflowSecretsNamespace($this->transport);
