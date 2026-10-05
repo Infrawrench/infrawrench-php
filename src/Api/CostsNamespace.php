@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.49.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.49.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ use Infrawrench\Sdk\Model\CostPushRequest;
 use Infrawrench\Sdk\Model\CostPushResponse;
 use Infrawrench\Sdk\Model\CostQueryRequest;
 use Infrawrench\Sdk\Model\CostQueryResponse;
+use Infrawrench\Sdk\Model\FocusExportRequest;
 use Infrawrench\Sdk\Model\ShowbackReport;
 use Infrawrench\Sdk\Model\UntaggedSpendReport;
 use Infrawrench\Sdk\RequestOptions;
@@ -118,6 +119,50 @@ final class CostsNamespace extends ApiNamespace
         );
 
         return Coerce::toArray($data);
+    }
+
+    /**
+     * Download cost rows as a FOCUS 1.3 CSV
+     *
+     * The rows a cost query selects, written as a CSV in the FinOps Open Cost and Usage
+     * Specification (FOCUS) v1.3 layout: one row per account, service, region, resource, tag set,
+     * charge type and commitment per day, with `BilledCost` (cash) and `EffectiveCost` (amortized)
+     * side by side, `ChargeCategory`, `ServiceCategory`/`ServiceSubcategory`, `Tags` as a JSON
+     * object and the commitment columns where the provider reports a commitment. Custom columns
+     * follow, prefixed `x_`. The same mapping a `focus-1.3` scheduled export writes (see
+     * /cost-exports).
+     *
+     * Takes the cost query's filter in either spelling (`filters` or `query`, never both), an
+     * optional saved filter, and charge types. The range spans at most 366 days; for anything
+     * longer, or for a recurring feed, use a scheduled export. Validation errors are a 400 before
+     * any CSV is written; the body is then streamed.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * POST /api/org/{orgId}/costs/focus-export
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return string Raw response bytes.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function focusExport(FocusExportRequest $body, ?string $orgId = null, ?RequestOptions $options = null): string
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/costs/focus-export',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+                accept: 'binary',
+            ),
+            $options,
+        );
+
+        return Coerce::toString($data);
     }
 
     /**

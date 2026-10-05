@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.49.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.49.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ final class CostExport implements \JsonSerializable
 {
     /**
      * @param 'csv'|'ndjson' $format
+     * @param CostExportSchema::* $schema
      * @param 'daily'|'weekly'|'monthly' $cadence
      * @param array{kind: 's3', bucket: string, prefix: string, region: string, endpoint: string, forcePathStyle: bool}|array{kind: 'http', method: 'POST'|'PUT', urlHint: string} $destination
      * @param string|null $credentialHint Redacted marker, e.g. `AKIA…7F2Q`. No route ever returns the credential itself.
@@ -34,6 +35,7 @@ final class CostExport implements \JsonSerializable
         public readonly string $id,
         public readonly string $name,
         public readonly string $format,
+        public readonly string $schema,
         public readonly CostExportQuery $query,
         public readonly string $cadence,
         public readonly int $hour,
@@ -66,6 +68,7 @@ final class CostExport implements \JsonSerializable
             id: Coerce::toString($data['id'] ?? null),
             name: Coerce::toString($data['name'] ?? null),
             format: Coerce::toString($data['format'] ?? null),
+            schema: Coerce::toString($data['schema'] ?? null),
             query: CostExportQuery::fromArray(Coerce::toArray($data['query'] ?? null)),
             cadence: Coerce::toString($data['cadence'] ?? null),
             hour: Coerce::toInt($data['hour'] ?? null),
@@ -98,6 +101,7 @@ final class CostExport implements \JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'format' => $this->format,
+            'schema' => $this->schema,
             'query' => $this->query->toArray(),
             'cadence' => $this->cadence,
             'hour' => $this->hour,

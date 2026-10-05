@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.49.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.49.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class CostExportInput implements \JsonSerializable
      * @param string $timezone IANA zone, e.g. `Europe/Berlin`. Validated against `Intl`.
      * @param int $restatementDays Trailing days of already-written periods each run re-exports. Providers restate spend for days after the fact, so the object written for yesterday is not final; every period overlapping this window is rebuilt in full at its existing key, which overwrites rather than duplicates. 0 disables it and is only correct for an org whose providers never revise.
      * @param array{kind: 's3', bucket: string, prefix: string, region: string, endpoint: string, forcePathStyle: bool}|array{kind: 'http', method: 'POST'|'PUT', urlHint: string} $destination
+     * @param CostExportSchema::*|null $schema
      * @param string|null $accessKeyId S3 only. Write-only; omit on update to keep the stored credential.
      * @param string|null $secretAccessKey S3 only. Write-only, never returned.
      * @param string|null $url HTTPS destinations only. Write-only, never returned — a signed URL carries its own signature, so it is treated as a bearer credential.
@@ -43,6 +44,7 @@ final class CostExportInput implements \JsonSerializable
         public readonly int $restatementDays,
         public readonly bool $enabled,
         public readonly array $destination,
+        public readonly ?string $schema = null,
         public readonly ?string $accessKeyId = null,
         public readonly ?string $secretAccessKey = null,
         public readonly ?string $url = null,
@@ -66,6 +68,7 @@ final class CostExportInput implements \JsonSerializable
             restatementDays: Coerce::toInt($data['restatementDays'] ?? null),
             enabled: Coerce::toBool($data['enabled'] ?? null),
             destination: $data['destination'] ?? null,
+            schema: Coerce::toStringOrNull($data['schema'] ?? null),
             accessKeyId: Coerce::toStringOrNull($data['accessKeyId'] ?? null),
             secretAccessKey: Coerce::toStringOrNull($data['secretAccessKey'] ?? null),
             url: Coerce::toStringOrNull($data['url'] ?? null),
@@ -90,6 +93,9 @@ final class CostExportInput implements \JsonSerializable
             'enabled' => $this->enabled,
             'destination' => $this->destination,
         ];
+        if ($this->schema !== null) {
+            $payload['schema'] = $this->schema;
+        }
         if ($this->accessKeyId !== null) {
             $payload['accessKeyId'] = $this->accessKeyId;
         }
