@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Model\CostExport;
 use Infrawrench\Sdk\Model\CostExportInput;
 use Infrawrench\Sdk\Model\CostExportRunResult;
+use Infrawrench\Sdk\Model\CostExportWarehouseSetup;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\RequestOptions;
 
@@ -33,8 +34,9 @@ final class CostExportsNamespace extends ApiNamespace
     /**
      * Create a cost export
      *
-     * Credentials are required on create. They are encrypted at rest and no route ever returns
-     * them; responses carry a redacted `credentialHint` instead.
+     * Credentials are required on create for S3 and HTTPS destinations. They are encrypted at rest
+     * and no route ever returns them; responses carry a redacted `credentialHint` instead. A
+     * warehouse destination takes none: it loads with the connected account's credentials.
      *
      * _Requires permission: `org:settings:write`._
      *
@@ -209,5 +211,101 @@ final class CostExportsNamespace extends ApiNamespace
         );
 
         return CostExport::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * List options for a warehouse target field
+     *
+     * Reads the provider live with the account's credentials (warehouses, databases or catalogs,
+     * schemas, tables). A provider refusal is a 400 carrying its message.
+     *
+     * _Requires permission: `org:settings:write`._
+     *
+     * POST /api/org/{orgId}/cost-exports/warehouse-options
+     *
+     * Raises on 400: Bad request
+     *
+     * @param array{accountId: string, field: string, target?: array<string, string>} $body
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return array{options: list<array<string, mixed>>}
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function warehouseOptions(array $body, ?string $orgId = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/cost-exports/warehouse-options',
+                pathParams: ['orgId' => $orgId],
+                body: $body,
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return Coerce::toArray($data);
+    }
+
+    /**
+     * Least-privilege setup for a warehouse target
+     *
+     * The GRANT statements the connected role or principal needs for a target, plus any non-SQL
+     * steps (for Databricks, CAN USE on the SQL warehouse).
+     *
+     * _Requires permission: `org:settings:write`._
+     *
+     * POST /api/org/{orgId}/cost-exports/warehouse-setup
+     *
+     * Raises on 400: Bad request
+     *
+     * @param array{accountId: string, target?: array<string, string>} $body
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function warehouseSetup(array $body, ?string $orgId = null, ?RequestOptions $options = null): CostExportWarehouseSetup
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/cost-exports/warehouse-setup',
+                pathParams: ['orgId' => $orgId],
+                body: $body,
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return CostExportWarehouseSetup::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * List warehouse destination types
+     *
+     * Plugins that can load an export into a table in their own warehouse (Snowflake, Databricks),
+     * each with the organization's connected accounts and the target fields to fill.
+     *
+     * _Requires permission: `org:settings:write`._
+     *
+     * GET /api/org/{orgId}/cost-exports/warehouse-sinks
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return array{sinks: list<array<string, mixed>>}
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function warehouseSinks(?string $orgId = null, ?RequestOptions $options = null): array
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/cost-exports/warehouse-sinks',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return Coerce::toArray($data);
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,7 +28,7 @@ final class CostExportInput implements \JsonSerializable
      * @param int $hour Local hour in `timezone` a run fires at.
      * @param string $timezone IANA zone, e.g. `Europe/Berlin`. Validated against `Intl`.
      * @param int $restatementDays Trailing days of already-written periods each run re-exports. Providers restate spend for days after the fact, so the object written for yesterday is not final; every period overlapping this window is rebuilt in full at its existing key, which overwrites rather than duplicates. 0 disables it and is only correct for an org whose providers never revise.
-     * @param array{kind: 's3', bucket: string, prefix: string, region: string, endpoint: string, forcePathStyle: bool}|array{kind: 'http', method: 'POST'|'PUT', urlHint: string} $destination
+     * @param array{kind: 's3', bucket: string, prefix: string, region: string, endpoint: string, forcePathStyle: bool}|array{kind: 'http', method: 'POST'|'PUT', urlHint: string}|array{kind: 'warehouse', pluginId: string, accountId: string, target: array<string, string>} $destination
      * @param CostExportSchema::*|null $schema
      * @param string|null $accessKeyId S3 only. Write-only; omit on update to keep the stored credential.
      * @param string|null $secretAccessKey S3 only. Write-only, never returned.

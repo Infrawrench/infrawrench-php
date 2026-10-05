@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class CostExportObject implements \JsonSerializable
 {
     /**
      * @param string $periodStart The period's first day, in the export's own timezone.
-     * @param string $key `{prefix}/cost-export/{exportId}/{cadence}/{periodStart}.{format}`. Deterministic, so re-exporting a restated period overwrites this object instead of adding a second copy.
+     * @param string $key `{prefix}/cost-export/{exportId}/{cadence}/{periodStart}.{format}`. Deterministic, so re-exporting a restated period overwrites this object instead of adding a second copy. For a warehouse destination, the table and the period's days (`byteCount` is 0).
      */
     public function __construct(
         public readonly string $periodStart,

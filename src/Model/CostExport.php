@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.50.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.52.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.50.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.52.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,7 @@ final class CostExport implements \JsonSerializable
      * @param 'csv'|'ndjson' $format
      * @param CostExportSchema::* $schema
      * @param 'daily'|'weekly'|'monthly' $cadence
-     * @param array{kind: 's3', bucket: string, prefix: string, region: string, endpoint: string, forcePathStyle: bool}|array{kind: 'http', method: 'POST'|'PUT', urlHint: string} $destination
+     * @param array{kind: 's3', bucket: string, prefix: string, region: string, endpoint: string, forcePathStyle: bool}|array{kind: 'http', method: 'POST'|'PUT', urlHint: string}|array{kind: 'warehouse', pluginId: string, accountId: string, target: array<string, string>} $destination
      * @param string|null $credentialHint Redacted marker, e.g. `AKIA…7F2Q`. No route ever returns the credential itself.
      * @param 'pending'|'succeeded'|'failed' $lastStatus
      * @param string|null $lastError Why the last run failed, verbatim from the destination where possible.
