@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.47.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.48.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.47.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.48.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -146,6 +146,7 @@ final class ResourceTypeId
     public const CH_SERVICE = 'ch-service';
     public const CKS_CLUSTER = 'cks-cluster';
     public const CLIENT_KEY = 'client-key';
+    public const CLOUD = 'cloud';
     public const CLOUD_ARMOR_POLICY = 'cloud-armor-policy';
     public const CLOUD_BUILD_TRIGGER = 'cloud-build-trigger';
     public const CLOUD_DEPLOY_PIPELINE = 'cloud-deploy-pipeline';
@@ -173,6 +174,7 @@ final class ResourceTypeId
     public const COLLECTION_DOCUMENT = 'collection-document';
     public const COMPARTMENT = 'compartment';
     public const COMPOSER_ENVIRONMENT = 'composer-environment';
+    public const COMPUTE_CONFIG = 'compute-config';
     public const CONFIG_STORE = 'config-store';
     public const CONNECTION = 'connection';
     public const CONNECTIVITY_RULE = 'connectivity-rule';
@@ -783,6 +785,7 @@ final class ResourceTypeId
             self::CH_SERVICE,
             self::CKS_CLUSTER,
             self::CLIENT_KEY,
+            self::CLOUD,
             self::CLOUD_ARMOR_POLICY,
             self::CLOUD_BUILD_TRIGGER,
             self::CLOUD_DEPLOY_PIPELINE,
@@ -810,6 +813,7 @@ final class ResourceTypeId
             self::COLLECTION_DOCUMENT,
             self::COMPARTMENT,
             self::COMPOSER_ENVIRONMENT,
+            self::COMPUTE_CONFIG,
             self::CONFIG_STORE,
             self::CONNECTION,
             self::CONNECTIVITY_RULE,
