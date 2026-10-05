@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,6 +42,7 @@ final class EfficiencyAlertEvent implements \JsonSerializable
         public readonly array $detail,
         public readonly string $firedAt,
         public readonly ?string $notifiedAt,
+        public readonly ?FindingRemediation $remediation = null,
     ) {
     }
 
@@ -63,6 +64,7 @@ final class EfficiencyAlertEvent implements \JsonSerializable
             detail: Coerce::toArray($data['detail'] ?? null),
             firedAt: Coerce::toString($data['firedAt'] ?? null),
             notifiedAt: Coerce::toStringOrNull($data['notifiedAt'] ?? null),
+            remediation: Coerce::nullable($data['remediation'] ?? null, static fn (mixed $value): FindingRemediation => FindingRemediation::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -73,7 +75,7 @@ final class EfficiencyAlertEvent implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'kind' => $this->kind,
             'subject' => $this->subject,
@@ -85,6 +87,11 @@ final class EfficiencyAlertEvent implements \JsonSerializable
             'firedAt' => $this->firedAt,
             'notifiedAt' => $this->notifiedAt,
         ];
+        if ($this->remediation !== null) {
+            $payload['remediation'] = $this->remediation?->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -62,6 +62,7 @@ final class SleepSchedule implements \JsonSerializable
         public readonly ?string $currency,
         public readonly string $createdAt,
         public readonly string $updatedAt,
+        public readonly ?FindingRemediation $remediation = null,
     ) {
     }
 
@@ -95,6 +96,7 @@ final class SleepSchedule implements \JsonSerializable
             currency: Coerce::toStringOrNull($data['currency'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
+            remediation: Coerce::nullable($data['remediation'] ?? null, static fn (mixed $value): FindingRemediation => FindingRemediation::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -105,7 +107,7 @@ final class SleepSchedule implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'resourceId' => $this->resourceId,
             'accountId' => $this->accountId,
@@ -129,6 +131,11 @@ final class SleepSchedule implements \JsonSerializable
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
         ];
+        if ($this->remediation !== null) {
+            $payload['remediation'] = $this->remediation?->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

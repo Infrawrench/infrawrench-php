@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,7 +21,9 @@ namespace Infrawrench\Sdk\Model;
 /**
  * `cost_graph` stores its whole config inline — a one-off card. `cost_report` points at a saved
  * cost report by id, so editing the report updates every dashboard showing it. `cost_canvas`
- * points at a cost canvas by id (`{version: 1, canvasId}`) the same way.
+ * points at a cost canvas by id (`{version: 1, canvasId}`) the same way. `realized_savings` shows
+ * the org's realized savings report; its config is only a view choice (`grouping`: month | kind |
+ * costCentre | account, and `months` back, 1–36).
  *
  * The values `DashboardWidgetKind` accepts.
  *
@@ -35,6 +37,7 @@ final class DashboardWidgetKind
     public const BUDGET = 'budget';
     public const CUSTOM_GRAPH = 'custom_graph';
     public const COST_CANVAS = 'cost_canvas';
+    public const REALIZED_SAVINGS = 'realized_savings';
 
     /**
      * Every value, in the order the spec lists them.
@@ -49,6 +52,7 @@ final class DashboardWidgetKind
             self::BUDGET,
             self::CUSTOM_GRAPH,
             self::COST_CANVAS,
+            self::REALIZED_SAVINGS,
         ];
     }
 }

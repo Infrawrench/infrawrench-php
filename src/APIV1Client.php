@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.69.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.71.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.69.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.71.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -103,6 +103,7 @@ use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
 use Infrawrench\Sdk\Api\RunbooksNamespace;
 use Infrawrench\Sdk\Api\SavedCostFiltersNamespace;
+use Infrawrench\Sdk\Api\SavingsNamespace;
 use Infrawrench\Sdk\Api\SchedulesNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
 use Infrawrench\Sdk\Api\SessionRecordingsNamespace;
@@ -406,6 +407,9 @@ final class APIV1Client
     /** `$client->savedCostFilters` */
     public readonly SavedCostFiltersNamespace $savedCostFilters;
 
+    /** `$client->savings` */
+    public readonly SavingsNamespace $savings;
+
     /** `$client->schedules` */
     public readonly SchedulesNamespace $schedules;
 
@@ -584,6 +588,7 @@ final class APIV1Client
         $this->rightsizing = new RightsizingNamespace($this->transport);
         $this->runbooks = new RunbooksNamespace($this->transport);
         $this->savedCostFilters = new SavedCostFiltersNamespace($this->transport);
+        $this->savings = new SavingsNamespace($this->transport);
         $this->schedules = new SchedulesNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
         $this->sessionRecordings = new SessionRecordingsNamespace($this->transport);
