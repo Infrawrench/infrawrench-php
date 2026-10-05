@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,8 +21,9 @@ namespace Infrawrench\Sdk\Model;
 /**
  * Which charge-type basis both windows are read on. `cash` (the default) is what the provider
  * charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the
- * term it buys. It is echoed on every response because a delta whose basis is unstated is
- * unreadable — an amortized 'after' against a cash 'before' looks exactly like a saving.
+ * term it buys; `blended` also spreads each commitment's discount evenly over the usage it could
+ * cover. It is echoed on every response because a delta whose basis is unstated is unreadable — an
+ * amortized 'after' against a cash 'before' looks exactly like a saving.
  *
  * The values `ChangeCostBasis` accepts.
  *
@@ -33,6 +34,7 @@ final class ChangeCostBasis
 {
     public const CASH = 'cash';
     public const AMORTIZED = 'amortized';
+    public const BLENDED = 'blended';
 
     /**
      * Every value, in the order the spec lists them.
@@ -44,6 +46,7 @@ final class ChangeCostBasis
         return [
             self::CASH,
             self::AMORTIZED,
+            self::BLENDED,
         ];
     }
 }

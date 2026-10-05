@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ final class BudgetCostBasis
 {
     public const CASH = 'cash';
     public const AMORTIZED = 'amortized';
+    public const BLENDED = 'blended';
 
     /**
      * Every value, in the order the spec lists them.
@@ -41,6 +42,7 @@ final class BudgetCostBasis
         return [
             self::CASH,
             self::AMORTIZED,
+            self::BLENDED,
         ];
     }
 }

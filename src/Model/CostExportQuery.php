@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,7 +32,7 @@ final class CostExportQuery implements \JsonSerializable
      * @param list<CostExportFilter> $filters
      * @param list<string>|null $virtualTagKeys Virtual tag keys emitted as their own `vtag_<key>` columns. A row a split rule divides is exported once per share with weighted amounts, so the file still sums to the total.
      * @param list<string>|null $chargeTypes
-     * @param 'cash'|'amortized'|null $costBasis
+     * @param 'cash'|'amortized'|'blended'|null $costBasis
      */
     public function __construct(
         public readonly float $version,

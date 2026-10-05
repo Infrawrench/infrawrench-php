@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,7 +28,7 @@ final class UnitCostQueryRequest implements \JsonSerializable
      * @param 'unit_cost'|'margin'|null $mode Absent is `unit_cost` (spend ÷ metric value). `margin` is `(revenue − spend) ÷ revenue` as a fraction, and is a 400 for a metric whose `kind` is not `currency`.
      * @param list<BusinessMetricScopeTerm>|null $filters Narrowing on top of the metric's own `costScope` — AND-composed, never a replacement.
      * @param string|null $query The same narrowing as cost-query-language text.
-     * @param 'cash'|'amortized'|null $costBasis
+     * @param 'cash'|'amortized'|'blended'|null $costBasis
      * @param list<string>|null $chargeTypes
      * @param string|null $displayCurrency Fold spend currencies the organization holds a rate for into this one before dividing. Ignored for `margin`, which always converts to the metric's own currency.
      */

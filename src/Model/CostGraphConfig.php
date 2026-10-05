@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,7 +33,7 @@ final class CostGraphConfig implements \JsonSerializable
      * @param list<CostReportFilter>|null $filters
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` at query time, server-side. Editing the saved filter changes every graph, report and budget referencing it; a reference that fails to resolve makes the query error rather than silently run unfiltered.
      * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast — known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.
-     * @param 'cash'|'amortized'|null $costBasis
+     * @param 'cash'|'amortized'|'blended'|null $costBasis
      * @param CostMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
      * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.

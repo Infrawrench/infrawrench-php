@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class InvoiceDerivation implements \JsonSerializable
 {
     /**
-     * @param 'cash'|'amortized' $costBasis
+     * @param 'cash'|'amortized'|'blended' $costBasis
      * @param string $rateDate The day the exchange rates were read — always the period's last day. One rate for the period rather than a per-day blend: “January, at the 31 January rate” is a sentence a finance team can reproduce.
      * @param list<array{currency: string, rate: float, effectiveFrom: string}> $rates
      * @param list<string> $unconverted Currencies the organisation had stated no usable rate for. A non-empty list blocks approval: an invoice that cannot be expressed as one number in the customer's currency must not be frozen.

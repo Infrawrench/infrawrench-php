@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -342,7 +342,7 @@ final class CostsNamespace extends ApiNamespace
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $from Defaults to 30 days ago.
      * @param string|null $to Defaults to today.
-     * @param 'cash'|'amortized'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. Providers that report no amortized amount fall back to their cash amount.
+     * @param 'cash'|'amortized'|'blended'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys; `blended` also spreads each commitment's discount evenly over all the usage it could cover. Providers that report no amortized amount fall back to their cash amount.
      * @param 'true'|'false'|null $adjusted Apply the organization's billing rules (see /billing-rules): markups multiply, and a reallocation moves a centre's spend onto another centre. Off by default — a chargeback report that silently showed marked-up numbers is one the receiving team could not reconcile. On, the response carries `adjustment` with the collected totals beside the adjusted ones. Fixed-amount rules are booked onto the cost centre they name (or "Unallocated" when they name none), pro-rated across the period.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
@@ -407,7 +407,7 @@ final class CostsNamespace extends ApiNamespace
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $from Defaults to 30 days ago.
      * @param string|null $to Defaults to today.
-     * @param 'cash'|'amortized'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. Providers that report no amortized amount fall back to their cash amount.
+     * @param 'cash'|'amortized'|'blended'|null $basis Which money to sum. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys; `blended` also spreads each commitment's discount evenly over all the usage it could cover. Providers that report no amortized amount fall back to their cash amount.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */

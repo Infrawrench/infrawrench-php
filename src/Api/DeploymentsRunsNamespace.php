@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -47,7 +47,7 @@ final class DeploymentsRunsNamespace extends ApiNamespace
      * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param ChangeCostBasis::*|null $costBasis Which charge-type basis both windows are read on. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys. It is echoed on every response because a delta whose basis is unstated is unreadable — an amortized 'after' against a cash 'before' looks exactly like a saving.
+     * @param ChangeCostBasis::*|null $costBasis Which charge-type basis both windows are read on. `cash` (the default) is what the provider charged on the day it charged it; `amortized` spreads a commitment's up-front fee across the term it buys; `blended` also spreads each commitment's discount evenly over the usage it could cover. It is echoed on every response because a delta whose basis is unstated is unreadable — an amortized 'after' against a cash 'before' looks exactly like a saving.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */

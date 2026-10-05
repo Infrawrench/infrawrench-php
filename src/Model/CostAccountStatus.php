@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ final class CostAccountStatus implements \JsonSerializable
      * @param 'daily'|'hourly' $granularity The granularity this account's cost rows are stored at. `daily` for every provider today; hourly bins are offered only once some account reports `hourly`.
      * @param array{message: string, helpLink: array{label: string, url: string}|null}|null $costPollError Last cost-collection failure for this account, cleared on the next success. `helpLink` points at the provider page that fixes a setup problem when the plugin can identify one (e.g. GCP's billing export console).
      * @param array{firstDay: string, lastDay: string}|null $coverage
+     * @param bool|null $blending Whether this account's plugin reports blended commitment discounts. Clients offer the blended cost basis only when at least one account says yes; elsewhere it reads as the amortized numbers.
      */
     public function __construct(
         public readonly string $accountId,
@@ -47,6 +48,7 @@ final class CostAccountStatus implements \JsonSerializable
         public readonly int $costPollFailureCount,
         public readonly ?array $costPollError,
         public readonly ?array $coverage,
+        public readonly ?bool $blending = null,
     ) {
     }
 
@@ -73,6 +75,7 @@ final class CostAccountStatus implements \JsonSerializable
             costPollFailureCount: Coerce::toInt($data['costPollFailureCount'] ?? null),
             costPollError: Coerce::toArrayOrNull($data['costPollError'] ?? null),
             coverage: Coerce::toArrayOrNull($data['coverage'] ?? null),
+            blending: Coerce::toBoolOrNull($data['blending'] ?? null),
         );
     }
 
@@ -83,7 +86,7 @@ final class CostAccountStatus implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'accountId' => $this->accountId,
             'pluginId' => $this->pluginId,
             'displayName' => $this->displayName,
@@ -100,6 +103,11 @@ final class CostAccountStatus implements \JsonSerializable
             'costPollError' => $this->costPollError,
             'coverage' => $this->coverage,
         ];
+        if ($this->blending !== null) {
+            $payload['blending'] = $this->blending;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

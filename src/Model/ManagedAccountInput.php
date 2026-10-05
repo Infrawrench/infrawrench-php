@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.68.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.68.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class ManagedAccountInput implements \JsonSerializable
 {
     /**
      * @param string $billingCurrency ISO 4217 code the customer is invoiced in. Spend collected in another currency is converted through the organisation's own stated exchange rates, and the rate used is frozen onto every invoice — so restating a rate later cannot restate history.
-     * @param 'cash'|'amortized'|null $costBasis Defaults to `amortized`. Charging a customer the whole cash value of a three-year commitment in the month it was signed is not a bill anyone can budget against.
+     * @param 'cash'|'amortized'|'blended'|null $costBasis Defaults to `amortized`. Charging a customer the whole cash value of a three-year commitment in the month it was signed is not a bill anyone can budget against. `blended` spreads each commitment's discount evenly over all the usage it could cover, so a customer is not billed more or less depending on which account the provider happened to apply a shared commitment to.
      * @param bool|null $applyBillingRules Defaults to true. False is a pass-through contract: the customer is billed exactly what the providers charged, with no markup, discount or fixed fee applied.
      * @param list<string>|null $costCentreIds Cost centres whose spend belongs to this customer. **Subtrees are included** — naming a parent bills every descendant, and naming both a parent and its child bills the child once, not twice.
 
