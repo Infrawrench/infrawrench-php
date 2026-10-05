@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.66.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.67.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.66.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.67.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,7 @@ final class NetworkFlowAccountStatus implements \JsonSerializable
 {
     /**
      * @param bool $supportsFlows False when the account's provider has no flow source we can read. Such accounts are listed and excluded from the totals rather than contributing zero bytes — zero would be a claim about their network, this is a statement about our coverage.
+     * @param bool $recut True when the account's flows re-cut traffic another account may already report (a Kubernetes cluster's pods). Left out of this feed's totals unless asked for by `accountId`; see `GET /network-flows/kubernetes/{accountId}`.
      * @param list<NetworkFlowSource> $sources
      * @param float|null $lastQueryBytesScanned Log data the provider billed this account for the last collection's queries.
      */
@@ -32,6 +33,7 @@ final class NetworkFlowAccountStatus implements \JsonSerializable
         public readonly string $pluginId,
         public readonly string $displayName,
         public readonly bool $supportsFlows,
+        public readonly bool $recut,
         public readonly ?string $collectedThrough,
         public readonly ?string $lastPolledAt,
         public readonly int $failureCount,
@@ -54,6 +56,7 @@ final class NetworkFlowAccountStatus implements \JsonSerializable
             pluginId: Coerce::toString($data['pluginId'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
             supportsFlows: Coerce::toBool($data['supportsFlows'] ?? null),
+            recut: Coerce::toBool($data['recut'] ?? null),
             collectedThrough: Coerce::toStringOrNull($data['collectedThrough'] ?? null),
             lastPolledAt: Coerce::toStringOrNull($data['lastPolledAt'] ?? null),
             failureCount: Coerce::toInt($data['failureCount'] ?? null),
@@ -76,6 +79,7 @@ final class NetworkFlowAccountStatus implements \JsonSerializable
             'pluginId' => $this->pluginId,
             'displayName' => $this->displayName,
             'supportsFlows' => $this->supportsFlows,
+            'recut' => $this->recut,
             'collectedThrough' => $this->collectedThrough,
             'lastPolledAt' => $this->lastPolledAt,
             'failureCount' => $this->failureCount,
