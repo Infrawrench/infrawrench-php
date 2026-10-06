@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.74.1 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.75.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.74.1).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.75.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class CredentialField implements \JsonSerializable
      * @param list<CredentialFieldRegion>|null $regions
      * @param array{dependsOn: list<string>, emptyLabel?: string, multiple?: bool}|null $providerOptions Present when the field's choices come from the provider. Once every field in `dependsOn` has a value, `POST /accounts/credential-options` returns them.
      * @param array{label: string, url: string}|null $helpLink
+     * @param bool|null $advanced A rarely needed optional setting (a custom CA bundle, say) that forms show under a collapsed advanced section.
      */
     public function __construct(
         public readonly string $key,
@@ -38,6 +39,7 @@ final class CredentialField implements \JsonSerializable
         public readonly ?array $regions = null,
         public readonly ?array $providerOptions = null,
         public readonly ?array $helpLink = null,
+        public readonly ?bool $advanced = null,
     ) {
     }
 
@@ -59,6 +61,7 @@ final class CredentialField implements \JsonSerializable
             regions: Coerce::nullable($data['regions'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CredentialFieldRegion => CredentialFieldRegion::fromArray(Coerce::toArray($item)))),
             providerOptions: Coerce::toArrayOrNull($data['providerOptions'] ?? null),
             helpLink: Coerce::toArrayOrNull($data['helpLink'] ?? null),
+            advanced: Coerce::toBoolOrNull($data['advanced'] ?? null),
         );
     }
 
@@ -96,6 +99,9 @@ final class CredentialField implements \JsonSerializable
         }
         if ($this->helpLink !== null) {
             $payload['helpLink'] = $this->helpLink;
+        }
+        if ($this->advanced !== null) {
+            $payload['advanced'] = $this->advanced;
         }
 
         return $payload;
