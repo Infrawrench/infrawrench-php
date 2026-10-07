@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.75.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.76.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.75.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.76.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -95,6 +95,9 @@ use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\OrphansNamespace;
 use Infrawrench\Sdk\Api\OwnershipNamespace;
 use Infrawrench\Sdk\Api\PagesNamespace;
+use Infrawrench\Sdk\Api\PagingIncidentsNamespace;
+use Infrawrench\Sdk\Api\PagingProvidersNamespace;
+use Infrawrench\Sdk\Api\PagingWebhooksNamespace;
 use Infrawrench\Sdk\Api\PostureNamespace;
 use Infrawrench\Sdk\Api\PriceCatalogNamespace;
 use Infrawrench\Sdk\Api\ProbesNamespace;
@@ -385,6 +388,15 @@ final class APIV1Client
     /** `$client->pages` */
     public readonly PagesNamespace $pages;
 
+    /** `$client->pagingIncidents` */
+    public readonly PagingIncidentsNamespace $pagingIncidents;
+
+    /** `$client->pagingProviders` */
+    public readonly PagingProvidersNamespace $pagingProviders;
+
+    /** `$client->pagingWebhooks` */
+    public readonly PagingWebhooksNamespace $pagingWebhooks;
+
     /** `$client->posture` */
     public readonly PostureNamespace $posture;
 
@@ -588,6 +600,9 @@ final class APIV1Client
         $this->orphans = new OrphansNamespace($this->transport);
         $this->ownership = new OwnershipNamespace($this->transport);
         $this->pages = new PagesNamespace($this->transport);
+        $this->pagingIncidents = new PagingIncidentsNamespace($this->transport);
+        $this->pagingProviders = new PagingProvidersNamespace($this->transport);
+        $this->pagingWebhooks = new PagingWebhooksNamespace($this->transport);
         $this->posture = new PostureNamespace($this->transport);
         $this->priceCatalog = new PriceCatalogNamespace($this->transport);
         $this->probes = new ProbesNamespace($this->transport);
