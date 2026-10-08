@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.77.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.78.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.77.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.78.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -117,6 +117,7 @@ use Infrawrench\Sdk\Api\SftpNamespace;
 use Infrawrench\Sdk\Api\SharedConsolesNamespace;
 use Infrawrench\Sdk\Api\SharingNamespace;
 use Infrawrench\Sdk\Api\SlackNamespace;
+use Infrawrench\Sdk\Api\SlosNamespace;
 use Infrawrench\Sdk\Api\SqlNamespace;
 use Infrawrench\Sdk\Api\SshFanoutNamespace;
 use Infrawrench\Sdk\Api\SshKeysNamespace;
@@ -455,6 +456,9 @@ final class APIV1Client
     /** `$client->slack` */
     public readonly SlackNamespace $slack;
 
+    /** `$client->slos` */
+    public readonly SlosNamespace $slos;
+
     /** `$client->sql` */
     public readonly SqlNamespace $sql;
 
@@ -626,6 +630,7 @@ final class APIV1Client
         $this->sharedConsoles = new SharedConsolesNamespace($this->transport);
         $this->sharing = new SharingNamespace($this->transport);
         $this->slack = new SlackNamespace($this->transport);
+        $this->slos = new SlosNamespace($this->transport);
         $this->sql = new SqlNamespace($this->transport);
         $this->sshFanout = new SshFanoutNamespace($this->transport);
         $this->sshKeys = new SshKeysNamespace($this->transport);

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.77.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.78.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.77.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.78.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -44,6 +44,7 @@ final class AlertTrigger
     public const LOG_MATCH_ALERTS = 'logMatchAlerts';
     public const POSTURE_ALERTS = 'postureAlerts';
     public const PROBE_ALERTS = 'probeAlerts';
+    public const SLO_ALERTS = 'sloAlerts';
     public const QUOTA_ALERTS = 'quotaAlerts';
     public const EXTENDED_SUPPORT_ALERTS = 'extendedSupportAlerts';
     public const INCIDENT_ALERTS = 'incidentAlerts';
@@ -73,6 +74,7 @@ final class AlertTrigger
             self::LOG_MATCH_ALERTS,
             self::POSTURE_ALERTS,
             self::PROBE_ALERTS,
+            self::SLO_ALERTS,
             self::QUOTA_ALERTS,
             self::EXTENDED_SUPPORT_ALERTS,
             self::INCIDENT_ALERTS,

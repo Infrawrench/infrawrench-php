@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.77.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.78.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.77.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.78.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,7 @@ final class OrgConfigDocument implements \JsonSerializable
      * @param list<OrgConfigDashboard>|null $dashboards
      * @param list<OrgConfigMetricAlert>|null $metricAlerts
      * @param list<OrgConfigProbe>|null $probes
+     * @param list<OrgConfigSlo>|null $slos
      * @param list<OrgConfigCostCentre>|null $costCentres
      * @param array{requiredTags: list<array{key: string, allowedValues?: list<string>}>, enforceOnCreate: bool}|null $tagPolicy
      */
@@ -47,6 +48,7 @@ final class OrgConfigDocument implements \JsonSerializable
         public readonly ?array $dashboards = null,
         public readonly ?array $metricAlerts = null,
         public readonly ?array $probes = null,
+        public readonly ?array $slos = null,
         public readonly ?array $costCentres = null,
         public readonly ?array $tagPolicy = null,
         public readonly ?OrgConfigAlertSettings $alertSettings = null,
@@ -70,6 +72,7 @@ final class OrgConfigDocument implements \JsonSerializable
             dashboards: Coerce::nullable($data['dashboards'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigDashboard => OrgConfigDashboard::fromArray(Coerce::toArray($item)))),
             metricAlerts: Coerce::nullable($data['metricAlerts'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigMetricAlert => OrgConfigMetricAlert::fromArray(Coerce::toArray($item)))),
             probes: Coerce::nullable($data['probes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigProbe => OrgConfigProbe::fromArray(Coerce::toArray($item)))),
+            slos: Coerce::nullable($data['slos'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigSlo => OrgConfigSlo::fromArray(Coerce::toArray($item)))),
             costCentres: Coerce::nullable($data['costCentres'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigCostCentre => OrgConfigCostCentre::fromArray(Coerce::toArray($item)))),
             tagPolicy: Coerce::toArrayOrNull($data['tagPolicy'] ?? null),
             alertSettings: Coerce::nullable($data['alertSettings'] ?? null, static fn (mixed $value): OrgConfigAlertSettings => OrgConfigAlertSettings::fromArray(Coerce::toArray($value))),
@@ -111,6 +114,9 @@ final class OrgConfigDocument implements \JsonSerializable
         }
         if ($this->probes !== null) {
             $payload['probes'] = array_map(static fn (OrgConfigProbe $item): array => $item->toArray(), $this->probes);
+        }
+        if ($this->slos !== null) {
+            $payload['slos'] = array_map(static fn (OrgConfigSlo $item): array => $item->toArray(), $this->slos);
         }
         if ($this->costCentres !== null) {
             $payload['costCentres'] = array_map(static fn (OrgConfigCostCentre $item): array => $item->toArray(), $this->costCentres);

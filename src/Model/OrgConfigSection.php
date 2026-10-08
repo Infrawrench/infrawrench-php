@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.77.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.78.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.77.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.78.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class OrgConfigSection
     public const DASHBOARDS = 'dashboards';
     public const METRIC_ALERTS = 'metricAlerts';
     public const PROBES = 'probes';
+    public const SLOS = 'slos';
     public const COST_CENTRES = 'costCentres';
     public const TAG_POLICY = 'tagPolicy';
     public const ALERT_SETTINGS = 'alertSettings';
@@ -50,6 +51,7 @@ final class OrgConfigSection
             self::DASHBOARDS,
             self::METRIC_ALERTS,
             self::PROBES,
+            self::SLOS,
             self::COST_CENTRES,
             self::TAG_POLICY,
             self::ALERT_SETTINGS,
