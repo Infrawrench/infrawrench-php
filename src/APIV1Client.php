@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.76.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.77.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.76.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.77.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -81,6 +81,7 @@ use Infrawrench\Sdk\Api\IncidentsNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\InvoicesNamespace;
 use Infrawrench\Sdk\Api\JiraNamespace;
+use Infrawrench\Sdk\Api\JitAccessNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
 use Infrawrench\Sdk\Api\LeasesNamespace;
 use Infrawrench\Sdk\Api\LinearNamespace;
@@ -346,6 +347,9 @@ final class APIV1Client
     /** `$client->jira` */
     public readonly JiraNamespace $jira;
 
+    /** `$client->jitAccess` */
+    public readonly JitAccessNamespace $jitAccess;
+
     /** `$client->kv` */
     public readonly KvNamespace $kv;
 
@@ -586,6 +590,7 @@ final class APIV1Client
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->invoices = new InvoicesNamespace($this->transport);
         $this->jira = new JiraNamespace($this->transport);
+        $this->jitAccess = new JitAccessNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
         $this->leases = new LeasesNamespace($this->transport);
         $this->linear = new LinearNamespace($this->transport);

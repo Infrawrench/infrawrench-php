@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.76.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.77.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.76.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.77.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class AccessReviewResponse implements \JsonSerializable
      * @param list<DismissedAccessFinding> $dismissed Findings a dismissal is currently suppressing, most recently dismissed first. Only dismissals whose rule still matches appear.
      * @param int $unknownActivityCount How many principals the review could establish no last-use evidence for. Surfaces render this so "we found nothing" and "we could not look" do not read the same.
      * @param int $staleDays The staleness window this review was computed against.
+     * @param list<JitGrantIssue>|null $jitGrantIssues Just-in-time grants whose revocation failed, that the provider still reports after a revoke, or that are still marked held past their window.
      */
     public function __construct(
         public readonly array $principals,
@@ -42,6 +43,7 @@ final class AccessReviewResponse implements \JsonSerializable
         public readonly int $unknownActivityCount,
         public readonly int $staleDays,
         public readonly string $generatedAt,
+        public readonly ?array $jitGrantIssues = null,
     ) {
     }
 
@@ -64,6 +66,7 @@ final class AccessReviewResponse implements \JsonSerializable
             unknownActivityCount: Coerce::toInt($data['unknownActivityCount'] ?? null),
             staleDays: Coerce::toInt($data['staleDays'] ?? null),
             generatedAt: Coerce::toString($data['generatedAt'] ?? null),
+            jitGrantIssues: Coerce::nullable($data['jitGrantIssues'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): JitGrantIssue => JitGrantIssue::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -74,7 +77,7 @@ final class AccessReviewResponse implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'principals' => array_map(static fn (AccessPrincipal $item): array => $item->toArray(), $this->principals),
             'findings' => array_map(static fn (AccessFinding $item): array => $item->toArray(), $this->findings),
             'totalCount' => $this->totalCount,
@@ -87,6 +90,11 @@ final class AccessReviewResponse implements \JsonSerializable
             'staleDays' => $this->staleDays,
             'generatedAt' => $this->generatedAt,
         ];
+        if ($this->jitGrantIssues !== null) {
+            $payload['jitGrantIssues'] = array_map(static fn (JitGrantIssue $item): array => $item->toArray(), $this->jitGrantIssues);
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
