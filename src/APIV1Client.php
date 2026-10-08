@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.78.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.79.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.78.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.79.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -100,6 +100,7 @@ use Infrawrench\Sdk\Api\PagingIncidentsNamespace;
 use Infrawrench\Sdk\Api\PagingProvidersNamespace;
 use Infrawrench\Sdk\Api\PagingWebhooksNamespace;
 use Infrawrench\Sdk\Api\PostureNamespace;
+use Infrawrench\Sdk\Api\PrChecksNamespace;
 use Infrawrench\Sdk\Api\PriceCatalogNamespace;
 use Infrawrench\Sdk\Api\ProbesNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
@@ -405,6 +406,9 @@ final class APIV1Client
     /** `$client->posture` */
     public readonly PostureNamespace $posture;
 
+    /** `$client->prChecks` */
+    public readonly PrChecksNamespace $prChecks;
+
     /** `$client->priceCatalog` */
     public readonly PriceCatalogNamespace $priceCatalog;
 
@@ -613,6 +617,7 @@ final class APIV1Client
         $this->pagingProviders = new PagingProvidersNamespace($this->transport);
         $this->pagingWebhooks = new PagingWebhooksNamespace($this->transport);
         $this->posture = new PostureNamespace($this->transport);
+        $this->prChecks = new PrChecksNamespace($this->transport);
         $this->priceCatalog = new PriceCatalogNamespace($this->transport);
         $this->probes = new ProbesNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
