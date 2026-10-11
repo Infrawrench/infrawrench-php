@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.79.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.79.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,7 +30,12 @@ final class AccountsCredentialsNamespace extends ApiNamespace
      * Fetch the decrypted credentials for an account
      *
      * Returns the credentials map as it was originally submitted. Sensitive: gate access
-     * carefully.
+     * carefully. For an account connected through provider OAuth, the access token is refreshed
+     * first when it is about to expire, and `__oauth` comes back redacted: the grant state without
+     * its refresh token (or a registered client secret), so plugins can tell an OAuth token from a
+     * pasted one. Sending that redacted value back on `PUT .../credentials` keeps the stored
+     * connection. An account whose connection was revoked (`oauthStatus: reconnect_required`)
+     * returns its stored credentials without refreshing.
      *
      * _Requires permission: `secrets:read`._
      *

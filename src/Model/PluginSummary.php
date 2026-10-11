@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.79.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.79.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class PluginSummary implements \JsonSerializable
         public readonly string $logoSvg,
         public readonly array $credentialFields,
         public readonly ?PreflightDeclaration $preflight,
+        public readonly ?PluginOauthSummary $oauth = null,
     ) {
     }
 
@@ -45,6 +46,7 @@ final class PluginSummary implements \JsonSerializable
             logoSvg: Coerce::toString($data['logoSvg'] ?? null),
             credentialFields: Coerce::mapList($data['credentialFields'] ?? null, static fn (mixed $item): CredentialField => CredentialField::fromArray(Coerce::toArray($item))),
             preflight: Coerce::nullable($data['preflight'] ?? null, static fn (mixed $value): PreflightDeclaration => PreflightDeclaration::fromArray(Coerce::toArray($value))),
+            oauth: Coerce::nullable($data['oauth'] ?? null, static fn (mixed $value): PluginOauthSummary => PluginOauthSummary::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -55,13 +57,18 @@ final class PluginSummary implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'displayName' => $this->displayName,
             'logoSvg' => $this->logoSvg,
             'credentialFields' => array_map(static fn (CredentialField $item): array => $item->toArray(), $this->credentialFields),
             'preflight' => $this->preflight?->toArray(),
         ];
+        if ($this->oauth !== null) {
+            $payload['oauth'] = $this->oauth->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

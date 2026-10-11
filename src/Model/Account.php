@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.79.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.79.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,12 +24,14 @@ final class Account implements \JsonSerializable
 {
     /**
      * @param string|null $bastionId Bastion this account's cloud-API egress is routed through. `null` ⇒ direct egress.
+     * @param AccountOauthStatus::* $oauthStatus
      */
     public function __construct(
         public readonly string $id,
         public readonly string $pluginId,
         public readonly string $displayName,
         public readonly ?string $bastionId,
+        public readonly string $oauthStatus,
         public readonly string $createdAt,
     ) {
     }
@@ -46,6 +48,7 @@ final class Account implements \JsonSerializable
             pluginId: Coerce::toString($data['pluginId'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
             bastionId: Coerce::toStringOrNull($data['bastionId'] ?? null),
+            oauthStatus: Coerce::toString($data['oauthStatus'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
         );
     }
@@ -62,6 +65,7 @@ final class Account implements \JsonSerializable
             'pluginId' => $this->pluginId,
             'displayName' => $this->displayName,
             'bastionId' => $this->bastionId,
+            'oauthStatus' => $this->oauthStatus,
             'createdAt' => $this->createdAt,
         ];
     }
