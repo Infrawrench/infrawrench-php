@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class PostureListResponse implements \JsonSerializable
      * @param list<PostureFinding> $findings Live findings, worst severity first. Dismissed findings are not included.
      * @param int $totalCount Live finding count; dismissals excluded.
      * @param list<DismissedPostureFinding> $dismissed Findings a dismissal is currently suppressing, most recently dismissed first. Only dismissals whose rule still matches appear, so a finding that has since been fixed simply drops out.
+     * @param array{open: int, matched: int, scanners: int}|null $leakedCredentials The Leaked credentials category: secrets a scanner found committed to code. The rows are at `GET /leaked-secrets`.
      */
     public function __construct(
         public readonly array $findings,
@@ -34,6 +35,7 @@ final class PostureListResponse implements \JsonSerializable
         public readonly array $dismissed,
         public readonly int $dismissedCount,
         public readonly string $generatedAt,
+        public readonly ?array $leakedCredentials = null,
     ) {
     }
 
@@ -51,6 +53,7 @@ final class PostureListResponse implements \JsonSerializable
             dismissed: Coerce::mapList($data['dismissed'] ?? null, static fn (mixed $item): DismissedPostureFinding => DismissedPostureFinding::fromArray(Coerce::toArray($item))),
             dismissedCount: Coerce::toInt($data['dismissedCount'] ?? null),
             generatedAt: Coerce::toString($data['generatedAt'] ?? null),
+            leakedCredentials: Coerce::toArrayOrNull($data['leakedCredentials'] ?? null),
         );
     }
 
@@ -61,7 +64,7 @@ final class PostureListResponse implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'findings' => array_map(static fn (PostureFinding $item): array => $item->toArray(), $this->findings),
             'totalCount' => $this->totalCount,
             'counts' => $this->counts->toArray(),
@@ -69,6 +72,11 @@ final class PostureListResponse implements \JsonSerializable
             'dismissedCount' => $this->dismissedCount,
             'generatedAt' => $this->generatedAt,
         ];
+        if ($this->leakedCredentials !== null) {
+            $payload['leakedCredentials'] = $this->leakedCredentials;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

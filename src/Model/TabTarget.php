@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class TabTarget implements \JsonSerializable
 {
+    /** @param 'details'|'ssh'|'sftp'|'apps'|'scorecards'|null $view */
     public function __construct(
         public readonly string $kind,
         public readonly ?string $dashboardId = null,
@@ -32,6 +33,9 @@ final class TabTarget implements \JsonSerializable
         public readonly ?string $invoiceId = null,
         public readonly ?string $canvasId = null,
         public readonly ?string $sloId = null,
+        public readonly ?string $serviceId = null,
+        public readonly ?string $view = null,
+        public readonly ?string $framework = null,
         public readonly ?string $sessionId = null,
         public readonly ?int $windowId = null,
         public readonly ?string $appId = null,
@@ -55,6 +59,9 @@ final class TabTarget implements \JsonSerializable
             invoiceId: Coerce::toStringOrNull($data['invoiceId'] ?? null),
             canvasId: Coerce::toStringOrNull($data['canvasId'] ?? null),
             sloId: Coerce::toStringOrNull($data['sloId'] ?? null),
+            serviceId: Coerce::toStringOrNull($data['serviceId'] ?? null),
+            view: Coerce::toStringOrNull($data['view'] ?? null),
+            framework: Coerce::toStringOrNull($data['framework'] ?? null),
             sessionId: Coerce::toStringOrNull($data['sessionId'] ?? null),
             windowId: Coerce::toIntOrNull($data['windowId'] ?? null),
             appId: Coerce::toStringOrNull($data['appId'] ?? null),
@@ -94,6 +101,15 @@ final class TabTarget implements \JsonSerializable
         }
         if ($this->sloId !== null) {
             $payload['sloId'] = $this->sloId;
+        }
+        if ($this->serviceId !== null) {
+            $payload['serviceId'] = $this->serviceId;
+        }
+        if ($this->view !== null) {
+            $payload['view'] = $this->view;
+        }
+        if ($this->framework !== null) {
+            $payload['framework'] = $this->framework;
         }
         if ($this->sessionId !== null) {
             $payload['sessionId'] = $this->sessionId;

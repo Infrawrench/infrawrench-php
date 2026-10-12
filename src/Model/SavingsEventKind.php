@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,7 @@ final class SavingsEventKind
     public const ORPHAN_DELETION = 'orphan_deletion';
     public const SLEEP_SCHEDULE = 'sleep_schedule';
     public const COMMITMENT = 'commitment';
+    public const SAAS_SEAT = 'saas_seat';
     public const MANUAL = 'manual';
 
     /**
@@ -48,6 +49,7 @@ final class SavingsEventKind
             self::ORPHAN_DELETION,
             self::SLEEP_SCHEDULE,
             self::COMMITMENT,
+            self::SAAS_SEAT,
             self::MANUAL,
         ];
     }

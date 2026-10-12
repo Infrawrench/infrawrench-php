@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,10 +22,14 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class IncidentDetail implements \JsonSerializable
 {
-    /** @param list<IncidentNote> $notes */
+    /**
+     * @param list<IncidentNote> $notes
+     * @param list<array{id: string, name: string, slug: string, tier: float|null}> $affectedServices Services the affected resources belong to, resolved on read.
+     */
     public function __construct(
         public readonly Incident $incident,
         public readonly array $notes,
+        public readonly array $affectedServices,
     ) {
     }
 
@@ -39,6 +43,7 @@ final class IncidentDetail implements \JsonSerializable
         return new self(
             incident: Incident::fromArray(Coerce::toArray($data['incident'] ?? null)),
             notes: Coerce::mapList($data['notes'] ?? null, static fn (mixed $item): IncidentNote => IncidentNote::fromArray(Coerce::toArray($item))),
+            affectedServices: Coerce::mapList($data['affectedServices'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
         );
     }
 
@@ -52,6 +57,7 @@ final class IncidentDetail implements \JsonSerializable
         return [
             'incident' => $this->incident->toArray(),
             'notes' => array_map(static fn (IncidentNote $item): array => $item->toArray(), $this->notes),
+            'affectedServices' => $this->affectedServices,
         ];
     }
 

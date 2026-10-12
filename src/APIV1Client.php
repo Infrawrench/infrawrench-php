@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.80.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.80.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,6 +46,7 @@ use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\ChatNamespace;
 use Infrawrench\Sdk\Api\CommitmentsNamespace;
+use Infrawrench\Sdk\Api\ComplianceNamespace;
 use Infrawrench\Sdk\Api\ConfigNamespace;
 use Infrawrench\Sdk\Api\ConnectNamespace;
 use Infrawrench\Sdk\Api\CostAlertsNamespace;
@@ -71,8 +72,10 @@ use Infrawrench\Sdk\Api\DeploymentsNamespace;
 use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DnsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
+use Infrawrench\Sdk\Api\DoraNamespace;
 use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
 use Infrawrench\Sdk\Api\EnvironmentsNamespace;
+use Infrawrench\Sdk\Api\EventSubscriptionsNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\ExtendedSupportNamespace;
 use Infrawrench\Sdk\Api\GithubIssuesNamespace;
@@ -83,6 +86,7 @@ use Infrawrench\Sdk\Api\InvoicesNamespace;
 use Infrawrench\Sdk\Api\JiraNamespace;
 use Infrawrench\Sdk\Api\JitAccessNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
+use Infrawrench\Sdk\Api\LeakedSecretsNamespace;
 use Infrawrench\Sdk\Api\LeasesNamespace;
 use Infrawrench\Sdk\Api\LinearNamespace;
 use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
@@ -113,7 +117,10 @@ use Infrawrench\Sdk\Api\RunbooksNamespace;
 use Infrawrench\Sdk\Api\SavedCostFiltersNamespace;
 use Infrawrench\Sdk\Api\SavingsNamespace;
 use Infrawrench\Sdk\Api\SchedulesNamespace;
+use Infrawrench\Sdk\Api\ScorecardsNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
+use Infrawrench\Sdk\Api\SeatsNamespace;
+use Infrawrench\Sdk\Api\ServicesNamespace;
 use Infrawrench\Sdk\Api\SessionRecordingsNamespace;
 use Infrawrench\Sdk\Api\SftpNamespace;
 use Infrawrench\Sdk\Api\SharedConsolesNamespace;
@@ -132,6 +139,7 @@ use Infrawrench\Sdk\Api\TagKeysNamespace;
 use Infrawrench\Sdk\Api\TagPolicyNamespace;
 use Infrawrench\Sdk\Api\TeamNamespace;
 use Infrawrench\Sdk\Api\VirtualTagsNamespace;
+use Infrawrench\Sdk\Api\VulnerabilitiesNamespace;
 use Infrawrench\Sdk\Api\WallboardNamespace;
 use Infrawrench\Sdk\Api\WorkflowApprovalsNamespace;
 use Infrawrench\Sdk\Api\WorkflowSecretsNamespace;
@@ -245,6 +253,9 @@ final class APIV1Client
     /** `$client->commitments` */
     public readonly CommitmentsNamespace $commitments;
 
+    /** `$client->compliance` */
+    public readonly ComplianceNamespace $compliance;
+
     /** `$client->config` */
     public readonly ConfigNamespace $config;
 
@@ -320,11 +331,17 @@ final class APIV1Client
     /** `$client->docker` */
     public readonly DockerNamespace $docker;
 
+    /** `$client->dora` */
+    public readonly DoraNamespace $dora;
+
     /** `$client->environmentDiff` */
     public readonly EnvironmentDiffNamespace $environmentDiff;
 
     /** `$client->environments` */
     public readonly EnvironmentsNamespace $environments;
+
+    /** `$client->eventSubscriptions` */
+    public readonly EventSubscriptionsNamespace $eventSubscriptions;
 
     /** `$client->expiring` */
     public readonly ExpiringNamespace $expiring;
@@ -355,6 +372,9 @@ final class APIV1Client
 
     /** `$client->kv` */
     public readonly KvNamespace $kv;
+
+    /** `$client->leakedSecrets` */
+    public readonly LeakedSecretsNamespace $leakedSecrets;
 
     /** `$client->leases` */
     public readonly LeasesNamespace $leases;
@@ -446,8 +466,17 @@ final class APIV1Client
     /** `$client->schedules` */
     public readonly SchedulesNamespace $schedules;
 
+    /** `$client->scorecards` */
+    public readonly ScorecardsNamespace $scorecards;
+
     /** `$client->search` */
     public readonly SearchNamespace $search;
+
+    /** `$client->seats` */
+    public readonly SeatsNamespace $seats;
+
+    /** `$client->services` */
+    public readonly ServicesNamespace $services;
 
     /** `$client->sessionRecordings` */
     public readonly SessionRecordingsNamespace $sessionRecordings;
@@ -502,6 +531,9 @@ final class APIV1Client
 
     /** `$client->virtualTags` */
     public readonly VirtualTagsNamespace $virtualTags;
+
+    /** `$client->vulnerabilities` */
+    public readonly VulnerabilitiesNamespace $vulnerabilities;
 
     /** `$client->wallboard` */
     public readonly WallboardNamespace $wallboard;
@@ -567,6 +599,7 @@ final class APIV1Client
         $this->changes = new ChangesNamespace($this->transport);
         $this->chat = new ChatNamespace($this->transport);
         $this->commitments = new CommitmentsNamespace($this->transport);
+        $this->compliance = new ComplianceNamespace($this->transport);
         $this->config = new ConfigNamespace($this->transport);
         $this->connect = new ConnectNamespace($this->transport);
         $this->costAlerts = new CostAlertsNamespace($this->transport);
@@ -592,8 +625,10 @@ final class APIV1Client
         $this->digest = new DigestNamespace($this->transport);
         $this->dns = new DnsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
+        $this->dora = new DoraNamespace($this->transport);
         $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
         $this->environments = new EnvironmentsNamespace($this->transport);
+        $this->eventSubscriptions = new EventSubscriptionsNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->extendedSupport = new ExtendedSupportNamespace($this->transport);
         $this->githubIssues = new GithubIssuesNamespace($this->transport);
@@ -604,6 +639,7 @@ final class APIV1Client
         $this->jira = new JiraNamespace($this->transport);
         $this->jitAccess = new JitAccessNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
+        $this->leakedSecrets = new LeakedSecretsNamespace($this->transport);
         $this->leases = new LeasesNamespace($this->transport);
         $this->linear = new LinearNamespace($this->transport);
         $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
@@ -634,7 +670,10 @@ final class APIV1Client
         $this->savedCostFilters = new SavedCostFiltersNamespace($this->transport);
         $this->savings = new SavingsNamespace($this->transport);
         $this->schedules = new SchedulesNamespace($this->transport);
+        $this->scorecards = new ScorecardsNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
+        $this->seats = new SeatsNamespace($this->transport);
+        $this->services = new ServicesNamespace($this->transport);
         $this->sessionRecordings = new SessionRecordingsNamespace($this->transport);
         $this->sftp = new SftpNamespace($this->transport);
         $this->sharedConsoles = new SharedConsolesNamespace($this->transport);
@@ -653,6 +692,7 @@ final class APIV1Client
         $this->tagPolicy = new TagPolicyNamespace($this->transport);
         $this->team = new TeamNamespace($this->transport);
         $this->virtualTags = new VirtualTagsNamespace($this->transport);
+        $this->vulnerabilities = new VulnerabilitiesNamespace($this->transport);
         $this->wallboard = new WallboardNamespace($this->transport);
         $this->workflowApprovals = new WorkflowApprovalsNamespace($this->transport);
         $this->workflowSecrets = new WorkflowSecretsNamespace($this->transport);
