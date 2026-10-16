@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,8 +27,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class InvoiceLine implements \JsonSerializable
 {
     /**
-     * @param 'cost_centre'|'account'|'fixed' $kind
-     * @param string|null $refId Cost-centre id, account id, or null for an org-level fixed charge.
+     * @param 'cost_centre'|'account'|'fixed'|'tax' $kind `tax` lines come from the customer's billing profile: one per tax rate, on the converted subtotal of every other line, always last.
+     * @param string|null $refId Cost-centre id, account id, or null for an org-level fixed charge or a tax.
      * @param string $label The name at issue time, frozen with the numbers; renaming a cost centre in March must not retitle a line on January's invoice.
      * @param string $currency The currency the providers billed in.
      * @param float $collected What the providers charged for this scope, before any billing rule.

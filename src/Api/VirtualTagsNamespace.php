@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -66,9 +66,10 @@ final class VirtualTagsNamespace extends ApiNamespace
     /**
      * Delete a virtual tag
      *
-     * Refused with a 409 that names every saved filter, budget, report, dashboard card, change
-     * alert, allocation rule, cost export or business metric still referencing the key: deleting
-     * it would make those fail rather than quietly widen to all spend.
+     * Refused with a 409 that names every other virtual tag, saved filter, budget, report,
+     * dashboard card, change alert, allocation rule, cost export or business metric still
+     * referencing the key: deleting it would make those fail rather than quietly widen to all
+     * spend.
      *
      * _Requires permission: `costs:write`._
      *

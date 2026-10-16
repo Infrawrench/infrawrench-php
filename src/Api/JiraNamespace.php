@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,8 +26,6 @@ use Infrawrench\Sdk\Model\CreateJiraIssueInput;
 use Infrawrench\Sdk\Model\CreateJiraIssueResult;
 use Infrawrench\Sdk\Model\JiraIntegration;
 use Infrawrench\Sdk\Model\JiraIntegrationInput;
-use Infrawrench\Sdk\Model\JiraIssueLink;
-use Infrawrench\Sdk\Model\JiraSourceKind;
 use Infrawrench\Sdk\Model\JiraVerifyInput;
 use Infrawrench\Sdk\Model\JiraVerifyResult;
 use Infrawrench\Sdk\Model\Ok;
@@ -36,13 +34,21 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->jira` */
 final class JiraNamespace extends ApiNamespace
 {
+    /** `$client->jira->links` */
+    public readonly JiraLinksNamespace $links;
+
     /** `$client->jira->projects` */
     public readonly JiraProjectsNamespace $projects;
+
+    /** `$client->jira->webhook` */
+    public readonly JiraWebhookNamespace $webhook;
 
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->links = new JiraLinksNamespace($this->transport);
         $this->projects = new JiraProjectsNamespace($this->transport);
+        $this->webhook = new JiraWebhookNamespace($this->transport);
     }
 
     /**
@@ -134,37 +140,6 @@ final class JiraNamespace extends ApiNamespace
         );
 
         return CreateJiraIssueResult::fromArray(Coerce::toArray($data));
-    }
-
-    /**
-     * Look up filed issues for a set of findings
-     *
-     * _Requires permission: `jira:read`._
-     *
-     * GET /api/org/{orgId}/jira/links
-     *
-     * Raises on 400: Bad request
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param JiraSourceKind::*|null $sourceKind
-     * @param list<string>|null $sourceId Repeat to narrow to specific findings. Omit to return every link of the kind; this is the batch lookup a list view makes once instead of one request per row.
-     * @return list<JiraIssueLink>
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function links(?string $orgId = null, ?string $sourceKind = null, ?array $sourceId = null, ?RequestOptions $options = null): array
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'GET',
-                path: '/api/org/{orgId}/jira/links',
-                pathParams: ['orgId' => $orgId],
-                query: ['sourceKind' => $sourceKind, 'sourceId' => $sourceId],
-            ),
-            $options,
-        );
-
-        return Coerce::mapList($data, static fn (mixed $item): JiraIssueLink => JiraIssueLink::fromArray(Coerce::toArray($item)));
     }
 
     /**

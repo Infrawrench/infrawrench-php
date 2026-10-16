@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,9 @@ namespace Infrawrench\Sdk\Model;
  * cost report by id, so editing the report updates every dashboard showing it. `cost_canvas`
  * points at a cost canvas by id (`{version: 1, canvasId}`) the same way. `realized_savings` shows
  * the org's realized savings report; its config is only a view choice (`grouping`: month | kind |
- * costCentre | account, and `months` back, 1–36).
+ * costCentre | account, and `months` back, 1–36). `kpi` is one figure with a period-over-period
+ * change (see `KpiWidgetConfig`; answered by `POST /dashboards/kpi`). `text` is markdown
+ * (`{version: 1, markdown}`, up to 20,000 characters), rendered without raw HTML.
  *
  * The values `DashboardWidgetKind` accepts.
  *
@@ -38,6 +40,8 @@ final class DashboardWidgetKind
     public const CUSTOM_GRAPH = 'custom_graph';
     public const COST_CANVAS = 'cost_canvas';
     public const REALIZED_SAVINGS = 'realized_savings';
+    public const KPI = 'kpi';
+    public const TEXT = 'text';
 
     /**
      * Every value, in the order the spec lists them.
@@ -53,6 +57,8 @@ final class DashboardWidgetKind
             self::CUSTOM_GRAPH,
             self::COST_CANVAS,
             self::REALIZED_SAVINGS,
+            self::KPI,
+            self::TEXT,
         ];
     }
 }

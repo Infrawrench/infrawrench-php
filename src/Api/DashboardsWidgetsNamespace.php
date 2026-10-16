@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,7 +31,7 @@ use Infrawrench\Sdk\RequestOptions;
 final class DashboardsWidgetsNamespace extends ApiNamespace
 {
     /**
-     * Add a cost-graph or budget widget to a dashboard
+     * Add a widget (cost graph, report, budget, KPI, text, ...) to a dashboard
      *
      * POST /api/org/{orgId}/dashboards/widgets
      *
@@ -82,6 +82,37 @@ final class DashboardsWidgetsNamespace extends ApiNamespace
         );
 
         return Ok::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Copy a widget in place
+     *
+     * Inserts a copy with the same kind, config and size directly after the original, moving every
+     * card behind it one slot along. A copy of a budget or report card is a second view onto the
+     * same budget or report. Audit-logged.
+     *
+     * POST /api/org/{orgId}/dashboards/widgets/{widgetId}/duplicate
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function duplicate(string $widgetId, ?string $orgId = null, ?RequestOptions $options = null): DashboardWidgetFull
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/dashboards/widgets/{widgetId}/duplicate',
+                pathParams: ['orgId' => $orgId, 'widgetId' => $widgetId],
+            ),
+            $options,
+        );
+
+        return DashboardWidgetFull::fromArray(Coerce::toArray($data));
     }
 
     /**

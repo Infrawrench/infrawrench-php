@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class ManagedAccountInput implements \JsonSerializable
      * @param string $billingCurrency ISO 4217 code the customer is invoiced in. Spend collected in another currency is converted through the organisation's own stated exchange rates, and the rate used is frozen onto every invoice; so restating a rate later cannot restate history.
      * @param 'cash'|'amortized'|'blended'|null $costBasis Defaults to `amortized`. Charging a customer the whole cash value of a three-year commitment in the month it was signed is not a bill anyone can budget against. `blended` spreads each commitment's discount evenly over all the usage it could cover, so a customer is not billed more or less depending on which account the provider happened to apply a shared commitment to.
      * @param bool|null $applyBillingRules Defaults to true. False is a pass-through contract: the customer is billed exactly what the providers charged, with no markup, discount or fixed fee applied.
+     * @param string|null $billingProfileId The billing profile this customer's invoices are addressed, taxed and numbered by. Absent on update leaves the saved profile; null removes it.
      * @param list<string>|null $costCentreIds Cost centres whose spend belongs to this customer. **Subtrees are included**; naming a parent bills every descendant, and naming both a parent and its child bills the child once, not twice.
 
 This is deliberately a list of existing cost centres rather than a rule of its own. Which spend lands in which centre is already decided by the organisation's allocation rules, and a second vocabulary over the same data would eventually disagree with the first: at which point an invoice would stop matching the showback report the customer was shown.
@@ -41,6 +42,7 @@ This is deliberately a list of existing cost centres rather than a rule of its o
         public readonly ?bool $applyBillingRules = null,
         public readonly ?ManagedAccountPricing $pricing = null,
         public readonly ?string $notes = null,
+        public readonly ?string $billingProfileId = null,
         public readonly ?array $costCentreIds = null,
         public readonly ?array $accountIds = null,
     ) {
@@ -63,6 +65,7 @@ This is deliberately a list of existing cost centres rather than a rule of its o
             applyBillingRules: Coerce::toBoolOrNull($data['applyBillingRules'] ?? null),
             pricing: Coerce::nullable($data['pricing'] ?? null, static fn (mixed $value): ManagedAccountPricing => ManagedAccountPricing::fromArray(Coerce::toArray($value))),
             notes: Coerce::toStringOrNull($data['notes'] ?? null),
+            billingProfileId: Coerce::toStringOrNull($data['billingProfileId'] ?? null),
             costCentreIds: Coerce::nullable($data['costCentreIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             accountIds: Coerce::nullable($data['accountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
         );
@@ -99,6 +102,9 @@ This is deliberately a list of existing cost centres rather than a rule of its o
         }
         if ($this->notes !== null) {
             $payload['notes'] = $this->notes;
+        }
+        if ($this->billingProfileId !== null) {
+            $payload['billingProfileId'] = $this->billingProfileId;
         }
         if ($this->costCentreIds !== null) {
             $payload['costCentreIds'] = $this->costCentreIds;

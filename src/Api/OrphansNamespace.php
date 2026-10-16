@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,10 +32,12 @@ final class OrphansNamespace extends ApiNamespace
      *
      * Scans the organization's already-synced resources against each plugin's declarative orphan
      * heuristics (unattached volumes, unassigned floating/elastic IPs, reserved-but-unused static
-     * IPs) and returns the matches grouped by account, each with the plugin's reason. Purely a
-     * read over stored state: no provider API calls are made, so results reflect the last sync.
+     * IPs) and returns the matches grouped by account, each with the plugin's reason. Rows flagged
+     * by a metric-based idle rule (a NAT gateway with no traffic, a load balancer with no
+     * requests) carry `idle` with the evidence; those verdicts come from a daily collection, tuned
+     * under `/idle-findings`. Purely a read over stored state: no provider API calls are made.
      * Where the org's collected cost data has per-resource rows, matches are annotated with
-     * trailing spend.
+     * trailing spend; idle rows a plugin could price also carry a list-price `estimate`.
      *
      * _Requires permission: `resources:read`._
      *

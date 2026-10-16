@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class VirtualTagRule implements \JsonSerializable
 {
     /**
      * @param 'value'|'tag'|'split'|'metric_split' $kind `value`: a fixed value. `tag`: copy the value from the first present provider tag key in `sources` (key collapsing). `split`: divide the row across `allocations` by percentage. `metric_split`: divide it in proportion to business metrics, day by day.
-     * @param string|null $query Cost-query-language filter a row must match, e.g. `provider = 'aws' AND service = 'AmazonRDS'`. Empty matches every row. May not reference another virtual tag.
+     * @param string|null $query Cost-query-language filter a row must match, e.g. `provider = 'aws' AND service = 'AmazonRDS'`. Empty matches every row. May filter on another virtual tag (`virtual_tag['team'] = 'payments'`) that gives each row one value (no split rules), as long as the references form no cycle and no chain is more than five tags deep.
      * @param string|null $startsOn Inclusive UTC day the rule starts applying; null for no start.
      * @param string|null $endsOn Inclusive UTC day the rule stops applying; null for no end.
      * @param string|null $value `value` only.

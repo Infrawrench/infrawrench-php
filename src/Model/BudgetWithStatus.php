@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,6 +46,8 @@ final class BudgetWithStatus implements \JsonSerializable
      * @param bool $rolledUp True when the budget has children, so its figures are the sum of theirs over its period rather than a measurement of its own scope.
      * @param int $childCount Number of direct child budgets.
      * @param list<BudgetHierarchyWarning> $hierarchyWarnings
+     * @param int|null $forecastLowCents Lower end of the 80% prediction interval around `forecastCents` (the trend's, before any scenario), never below the spend already observed. Null when there was too little history to fit. Display only: thresholds are judged on `forecastCents`.
+     * @param int|null $forecastHighCents Upper end of the 80% prediction interval around `forecastCents`.
      */
     public function __construct(
         public readonly string $id,
@@ -80,6 +82,8 @@ final class BudgetWithStatus implements \JsonSerializable
         public readonly bool $rolledUp,
         public readonly int $childCount,
         public readonly array $hierarchyWarnings,
+        public readonly ?int $forecastLowCents = null,
+        public readonly ?int $forecastHighCents = null,
     ) {
     }
 
@@ -123,6 +127,8 @@ final class BudgetWithStatus implements \JsonSerializable
             rolledUp: Coerce::toBool($data['rolledUp'] ?? null),
             childCount: Coerce::toInt($data['childCount'] ?? null),
             hierarchyWarnings: Coerce::mapList($data['hierarchyWarnings'] ?? null, static fn (mixed $item): BudgetHierarchyWarning => BudgetHierarchyWarning::fromArray(Coerce::toArray($item))),
+            forecastLowCents: Coerce::toIntOrNull($data['forecastLowCents'] ?? null),
+            forecastHighCents: Coerce::toIntOrNull($data['forecastHighCents'] ?? null),
         );
     }
 
@@ -133,7 +139,7 @@ final class BudgetWithStatus implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'name' => $this->name,
             'amountCents' => $this->amountCents,
@@ -167,6 +173,14 @@ final class BudgetWithStatus implements \JsonSerializable
             'childCount' => $this->childCount,
             'hierarchyWarnings' => array_map(static fn (BudgetHierarchyWarning $item): array => $item->toArray(), $this->hierarchyWarnings),
         ];
+        if ($this->forecastLowCents !== null) {
+            $payload['forecastLowCents'] = $this->forecastLowCents;
+        }
+        if ($this->forecastHighCents !== null) {
+            $payload['forecastHighCents'] = $this->forecastHighCents;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,10 +24,12 @@ final class LinearIntegrationInput implements \JsonSerializable
 {
     /**
      * @param string|null $apiKey Personal API key from Linear → Settings → Security & access. Omit to keep the stored key; required on first connect.
+     * @param bool|null $acknowledgeOnDone Omit to keep the stored value (off on first connect).
      */
     public function __construct(
         public readonly ?string $apiKey = null,
         public readonly ?string $defaultTeamId = null,
+        public readonly ?bool $acknowledgeOnDone = null,
     ) {
     }
 
@@ -41,6 +43,7 @@ final class LinearIntegrationInput implements \JsonSerializable
         return new self(
             apiKey: Coerce::toStringOrNull($data['apiKey'] ?? null),
             defaultTeamId: Coerce::toStringOrNull($data['defaultTeamId'] ?? null),
+            acknowledgeOnDone: Coerce::toBoolOrNull($data['acknowledgeOnDone'] ?? null),
         );
     }
 
@@ -58,6 +61,9 @@ final class LinearIntegrationInput implements \JsonSerializable
         }
         if ($this->defaultTeamId !== null) {
             $payload['defaultTeamId'] = $this->defaultTeamId;
+        }
+        if ($this->acknowledgeOnDone !== null) {
+            $payload['acknowledgeOnDone'] = $this->acknowledgeOnDone;
         }
 
         return $payload;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class JiraIntegration implements \JsonSerializable
 {
     /**
      * @param string $tokenHint Redacted marker for the stored API token, e.g. `…a7f2`. The token itself is never returned.
+     * @param bool $acknowledgeOnDone When an issue filed for a cost anomaly moves to done, record the anomaly as explained.
      */
     public function __construct(
         public readonly string $siteUrl,
@@ -32,6 +33,8 @@ final class JiraIntegration implements \JsonSerializable
         public readonly string $tokenHint,
         public readonly ?string $defaultProjectKey,
         public readonly ?string $defaultIssueTypeId,
+        public readonly bool $acknowledgeOnDone,
+        public readonly IssueWebhookState $webhook,
         public readonly string $updatedAt,
     ) {
     }
@@ -49,6 +52,8 @@ final class JiraIntegration implements \JsonSerializable
             tokenHint: Coerce::toString($data['tokenHint'] ?? null),
             defaultProjectKey: Coerce::toStringOrNull($data['defaultProjectKey'] ?? null),
             defaultIssueTypeId: Coerce::toStringOrNull($data['defaultIssueTypeId'] ?? null),
+            acknowledgeOnDone: Coerce::toBool($data['acknowledgeOnDone'] ?? null),
+            webhook: IssueWebhookState::fromArray(Coerce::toArray($data['webhook'] ?? null)),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
         );
     }
@@ -66,6 +71,8 @@ final class JiraIntegration implements \JsonSerializable
             'tokenHint' => $this->tokenHint,
             'defaultProjectKey' => $this->defaultProjectKey,
             'defaultIssueTypeId' => $this->defaultIssueTypeId,
+            'acknowledgeOnDone' => $this->acknowledgeOnDone,
+            'webhook' => $this->webhook->toArray(),
             'updatedAt' => $this->updatedAt,
         ];
     }

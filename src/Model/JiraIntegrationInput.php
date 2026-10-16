@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class JiraIntegrationInput implements \JsonSerializable
      * @param string $siteUrl Jira Cloud site address. Must resolve to a .atlassian.net (or legacy .jira.com) host; a bare hostname and a pasted board or issue URL are both accepted and normalized.
      * @param string $accountEmail Atlassian account email; the username half of the basic-auth pair.
      * @param string|null $apiToken API token from id.atlassian.com. Omit to keep the stored token; required on first connect.
+     * @param bool|null $acknowledgeOnDone Omit to keep the stored value (off on first connect).
      */
     public function __construct(
         public readonly string $siteUrl,
@@ -33,6 +34,7 @@ final class JiraIntegrationInput implements \JsonSerializable
         public readonly ?string $apiToken = null,
         public readonly ?string $defaultProjectKey = null,
         public readonly ?string $defaultIssueTypeId = null,
+        public readonly ?bool $acknowledgeOnDone = null,
     ) {
     }
 
@@ -49,6 +51,7 @@ final class JiraIntegrationInput implements \JsonSerializable
             apiToken: Coerce::toStringOrNull($data['apiToken'] ?? null),
             defaultProjectKey: Coerce::toStringOrNull($data['defaultProjectKey'] ?? null),
             defaultIssueTypeId: Coerce::toStringOrNull($data['defaultIssueTypeId'] ?? null),
+            acknowledgeOnDone: Coerce::toBoolOrNull($data['acknowledgeOnDone'] ?? null),
         );
     }
 
@@ -71,6 +74,9 @@ final class JiraIntegrationInput implements \JsonSerializable
         }
         if ($this->defaultIssueTypeId !== null) {
             $payload['defaultIssueTypeId'] = $this->defaultIssueTypeId;
+        }
+        if ($this->acknowledgeOnDone !== null) {
+            $payload['acknowledgeOnDone'] = $this->acknowledgeOnDone;
         }
 
         return $payload;

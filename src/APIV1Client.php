@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,7 @@ use Infrawrench\Sdk\Api\AuthNamespace;
 use Infrawrench\Sdk\Api\BackupsNamespace;
 use Infrawrench\Sdk\Api\BastionsNamespace;
 use Infrawrench\Sdk\Api\BillingNamespace;
+use Infrawrench\Sdk\Api\BillingProfilesNamespace;
 use Infrawrench\Sdk\Api\BillingRulesNamespace;
 use Infrawrench\Sdk\Api\BlastRadiusNamespace;
 use Infrawrench\Sdk\Api\BudgetsNamespace;
@@ -54,6 +55,7 @@ use Infrawrench\Sdk\Api\CostAnnotationsNamespace;
 use Infrawrench\Sdk\Api\CostCanvasesNamespace;
 use Infrawrench\Sdk\Api\CostCentresNamespace;
 use Infrawrench\Sdk\Api\CostExportsNamespace;
+use Infrawrench\Sdk\Api\CostReportAnomalyAlertsNamespace;
 use Infrawrench\Sdk\Api\CostReportFoldersNamespace;
 use Infrawrench\Sdk\Api\CostReportNotificationsNamespace;
 use Infrawrench\Sdk\Api\CostReportsNamespace;
@@ -80,11 +82,14 @@ use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\ExtendedSupportNamespace;
 use Infrawrench\Sdk\Api\GithubIssuesNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
+use Infrawrench\Sdk\Api\IdleFindingsNamespace;
 use Infrawrench\Sdk\Api\IncidentsNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\InvoicesNamespace;
+use Infrawrench\Sdk\Api\IssueWebhooksNamespace;
 use Infrawrench\Sdk\Api\JiraNamespace;
 use Infrawrench\Sdk\Api\JitAccessNamespace;
+use Infrawrench\Sdk\Api\K8sEfficiencyReportsNamespace;
 use Infrawrench\Sdk\Api\KvNamespace;
 use Infrawrench\Sdk\Api\LeakedSecretsNamespace;
 use Infrawrench\Sdk\Api\LeasesNamespace;
@@ -111,11 +116,13 @@ use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ProviderOauthNamespace;
 use Infrawrench\Sdk\Api\QueryMonitorsNamespace;
 use Infrawrench\Sdk\Api\QuotasNamespace;
+use Infrawrench\Sdk\Api\ResourceReportsNamespace;
 use Infrawrench\Sdk\Api\ResourcesNamespace;
 use Infrawrench\Sdk\Api\RightsizingNamespace;
 use Infrawrench\Sdk\Api\RunbooksNamespace;
 use Infrawrench\Sdk\Api\SavedCostFiltersNamespace;
 use Infrawrench\Sdk\Api\SavingsNamespace;
+use Infrawrench\Sdk\Api\SavingsViewsNamespace;
 use Infrawrench\Sdk\Api\SchedulesNamespace;
 use Infrawrench\Sdk\Api\ScorecardsNamespace;
 use Infrawrench\Sdk\Api\SearchNamespace;
@@ -131,6 +138,7 @@ use Infrawrench\Sdk\Api\SqlNamespace;
 use Infrawrench\Sdk\Api\SshFanoutNamespace;
 use Infrawrench\Sdk\Api\SshKeysNamespace;
 use Infrawrench\Sdk\Api\SshTunnelsNamespace;
+use Infrawrench\Sdk\Api\StarredNamespace;
 use Infrawrench\Sdk\Api\StatusIncidentsNamespace;
 use Infrawrench\Sdk\Api\StatusNamespace;
 use Infrawrench\Sdk\Api\StatusPagesNamespace;
@@ -223,6 +231,9 @@ final class APIV1Client
     /** `$client->billing` */
     public readonly BillingNamespace $billing;
 
+    /** `$client->billingProfiles` */
+    public readonly BillingProfilesNamespace $billingProfiles;
+
     /** `$client->billingRules` */
     public readonly BillingRulesNamespace $billingRules;
 
@@ -276,6 +287,9 @@ final class APIV1Client
 
     /** `$client->costExports` */
     public readonly CostExportsNamespace $costExports;
+
+    /** `$client->costReportAnomalyAlerts` */
+    public readonly CostReportAnomalyAlertsNamespace $costReportAnomalyAlerts;
 
     /** `$client->costReportFolders` */
     public readonly CostReportFoldersNamespace $costReportFolders;
@@ -355,6 +369,9 @@ final class APIV1Client
     /** `$client->iac` */
     public readonly IacNamespace $iac;
 
+    /** `$client->idleFindings` */
+    public readonly IdleFindingsNamespace $idleFindings;
+
     /** `$client->incidents` */
     public readonly IncidentsNamespace $incidents;
 
@@ -364,11 +381,17 @@ final class APIV1Client
     /** `$client->invoices` */
     public readonly InvoicesNamespace $invoices;
 
+    /** `$client->issueWebhooks` */
+    public readonly IssueWebhooksNamespace $issueWebhooks;
+
     /** `$client->jira` */
     public readonly JiraNamespace $jira;
 
     /** `$client->jitAccess` */
     public readonly JitAccessNamespace $jitAccess;
+
+    /** `$client->k8sEfficiencyReports` */
+    public readonly K8sEfficiencyReportsNamespace $k8sEfficiencyReports;
 
     /** `$client->kv` */
     public readonly KvNamespace $kv;
@@ -448,6 +471,9 @@ final class APIV1Client
     /** `$client->quotas` */
     public readonly QuotasNamespace $quotas;
 
+    /** `$client->resourceReports` */
+    public readonly ResourceReportsNamespace $resourceReports;
+
     /** `$client->resources` */
     public readonly ResourcesNamespace $resources;
 
@@ -462,6 +488,9 @@ final class APIV1Client
 
     /** `$client->savings` */
     public readonly SavingsNamespace $savings;
+
+    /** `$client->savingsViews` */
+    public readonly SavingsViewsNamespace $savingsViews;
 
     /** `$client->schedules` */
     public readonly SchedulesNamespace $schedules;
@@ -507,6 +536,9 @@ final class APIV1Client
 
     /** `$client->sshTunnels` */
     public readonly SshTunnelsNamespace $sshTunnels;
+
+    /** `$client->starred` */
+    public readonly StarredNamespace $starred;
 
     /** `$client->status` */
     public readonly StatusNamespace $status;
@@ -589,6 +621,7 @@ final class APIV1Client
         $this->backups = new BackupsNamespace($this->transport);
         $this->bastions = new BastionsNamespace($this->transport);
         $this->billing = new BillingNamespace($this->transport);
+        $this->billingProfiles = new BillingProfilesNamespace($this->transport);
         $this->billingRules = new BillingRulesNamespace($this->transport);
         $this->blastRadius = new BlastRadiusNamespace($this->transport);
         $this->budgets = new BudgetsNamespace($this->transport);
@@ -607,6 +640,7 @@ final class APIV1Client
         $this->costCanvases = new CostCanvasesNamespace($this->transport);
         $this->costCentres = new CostCentresNamespace($this->transport);
         $this->costExports = new CostExportsNamespace($this->transport);
+        $this->costReportAnomalyAlerts = new CostReportAnomalyAlertsNamespace($this->transport);
         $this->costReportFolders = new CostReportFoldersNamespace($this->transport);
         $this->costReportNotifications = new CostReportNotificationsNamespace($this->transport);
         $this->costReports = new CostReportsNamespace($this->transport);
@@ -633,11 +667,14 @@ final class APIV1Client
         $this->extendedSupport = new ExtendedSupportNamespace($this->transport);
         $this->githubIssues = new GithubIssuesNamespace($this->transport);
         $this->iac = new IacNamespace($this->transport);
+        $this->idleFindings = new IdleFindingsNamespace($this->transport);
         $this->incidents = new IncidentsNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->invoices = new InvoicesNamespace($this->transport);
+        $this->issueWebhooks = new IssueWebhooksNamespace($this->transport);
         $this->jira = new JiraNamespace($this->transport);
         $this->jitAccess = new JitAccessNamespace($this->transport);
+        $this->k8sEfficiencyReports = new K8sEfficiencyReportsNamespace($this->transport);
         $this->kv = new KvNamespace($this->transport);
         $this->leakedSecrets = new LeakedSecretsNamespace($this->transport);
         $this->leases = new LeasesNamespace($this->transport);
@@ -664,11 +701,13 @@ final class APIV1Client
         $this->providerOauth = new ProviderOauthNamespace($this->transport);
         $this->queryMonitors = new QueryMonitorsNamespace($this->transport);
         $this->quotas = new QuotasNamespace($this->transport);
+        $this->resourceReports = new ResourceReportsNamespace($this->transport);
         $this->resources = new ResourcesNamespace($this->transport);
         $this->rightsizing = new RightsizingNamespace($this->transport);
         $this->runbooks = new RunbooksNamespace($this->transport);
         $this->savedCostFilters = new SavedCostFiltersNamespace($this->transport);
         $this->savings = new SavingsNamespace($this->transport);
+        $this->savingsViews = new SavingsViewsNamespace($this->transport);
         $this->schedules = new SchedulesNamespace($this->transport);
         $this->scorecards = new ScorecardsNamespace($this->transport);
         $this->search = new SearchNamespace($this->transport);
@@ -684,6 +723,7 @@ final class APIV1Client
         $this->sshFanout = new SshFanoutNamespace($this->transport);
         $this->sshKeys = new SshKeysNamespace($this->transport);
         $this->sshTunnels = new SshTunnelsNamespace($this->transport);
+        $this->starred = new StarredNamespace($this->transport);
         $this->status = new StatusNamespace($this->transport);
         $this->statusIncidents = new StatusIncidentsNamespace($this->transport);
         $this->statusPages = new StatusPagesNamespace($this->transport);

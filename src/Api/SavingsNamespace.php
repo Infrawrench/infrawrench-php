@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,9 @@ final class SavingsNamespace extends ApiNamespace
     /** `$client->savings->events` */
     public readonly SavingsEventsNamespace $events;
 
+    /** `$client->savings->findings` */
+    public readonly SavingsFindingsNamespace $findings;
+
     /** `$client->savings->settings` */
     public readonly SavingsSettingsNamespace $settings;
 
@@ -38,6 +41,7 @@ final class SavingsNamespace extends ApiNamespace
     {
         parent::__construct($transport);
         $this->events = new SavingsEventsNamespace($this->transport);
+        $this->findings = new SavingsFindingsNamespace($this->transport);
         $this->settings = new SavingsSettingsNamespace($this->transport);
     }
 

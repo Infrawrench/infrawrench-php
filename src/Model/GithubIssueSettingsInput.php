@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ final class GithubIssueSettingsInput implements \JsonSerializable
      * @param GithubResolveAction::* $resolveAction
      * @param bool $pullRequestsEnabled Allow holders of `github-issues:write` to open pull requests editing Terraform for IaC-managed findings. Never auto-merged.
      * @param list<GithubIacSourceInput> $iacSources
+     * @param bool|null $acknowledgeOnDone When an issue filed for a cost anomaly is closed as completed, record the anomaly as explained. Omit to keep the stored value.
      */
     public function __construct(
         public readonly bool $enabled,
@@ -40,6 +41,7 @@ final class GithubIssueSettingsInput implements \JsonSerializable
         public readonly string $resolveAction,
         public readonly bool $pullRequestsEnabled,
         public readonly array $iacSources,
+        public readonly ?bool $acknowledgeOnDone = null,
     ) {
     }
 
@@ -59,6 +61,7 @@ final class GithubIssueSettingsInput implements \JsonSerializable
             resolveAction: Coerce::toString($data['resolveAction'] ?? null),
             pullRequestsEnabled: Coerce::toBool($data['pullRequestsEnabled'] ?? null),
             iacSources: Coerce::mapList($data['iacSources'] ?? null, static fn (mixed $item): GithubIacSourceInput => GithubIacSourceInput::fromArray(Coerce::toArray($item))),
+            acknowledgeOnDone: Coerce::toBoolOrNull($data['acknowledgeOnDone'] ?? null),
         );
     }
 
@@ -69,7 +72,7 @@ final class GithubIssueSettingsInput implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'enabled' => $this->enabled,
             'defaultRepo' => $this->defaultRepo?->toArray(),
             'labels' => $this->labels,
@@ -79,6 +82,11 @@ final class GithubIssueSettingsInput implements \JsonSerializable
             'pullRequestsEnabled' => $this->pullRequestsEnabled,
             'iacSources' => array_map(static fn (GithubIacSourceInput $item): array => $item->toArray(), $this->iacSources),
         ];
+        if ($this->acknowledgeOnDone !== null) {
+            $payload['acknowledgeOnDone'] = $this->acknowledgeOnDone;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

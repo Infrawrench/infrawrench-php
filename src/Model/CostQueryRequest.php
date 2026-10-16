@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,6 +40,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
      * @param CostMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
      * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.
+     * @param CostDimension::*|null $xAxis
+     * @param string|null $xAxisTagKey Required when `xAxis` is `tag` or `virtual_tag`: which key's values go on the axis.
+     * @param bool|null $segmentByDate With `xAxis` and `groupBy: none`: segment each bar by date bin (one series per bin). Refused alongside a `groupBy`; ignored without `xAxis`.
      */
     public function __construct(
         public readonly string $from,
@@ -60,6 +63,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         public readonly ?string $measure = null,
         public readonly ?string $usageUnit = null,
         public readonly ?bool $cumulative = null,
+        public readonly ?string $xAxis = null,
+        public readonly ?string $xAxisTagKey = null,
+        public readonly ?bool $segmentByDate = null,
     ) {
     }
 
@@ -89,6 +95,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
             measure: Coerce::toStringOrNull($data['measure'] ?? null),
             usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
             cumulative: Coerce::toBoolOrNull($data['cumulative'] ?? null),
+            xAxis: Coerce::toStringOrNull($data['xAxis'] ?? null),
+            xAxisTagKey: Coerce::toStringOrNull($data['xAxisTagKey'] ?? null),
+            segmentByDate: Coerce::toBoolOrNull($data['segmentByDate'] ?? null),
         );
     }
 
@@ -146,6 +155,15 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         }
         if ($this->cumulative !== null) {
             $payload['cumulative'] = $this->cumulative;
+        }
+        if ($this->xAxis !== null) {
+            $payload['xAxis'] = $this->xAxis;
+        }
+        if ($this->xAxisTagKey !== null) {
+            $payload['xAxisTagKey'] = $this->xAxisTagKey;
+        }
+        if ($this->segmentByDate !== null) {
+            $payload['segmentByDate'] = $this->segmentByDate;
         }
 
         return $payload;

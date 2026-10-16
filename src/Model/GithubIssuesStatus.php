@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class GithubIssuesStatus implements \JsonSerializable
 {
-    /** @param list<GithubInstallationAccess> $installations */
+    /**
+     * @param list<GithubInstallationAccess> $installations
+     * @param bool $webhookConfigured Whether the server verifies GitHub App webhooks (`GITHUB_APP_WEBHOOK_SECRET` is set), which makes issue status live rather than polled.
+     * @param string|null $webhookUrl The URL the GitHub App's webhook points at; null when the server has no APP_URL.
+     */
     public function __construct(
         public readonly bool $appConfigured,
         public readonly array $installations,
         public readonly GithubIssueSettings $settings,
+        public readonly bool $webhookConfigured,
+        public readonly ?string $webhookUrl,
     ) {
     }
 
@@ -41,6 +47,8 @@ final class GithubIssuesStatus implements \JsonSerializable
             appConfigured: Coerce::toBool($data['appConfigured'] ?? null),
             installations: Coerce::mapList($data['installations'] ?? null, static fn (mixed $item): GithubInstallationAccess => GithubInstallationAccess::fromArray(Coerce::toArray($item))),
             settings: GithubIssueSettings::fromArray(Coerce::toArray($data['settings'] ?? null)),
+            webhookConfigured: Coerce::toBool($data['webhookConfigured'] ?? null),
+            webhookUrl: Coerce::toStringOrNull($data['webhookUrl'] ?? null),
         );
     }
 
@@ -55,6 +63,8 @@ final class GithubIssuesStatus implements \JsonSerializable
             'appConfigured' => $this->appConfigured,
             'installations' => array_map(static fn (GithubInstallationAccess $item): array => $item->toArray(), $this->installations),
             'settings' => $this->settings->toArray(),
+            'webhookConfigured' => $this->webhookConfigured,
+            'webhookUrl' => $this->webhookUrl,
         ];
     }
 

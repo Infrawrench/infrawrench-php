@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,18 +27,25 @@ use Infrawrench\Sdk\Model\BusinessMetricImportPreview;
 use Infrawrench\Sdk\Model\BusinessMetricImportPreviewRequest;
 use Infrawrench\Sdk\Model\BusinessMetricInput;
 use Infrawrench\Sdk\Model\Ok;
-use Infrawrench\Sdk\Model\UnitCostQueryRequest;
-use Infrawrench\Sdk\Model\UnitCostQueryResponse;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->businessMetrics` */
 final class BusinessMetricsNamespace extends ApiNamespace
 {
+    /** `$client->businessMetrics->forecastValues` */
+    public readonly BusinessMetricsForecastValuesNamespace $forecastValues;
+
     /** `$client->businessMetrics->get` */
     public readonly BusinessMetricsGetNamespace $get;
 
     /** `$client->businessMetrics->importer` */
     public readonly BusinessMetricsImporterNamespace $importer;
+
+    /** `$client->businessMetrics->unitCosts` */
+    public readonly BusinessMetricsUnitCostsNamespace $unitCosts;
+
+    /** `$client->businessMetrics->usageUnitCosts` */
+    public readonly BusinessMetricsUsageUnitCostsNamespace $usageUnitCosts;
 
     /** `$client->businessMetrics->values` */
     public readonly BusinessMetricsValuesNamespace $values;
@@ -46,8 +53,11 @@ final class BusinessMetricsNamespace extends ApiNamespace
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->forecastValues = new BusinessMetricsForecastValuesNamespace($this->transport);
         $this->get = new BusinessMetricsGetNamespace($this->transport);
         $this->importer = new BusinessMetricsImporterNamespace($this->transport);
+        $this->unitCosts = new BusinessMetricsUnitCostsNamespace($this->transport);
+        $this->usageUnitCosts = new BusinessMetricsUsageUnitCostsNamespace($this->transport);
         $this->values = new BusinessMetricsValuesNamespace($this->transport);
     }
 
@@ -248,54 +258,6 @@ final class BusinessMetricsNamespace extends ApiNamespace
     }
 
     /**
-     * Query unit costs or margin
-     *
-     * Divide spend by the metric, bucketed as asked. Three properties of the answer are worth
-     * knowing before reading it:
-     *
-     * - **The ratio is computed at the requested bucket**, from a summed numerator and a summed
-     * denominator: never a mean of daily ratios, which weights a quiet day as heavily as a peak
-     * one. The same holds for `overallValue`.
-     * - **A missing or non-positive denominator is a gap** (`value: null` with a `gap` reason),
-     * never 0 and never infinite.
-     * - **Currencies are never merged.** Spend in a currency with no stated rate keeps its own
-     * series rather than being dropped or added to another.
-     *
-     * There is no spend `groupBy`: a per-group ratio needs a per-group denominator. Split by a
-     * metric label with `groupByLabel` instead; in a ratio mode the label must be mapped to the
-     * cost dimension its values name (`labelMappings` on the metric), so each label value's spend
-     * is divided by its own volume.
-     *
-     * _Requires permission: `costs:read`._
-     *
-     * POST /api/org/{orgId}/business-metrics/{id}/unit-costs
-     *
-     * Raises on 400: Bad request
-     *
-     * Raises on 404: Not found
-     *
-     * @param string $id Metric id or key
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function unitCosts(string $id, UnitCostQueryRequest $body, ?string $orgId = null, ?RequestOptions $options = null): UnitCostQueryResponse
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'POST',
-                path: '/api/org/{orgId}/business-metrics/{id}/unit-costs',
-                pathParams: ['orgId' => $orgId, 'id' => $id],
-                body: $body->toArray(),
-                hasBody: true,
-            ),
-            $options,
-        );
-
-        return UnitCostQueryResponse::fromArray(Coerce::toArray($data));
-    }
-
-    /**
      * Update a business metric
      *
      * Replaces the whole definition. Changing `key` never orphans history (values are keyed on the
@@ -331,38 +293,6 @@ final class BusinessMetricsNamespace extends ApiNamespace
         );
 
         return BusinessMetric::fromArray(Coerce::toArray($data));
-    }
-
-    /**
-     * Query cost per usage unit
-     *
-     * Spend divided by the usage quantity providers report in one `usageUnit`, with no business
-     * metric involved. Both halves come from the same cost rows (those reported in that unit), so
-     * the numerator is exactly the spend that bought the denominator. A bucket with no usage is a
-     * gap (`no_usage`), never 0. Labels do not apply.
-     *
-     * POST /api/org/{orgId}/business-metrics/usage-unit-costs
-     *
-     * Raises on 400: Bad request
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function usageUnitCosts(UnitCostQueryRequest $body, ?string $orgId = null, ?RequestOptions $options = null): UnitCostQueryResponse
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'POST',
-                path: '/api/org/{orgId}/business-metrics/usage-unit-costs',
-                pathParams: ['orgId' => $orgId],
-                body: $body->toArray(),
-                hasBody: true,
-            ),
-            $options,
-        );
-
-        return UnitCostQueryResponse::fromArray(Coerce::toArray($data));
     }
 
     /**

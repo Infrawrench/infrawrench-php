@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,6 +24,8 @@ use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\Dashboard;
 use Infrawrench\Sdk\Model\DashboardFull;
+use Infrawrench\Sdk\Model\DashboardKpiRequest;
+use Infrawrench\Sdk\Model\DashboardKpiResult;
 use Infrawrench\Sdk\Model\DashboardWithPins;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\Model\ProbeRequest;
@@ -47,6 +49,9 @@ final class DashboardsNamespace extends ApiNamespace
     /** `$client->dashboards->pin` */
     public readonly DashboardsPinNamespace $pin;
 
+    /** `$client->dashboards->roleDefaults` */
+    public readonly DashboardsRoleDefaultsNamespace $roleDefaults;
+
     /** `$client->dashboards->widgets` */
     public readonly DashboardsWidgetsNamespace $widgets;
 
@@ -56,6 +61,7 @@ final class DashboardsNamespace extends ApiNamespace
         $this->default = new DashboardsDefaultNamespace($this->transport);
         $this->notifications = new DashboardsNotificationsNamespace($this->transport);
         $this->pin = new DashboardsPinNamespace($this->transport);
+        $this->roleDefaults = new DashboardsRoleDefaultsNamespace($this->transport);
         $this->widgets = new DashboardsWidgetsNamespace($this->transport);
     }
 
@@ -143,6 +149,41 @@ final class DashboardsNamespace extends ApiNamespace
         );
 
         return DashboardWithPins::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Evaluate a KPI widget config
+     *
+     * Answers one KPI config: a saved card posts its own, an editor posts one to preview it. Needs
+     * `costs:read`, plus `budgets:read` for a budget source; figures are measured inside the
+     * caller's cost visibility scope.
+     *
+     * POST /api/org/{orgId}/dashboards/kpi
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function kpi(DashboardKpiRequest $body, ?string $orgId = null, ?RequestOptions $options = null): DashboardKpiResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/dashboards/kpi',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return DashboardKpiResult::fromArray(Coerce::toArray($data));
     }
 
     /**

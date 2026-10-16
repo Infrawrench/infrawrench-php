@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -246,11 +246,45 @@ final class InvoicesNamespace extends ApiNamespace
     }
 
     /**
+     * Download an invoice as PDF
+     *
+     * The document a customer files: addressee, lines, tax, total, due date and remittance
+     * details, from the billing block frozen at approval. A draft is watermarked. The
+     * collected-versus-adjusted derivation stays in the CSV.
+     *
+     * _Requires permission: `invoices:read`._
+     *
+     * GET /api/org/{orgId}/invoices/{id}/pdf
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return string Raw response bytes.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function pdf(string $id, ?string $orgId = null, ?RequestOptions $options = null): string
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/invoices/{id}/pdf',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+                accept: 'binary',
+            ),
+            $options,
+        );
+
+        return Coerce::toString($data);
+    }
+
+    /**
      * Send an invoice to its customer
      *
      * Changes no figure; the document was frozen at approval. It records the **release** (this may
      * go to the customer, and this person said so), then emails the invoice to the customer's
-     * contact addresses with the CSV attached.
+     * contact addresses and its billing profile's To and Cc, as frozen at approval, with the PDF
+     * and the CSV attached.
      *
      * **200 even when delivery failed.** The release happened and is recorded either way;
      * `delivery` says what became of the transport. An error status would leave the caller unable

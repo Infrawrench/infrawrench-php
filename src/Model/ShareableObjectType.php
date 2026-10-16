@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,10 @@ final class ShareableObjectType
     public const COST_REPORT_FOLDER = 'cost_report_folder';
     public const DASHBOARD = 'dashboard';
     public const COST_CANVAS = 'cost_canvas';
+    public const KUBERNETES_EFFICIENCY_REPORT = 'kubernetes_efficiency_report';
+    public const SAVINGS_VIEW = 'savings_view';
+    public const RESOURCE_REPORT = 'resource_report';
+    public const NETWORK_FLOW_REPORT = 'network_flow_report';
 
     /**
      * Every value, in the order the spec lists them.
@@ -43,6 +47,10 @@ final class ShareableObjectType
             self::COST_REPORT_FOLDER,
             self::DASHBOARD,
             self::COST_CANVAS,
+            self::KUBERNETES_EFFICIENCY_REPORT,
+            self::SAVINGS_VIEW,
+            self::RESOURCE_REPORT,
+            self::NETWORK_FLOW_REPORT,
         ];
     }
 }

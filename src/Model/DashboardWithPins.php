@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class DashboardWithPins implements \JsonSerializable
         public readonly array $pins,
         public readonly array $workflowPins,
         public readonly array $widgets,
+        public readonly ?DefaultDashboardResolution $resolution = null,
     ) {
     }
 
@@ -47,6 +48,7 @@ final class DashboardWithPins implements \JsonSerializable
             pins: Coerce::mapList($data['pins'] ?? null, static fn (mixed $item): DashboardPin => DashboardPin::fromArray(Coerce::toArray($item))),
             workflowPins: Coerce::mapList($data['workflowPins'] ?? null, static fn (mixed $item): DashboardWorkflowPin => DashboardWorkflowPin::fromArray(Coerce::toArray($item))),
             widgets: Coerce::mapList($data['widgets'] ?? null, static fn (mixed $item): DashboardWidget => DashboardWidget::fromArray(Coerce::toArray($item))),
+            resolution: Coerce::nullable($data['resolution'] ?? null, static fn (mixed $value): DefaultDashboardResolution => DefaultDashboardResolution::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -57,12 +59,17 @@ final class DashboardWithPins implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'dashboard' => $this->dashboard->toArray(),
             'pins' => array_map(static fn (DashboardPin $item): array => $item->toArray(), $this->pins),
             'workflowPins' => array_map(static fn (DashboardWorkflowPin $item): array => $item->toArray(), $this->workflowPins),
             'widgets' => array_map(static fn (DashboardWidget $item): array => $item->toArray(), $this->widgets),
         ];
+        if ($this->resolution !== null) {
+            $payload['resolution'] = $this->resolution->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

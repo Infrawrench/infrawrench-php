@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,8 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
+use Infrawrench\Sdk\Model\CostForecastResult;
+use Infrawrench\Sdk\Model\CostForecastRunRequest;
 use Infrawrench\Sdk\Model\CostReport;
 use Infrawrench\Sdk\Model\CostReportBulkResult;
 use Infrawrench\Sdk\Model\CostReportInput;
@@ -33,12 +35,20 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->costReports` */
 final class CostReportsNamespace extends ApiNamespace
 {
+    /** `$client->costReports->anomalyAlert` */
+    public readonly CostReportsAnomalyAlertNamespace $anomalyAlert;
+
+    /** `$client->costReports->forecasts` */
+    public readonly CostReportsForecastsNamespace $forecasts;
+
     /** `$client->costReports->notifications` */
     public readonly CostReportsNotificationsNamespace $notifications;
 
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->anomalyAlert = new CostReportsAnomalyAlertNamespace($this->transport);
+        $this->forecasts = new CostReportsForecastsNamespace($this->transport);
         $this->notifications = new CostReportsNotificationsNamespace($this->transport);
     }
 
@@ -142,6 +152,43 @@ final class CostReportsNamespace extends ApiNamespace
     }
 
     /**
+     * Forecasted costs for a report
+     *
+     * Projected daily spend for the report's scope (its filters, saved filter, cost basis, charge
+     * types and billing rules), optionally narrowed to providers or services, with a
+     * low/expected/high band. Returns the automatic forecast and the requested one (the report's
+     * default when none is named); `all: true` adds every named forecast. Respects the caller's
+     * cost visibility scope. A read despite the method.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * POST /api/org/{orgId}/cost-reports/{id}/forecasted-costs
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function forecastedCosts(string $id, ?string $orgId = null, ?CostForecastRunRequest $body = null, ?RequestOptions $options = null): CostForecastResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/cost-reports/{id}/forecasted-costs',
+                pathParams: ['orgId' => $orgId, 'id' => $id],
+                body: $body?->toArray(),
+                hasBody: $body !== null,
+            ),
+            $options,
+        );
+
+        return CostForecastResult::fromArray(Coerce::toArray($data));
+    }
+
+    /**
      * Get a cost report
      *
      * _Requires permission: `costs:read`._
@@ -234,9 +281,9 @@ final class CostReportsNamespace extends ApiNamespace
      * Executes the report's saved config and returns the series, along with the inclusive window a
      * relative preset resolved to. The body is optional: the report *is* the query, so a caller
      * never has to reassemble its config to get the numbers. It may carry one-off display
-     * overrides (`measure`, `usageUnit`, `binning`, `cumulative`) that apply to this run only and
-     * are never saved; switching a run to `usage` or `count` drops the saved forecast, scenario
-     * and billing rules, which only apply to money.
+     * overrides (`measure`, `usageUnit`, `binning`, `cumulative`, `xAxis`) that apply to this run
+     * only and are never saved; switching a run to `usage` or `count` drops the saved forecast,
+     * scenario and billing rules, which only apply to money.
      *
      * _Requires permission: `costs:read`._
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CostSeriesPoint implements \JsonSerializable
 {
+    /**
+     * @param string $bucket The bin's start date (YYYY-MM-DD), or, when the request set `xAxis`, the dimension value this point belongs to (`__other__` for the folded remainder).
+     */
     public function __construct(
         public readonly string $bucket,
         public readonly float $amount,

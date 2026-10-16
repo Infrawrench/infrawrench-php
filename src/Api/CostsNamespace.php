@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -49,6 +49,9 @@ final class CostsNamespace extends ApiNamespace
     /** `$client->costs->efficiencyAlertSettings` */
     public readonly CostsEfficiencyAlertSettingsNamespace $efficiencyAlertSettings;
 
+    /** `$client->costs->exports` */
+    public readonly CostsExportsNamespace $exports;
+
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
@@ -56,6 +59,7 @@ final class CostsNamespace extends ApiNamespace
         $this->anomalySettings = new CostsAnomalySettingsNamespace($this->transport);
         $this->anomalySuppressions = new CostsAnomalySuppressionsNamespace($this->transport);
         $this->efficiencyAlertSettings = new CostsEfficiencyAlertSettingsNamespace($this->transport);
+        $this->exports = new CostsExportsNamespace($this->transport);
     }
 
     /**

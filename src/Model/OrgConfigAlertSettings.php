@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class OrgConfigAlertSettings implements \JsonSerializable
      * @param array{notifyCreated: bool, notifyUpdated: bool, notifyDeleted: bool, cooldownMinutes: int, minChanges: int, accounts: list<string>}|null $drift
      * @param array{enabled: bool, leadDays: int}|null $expiry
      * @param array{enabled: bool}|null $posture
+     * @param array{enabled: bool, lookbackDays: int, rules: array<string, array{enabled?: bool, thresholds?: array<string, float>}>}|null $idleFindings
      * @param array{enabled: bool, timezone: string, sendDay: int, sendHour: int, narrativeEnabled: bool, recipients: list<string>}|null $digest
      */
     public function __construct(
@@ -39,6 +40,7 @@ final class OrgConfigAlertSettings implements \JsonSerializable
         public readonly ?array $drift = null,
         public readonly ?array $expiry = null,
         public readonly ?array $posture = null,
+        public readonly ?array $idleFindings = null,
         public readonly ?array $digest = null,
     ) {
     }
@@ -55,6 +57,7 @@ final class OrgConfigAlertSettings implements \JsonSerializable
             drift: Coerce::toArrayOrNull($data['drift'] ?? null),
             expiry: Coerce::toArrayOrNull($data['expiry'] ?? null),
             posture: Coerce::toArrayOrNull($data['posture'] ?? null),
+            idleFindings: Coerce::toArrayOrNull($data['idleFindings'] ?? null),
             digest: Coerce::toArrayOrNull($data['digest'] ?? null),
         );
     }
@@ -79,6 +82,9 @@ final class OrgConfigAlertSettings implements \JsonSerializable
         }
         if ($this->posture !== null) {
             $payload['posture'] = $this->posture;
+        }
+        if ($this->idleFindings !== null) {
+            $payload['idleFindings'] = $this->idleFindings;
         }
         if ($this->digest !== null) {
             $payload['digest'] = $this->digest;

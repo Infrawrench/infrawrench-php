@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,6 +37,7 @@ final class OrgConfigDocument implements \JsonSerializable
      * @param list<OrgConfigSlo>|null $slos
      * @param list<OrgConfigCostCentre>|null $costCentres
      * @param array{requiredTags: list<array{key: string, allowedValues?: list<string>}>, enforceOnCreate: bool}|null $tagPolicy
+     * @param list<OrgConfigSavingsView>|null $savingsViews
      */
     public function __construct(
         public readonly ?int $version = null,
@@ -52,6 +53,7 @@ final class OrgConfigDocument implements \JsonSerializable
         public readonly ?array $costCentres = null,
         public readonly ?array $tagPolicy = null,
         public readonly ?OrgConfigAlertSettings $alertSettings = null,
+        public readonly ?array $savingsViews = null,
     ) {
     }
 
@@ -76,6 +78,7 @@ final class OrgConfigDocument implements \JsonSerializable
             costCentres: Coerce::nullable($data['costCentres'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigCostCentre => OrgConfigCostCentre::fromArray(Coerce::toArray($item)))),
             tagPolicy: Coerce::toArrayOrNull($data['tagPolicy'] ?? null),
             alertSettings: Coerce::nullable($data['alertSettings'] ?? null, static fn (mixed $value): OrgConfigAlertSettings => OrgConfigAlertSettings::fromArray(Coerce::toArray($value))),
+            savingsViews: Coerce::nullable($data['savingsViews'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): OrgConfigSavingsView => OrgConfigSavingsView::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -126,6 +129,9 @@ final class OrgConfigDocument implements \JsonSerializable
         }
         if ($this->alertSettings !== null) {
             $payload['alertSettings'] = $this->alertSettings->toArray();
+        }
+        if ($this->savingsViews !== null) {
+            $payload['savingsViews'] = array_map(static fn (OrgConfigSavingsView $item): array => $item->toArray(), $this->savingsViews);
         }
 
         return $payload;

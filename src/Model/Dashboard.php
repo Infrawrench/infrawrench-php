@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,10 +22,15 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class Dashboard implements \JsonSerializable
 {
+    /**
+     * @param bool $isDefault The organization default: the final fallback, never deletable.
+     * @param bool $isResolvedDefault The dashboard the caller lands on: their own default, else their role's, else the organization default. Exactly one listed dashboard has it, unless sharing hides it.
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $name,
         public readonly bool $isDefault,
+        public readonly bool $isResolvedDefault,
     ) {
     }
 
@@ -40,6 +45,7 @@ final class Dashboard implements \JsonSerializable
             id: Coerce::toString($data['id'] ?? null),
             name: Coerce::toString($data['name'] ?? null),
             isDefault: Coerce::toBool($data['isDefault'] ?? null),
+            isResolvedDefault: Coerce::toBool($data['isResolvedDefault'] ?? null),
         );
     }
 
@@ -54,6 +60,7 @@ final class Dashboard implements \JsonSerializable
             'id' => $this->id,
             'name' => $this->name,
             'isDefault' => $this->isDefault,
+            'isResolvedDefault' => $this->isResolvedDefault,
         ];
     }
 

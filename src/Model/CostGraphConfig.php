@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,6 +37,10 @@ final class CostGraphConfig implements \JsonSerializable
      * @param CostMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
      * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.
+     * @param CostDimension::*|null $xAxis
+     * @param string|null $xAxisTagKey Required when `xAxis` is `tag` or `virtual_tag`: which key's values go on the axis.
+     * @param bool|null $segmentByDate With `xAxis` and `groupBy: none`: segment each bar by date bin (one series per bin). Refused alongside a `groupBy`; ignored without `xAxis`.
+     * @param 'line'|'bars'|null $comparisonStyle How `comparePreviousPeriod` is drawn: `line` (omitted) is the dashed totals line, `bars` a previous-period bar beside each bar (bar charts only). Tables always list previous, change and change % columns.
      * @param string|null $unitCostMetricId Divide spend by this business metric (an id, so a key rename never re-points the graph).
      * @param 'unit_cost'|'margin'|'usage_unit_cost'|'raw_metric'|null $unitCostMode The calculation. `usage_unit_cost` needs `unitCostUsageUnit` instead of a metric; the others need `unitCostMetricId`.
      * @param float|null $unitCostScale "Per N units" for a ratio, or the unit a raw metric is shown in. Absent is 1.
@@ -62,6 +66,10 @@ final class CostGraphConfig implements \JsonSerializable
         public readonly ?string $measure = null,
         public readonly ?string $usageUnit = null,
         public readonly ?bool $cumulative = null,
+        public readonly ?string $xAxis = null,
+        public readonly ?string $xAxisTagKey = null,
+        public readonly ?bool $segmentByDate = null,
+        public readonly ?string $comparisonStyle = null,
         public readonly ?string $unitCostMetricId = null,
         public readonly ?string $unitCostMode = null,
         public readonly ?float $unitCostScale = null,
@@ -96,6 +104,10 @@ final class CostGraphConfig implements \JsonSerializable
             measure: Coerce::toStringOrNull($data['measure'] ?? null),
             usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
             cumulative: Coerce::toBoolOrNull($data['cumulative'] ?? null),
+            xAxis: Coerce::toStringOrNull($data['xAxis'] ?? null),
+            xAxisTagKey: Coerce::toStringOrNull($data['xAxisTagKey'] ?? null),
+            segmentByDate: Coerce::toBoolOrNull($data['segmentByDate'] ?? null),
+            comparisonStyle: Coerce::toStringOrNull($data['comparisonStyle'] ?? null),
             unitCostMetricId: Coerce::toStringOrNull($data['unitCostMetricId'] ?? null),
             unitCostMode: Coerce::toStringOrNull($data['unitCostMode'] ?? null),
             unitCostScale: Coerce::toFloatOrNull($data['unitCostScale'] ?? null),
@@ -152,6 +164,18 @@ final class CostGraphConfig implements \JsonSerializable
         }
         if ($this->cumulative !== null) {
             $payload['cumulative'] = $this->cumulative;
+        }
+        if ($this->xAxis !== null) {
+            $payload['xAxis'] = $this->xAxis;
+        }
+        if ($this->xAxisTagKey !== null) {
+            $payload['xAxisTagKey'] = $this->xAxisTagKey;
+        }
+        if ($this->segmentByDate !== null) {
+            $payload['segmentByDate'] = $this->segmentByDate;
+        }
+        if ($this->comparisonStyle !== null) {
+            $payload['comparisonStyle'] = $this->comparisonStyle;
         }
         if ($this->unitCostMetricId !== null) {
             $payload['unitCostMetricId'] = $this->unitCostMetricId;

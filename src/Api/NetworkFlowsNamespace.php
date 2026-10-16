@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,6 +23,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\NetworkFlowFeed;
+use Infrawrench\Sdk\Model\NetworkFlowReportConfig;
+use Infrawrench\Sdk\Model\NetworkFlowReportOptions;
+use Infrawrench\Sdk\Model\NetworkFlowReportResult;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->networkFlows` */
@@ -31,6 +34,9 @@ final class NetworkFlowsNamespace extends ApiNamespace
     /** `$client->networkFlows->kubernetes` */
     public readonly NetworkFlowsKubernetesNamespace $kubernetes;
 
+    /** `$client->networkFlows->reports` */
+    public readonly NetworkFlowsReportsNamespace $reports;
+
     /** `$client->networkFlows->settings` */
     public readonly NetworkFlowsSettingsNamespace $settings;
 
@@ -38,6 +44,7 @@ final class NetworkFlowsNamespace extends ApiNamespace
     {
         parent::__construct($transport);
         $this->kubernetes = new NetworkFlowsKubernetesNamespace($this->transport);
+        $this->reports = new NetworkFlowsReportsNamespace($this->transport);
         $this->settings = new NetworkFlowsSettingsNamespace($this->transport);
     }
 
@@ -84,5 +91,66 @@ final class NetworkFlowsNamespace extends ApiNamespace
         );
 
         return NetworkFlowFeed::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Picker values for the network flow report editor
+     *
+     * Accounts whose provider can report flows, and every VPC, region, zone, peer service, peer
+     * resource type and endpoint seen in the store's 90-day retention. Scoped to what the caller
+     * may see.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/network-flows/report-options
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function reportOptions(?string $orgId = null, ?RequestOptions $options = null): NetworkFlowReportOptions
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/network-flows/report-options',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return NetworkFlowReportOptions::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Run an unsaved network flow report config
+     *
+     * Bytes and estimated cost over time, per group, with the top talking pairs. A read despite
+     * the method.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * POST /api/org/{orgId}/network-flows/report-query
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function reportQuery(NetworkFlowReportConfig $body, ?string $orgId = null, ?RequestOptions $options = null): NetworkFlowReportResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/network-flows/report-query',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return NetworkFlowReportResult::fromArray(Coerce::toArray($data));
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -38,6 +38,7 @@ final class GithubIssueSettings implements \JsonSerializable
         public readonly string $resolveAction,
         public readonly bool $pullRequestsEnabled,
         public readonly array $iacSources,
+        public readonly bool $acknowledgeOnDone,
         public readonly ?string $updatedAt,
     ) {
     }
@@ -58,6 +59,7 @@ final class GithubIssueSettings implements \JsonSerializable
             resolveAction: Coerce::toString($data['resolveAction'] ?? null),
             pullRequestsEnabled: Coerce::toBool($data['pullRequestsEnabled'] ?? null),
             iacSources: Coerce::mapList($data['iacSources'] ?? null, static fn (mixed $item): GithubIacSource => GithubIacSource::fromArray(Coerce::toArray($item))),
+            acknowledgeOnDone: Coerce::toBool($data['acknowledgeOnDone'] ?? null),
             updatedAt: Coerce::toStringOrNull($data['updatedAt'] ?? null),
         );
     }
@@ -78,6 +80,7 @@ final class GithubIssueSettings implements \JsonSerializable
             'resolveAction' => $this->resolveAction,
             'pullRequestsEnabled' => $this->pullRequestsEnabled,
             'iacSources' => array_map(static fn (GithubIacSource $item): array => $item->toArray(), $this->iacSources),
+            'acknowledgeOnDone' => $this->acknowledgeOnDone,
             'updatedAt' => $this->updatedAt,
         ];
     }

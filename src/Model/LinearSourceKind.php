@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,7 @@ final class LinearSourceKind
     public const EXPIRING = 'expiring';
     public const PROBE = 'probe';
     public const EXTENDED_SUPPORT = 'extended_support';
+    public const BUDGET_ALERT = 'budget_alert';
 
     /**
      * Every value, in the order the spec lists them.
@@ -51,6 +52,7 @@ final class LinearSourceKind
             self::EXPIRING,
             self::PROBE,
             self::EXTENDED_SUPPORT,
+            self::BUDGET_ALERT,
         ];
     }
 }

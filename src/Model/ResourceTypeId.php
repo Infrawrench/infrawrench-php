@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -228,6 +228,7 @@ final class ResourceTypeId
     public const CHECK = 'check';
     public const CHECK_GROUP = 'check-group';
     public const CKS_CLUSTER = 'cks-cluster';
+    public const CLASSIC_ELB = 'classic-elb';
     public const CLIENT_KEY = 'client-key';
     public const CLOUD = 'cloud';
     public const CLOUD_ARMOR_POLICY = 'cloud-armor-policy';
@@ -1471,6 +1472,7 @@ final class ResourceTypeId
             self::CHECK,
             self::CHECK_GROUP,
             self::CKS_CLUSTER,
+            self::CLASSIC_ELB,
             self::CLIENT_KEY,
             self::CLOUD,
             self::CLOUD_ARMOR_POLICY,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -43,6 +43,7 @@ final class ManagedAccount implements \JsonSerializable
         public readonly bool $applyBillingRules,
         public readonly ?ManagedAccountPricing $pricing,
         public readonly ?string $notes,
+        public readonly ?string $billingProfileId,
         public readonly array $costCentreIds,
         public readonly array $accountIds,
         public readonly int $invoiceCount,
@@ -70,6 +71,7 @@ final class ManagedAccount implements \JsonSerializable
             applyBillingRules: Coerce::toBool($data['applyBillingRules'] ?? null),
             pricing: Coerce::nullable($data['pricing'] ?? null, static fn (mixed $value): ManagedAccountPricing => ManagedAccountPricing::fromArray(Coerce::toArray($value))),
             notes: Coerce::toStringOrNull($data['notes'] ?? null),
+            billingProfileId: Coerce::toStringOrNull($data['billingProfileId'] ?? null),
             costCentreIds: Coerce::mapList($data['costCentreIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             accountIds: Coerce::mapList($data['accountIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             invoiceCount: Coerce::toInt($data['invoiceCount'] ?? null),
@@ -97,6 +99,7 @@ final class ManagedAccount implements \JsonSerializable
             'applyBillingRules' => $this->applyBillingRules,
             'pricing' => $this->pricing?->toArray(),
             'notes' => $this->notes,
+            'billingProfileId' => $this->billingProfileId,
             'costCentreIds' => $this->costCentreIds,
             'accountIds' => $this->accountIds,
             'invoiceCount' => $this->invoiceCount,

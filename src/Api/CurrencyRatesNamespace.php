@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,8 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Model\ExchangeRate;
+use Infrawrench\Sdk\Model\ExchangeRateImportRequest;
+use Infrawrench\Sdk\Model\ExchangeRateImportResult;
 use Infrawrench\Sdk\Model\ExchangeRateInput;
 use Infrawrench\Sdk\RequestOptions;
 
@@ -58,6 +60,74 @@ final class CurrencyRatesNamespace extends ApiNamespace
         );
 
         return Coerce::toArray($data);
+    }
+
+    /**
+     * Upload many exchange rates from a CSV
+     *
+     * Upserts every row on (`fromCurrency`, `toCurrency`, `effectiveFrom`), exactly as the
+     * single-rate PUT does, in one transaction. Send `dryRun: true` first to see each row
+     * classified (`create`, `update`, `unchanged`, `error` with the reason); an upload with an
+     * invalid row writes nothing unless `skipInvalid` is set. Uploaded rates are ordinary stated
+     * rates: they win over the automatic feed for the days they cover, and a `billing_period` row
+     * (or an `effective_to`) hands the days after it back to the next rate or the feed. Requires
+     * `org:settings:write`; applied uploads are audit-logged as `exchange_rate.import`.
+     *
+     * _Requires permission: `org:settings:write`._
+     *
+     * POST /api/org/{orgId}/currency/rates/import
+     *
+     * Raises on 400: A malformed body, or a whole-file problem; the body is then the result with
+     * `fileError` and `error` set.
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function import(ExchangeRateImportRequest $body, ?string $orgId = null, ?RequestOptions $options = null): ExchangeRateImportResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/currency/rates/import',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return ExchangeRateImportResult::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * CSV template for uploading exchange rates
+     *
+     * The header row `POST /currency/rates/import` reads, plus one example row per shape: an
+     * open-ended rate, a bounded override, and a `billing_period` row.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/currency/rates/template
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @return string Raw response bytes.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function template(?string $orgId = null, ?RequestOptions $options = null): string
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/currency/rates/template',
+                pathParams: ['orgId' => $orgId],
+                accept: 'binary',
+            ),
+            $options,
+        );
+
+        return Coerce::toString($data);
     }
 
     /**

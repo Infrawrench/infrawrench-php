@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,14 +21,25 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\ManagedAccount;
 use Infrawrench\Sdk\Model\ManagedAccountInput;
 use Infrawrench\Sdk\Model\Ok;
+use Infrawrench\Sdk\Model\UnassignedSpendReport;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->managedAccounts` */
 final class ManagedAccountsNamespace extends ApiNamespace
 {
+    /** `$client->managedAccounts->assignments` */
+    public readonly ManagedAccountsAssignmentsNamespace $assignments;
+
+    public function __construct(Transport $transport)
+    {
+        parent::__construct($transport);
+        $this->assignments = new ManagedAccountsAssignmentsNamespace($this->transport);
+    }
+
     /**
      * Create a managed account
      *
@@ -150,6 +161,39 @@ final class ManagedAccountsNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): ManagedAccount => ManagedAccount::fromArray(Coerce::toArray($item)));
+    }
+
+    /**
+     * Find spend no customer is billed for
+     *
+     * Spend in the period, by cost centre and account, that no managed account's scope covers.
+     * Requires `costs:read` as well as `invoices:read`: it is a cost breakdown of the whole
+     * organisation.
+     *
+     * _Requires permission: `costs:read`._
+     *
+     * GET /api/org/{orgId}/managed-accounts/unassigned
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param string|null $from Defaults, with `to`, to the last full calendar month.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function unassigned(?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): UnassignedSpendReport
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/managed-accounts/unassigned',
+                pathParams: ['orgId' => $orgId],
+                query: ['from' => $from, 'to' => $to],
+            ),
+            $options,
+        );
+
+        return UnassignedSpendReport::fromArray(Coerce::toArray($data));
     }
 
     /**

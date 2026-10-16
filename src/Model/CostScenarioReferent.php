@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostScenarioReferent implements \JsonSerializable
 {
     /**
-     * @param 'budget'|'cost_report'|'cost_graph_widget' $kind
+     * @param 'budget'|'cost_report'|'cost_graph_widget'|'cost_forecast' $kind
      * @param string $id Budget id, report id, or dashboard-widget id.
      * @param string|null $dashboardId Set for `cost_graph_widget` referents.
      */

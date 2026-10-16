@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class OrphanedResource implements \JsonSerializable
 {
     /**
-     * @param string $id Infrawrench resource id.
+     * @param string $id Infrawrench resource id; for an idle finding whose `idle.hasResource` is false, a finding id prefixed `idle:`.
      * @param PluginId::* $pluginId
      * @param string|null $externalId Provider-native id, when known.
      * @param string $reason Plugin-authored explanation of why this resource looks wasted.
@@ -40,6 +40,8 @@ final class OrphanedResource implements \JsonSerializable
         public readonly ?ResourceOwnerAnnotation $owner,
         public readonly ?string $lastSyncedAt,
         public readonly ?FindingRemediation $remediation = null,
+        public readonly ?OrphanIdleDetail $idle = null,
+        public readonly ?IdleSavingsEstimate $estimate = null,
     ) {
     }
 
@@ -62,6 +64,8 @@ final class OrphanedResource implements \JsonSerializable
             owner: Coerce::nullable($data['owner'] ?? null, static fn (mixed $value): ResourceOwnerAnnotation => ResourceOwnerAnnotation::fromArray(Coerce::toArray($value))),
             lastSyncedAt: Coerce::toStringOrNull($data['lastSyncedAt'] ?? null),
             remediation: Coerce::nullable($data['remediation'] ?? null, static fn (mixed $value): FindingRemediation => FindingRemediation::fromArray(Coerce::toArray($value))),
+            idle: Coerce::nullable($data['idle'] ?? null, static fn (mixed $value): OrphanIdleDetail => OrphanIdleDetail::fromArray(Coerce::toArray($value))),
+            estimate: Coerce::nullable($data['estimate'] ?? null, static fn (mixed $value): IdleSavingsEstimate => IdleSavingsEstimate::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -86,6 +90,12 @@ final class OrphanedResource implements \JsonSerializable
         ];
         if ($this->remediation !== null) {
             $payload['remediation'] = $this->remediation?->toArray();
+        }
+        if ($this->idle !== null) {
+            $payload['idle'] = $this->idle->toArray();
+        }
+        if ($this->estimate !== null) {
+            $payload['estimate'] = $this->estimate?->toArray();
         }
 
         return $payload;

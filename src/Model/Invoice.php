@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -49,6 +49,7 @@ final class Invoice implements \JsonSerializable
         public readonly ?string $notes,
         public readonly array $lines,
         public readonly InvoiceDerivation $derivation,
+        public readonly ?InvoiceBilling $billing,
         public readonly bool $live,
         public readonly string $computedAt,
         public readonly ?string $approvedByUserId,
@@ -87,6 +88,7 @@ final class Invoice implements \JsonSerializable
             notes: Coerce::toStringOrNull($data['notes'] ?? null),
             lines: Coerce::mapList($data['lines'] ?? null, static fn (mixed $item): InvoiceLine => InvoiceLine::fromArray(Coerce::toArray($item))),
             derivation: InvoiceDerivation::fromArray(Coerce::toArray($data['derivation'] ?? null)),
+            billing: Coerce::nullable($data['billing'] ?? null, static fn (mixed $value): InvoiceBilling => InvoiceBilling::fromArray(Coerce::toArray($value))),
             live: Coerce::toBool($data['live'] ?? null),
             computedAt: Coerce::toString($data['computedAt'] ?? null),
             approvedByUserId: Coerce::toStringOrNull($data['approvedByUserId'] ?? null),
@@ -125,6 +127,7 @@ final class Invoice implements \JsonSerializable
             'notes' => $this->notes,
             'lines' => array_map(static fn (InvoiceLine $item): array => $item->toArray(), $this->lines),
             'derivation' => $this->derivation->toArray(),
+            'billing' => $this->billing?->toArray(),
             'live' => $this->live,
             'computedAt' => $this->computedAt,
             'approvedByUserId' => $this->approvedByUserId,

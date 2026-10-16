@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,8 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class OrgConfigCostFilter implements \JsonSerializable
 {
     /**
-     * @param 'in'|'not_in' $op
-     * @param list<string> $values
+     * @param CostFilterOperator::* $op
+     * @param list<string> $values Values to compare with. At least one, except for `is_set` and `is_not_set`, which take an empty list. The text operators refuse an empty string.
      */
     public function __construct(
         public readonly string $dimension,

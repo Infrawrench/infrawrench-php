@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,11 +25,9 @@ use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\FileGithubIssueInput;
 use Infrawrench\Sdk\Model\FileGithubIssueResult;
 use Infrawrench\Sdk\Model\GithubAssignee;
-use Infrawrench\Sdk\Model\GithubIssueLink;
 use Infrawrench\Sdk\Model\GithubIssueRouteResolution;
 use Infrawrench\Sdk\Model\GithubIssueSettings;
 use Infrawrench\Sdk\Model\GithubIssueSettingsInput;
-use Infrawrench\Sdk\Model\GithubIssueSourceKind;
 use Infrawrench\Sdk\Model\GithubIssuesStatus;
 use Infrawrench\Sdk\Model\GithubLabel;
 use Infrawrench\Sdk\RequestOptions;
@@ -37,12 +35,16 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->githubIssues` */
 final class GithubIssuesNamespace extends ApiNamespace
 {
+    /** `$client->githubIssues->links` */
+    public readonly GithubIssuesLinksNamespace $links;
+
     /** `$client->githubIssues->pullRequests` */
     public readonly GithubIssuesPullRequestsNamespace $pullRequests;
 
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->links = new GithubIssuesLinksNamespace($this->transport);
         $this->pullRequests = new GithubIssuesPullRequestsNamespace($this->transport);
     }
 
@@ -210,38 +212,6 @@ final class GithubIssuesNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): GithubLabel => GithubLabel::fromArray(Coerce::toArray($item)));
-    }
-
-    /**
-     * Look up filed GitHub issues for a set of findings
-     *
-     * _Requires permission: `github-issues:read`._
-     *
-     * GET /api/org/{orgId}/github-issues/links
-     *
-     * Raises on 400: Bad request
-     *
-     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param GithubIssueSourceKind::*|null $sourceKind
-     * @param 'open'|'closed'|null $state
-     * @param list<string>|null $sourceId
-     * @return list<GithubIssueLink>
-     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
-     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
-     */
-    public function links(?string $orgId = null, ?string $sourceKind = null, ?string $state = null, ?array $sourceId = null, ?RequestOptions $options = null): array
-    {
-        $data = $this->transport->request(
-            new RequestSpec(
-                method: 'GET',
-                path: '/api/org/{orgId}/github-issues/links',
-                pathParams: ['orgId' => $orgId],
-                query: ['sourceKind' => $sourceKind, 'state' => $state, 'sourceId' => $sourceId],
-            ),
-            $options,
-        );
-
-        return Coerce::mapList($data, static fn (mixed $item): GithubIssueLink => GithubIssueLink::fromArray(Coerce::toArray($item)));
     }
 
     /**

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.81.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.81.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,12 +24,14 @@ final class OrgConfigDashboard implements \JsonSerializable
 {
     /**
      * @param string $key Stable slug identifying this entity across organizations. Derived from the name on export; it is what an apply matches on, so renaming an entity while keeping its key is a rename rather than a delete-and-create.
+     * @param list<string>|null $defaultForRoles Role names (case-insensitive) whose members land on this dashboard unless they picked their own. Omitted leaves role defaults untouched; `[]` clears the roles defaulting here. A role may be named by one dashboard only.
      * @param list<array<string, mixed>|array{kind: 'workflow', workflowKey: string}|array{kind: 'resource', pluginId: string, resourceTypeId: string, externalId: string, account: string, width?: int, height?: int}>|null $cards
      */
     public function __construct(
         public readonly string $key,
         public readonly string $name,
         public readonly ?bool $isDefault = null,
+        public readonly ?array $defaultForRoles = null,
         public readonly ?array $cards = null,
     ) {
     }
@@ -45,6 +47,7 @@ final class OrgConfigDashboard implements \JsonSerializable
             key: Coerce::toString($data['key'] ?? null),
             name: Coerce::toString($data['name'] ?? null),
             isDefault: Coerce::toBoolOrNull($data['isDefault'] ?? null),
+            defaultForRoles: Coerce::nullable($data['defaultForRoles'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             cards: Coerce::toListOrNull($data['cards'] ?? null),
         );
     }
@@ -62,6 +65,9 @@ final class OrgConfigDashboard implements \JsonSerializable
         ];
         if ($this->isDefault !== null) {
             $payload['isDefault'] = $this->isDefault;
+        }
+        if ($this->defaultForRoles !== null) {
+            $payload['defaultForRoles'] = $this->defaultForRoles;
         }
         if ($this->cards !== null) {
             $payload['cards'] = $this->cards;
