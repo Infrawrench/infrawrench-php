@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,7 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
+use Infrawrench\Sdk\Model\AgentLinkableScopes;
 use Infrawrench\Sdk\Model\AgentVmAccount;
 use Infrawrench\Sdk\RequestOptions;
 
@@ -65,5 +66,32 @@ final class AgentsNamespace extends ApiNamespace
         );
 
         return Coerce::mapList($data, static fn (mixed $item): AgentVmAccount => AgentVmAccount::fromArray(Coerce::toArray($item)));
+    }
+
+    /**
+     * What you could give a Nibblets session's agent link
+     *
+     * `scopes` is null when you cannot approve links here (no `team:invite`).
+     *
+     * _Requires permission: `resources:write`._
+     *
+     * GET /api/org/{orgId}/agents/link-scopes
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function linkScopes(?string $orgId = null, ?RequestOptions $options = null): AgentLinkableScopes
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/agents/link-scopes',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return AgentLinkableScopes::fromArray(Coerce::toArray($data));
     }
 }

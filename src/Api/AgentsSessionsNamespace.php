@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class AgentsSessionsNamespace extends ApiNamespace
      * POST /api/org/{orgId}/agents/sessions
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

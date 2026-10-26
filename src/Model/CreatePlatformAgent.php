@@ -1,0 +1,76 @@
+<?php
+
+/*
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * https://github.com/Infrawrench/Infrawrench
+ *
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
+ *
+ * DO NOT EDIT. Regenerate with:
+ *   pnpm --filter @infrawrench/web generate:sdk
+ *
+ * Internal routes are absent by construction: the generator consumes the same
+ * published spec that /openapi.json serves, which drops every operation
+ * marked x-internal.
+ */
+
+declare(strict_types=1);
+
+namespace Infrawrench\Sdk\Model;
+
+use Infrawrench\Sdk\Internal\Coerce;
+
+final class CreatePlatformAgent implements \JsonSerializable
+{
+    /**
+     * @param list<string> $scopes
+     * @param list<string>|null $providers Plugin ids. Narrows every `resources:*`, `secrets:*` and `storage:*` scope to these providers (`resources:read` becomes `resources:<plugin>:read`). Omitted or empty means all. With providers, every scope must be one of those families (see `narrowableScopes`).
+     */
+    public function __construct(
+        public readonly string $externalId,
+        public readonly string $label,
+        public readonly array $scopes,
+        public readonly ?array $providers = null,
+    ) {
+    }
+
+    /**
+     * Build one from a decoded JSON object.
+     *
+     * @param array<string, mixed> $data
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            externalId: Coerce::toString($data['externalId'] ?? null),
+            label: Coerce::toString($data['label'] ?? null),
+            scopes: Coerce::mapList($data['scopes'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
+            providers: Coerce::nullable($data['providers'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+        );
+    }
+
+    /**
+     * The wire representation, ready for `json_encode`.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        $payload = [
+            'externalId' => $this->externalId,
+            'label' => $this->label,
+            'scopes' => $this->scopes,
+        ];
+        if ($this->providers !== null) {
+            $payload['providers'] = $this->providers;
+        }
+
+        return $payload;
+    }
+
+    /** @return array<string, mixed> */
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
+    }
+}

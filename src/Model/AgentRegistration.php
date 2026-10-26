@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,8 +23,12 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class AgentRegistration implements \JsonSerializable
 {
     /**
-     * @param 'anonymous'|'service_auth' $kind
+     * @param 'anonymous'|'service_auth'|'platform' $kind
      * @param string|null $prefix First 8 characters of the credential.
+     * @param string|null $linkId The platform link that made this agent (`kind: platform`), else null.
+     * @param string|null $externalId The platform's own id for it.
+     * @param list<string>|null $scopes Platform agents only: the scopes granted, before provider narrowing.
+     * @param list<string>|null $providers Platform agents only: plugin ids its scopes are narrowed to. Empty means all.
      */
     public function __construct(
         public readonly string $id,
@@ -37,6 +41,10 @@ final class AgentRegistration implements \JsonSerializable
         public readonly ?string $lastSeenAt,
         public readonly ?string $revokedAt,
         public readonly string $createdAt,
+        public readonly ?string $linkId,
+        public readonly ?string $externalId,
+        public readonly ?array $scopes,
+        public readonly ?array $providers,
     ) {
     }
 
@@ -58,6 +66,10 @@ final class AgentRegistration implements \JsonSerializable
             lastSeenAt: Coerce::toStringOrNull($data['lastSeenAt'] ?? null),
             revokedAt: Coerce::toStringOrNull($data['revokedAt'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
+            linkId: Coerce::toStringOrNull($data['linkId'] ?? null),
+            externalId: Coerce::toStringOrNull($data['externalId'] ?? null),
+            scopes: Coerce::nullable($data['scopes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            providers: Coerce::nullable($data['providers'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
         );
     }
 
@@ -79,6 +91,10 @@ final class AgentRegistration implements \JsonSerializable
             'lastSeenAt' => $this->lastSeenAt,
             'revokedAt' => $this->revokedAt,
             'createdAt' => $this->createdAt,
+            'linkId' => $this->linkId,
+            'externalId' => $this->externalId,
+            'scopes' => $this->scopes,
+            'providers' => $this->providers,
         ];
     }
 

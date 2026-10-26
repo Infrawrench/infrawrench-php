@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,7 @@ final class AgentSettings implements \JsonSerializable
     /**
      * @param 'codex'|'claude-code' $tool
      * @param array<string, string> $fields
-     * @param 'terminal'|'t3-code'|null $surface
+     * @param 'terminal'|'t3-code'|'nibblets'|null $surface
      * @param list<string>|null $serviceAccountIds Accounts whose plugin installs a service on the VM over SSH after setup (e.g. Tailscale). See GET /resources/ssh-install/accounts.
      * @param 't3-connect'|'tailscale'|null $t3Access
      */

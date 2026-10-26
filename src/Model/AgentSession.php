@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,10 +26,11 @@ final class AgentSession implements \JsonSerializable
      * @param 'codex'|'claude-code' $tool
      * @param 'pending'|'provisioning'|'setting-up'|'up'|'failed'|'stopped' $status
      * @param list<string> $logs
-     * @param 'terminal'|'t3-code'|null $surface
+     * @param 'terminal'|'t3-code'|'nibblets'|null $surface
      * @param list<string>|null $serviceAccountIds Accounts whose plugin installs a service on the VM over SSH after setup (e.g. Tailscale). See GET /resources/ssh-install/accounts.
      * @param 't3-connect'|'tailscale'|null $t3Access
      * @param list<AgentServiceInstall>|null $serviceInstalls
+     * @param string|null $agentLinkId Nibblets sessions: the agent link that starts the server linked to this organization (see Agent links). Revoked, with its agents, when the session is deleted.
      */
     public function __construct(
         public readonly string $id,
@@ -50,6 +51,7 @@ final class AgentSession implements \JsonSerializable
         public readonly ?array $serviceAccountIds = null,
         public readonly ?string $t3Access = null,
         public readonly ?array $serviceInstalls = null,
+        public readonly ?string $agentLinkId = null,
     ) {
     }
 
@@ -79,6 +81,7 @@ final class AgentSession implements \JsonSerializable
             serviceAccountIds: Coerce::nullable($data['serviceAccountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             t3Access: Coerce::toStringOrNull($data['t3Access'] ?? null),
             serviceInstalls: Coerce::nullable($data['serviceInstalls'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): AgentServiceInstall => AgentServiceInstall::fromArray(Coerce::toArray($item)))),
+            agentLinkId: Coerce::toStringOrNull($data['agentLinkId'] ?? null),
         );
     }
 
@@ -116,6 +119,9 @@ final class AgentSession implements \JsonSerializable
         }
         if ($this->serviceInstalls !== null) {
             $payload['serviceInstalls'] = array_map(static fn (AgentServiceInstall $item): array => $item->toArray(), $this->serviceInstalls);
+        }
+        if ($this->agentLinkId !== null) {
+            $payload['agentLinkId'] = $this->agentLinkId;
         }
 
         return $payload;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.82.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.84.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.82.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.84.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,15 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CreateAgentSession implements \JsonSerializable
 {
+    /**
+     * @param array{scopes: list<string>}|null $nibbletsLink Nibblets sessions only: start the server linked to this organization through an agent link you approve, as on the link approval page. Needs `team:invite`; `scopes` must be within what you hold (no break-glass elevation) minus permissions no agent may hold. Refused for API keys and agents.
+     */
     public function __construct(
         public readonly ?AgentSettings $settings,
         public readonly ?string $repo = null,
         public readonly ?string $projectName = null,
         public readonly ?string $workspaceName = null,
+        public readonly ?array $nibbletsLink = null,
     ) {
     }
 
@@ -42,6 +46,7 @@ final class CreateAgentSession implements \JsonSerializable
             repo: Coerce::toStringOrNull($data['repo'] ?? null),
             projectName: Coerce::toStringOrNull($data['projectName'] ?? null),
             workspaceName: Coerce::toStringOrNull($data['workspaceName'] ?? null),
+            nibbletsLink: Coerce::toArrayOrNull($data['nibbletsLink'] ?? null),
         );
     }
 
@@ -63,6 +68,9 @@ final class CreateAgentSession implements \JsonSerializable
         }
         if ($this->workspaceName !== null) {
             $payload['workspaceName'] = $this->workspaceName;
+        }
+        if ($this->nibbletsLink !== null) {
+            $payload['nibbletsLink'] = $this->nibbletsLink;
         }
 
         return $payload;
