@@ -1,0 +1,76 @@
+<?php
+
+/*
+ * infrawrench/sdk v1.86.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * https://github.com/Infrawrench/Infrawrench
+ *
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.86.0).
+ *
+ * DO NOT EDIT. Regenerate with:
+ *   pnpm --filter @infrawrench/web generate:sdk
+ *
+ * Internal routes are absent by construction: the generator consumes the same
+ * published spec that /openapi.json serves, which drops every operation
+ * marked x-internal.
+ */
+
+declare(strict_types=1);
+
+namespace Infrawrench\Sdk\Model;
+
+use Infrawrench\Sdk\Internal\Coerce;
+
+final class AwsPricingSource implements \JsonSerializable
+{
+    /**
+     * @param string $source A platform name, or `spot` for EC2 spot prices.
+     * @param string|null $priceListTo Newest AWS price list in the data (UTC).
+     * @param string $syncedAt When it was loaded (UTC).
+     */
+    public function __construct(
+        public readonly string $source,
+        public readonly string $version,
+        public readonly ?string $priceListTo,
+        public readonly string $syncedAt,
+        public readonly int $priceRows,
+    ) {
+    }
+
+    /**
+     * Build one from a decoded JSON object.
+     *
+     * @param array<string, mixed> $data
+     */
+    public static function fromArray(array $data): self
+    {
+        return new self(
+            source: Coerce::toString($data['source'] ?? null),
+            version: Coerce::toString($data['version'] ?? null),
+            priceListTo: Coerce::toStringOrNull($data['priceListTo'] ?? null),
+            syncedAt: Coerce::toString($data['syncedAt'] ?? null),
+            priceRows: Coerce::toInt($data['priceRows'] ?? null),
+        );
+    }
+
+    /**
+     * The wire representation, ready for `json_encode`.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'source' => $this->source,
+            'version' => $this->version,
+            'priceListTo' => $this->priceListTo,
+            'syncedAt' => $this->syncedAt,
+            'priceRows' => $this->priceRows,
+        ];
+    }
+
+    /** @return array<string, mixed> */
+    public function jsonSerialize(): mixed
+    {
+        return $this->toArray();
+    }
+}
