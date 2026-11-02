@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.89.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.90.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.89.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.90.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,11 +35,15 @@ final class AgentsNamespace extends ApiNamespace
     /** `$client->agents->settings` */
     public readonly AgentsSettingsNamespace $settings;
 
+    /** `$client->agents->t3Policy` */
+    public readonly AgentsT3PolicyNamespace $t3Policy;
+
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
         $this->sessions = new AgentsSessionsNamespace($this->transport);
         $this->settings = new AgentsSettingsNamespace($this->transport);
+        $this->t3Policy = new AgentsT3PolicyNamespace($this->transport);
     }
 
     /**

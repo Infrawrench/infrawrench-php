@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.89.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.90.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.89.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.90.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,7 @@ final class AgentSession implements \JsonSerializable
      * @param 'terminal'|'t3-code'|'nibblets'|null $surface
      * @param list<string>|null $serviceAccountIds Accounts whose plugin installs a service on the VM over SSH after setup (e.g. Tailscale). See GET /resources/ssh-install/accounts.
      * @param 't3-connect'|'tailscale'|null $t3Access
+     * @param bool|null $t3PolicyRestartPending T3 Code sessions: `t3Policy` is installed but T3 Code has not restarted since, so the server still enforces the policy it started with. Cleared by a restarting rollout or Authorize server.
      * @param list<AgentServiceInstall>|null $serviceInstalls
      * @param string|null $agentLinkId Nibblets sessions: the agent link that starts the server linked to this organization (see Agent links). Revoked, with its agents, when the session is deleted.
      */
@@ -50,6 +51,8 @@ final class AgentSession implements \JsonSerializable
         public readonly ?string $surface = null,
         public readonly ?array $serviceAccountIds = null,
         public readonly ?string $t3Access = null,
+        public readonly ?T3CodePolicy $t3Policy = null,
+        public readonly ?bool $t3PolicyRestartPending = null,
         public readonly ?array $serviceInstalls = null,
         public readonly ?string $agentLinkId = null,
     ) {
@@ -80,6 +83,8 @@ final class AgentSession implements \JsonSerializable
             surface: Coerce::toStringOrNull($data['surface'] ?? null),
             serviceAccountIds: Coerce::nullable($data['serviceAccountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             t3Access: Coerce::toStringOrNull($data['t3Access'] ?? null),
+            t3Policy: Coerce::nullable($data['t3Policy'] ?? null, static fn (mixed $value): T3CodePolicy => T3CodePolicy::fromArray(Coerce::toArray($value))),
+            t3PolicyRestartPending: Coerce::toBoolOrNull($data['t3PolicyRestartPending'] ?? null),
             serviceInstalls: Coerce::nullable($data['serviceInstalls'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): AgentServiceInstall => AgentServiceInstall::fromArray(Coerce::toArray($item)))),
             agentLinkId: Coerce::toStringOrNull($data['agentLinkId'] ?? null),
         );
@@ -116,6 +121,12 @@ final class AgentSession implements \JsonSerializable
         }
         if ($this->t3Access !== null) {
             $payload['t3Access'] = $this->t3Access;
+        }
+        if ($this->t3Policy !== null) {
+            $payload['t3Policy'] = $this->t3Policy?->toArray();
+        }
+        if ($this->t3PolicyRestartPending !== null) {
+            $payload['t3PolicyRestartPending'] = $this->t3PolicyRestartPending;
         }
         if ($this->serviceInstalls !== null) {
             $payload['serviceInstalls'] = array_map(static fn (AgentServiceInstall $item): array => $item->toArray(), $this->serviceInstalls);
