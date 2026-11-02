@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.87.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.88.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.87.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.88.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,37 +30,14 @@ use Infrawrench\Sdk\RequestOptions;
 final class AwsPricingNamespace extends ApiNamespace
 {
     /**
-     * Run a read-only SQL query over AWS pricing data
+     * Run a read-only SQL query over instance pricing data (deprecated path)
      *
-     * Runs one read-only ClickHouse statement against the AWS pricing warehouse: every instance
-     * type's specs and every price AWS has listed for it (on demand, reserved and EC2 spot), in
-     * every region, with history, for EC2, RDS, ElastiCache, OpenSearch, Redshift, DocumentDB,
-     * Neptune, MemoryDB, DAX, SageMaker, EMR and GameLift. It is the data behind
-     * instances.infrawrench.com. Needs no scope. Use `GET /api/v1/aws-pricing/schema` for the
-     * columns, or the tables below; filter `prices` on `platform` and `current`.
-     *
-     * - `prices`: Every price AWS has listed for an instance type, one row per period a price
-     * held. `current = true` (equivalently `valid_to IS NULL`) is the price on offer now; filter
-     * on it unless the question is about history. A product's price is identified by (platform,
-     * instance_type, region, pricing, lease, offering_class, purchase_option) plus its variant
-     * columns, so always fix the variant columns that matter for the platform (see the defaults in
-     * the notes) or you will mix e.g. Windows and Linux prices.
-     * - `instance_types`: One row per instance type per platform with its current specs. EC2 spot
-     * prices use the `ec2` rows. Specs AWS does not list are NULL or `''`; `attributes` has every
-     * attribute AWS publishes, as strings.
-     * - `attribute_changes`: History of instance attributes: the values each type was first listed
-     * with, then every change. Use it for questions like when a spec changed.
-     * - `regions`: Region codes and the names AWS gives them, per platform's price list. Use it to
-     * turn a city or country into a region code.
-     * - `sync_state`: When each bundle was loaded and which AWS price lists it covers;
-     * `max(price_list_to)` is how fresh the data is.
-     * - `service_events`: Every incident AWS posted on its public Health Dashboard (status page),
-     * 2008 to now: one row per event, with when it was posted, when AWS says the impact began and
-     * ended, and every update AWS wrote. Only events AWS chose to post publicly; account-specific
-     * issues never appear, so no event does not prove no impact. Use it for questions about
-     * outages, incidents and how reliable a service or region has been.
+     * Deprecated alias of `POST /api/v1/instance-pricing/query`, its path before the warehouse
+     * covered clouds other than AWS; it behaves identically. Use the new path.
      *
      * POST /api/v1/aws-pricing/query
+     *
+     * Deprecated.
      *
      * Raises on 400: The query was refused: not read-only, more than one statement, or
      * ClickHouse's own error (unknown column, syntax), with its message
@@ -92,71 +69,14 @@ final class AwsPricingNamespace extends ApiNamespace
     }
 
     /**
-     * Describe the AWS pricing tables
+     * Describe the instance pricing tables (deprecated path)
      *
-     * Every table and column of the AWS pricing warehouse with what it holds, the notes a correct
-     * query depends on, and how fresh each source is. Needs no scope.
-     *
-     * Tables:
-     *
-     * - `prices`: Every price AWS has listed for an instance type, one row per period a price
-     * held. `current = true` (equivalently `valid_to IS NULL`) is the price on offer now; filter
-     * on it unless the question is about history. A product's price is identified by (platform,
-     * instance_type, region, pricing, lease, offering_class, purchase_option) plus its variant
-     * columns, so always fix the variant columns that matter for the platform (see the defaults in
-     * the notes) or you will mix e.g. Windows and Linux prices.
-     * - `instance_types`: One row per instance type per platform with its current specs. EC2 spot
-     * prices use the `ec2` rows. Specs AWS does not list are NULL or `''`; `attributes` has every
-     * attribute AWS publishes, as strings.
-     * - `attribute_changes`: History of instance attributes: the values each type was first listed
-     * with, then every change. Use it for questions like when a spec changed.
-     * - `regions`: Region codes and the names AWS gives them, per platform's price list. Use it to
-     * turn a city or country into a region code.
-     * - `sync_state`: When each bundle was loaded and which AWS price lists it covers;
-     * `max(price_list_to)` is how fresh the data is.
-     * - `service_events`: Every incident AWS posted on its public Health Dashboard (status page),
-     * 2008 to now: one row per event, with when it was posted, when AWS says the impact began and
-     * ended, and every update AWS wrote. Only events AWS chose to post publicly; account-specific
-     * issues never appear, so no event does not prove no impact. Use it for questions about
-     * outages, incidents and how reliable a service or region has been.
-     *
-     * Notes:
-     *
-     * - All prices are USD. Timestamps are UTC DateTime.
-     * - Usual defaults when a question does not say otherwise: for ec2, operating_system =
-     * 'Linux', tenancy = 'Shared', pre_installed_sw = 'NA', capacity_status = 'Used',
-     * license_model = 'No License required' and pricing = 'on_demand'; for rds, deployment_option
-     * = 'Single-AZ', one database_engine (PostgreSQL if unsaid) and usage_type NOT LIKE '%Unused%'
-     * (those rows price unused capacity reservations); for elasticache and memorydb, cache_engine
-     * = 'Redis' (or 'Valkey') and usage_type = 'NodeUsage'; region us-east-1.
-     * - EC2 Windows: the price AWS quotes for Windows (license included) is license_model = 'No
-     * License required'. The `License Included - Infrastructure` and `Bring your own license` rows
-     * price only the compute, at the Linux rate, so never quote them as the Windows price unless
-     * the question is about bringing a license. Windows with SQL Server is pre_installed_sw = 'SQL
-     * Web', 'SQL Std' or 'SQL Ent'.
-     * - "Cheapest" means the lowest effective_hourly_usd among current rows. Hourly to monthly: x
-     * 730.
-     * - Spot rows (pricing = 'spot') only exist for ec2 with operating_system 'Linux' or
-     * 'Windows', and leave tenancy, license_model, pre_installed_sw and capacity_status as '':
-     * drop those ec2 defaults for spot (pricing = 'spot' OR (tenancy = 'Shared' AND ...)). A spot
-     * price is the lowest across the region's availability zones, as AWS's Spot pricing page shows
-     * it. Spot history starts 2026-08-03 with a price every hour (for the 17 main regions; the
-     * others and Local Zones start 2026-11-01), and has one every 6 hours since 2026-11-01, so
-     * aggregate it (by day, say) rather than listing rows.
-     * - Reserved rows: an All Upfront term has hourly_usd = 0 and the whole cost in upfront_usd;
-     * compare reserved and on-demand on effective_hourly_usd.
-     * - Use instance_types for specs and to list types; join prices on (platform, instance_type)
-     * when you need specs it does not carry.
-     * - prices is large (millions of rows for ec2): always filter on platform and current (or a
-     * time range), and aggregate or LIMIT.
-     * - service_events is AWS's public status page history, not a measured uptime: AWS publishes
-     * no availability percentage. To estimate downtime, sum dateDiff('minute', impact_started_at,
-     * impact_ended_at) (fall back to posted_at and resolved_at when those are NULL) over events
-     * with severity 'degraded' or 'disrupted', and say that it covers only events AWS posted
-     * publicly. An event filed under `multipleservices` or another service can still have hit the
-     * one asked about: also match mapContains(impacted_services, '<service>-<region>').
+     * Deprecated alias of `GET /api/v1/instance-pricing/schema`, its path before the warehouse
+     * covered clouds other than AWS; it behaves identically. Use the new path.
      *
      * GET /api/v1/aws-pricing/schema
+     *
+     * Deprecated.
      *
      * Raises on 401: Unauthenticated
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.87.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.88.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.87.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.88.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -87,6 +87,7 @@ use Infrawrench\Sdk\Api\GithubIssuesNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
 use Infrawrench\Sdk\Api\IdleFindingsNamespace;
 use Infrawrench\Sdk\Api\IncidentsNamespace;
+use Infrawrench\Sdk\Api\InstancePricingNamespace;
 use Infrawrench\Sdk\Api\InvitationsNamespace;
 use Infrawrench\Sdk\Api\InvoicesNamespace;
 use Infrawrench\Sdk\Api\IssueWebhooksNamespace;
@@ -388,6 +389,9 @@ final class APIV1Client
     /** `$client->incidents` */
     public readonly IncidentsNamespace $incidents;
 
+    /** `$client->instancePricing` */
+    public readonly InstancePricingNamespace $instancePricing;
+
     /** `$client->invitations` */
     public readonly InvitationsNamespace $invitations;
 
@@ -688,6 +692,7 @@ final class APIV1Client
         $this->iac = new IacNamespace($this->transport);
         $this->idleFindings = new IdleFindingsNamespace($this->transport);
         $this->incidents = new IncidentsNamespace($this->transport);
+        $this->instancePricing = new InstancePricingNamespace($this->transport);
         $this->invitations = new InvitationsNamespace($this->transport);
         $this->invoices = new InvoicesNamespace($this->transport);
         $this->issueWebhooks = new IssueWebhooksNamespace($this->transport);

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.87.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.88.0 | MIT | Copyright (c) 2026 Infrawrench LLC
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.87.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.88.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class AwsPricingSource implements \JsonSerializable
 {
     /**
      * @param string $source A platform name, or `spot` for EC2 spot prices.
-     * @param string|null $priceListTo Newest AWS price list in the data (UTC).
+     * @param string|null $priceListTo Newest price list in the data (UTC).
      * @param string $syncedAt When it was loaded (UTC).
      */
     public function __construct(
