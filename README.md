@@ -1,6 +1,6 @@
 # infrawrench/sdk
 
-Generated PHP client for the Infrawrench API (API version `1.90.0`).
+Generated PHP client for the Infrawrench API (API version `1.91.0`).
 
 **Do not edit this package by hand** — it is regenerated from `openapi.json` and
 is not checked into the repository. Run
@@ -102,14 +102,14 @@ $client = new APIV1Client(orgId: 'org_1', sender: $recordingSender);
 
 ## Scope
 
-This package covers the published API surface only: 882 operations across
-1275 schemas. Operations marked `x-internal` in the spec — the admin surface,
+This package covers the published API surface only: 883 operations across
+1278 schemas. Operations marked `x-internal` in the spec — the admin surface,
 webhook receivers, desktop sync, push registration, and the browser auth
 redirects — are not generated.
 
 ## License
 
-MIT — see [`LICENSE`](./LICENSE). Copyright (c) 2026 Infrawrench LLC.
+MIT — see [`LICENSE`](./LICENSE). Copyright (c) 2026 Infrawrench Services, Inc..
 
 Note that this client is more permissively licensed than the service it talks
 to: the Infrawrench source is BUSL-1.1, but the generated clients are MIT so you

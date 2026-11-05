@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.90.0 | MIT | Copyright (c) 2026 Infrawrench LLC
+ * infrawrench/sdk v1.91.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.90.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.91.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class CapacityCheckoutRequest implements \JsonSerializable
      */
     public function __construct(
         public readonly ?int $quantity = null,
+        public readonly ?RevnuCheckoutMeasurement $measurement = null,
     ) {
     }
 
@@ -39,6 +40,7 @@ final class CapacityCheckoutRequest implements \JsonSerializable
     {
         return new self(
             quantity: Coerce::toIntOrNull($data['quantity'] ?? null),
+            measurement: Coerce::nullable($data['measurement'] ?? null, static fn (mixed $value): RevnuCheckoutMeasurement => RevnuCheckoutMeasurement::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -53,6 +55,9 @@ final class CapacityCheckoutRequest implements \JsonSerializable
         ];
         if ($this->quantity !== null) {
             $payload['quantity'] = $this->quantity;
+        }
+        if ($this->measurement !== null) {
+            $payload['measurement'] = $this->measurement->toArray();
         }
 
         return $payload;
