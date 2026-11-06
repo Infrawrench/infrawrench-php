@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.91.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.92.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.91.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.92.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -39,7 +39,9 @@ final class InstancePricingNamespace extends ApiNamespace
      * RunPod GPU types and CPU pods, Alibaba Cloud ECS, Azure virtual machines and Google Cloud
      * Compute Engine. It is the data behind instances.infrawrench.com. Needs no scope. Use `GET
      * /api/v1/instance-pricing/schema` for the columns, or the tables below; filter `prices` on
-     * `platform` and `current`.
+     * `platform` and `current`. The Infrawrench web and desktop apps call this path with a key
+     * built into them; that key is licensed for those apps only, so your own code should use an
+     * API key.
      *
      * - `prices`: Every price the provider has listed for an instance type, one row per period a
      * price held. `current = true` (equivalently `valid_to IS NULL`) is the price on offer now;
