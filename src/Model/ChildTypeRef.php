@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.93.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.94.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.93.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.94.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,12 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class ChildTypeRef implements \JsonSerializable
 {
-    /** @param list<array<string, mixed>>|null $fields */
+    /**
+     * @param list<array{key: string, label: string}>|null $showcase
+     * @param list<array<string, mixed>>|null $fields
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $displayName,
         public readonly bool $supportsCreate,
         public readonly ?string $pluralDisplayName = null,
+        public readonly ?string $iconKey = null,
+        public readonly ?array $showcase = null,
         public readonly ?array $fields = null,
     ) {
     }
@@ -44,6 +49,8 @@ final class ChildTypeRef implements \JsonSerializable
             displayName: Coerce::toString($data['displayName'] ?? null),
             supportsCreate: Coerce::toBool($data['supportsCreate'] ?? null),
             pluralDisplayName: Coerce::toStringOrNull($data['pluralDisplayName'] ?? null),
+            iconKey: Coerce::toStringOrNull($data['iconKey'] ?? null),
+            showcase: Coerce::nullable($data['showcase'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
         );
     }
@@ -62,6 +69,12 @@ final class ChildTypeRef implements \JsonSerializable
         ];
         if ($this->pluralDisplayName !== null) {
             $payload['pluralDisplayName'] = $this->pluralDisplayName;
+        }
+        if ($this->iconKey !== null) {
+            $payload['iconKey'] = $this->iconKey;
+        }
+        if ($this->showcase !== null) {
+            $payload['showcase'] = $this->showcase;
         }
         if ($this->fields !== null) {
             $payload['fields'] = $this->fields;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.93.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.94.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.93.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.94.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class PinFull implements \JsonSerializable
     /**
      * @param array<string, mixed> $fieldsJson
      * @param array<string, mixed> $outputsJson
+     * @param list<array{key: string, label: string}>|null $showcase
      */
     public function __construct(
         public readonly string $pinId,
@@ -42,6 +43,8 @@ final class PinFull implements \JsonSerializable
         public readonly string $pluginLogoSvg,
         public readonly string $pluginDisplayName,
         public readonly ProbeStatus $status,
+        public readonly ?string $iconKey = null,
+        public readonly ?array $showcase = null,
     ) {
     }
 
@@ -68,6 +71,8 @@ final class PinFull implements \JsonSerializable
             pluginLogoSvg: Coerce::toString($data['pluginLogoSvg'] ?? null),
             pluginDisplayName: Coerce::toString($data['pluginDisplayName'] ?? null),
             status: ProbeStatus::fromArray(Coerce::toArray($data['status'] ?? null)),
+            iconKey: Coerce::toStringOrNull($data['iconKey'] ?? null),
+            showcase: Coerce::nullable($data['showcase'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
         );
     }
 
@@ -78,7 +83,7 @@ final class PinFull implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'pinId' => $this->pinId,
             'resourceId' => $this->resourceId,
             'gridX' => $this->gridX,
@@ -95,6 +100,14 @@ final class PinFull implements \JsonSerializable
             'pluginDisplayName' => $this->pluginDisplayName,
             'status' => $this->status->toArray(),
         ];
+        if ($this->iconKey !== null) {
+            $payload['iconKey'] = $this->iconKey;
+        }
+        if ($this->showcase !== null) {
+            $payload['showcase'] = $this->showcase;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

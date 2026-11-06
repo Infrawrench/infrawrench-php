@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.93.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.94.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.93.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.94.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,6 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ResourceTypeSummary implements \JsonSerializable
 {
     /**
+     * @param string|null $iconKey What this type of resource is, in a shared vocabulary (`cpu`, `database`, ...).
+     * @param list<array{key: string, label: string}>|null $showcase The fields this type marked to show on its tile, read from each resource's synced fields.
      * @param list<array{pluginId: string, resourceTypeId: string, matchField?: string, verb?: string}>|null $attachTargets
      * @param bool|null $schedulable The type declares lifecycle start/stop actions, so its resources can carry a sleep/wake schedule.
      */
@@ -31,6 +33,8 @@ final class ResourceTypeSummary implements \JsonSerializable
         public readonly string $displayName,
         public readonly bool $supportsCreate,
         public readonly ?string $pluralDisplayName = null,
+        public readonly ?string $iconKey = null,
+        public readonly ?array $showcase = null,
         public readonly ?string $parentTypeId = null,
         public readonly ?array $attachTargets = null,
         public readonly ?bool $isSshHost = null,
@@ -53,6 +57,8 @@ final class ResourceTypeSummary implements \JsonSerializable
             displayName: Coerce::toString($data['displayName'] ?? null),
             supportsCreate: Coerce::toBool($data['supportsCreate'] ?? null),
             pluralDisplayName: Coerce::toStringOrNull($data['pluralDisplayName'] ?? null),
+            iconKey: Coerce::toStringOrNull($data['iconKey'] ?? null),
+            showcase: Coerce::nullable($data['showcase'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             parentTypeId: Coerce::toStringOrNull($data['parentTypeId'] ?? null),
             attachTargets: Coerce::nullable($data['attachTargets'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             isSshHost: Coerce::toBoolOrNull($data['isSshHost'] ?? null),
@@ -77,6 +83,12 @@ final class ResourceTypeSummary implements \JsonSerializable
         ];
         if ($this->pluralDisplayName !== null) {
             $payload['pluralDisplayName'] = $this->pluralDisplayName;
+        }
+        if ($this->iconKey !== null) {
+            $payload['iconKey'] = $this->iconKey;
+        }
+        if ($this->showcase !== null) {
+            $payload['showcase'] = $this->showcase;
         }
         if ($this->parentTypeId !== null) {
             $payload['parentTypeId'] = $this->parentTypeId;
