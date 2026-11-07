@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.95.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.96.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.95.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.96.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -1029,7 +1029,6 @@ final class ResourceTypeId
     public const SERVERLESS_CONTAINER = 'serverless-container';
     public const SERVERLESS_ENDPOINT = 'serverless-endpoint';
     public const SERVERLESS_FUNCTION = 'serverless-function';
-    public const SERVERLESS_INSTANCE = 'serverless-instance';
     public const SERVERLESS_TRAFFIC_FILTER = 'serverless-traffic-filter';
     public const SERVICE = 'service';
     public const SERVICE_ACCOUNT = 'service-account';
@@ -2273,7 +2272,6 @@ final class ResourceTypeId
             self::SERVERLESS_CONTAINER,
             self::SERVERLESS_ENDPOINT,
             self::SERVERLESS_FUNCTION,
-            self::SERVERLESS_INSTANCE,
             self::SERVERLESS_TRAFFIC_FILTER,
             self::SERVICE,
             self::SERVICE_ACCOUNT,

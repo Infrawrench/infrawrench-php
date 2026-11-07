@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.95.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.96.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.95.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.96.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,8 +22,12 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class SyncResponse implements \JsonSerializable
 {
+    /**
+     * @param list<array{resourceTypeId: string, message: string}>|null $incompleteLists Resource types left as they were because their list could not be read whole: too long to read, or a page from the provider that was not a list. The stored rows are kept rather than pruned against part of a list.
+     */
     public function __construct(
         public readonly int $synced,
+        public readonly ?array $incompleteLists = null,
     ) {
     }
 
@@ -36,6 +40,7 @@ final class SyncResponse implements \JsonSerializable
     {
         return new self(
             synced: Coerce::toInt($data['synced'] ?? null),
+            incompleteLists: Coerce::nullable($data['incompleteLists'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
         );
     }
 
@@ -46,9 +51,14 @@ final class SyncResponse implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'synced' => $this->synced,
         ];
+        if ($this->incompleteLists !== null) {
+            $payload['incompleteLists'] = $this->incompleteLists;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
