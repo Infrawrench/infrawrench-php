@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.94.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.95.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.94.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.95.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,7 +22,12 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class PluginSummary implements \JsonSerializable
 {
-    /** @param list<CredentialField> $credentialFields */
+    /**
+     * @param list<CredentialField> $credentialFields
+     * @param array{label: string, defaultPort: int, credentials: array<string, string>}|null $sshTunnel Present when the plugin can be reached through an SSH tunnel to a remote host.
+     * @param bool|null $jumpHost This plugin's accounts are SSH hosts that other accounts can connect through.
+     * @param 'keys'|'documents'|null $kvBrowser Which browser the plugin's connections open: `documents` for collections of JSON documents, `keys` for the key-value console. Absent means `keys`, or that the plugin has no key-value driver.
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $displayName,
@@ -30,6 +35,9 @@ final class PluginSummary implements \JsonSerializable
         public readonly array $credentialFields,
         public readonly ?PreflightDeclaration $preflight,
         public readonly ?PluginOauthSummary $oauth = null,
+        public readonly ?array $sshTunnel = null,
+        public readonly ?bool $jumpHost = null,
+        public readonly ?string $kvBrowser = null,
     ) {
     }
 
@@ -47,6 +55,9 @@ final class PluginSummary implements \JsonSerializable
             credentialFields: Coerce::mapList($data['credentialFields'] ?? null, static fn (mixed $item): CredentialField => CredentialField::fromArray(Coerce::toArray($item))),
             preflight: Coerce::nullable($data['preflight'] ?? null, static fn (mixed $value): PreflightDeclaration => PreflightDeclaration::fromArray(Coerce::toArray($value))),
             oauth: Coerce::nullable($data['oauth'] ?? null, static fn (mixed $value): PluginOauthSummary => PluginOauthSummary::fromArray(Coerce::toArray($value))),
+            sshTunnel: Coerce::toArrayOrNull($data['sshTunnel'] ?? null),
+            jumpHost: Coerce::toBoolOrNull($data['jumpHost'] ?? null),
+            kvBrowser: Coerce::toStringOrNull($data['kvBrowser'] ?? null),
         );
     }
 
@@ -66,6 +77,15 @@ final class PluginSummary implements \JsonSerializable
         ];
         if ($this->oauth !== null) {
             $payload['oauth'] = $this->oauth->toArray();
+        }
+        if ($this->sshTunnel !== null) {
+            $payload['sshTunnel'] = $this->sshTunnel;
+        }
+        if ($this->jumpHost !== null) {
+            $payload['jumpHost'] = $this->jumpHost;
+        }
+        if ($this->kvBrowser !== null) {
+            $payload['kvBrowser'] = $this->kvBrowser;
         }
 
         return $payload;
