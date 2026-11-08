@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.96.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.97.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.96.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.97.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -39,7 +39,7 @@ final class Transport
     public const DEFAULT_BASE_URL = 'https://app.infrawrench.com';
 
     /** Sent so a deployment can tell generated traffic apart from hand-rolled. */
-    public const USER_AGENT = 'infrawrench-sdk-php/1.96.0';
+    public const USER_AGENT = 'infrawrench-sdk-php/1.97.0';
 
     /**
      * The path parameter the client can carry as configuration instead of taking

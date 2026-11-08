@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.96.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.97.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.96.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.97.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,9 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class LeakedSecretScanner implements \JsonSerializable
 {
+    /**
+     * @param bool $lastPartial The last scan read only part of the scanner's findings (more than one scan reads, or some could not be read), so a leak may be missing from the list.
+     */
     public function __construct(
         public readonly string $accountId,
         public readonly string $accountName,
@@ -32,6 +35,7 @@ final class LeakedSecretScanner implements \JsonSerializable
         public readonly ?string $lastScannedAt,
         public readonly ?string $lastError,
         public readonly ?int $lastCount,
+        public readonly bool $lastPartial,
     ) {
     }
 
@@ -52,6 +56,7 @@ final class LeakedSecretScanner implements \JsonSerializable
             lastScannedAt: Coerce::toStringOrNull($data['lastScannedAt'] ?? null),
             lastError: Coerce::toStringOrNull($data['lastError'] ?? null),
             lastCount: Coerce::toIntOrNull($data['lastCount'] ?? null),
+            lastPartial: Coerce::toBool($data['lastPartial'] ?? null),
         );
     }
 
@@ -72,6 +77,7 @@ final class LeakedSecretScanner implements \JsonSerializable
             'lastScannedAt' => $this->lastScannedAt,
             'lastError' => $this->lastError,
             'lastCount' => $this->lastCount,
+            'lastPartial' => $this->lastPartial,
         ];
     }
 
