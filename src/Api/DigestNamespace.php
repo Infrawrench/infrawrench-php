@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -48,6 +48,8 @@ final class DigestNamespace extends ApiNamespace
      * email recipients. The response also carries the outcome of the most recent delivery attempt
      * so a silently failing digest is visible.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/digest
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -75,6 +77,8 @@ final class DigestNamespace extends ApiNamespace
      * and sends it to every opted-in channel and email recipient. This is also the manual recovery
      * for a partial delivery, which is never retried automatically. Fails when nothing is routed
      * to receive the digest, or when every destination rejected it.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/digest/send
      *
@@ -106,6 +110,8 @@ final class DigestNamespace extends ApiNamespace
      * boundary follows `timezone`, so the reported window is always the organization's own local
      * Monday-to-Sunday week. Changing the schedule clears any parked failure state but never
      * replays a week that already went out.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * PUT /api/org/{orgId}/digest
      *

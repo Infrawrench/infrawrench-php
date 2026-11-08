@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,19 +31,19 @@ final class CostScenarioAdjustment implements \JsonSerializable
      * @param string|null $currency Always the model's own currency; a model that held two would sum two kinds of money.
      * @param 'daily'|'monthly'|null $period How often a `recurring` amount charges. A monthly amount is spread evenly across each calendar month it covers rather than landing as a spike on the 1st, so a month the scenario only partly covers costs proportionally less.
      * @param float|null $percent Percent change to the trend, for `rate_change`. -20 is a fifth cheaper.
-     * @param list<CostScenarioScopeTerm> $scope Which spend this adjustment describes; empty is the whole organization. For a rate change the scope is what the percentage is *of*. For an amount it decides whether the adjustment applies to a given chart at all; a GCP commitment does not belong on a chart filtered to AWS, and one that is excluded is named in `scenario.outOfScope`.
+     * @param list<CostScenarioScopeTerm>|null $scope Which spend this adjustment describes; empty is the whole organization. For a rate change the scope is what the percentage is *of*. For an amount it decides whether the adjustment applies to a given chart at all; a GCP commitment does not belong on a chart filtered to AWS, and one that is excluded is named in `scenario.outOfScope`.
      */
     public function __construct(
         public readonly string $id,
         public readonly string $label,
         public readonly string $kind,
         public readonly string $startDate,
-        public readonly ?string $endDate,
-        public readonly ?int $amountCents,
-        public readonly ?string $currency,
-        public readonly ?string $period,
-        public readonly ?float $percent,
-        public readonly array $scope,
+        public readonly ?string $endDate = null,
+        public readonly ?int $amountCents = null,
+        public readonly ?string $currency = null,
+        public readonly ?string $period = null,
+        public readonly ?float $percent = null,
+        public readonly ?array $scope = null,
     ) {
     }
 
@@ -64,7 +64,7 @@ final class CostScenarioAdjustment implements \JsonSerializable
             currency: Coerce::toStringOrNull($data['currency'] ?? null),
             period: Coerce::toStringOrNull($data['period'] ?? null),
             percent: Coerce::toFloatOrNull($data['percent'] ?? null),
-            scope: Coerce::mapList($data['scope'] ?? null, static fn (mixed $item): CostScenarioScopeTerm => CostScenarioScopeTerm::fromArray(Coerce::toArray($item))),
+            scope: Coerce::nullable($data['scope'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CostScenarioScopeTerm => CostScenarioScopeTerm::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -75,18 +75,32 @@ final class CostScenarioAdjustment implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'label' => $this->label,
             'kind' => $this->kind,
             'startDate' => $this->startDate,
-            'endDate' => $this->endDate,
-            'amountCents' => $this->amountCents,
-            'currency' => $this->currency,
-            'period' => $this->period,
-            'percent' => $this->percent,
-            'scope' => array_map(static fn (CostScenarioScopeTerm $item): array => $item->toArray(), $this->scope),
         ];
+        if ($this->endDate !== null) {
+            $payload['endDate'] = $this->endDate;
+        }
+        if ($this->amountCents !== null) {
+            $payload['amountCents'] = $this->amountCents;
+        }
+        if ($this->currency !== null) {
+            $payload['currency'] = $this->currency;
+        }
+        if ($this->period !== null) {
+            $payload['period'] = $this->period;
+        }
+        if ($this->percent !== null) {
+            $payload['percent'] = $this->percent;
+        }
+        if ($this->scope !== null) {
+            $payload['scope'] = array_map(static fn (CostScenarioScopeTerm $item): array => $item->toArray(), $this->scope);
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

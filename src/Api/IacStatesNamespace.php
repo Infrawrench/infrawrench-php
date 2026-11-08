@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class IacStatesNamespace extends ApiNamespace
      * dropped before anything is written. The format version is checked, not assumed: an
      * unsupported version is a 400 rather than a partial read.
      *
+     * _Requires permission: `iac:write`._
+     *
      * POST /api/org/{orgId}/iac/states
      *
      * Raises on 400: Bad request
@@ -66,6 +68,8 @@ final class IacStatesNamespace extends ApiNamespace
     /**
      * Delete an uploaded state document
      *
+     * _Requires permission: `iac:write`._
+     *
      * DELETE /api/org/{orgId}/iac/states/{stateId}
      *
      * Raises on 404: Not found
@@ -92,6 +96,8 @@ final class IacStatesNamespace extends ApiNamespace
      *
      * Every state document the organization has uploaded, newest first. The documents themselves
      * are never stored; only the parsed, redacted projection.
+     *
+     * _Requires permission: `iac:read`._
      *
      * GET /api/org/{orgId}/iac/states
      *

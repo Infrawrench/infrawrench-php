@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,6 +42,8 @@ final class AlertRulesNamespace extends ApiNamespace
      *
      * A no-op when the organization already has rules.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/alert-rules/adopt-defaults
      *
      * Raises on 403: Forbidden
@@ -72,6 +74,8 @@ final class AlertRulesNamespace extends ApiNamespace
      * client can render destinations by name. An organization that has saved no rules gets the
      * synthesized default with `usingDefaults: true`.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/alert-rules
      *
      * Raises on 403: Forbidden
@@ -101,6 +105,8 @@ final class AlertRulesNamespace extends ApiNamespace
      * correct relative to the ones above it) so a reorder applied as several requests would leave
      * a window in which alerts route somewhere nobody asked for. Positions are re-derived from
      * array order.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * PUT /api/org/{orgId}/alert-rules
      *

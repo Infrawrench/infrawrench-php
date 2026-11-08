@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -18,14 +18,12 @@ declare(strict_types=1);
 
 namespace Infrawrench\Sdk\Model;
 
-use Infrawrench\Sdk\Internal\Coerce;
-
 /** Two allocation rule ids in the same org whose priorities should be swapped. */
 final class SwapAllocationRulesBody implements \JsonSerializable
 {
     public function __construct(
-        public readonly string $aId,
-        public readonly string $bId,
+        public readonly mixed $aId,
+        public readonly mixed $bId,
     ) {
     }
 
@@ -37,8 +35,8 @@ final class SwapAllocationRulesBody implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            aId: Coerce::toString($data['aId'] ?? null),
-            bId: Coerce::toString($data['bId'] ?? null),
+            aId: $data['aId'] ?? null,
+            bId: $data['bId'] ?? null,
         );
     }
 

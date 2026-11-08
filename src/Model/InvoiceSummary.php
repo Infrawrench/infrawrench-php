@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,8 @@ final class InvoiceSummary implements \JsonSerializable
     /**
      * @param string|null $number `INV-2026-0001`. Null while draft: numbers are assigned at approval so a deleted draft cannot leave a gap in the sequence.
      * @param InvoiceStatus::* $status
+     * @param InvoiceTotals|null $totals **Null for a draft**, null, not zero. A draft's figures are recomputed on read and the list does not recompute; fetch the invoice by id for a draft's current numbers.
+     * @param InvoiceDelivery|null $delivery The last delivery attempt, or null when none has been made; including on an invoice marked sent by a deployment with no mail provider. “A person released this” and “we delivered it” are different claims, and this field is only ever the second.
      */
     public function __construct(
         public readonly string $id,

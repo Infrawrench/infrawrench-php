@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,10 +23,10 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class DoraSummary implements \JsonSerializable
 {
     /**
-     * @param array{value: float|null, band: DoraBand::*, sample: int, deploys: int, days: float} $deploymentFrequency `value` is successful production deploys per day.
-     * @param array{value: float|null, band: DoraBand::*, sample: int, p90Hours: float|null} $leadTime `value` is the median hours from commit to production.
-     * @param array{value: float|null, band: DoraBand::*, sample: int, changes: int, failures: int} $changeFailureRate `value` is the share of production changes that failed, 0-1.
-     * @param array{value: float|null, band: DoraBand::*, sample: int, restores: int} $timeToRestore `value` is the median hours from failure to recovery.
+     * @param array{value: float|null, band: DoraBand::*|null, sample: int, deploys: int, days: float} $deploymentFrequency `value` is successful production deploys per day.
+     * @param array{value: float|null, band: DoraBand::*|null, sample: int, p90Hours: float|null} $leadTime `value` is the median hours from commit to production.
+     * @param array{value: float|null, band: DoraBand::*|null, sample: int, changes: int, failures: int} $changeFailureRate `value` is the share of production changes that failed, 0-1.
+     * @param array{value: float|null, band: DoraBand::*|null, sample: int, restores: int} $timeToRestore `value` is the median hours from failure to recovery.
      */
     public function __construct(
         public readonly array $deploymentFrequency,

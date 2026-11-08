@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -63,19 +63,19 @@ final class AgentsSettingsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(?AgentSettings $body, ?string $orgId = null, ?RequestOptions $options = null): ?AgentSettings
+    public function update(AgentSettings $body, ?string $orgId = null, ?RequestOptions $options = null): AgentSettings
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PUT',
                 path: '/api/org/{orgId}/agents/settings',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
+                body: $body->toArray(),
                 hasBody: true,
             ),
             $options,
         );
 
-        return Coerce::nullable($data, static fn (mixed $value): AgentSettings => AgentSettings::fromArray(Coerce::toArray($value)));
+        return AgentSettings::fromArray(Coerce::toArray($data));
     }
 }

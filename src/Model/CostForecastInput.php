@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,14 +23,14 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostForecastInput implements \JsonSerializable
 {
     /**
-     * @param list<string> $scenarioModelIds Scenario models to apply, **in priority order**. Each model is applied to the line the previous ones produced, so an org-wide percentage in a later model also scales amounts an earlier one added. Deleting a model a forecast names is refused.
+     * @param list<string>|null $scenarioModelIds Scenario models to apply, **in priority order**. Each model is applied to the line the previous ones produced, so an org-wide percentage in a later model also scales amounts an earlier one added. Deleting a model a forecast names is refused.
      * @param string|null $driverMetricId A business metric whose forecasted values drive the baseline: projected unit cost (the report's spend per unit, trended) times the forecasted value. Null keeps the trend.
      * @param bool|null $isDefault Make this the report's default forecast, clearing any other. On update, absent keeps the current setting and false makes the report fall back to the automatic forecast.
      */
     public function __construct(
         public readonly string $name,
-        public readonly array $scenarioModelIds,
         public readonly ?string $description = null,
+        public readonly ?array $scenarioModelIds = null,
         public readonly ?string $driverMetricId = null,
         public readonly ?bool $isDefault = null,
     ) {
@@ -45,8 +45,8 @@ final class CostForecastInput implements \JsonSerializable
     {
         return new self(
             name: Coerce::toString($data['name'] ?? null),
-            scenarioModelIds: Coerce::mapList($data['scenarioModelIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             description: Coerce::toStringOrNull($data['description'] ?? null),
+            scenarioModelIds: Coerce::nullable($data['scenarioModelIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             driverMetricId: Coerce::toStringOrNull($data['driverMetricId'] ?? null),
             isDefault: Coerce::toBoolOrNull($data['isDefault'] ?? null),
         );
@@ -61,10 +61,12 @@ final class CostForecastInput implements \JsonSerializable
     {
         $payload = [
             'name' => $this->name,
-            'scenarioModelIds' => $this->scenarioModelIds,
         ];
         if ($this->description !== null) {
             $payload['description'] = $this->description;
+        }
+        if ($this->scenarioModelIds !== null) {
+            $payload['scenarioModelIds'] = $this->scenarioModelIds;
         }
         if ($this->driverMetricId !== null) {
             $payload['driverMetricId'] = $this->driverMetricId;

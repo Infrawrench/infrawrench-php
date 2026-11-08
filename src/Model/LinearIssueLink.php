@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,7 @@ final class LinearIssueLink implements \JsonSerializable
     /**
      * @param LinearSourceKind::* $sourceKind
      * @param string|null $status The tracker's own status name, e.g. `In Progress`, `Backlog`, `Closed`.
-     * @param IssueStatusCategory::* $statusCategory
+     * @param IssueStatusCategory::*|null $statusCategory
      * @param string|null $assignee Assignee display name (Jira, Linear) or login (GitHub).
      * @param string|null $issueUpdatedAt When the issue last changed, as the tracker reports it.
      * @param string|null $statusSyncedAt When Infrawrench last learned the status, by webhook or poll.
@@ -37,7 +37,7 @@ final class LinearIssueLink implements \JsonSerializable
         public readonly string $issueIdentifier,
         public readonly string $issueUrl,
         public readonly ?string $status,
-        public readonly string $statusCategory,
+        public readonly ?string $statusCategory,
         public readonly ?string $assignee,
         public readonly ?string $issueUpdatedAt,
         public readonly ?string $statusSyncedAt,
@@ -60,7 +60,7 @@ final class LinearIssueLink implements \JsonSerializable
             issueIdentifier: Coerce::toString($data['issueIdentifier'] ?? null),
             issueUrl: Coerce::toString($data['issueUrl'] ?? null),
             status: Coerce::toStringOrNull($data['status'] ?? null),
-            statusCategory: Coerce::toString($data['statusCategory'] ?? null),
+            statusCategory: Coerce::toStringOrNull($data['statusCategory'] ?? null),
             assignee: Coerce::toStringOrNull($data['assignee'] ?? null),
             issueUpdatedAt: Coerce::toStringOrNull($data['issueUpdatedAt'] ?? null),
             statusSyncedAt: Coerce::toStringOrNull($data['statusSyncedAt'] ?? null),

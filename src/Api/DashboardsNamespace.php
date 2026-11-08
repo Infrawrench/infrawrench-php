@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -158,6 +158,8 @@ final class DashboardsNamespace extends ApiNamespace
      * `costs:read`, plus `budgets:read` for a budget source; figures are measured inside the
      * caller's cost visibility scope.
      *
+     * _Requires permission: `dashboards:read`._
+     *
      * POST /api/org/{orgId}/dashboards/kpi
      *
      * Raises on 400: Bad request
@@ -284,6 +286,8 @@ final class DashboardsNamespace extends ApiNamespace
      *
      * POST /api/org/{orgId}/dashboards/{id}/rename
      *
+     * Raises on 404: Not found
+     *
      * @param array{name: string} $body
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -314,6 +318,8 @@ final class DashboardsNamespace extends ApiNamespace
      * _Requires permission: `dashboards:write`._
      *
      * POST /api/org/{orgId}/dashboards/{id}/reorder
+     *
+     * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *
@@ -396,6 +402,8 @@ final class DashboardsNamespace extends ApiNamespace
     /**
      * Pin a workflow's metrics to a dashboard
      *
+     * _Requires permission: `dashboards:write`._
+     *
      * POST /api/org/{orgId}/dashboards/workflow-pin
      *
      * Raises on 404: Not found
@@ -422,6 +430,8 @@ final class DashboardsNamespace extends ApiNamespace
 
     /**
      * Unpin a workflow from a dashboard
+     *
+     * _Requires permission: `dashboards:write`._
      *
      * POST /api/org/{orgId}/dashboards/workflow-unpin
      *

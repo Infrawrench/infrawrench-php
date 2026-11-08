@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,9 @@ final class Invoice implements \JsonSerializable
     /**
      * @param string|null $number `INV-2026-0001`. Null while draft: numbers are assigned at approval so a deleted draft cannot leave a gap in the sequence.
      * @param InvoiceStatus::* $status
+     * @param InvoiceDelivery|null $delivery The last delivery attempt, or null when none has been made; including on an invoice marked sent by a deployment with no mail provider. “A person released this” and “we delivered it” are different claims, and this field is only ever the second.
      * @param list<InvoiceLine> $lines
+     * @param InvoiceBilling|null $billing Addressee, recipients, terms and remittance details. Null on invoices approved before billing profiles existed.
      * @param bool $live True when the figures in this response were recomputed for it; true for a draft, false for everything else. Say so: “these numbers will move” and “these numbers are what we sent” are different claims about the same fields.
      */
     public function __construct(
@@ -37,6 +39,7 @@ final class Invoice implements \JsonSerializable
         public readonly string $periodFrom,
         public readonly string $periodTo,
         public readonly string $currency,
+        public readonly InvoiceTotals $totals,
         public readonly ?string $issuedAt,
         public readonly ?string $sentAt,
         public readonly ?InvoiceDelivery $delivery,
@@ -56,7 +59,6 @@ final class Invoice implements \JsonSerializable
         public readonly ?string $sentByUserId,
         public readonly ?string $voidedByUserId,
         public readonly ?string $createdByUserId,
-        public readonly ?InvoiceTotals $totals = null,
     ) {
     }
 
@@ -76,6 +78,7 @@ final class Invoice implements \JsonSerializable
             periodFrom: Coerce::toString($data['periodFrom'] ?? null),
             periodTo: Coerce::toString($data['periodTo'] ?? null),
             currency: Coerce::toString($data['currency'] ?? null),
+            totals: InvoiceTotals::fromArray(Coerce::toArray($data['totals'] ?? null)),
             issuedAt: Coerce::toStringOrNull($data['issuedAt'] ?? null),
             sentAt: Coerce::toStringOrNull($data['sentAt'] ?? null),
             delivery: Coerce::nullable($data['delivery'] ?? null, static fn (mixed $value): InvoiceDelivery => InvoiceDelivery::fromArray(Coerce::toArray($value))),
@@ -95,7 +98,6 @@ final class Invoice implements \JsonSerializable
             sentByUserId: Coerce::toStringOrNull($data['sentByUserId'] ?? null),
             voidedByUserId: Coerce::toStringOrNull($data['voidedByUserId'] ?? null),
             createdByUserId: Coerce::toStringOrNull($data['createdByUserId'] ?? null),
-            totals: Coerce::nullable($data['totals'] ?? null, static fn (mixed $value): InvoiceTotals => InvoiceTotals::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -106,7 +108,7 @@ final class Invoice implements \JsonSerializable
      */
     public function toArray(): array
     {
-        $payload = [
+        return [
             'id' => $this->id,
             'managedAccountId' => $this->managedAccountId,
             'managedAccountName' => $this->managedAccountName,
@@ -115,6 +117,7 @@ final class Invoice implements \JsonSerializable
             'periodFrom' => $this->periodFrom,
             'periodTo' => $this->periodTo,
             'currency' => $this->currency,
+            'totals' => $this->totals->toArray(),
             'issuedAt' => $this->issuedAt,
             'sentAt' => $this->sentAt,
             'delivery' => $this->delivery?->toArray(),
@@ -135,11 +138,6 @@ final class Invoice implements \JsonSerializable
             'voidedByUserId' => $this->voidedByUserId,
             'createdByUserId' => $this->createdByUserId,
         ];
-        if ($this->totals !== null) {
-            $payload['totals'] = $this->totals?->toArray();
-        }
-
-        return $payload;
     }
 
     /** @return array<string, mixed> */

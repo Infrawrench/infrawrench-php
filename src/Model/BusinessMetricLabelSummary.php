@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,12 +22,15 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class BusinessMetricLabelSummary implements \JsonSerializable
 {
-    /** @param list<string> $values Distinct values, alphabetical, at most 500. */
+    /**
+     * @param list<string> $values Distinct values, alphabetical, at most 500.
+     * @param array{kind: 'dimension', dimension: CostDimension::*, tagKey?: string}|array{kind: 'cost_centre'}|null $mapping
+     */
     public function __construct(
         public readonly string $key,
         public readonly array $values,
         public readonly bool $truncated,
-        public readonly mixed $mapping,
+        public readonly ?array $mapping,
     ) {
     }
 

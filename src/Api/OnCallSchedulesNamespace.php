@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -41,9 +41,13 @@ final class OnCallSchedulesNamespace extends ApiNamespace
      *
      * Writing takes `org:settings:write`: a rotation decides who gets woken up.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/on-call/schedules
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
      *
      * Raises on 409: Conflict
      *
@@ -51,15 +55,15 @@ final class OnCallSchedulesNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function create(?string $orgId = null, ?OnCallScheduleCreate $body = null, ?RequestOptions $options = null): OnCallSchedule
+    public function create(OnCallScheduleCreate $body, ?string $orgId = null, ?RequestOptions $options = null): OnCallSchedule
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/on-call/schedules',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
@@ -71,6 +75,8 @@ final class OnCallSchedulesNamespace extends ApiNamespace
      * Delete an on-call rotation
      *
      * Takes its covers with it. Routing rules naming it resolve to nobody afterwards.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * DELETE /api/org/{orgId}/on-call/schedules/{scheduleId}
      *
@@ -95,6 +101,8 @@ final class OnCallSchedulesNamespace extends ApiNamespace
 
     /**
      * List on-call rotations
+     *
+     * _Requires permission: `team:read`._
      *
      * GET /api/org/{orgId}/on-call/schedules
      *
@@ -121,6 +129,8 @@ final class OnCallSchedulesNamespace extends ApiNamespace
      *
      * The same computation the alert path resolves with, so a preview can never disagree with who
      * actually gets woken up.
+     *
+     * _Requires permission: `team:read`._
      *
      * GET /api/org/{orgId}/on-call/schedules/{scheduleId}/shifts
      *
@@ -154,6 +164,8 @@ final class OnCallSchedulesNamespace extends ApiNamespace
      * `participantUserIds` replaces the list wholesale; position is rotation order, so reordering
      * re-plans the future.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * PATCH /api/org/{orgId}/on-call/schedules/{scheduleId}
      *
      * Raises on 400: Bad request
@@ -166,15 +178,15 @@ final class OnCallSchedulesNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(string $scheduleId, ?string $orgId = null, ?OnCallScheduleUpdate $body = null, ?RequestOptions $options = null): OnCallSchedule
+    public function update(string $scheduleId, OnCallScheduleUpdate $body, ?string $orgId = null, ?RequestOptions $options = null): OnCallSchedule
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PATCH',
                 path: '/api/org/{orgId}/on-call/schedules/{scheduleId}',
                 pathParams: ['orgId' => $orgId, 'scheduleId' => $scheduleId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );

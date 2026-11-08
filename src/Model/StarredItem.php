@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,14 +23,13 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class StarredItem implements \JsonSerializable
 {
     /**
-     * @param SearchResultKind::* $kind
      * @param string $pluginId The provider plugin; `__workflows__` for workflows, `__objects__` for saved objects.
      * @param string $pluginLogoSvg Inline SVG markup; empty for saved objects.
      * @param string $resourceTypeId The resource type; `__workflow__` for workflows, the kind for saved objects.
+     * @param SearchResultKind::* $kind
      */
     public function __construct(
         public readonly string $id,
-        public readonly string $kind,
         public readonly string $pluginId,
         public readonly string $pluginDisplayName,
         public readonly string $pluginLogoSvg,
@@ -39,6 +38,7 @@ final class StarredItem implements \JsonSerializable
         public readonly string $accountId,
         public readonly string $accountName,
         public readonly string $displayName,
+        public readonly string $kind,
         public readonly string $starredAt,
         public readonly ?string $subtitle = null,
     ) {
@@ -53,7 +53,6 @@ final class StarredItem implements \JsonSerializable
     {
         return new self(
             id: Coerce::toString($data['id'] ?? null),
-            kind: Coerce::toString($data['kind'] ?? null),
             pluginId: Coerce::toString($data['pluginId'] ?? null),
             pluginDisplayName: Coerce::toString($data['pluginDisplayName'] ?? null),
             pluginLogoSvg: Coerce::toString($data['pluginLogoSvg'] ?? null),
@@ -62,6 +61,7 @@ final class StarredItem implements \JsonSerializable
             accountId: Coerce::toString($data['accountId'] ?? null),
             accountName: Coerce::toString($data['accountName'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
+            kind: Coerce::toString($data['kind'] ?? null),
             starredAt: Coerce::toString($data['starredAt'] ?? null),
             subtitle: Coerce::toStringOrNull($data['subtitle'] ?? null),
         );
@@ -76,7 +76,6 @@ final class StarredItem implements \JsonSerializable
     {
         $payload = [
             'id' => $this->id,
-            'kind' => $this->kind,
             'pluginId' => $this->pluginId,
             'pluginDisplayName' => $this->pluginDisplayName,
             'pluginLogoSvg' => $this->pluginLogoSvg,
@@ -85,6 +84,7 @@ final class StarredItem implements \JsonSerializable
             'accountId' => $this->accountId,
             'accountName' => $this->accountName,
             'displayName' => $this->displayName,
+            'kind' => $this->kind,
             'starredAt' => $this->starredAt,
         ];
         if ($this->subtitle !== null) {

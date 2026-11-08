@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,8 +31,8 @@ final class ResourceTypeSummary implements \JsonSerializable
     public function __construct(
         public readonly string $id,
         public readonly string $displayName,
+        public readonly string $pluralDisplayName,
         public readonly bool $supportsCreate,
-        public readonly ?string $pluralDisplayName = null,
         public readonly ?string $iconKey = null,
         public readonly ?array $showcase = null,
         public readonly ?string $parentTypeId = null,
@@ -55,8 +55,8 @@ final class ResourceTypeSummary implements \JsonSerializable
         return new self(
             id: Coerce::toString($data['id'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
+            pluralDisplayName: Coerce::toString($data['pluralDisplayName'] ?? null),
             supportsCreate: Coerce::toBool($data['supportsCreate'] ?? null),
-            pluralDisplayName: Coerce::toStringOrNull($data['pluralDisplayName'] ?? null),
             iconKey: Coerce::toStringOrNull($data['iconKey'] ?? null),
             showcase: Coerce::nullable($data['showcase'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             parentTypeId: Coerce::toStringOrNull($data['parentTypeId'] ?? null),
@@ -79,11 +79,9 @@ final class ResourceTypeSummary implements \JsonSerializable
         $payload = [
             'id' => $this->id,
             'displayName' => $this->displayName,
+            'pluralDisplayName' => $this->pluralDisplayName,
             'supportsCreate' => $this->supportsCreate,
         ];
-        if ($this->pluralDisplayName !== null) {
-            $payload['pluralDisplayName'] = $this->pluralDisplayName;
-        }
         if ($this->iconKey !== null) {
             $payload['iconKey'] = $this->iconKey;
         }

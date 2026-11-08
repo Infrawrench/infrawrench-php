@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -43,6 +43,8 @@ final class BudgetsNamespace extends ApiNamespace
     /**
      * Create a budget
      *
+     * _Requires permission: `budgets:write`._
+     *
      * POST /api/org/{orgId}/budgets
      *
      * Raises on 400: Bad request
@@ -70,6 +72,8 @@ final class BudgetsNamespace extends ApiNamespace
     /**
      * Delete a budget
      *
+     * _Requires permission: `budgets:write`._
+     *
      * DELETE /api/org/{orgId}/budgets/{id}
      *
      * Raises on 404: Not found
@@ -94,6 +98,8 @@ final class BudgetsNamespace extends ApiNamespace
 
     /**
      * Get a budget with current-period status
+     *
+     * _Requires permission: `budgets:read`._
      *
      * GET /api/org/{orgId}/budgets/{id}
      *
@@ -120,6 +126,8 @@ final class BudgetsNamespace extends ApiNamespace
     /**
      * List budgets with current-period actuals and forecasts
      *
+     * _Requires permission: `budgets:read`._
+     *
      * GET /api/org/{orgId}/budgets
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -143,6 +151,8 @@ final class BudgetsNamespace extends ApiNamespace
 
     /**
      * Update a budget
+     *
+     * _Requires permission: `budgets:write`._
      *
      * PUT /api/org/{orgId}/budgets/{id}
      *

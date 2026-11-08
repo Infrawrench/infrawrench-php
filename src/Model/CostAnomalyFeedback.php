@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,21 +23,19 @@ use Infrawrench\Sdk\Internal\Coerce;
 /**
  * Whether somebody marked this finding expected (planned or known) or unexpected (a real problem),
  * with who and when; null while nobody has. See POST /costs/anomalies/{anomalyId}/feedback.
- *
- * The API may send `null` in place of this object.
  */
 final class CostAnomalyFeedback implements \JsonSerializable
 {
     /**
      * @param 'expected'|'unexpected' $verdict
-     * @param CostAnomalyFeedbackReason::* $reason
+     * @param CostAnomalyFeedbackReason::*|null $reason
      * @param string $at When the current verdict was recorded; restamped on every save.
      * @param string|null $byName Display name (or email) of whoever gave the verdict, while they are still known.
      * @param string|null $suppressionId The suppression this verdict created, or null (none was asked for, or it was deleted).
      */
     public function __construct(
         public readonly string $verdict,
-        public readonly string $reason,
+        public readonly ?string $reason,
         public readonly ?string $note,
         public readonly string $at,
         public readonly ?string $byUserId,
@@ -55,7 +53,7 @@ final class CostAnomalyFeedback implements \JsonSerializable
     {
         return new self(
             verdict: Coerce::toString($data['verdict'] ?? null),
-            reason: Coerce::toString($data['reason'] ?? null),
+            reason: Coerce::toStringOrNull($data['reason'] ?? null),
             note: Coerce::toStringOrNull($data['note'] ?? null),
             at: Coerce::toString($data['at'] ?? null),
             byUserId: Coerce::toStringOrNull($data['byUserId'] ?? null),

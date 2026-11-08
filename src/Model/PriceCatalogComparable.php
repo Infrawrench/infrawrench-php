@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,13 +20,6 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-/**
- * Monthly amount in the org's display currency (converted at the org's stated rate), or in the
- * native currency when no display currency is configured; null when there is no rate. Sorting and
- * `maxMonthlyPrice` use it.
- *
- * The API may send `null` in place of this object.
- */
 final class PriceCatalogComparable implements \JsonSerializable
 {
     public function __construct(

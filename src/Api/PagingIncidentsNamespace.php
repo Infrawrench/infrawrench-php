@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,8 @@ final class PagingIncidentsNamespace extends ApiNamespace
      * (PagerDuty's `From` header), falling back to the account's default user. The returned state
      * is the provider's answer, not an assumption.
      *
+     * _Requires permission: `incidents:write`._
+     *
      * POST /api/org/{orgId}/paging-incidents/{id}/acknowledge
      *
      * Raises on 400: Bad request
@@ -51,10 +53,9 @@ final class PagingIncidentsNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string|null $orgId Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -81,6 +82,8 @@ final class PagingIncidentsNamespace extends ApiNamespace
      * `status=all` includes resolved ones. These are a provider's pages, distinct from incidents
      * declared in Infrawrench (`/incidents`).
      *
+     * _Requires permission: `incidents:read`._
+     *
      * GET /api/org/{orgId}/paging-incidents
      *
      * Raises on 400: Bad request
@@ -97,10 +100,9 @@ final class PagingIncidentsNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param 'open'|'all'|null $status
@@ -129,6 +131,8 @@ final class PagingIncidentsNamespace extends ApiNamespace
      * (PagerDuty's `From` header), falling back to the account's default user. The returned state
      * is the provider's answer, not an assumption.
      *
+     * _Requires permission: `incidents:write`._
+     *
      * POST /api/org/{orgId}/paging-incidents/{id}/resolve
      *
      * Raises on 400: Bad request
@@ -145,10 +149,9 @@ final class PagingIncidentsNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string|null $orgId Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

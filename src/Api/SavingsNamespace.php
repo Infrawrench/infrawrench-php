@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -52,6 +52,8 @@ final class SavingsNamespace extends ApiNamespace
      * before the action, accrued day by day (one-off actions up to the horizon). Recomputed on
      * every read, so figures improve as restated billing lands. Days collection has not covered
      * are not accrued. Per-currency throughout; never converted or merged.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/savings/realized
      *

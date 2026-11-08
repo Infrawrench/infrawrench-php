@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,8 +23,6 @@ use Infrawrench\Sdk\Internal\Coerce;
 /**
  * A recurring local-time window during which the rule holds its alerts. Held, not dropped; a held
  * alert is queued and delivered when the window closes.
- *
- * The API may send `null` in place of this object.
  */
 final class QuietHours implements \JsonSerializable
 {
@@ -32,13 +30,14 @@ final class QuietHours implements \JsonSerializable
      * @param string $timezone IANA zone, e.g. Europe/Berlin
      * @param int $endMinute May be less than startMinute for an overnight window. Equal means empty.
      * @param list<int> $days ISO weekdays the window applies on, matched against the day the window opened. Empty means every day.
+     * @param AlertSeverity::*|null $urgentOverride Severity at or above which quiet hours do not apply. Null holds everything.
      */
     public function __construct(
         public readonly string $timezone,
         public readonly int $startMinute,
         public readonly int $endMinute,
         public readonly array $days,
-        public readonly mixed $urgentOverride,
+        public readonly ?string $urgentOverride,
     ) {
     }
 
@@ -54,7 +53,7 @@ final class QuietHours implements \JsonSerializable
             startMinute: Coerce::toInt($data['startMinute'] ?? null),
             endMinute: Coerce::toInt($data['endMinute'] ?? null),
             days: Coerce::mapList($data['days'] ?? null, static fn (mixed $item): int => Coerce::toInt($item)),
-            urgentOverride: $data['urgentOverride'] ?? null,
+            urgentOverride: Coerce::toStringOrNull($data['urgentOverride'] ?? null),
         );
     }
 

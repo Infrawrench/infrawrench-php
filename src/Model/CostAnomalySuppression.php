@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,14 +20,13 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-/** The API may send `null` in place of this object. */
 final class CostAnomalySuppression implements \JsonSerializable
 {
     /**
      * @param CostAnomalySuppressionScope::* $scope
      * @param string|null $scopeLabel The account or cost centre name for id-valued scopes; null otherwise.
      * @param CostAnomalyRecurrence::* $recurrence
-     * @param CostAnomalyFeedbackReason::* $reason
+     * @param CostAnomalyFeedbackReason::*|null $reason
      * @param string|null $sourceAnomalyId The anomaly whose `expected` verdict created this; null for one made by hand.
      * @param bool $active Whether it still covers today or a later day. Read-only.
      * @param int $suppressedCount How many detected findings it has suppressed so far. Read-only.
@@ -42,7 +41,7 @@ final class CostAnomalySuppression implements \JsonSerializable
         public readonly string $anchorDay,
         public readonly string $startsOn,
         public readonly string $expiresOn,
-        public readonly string $reason,
+        public readonly ?string $reason,
         public readonly ?string $note,
         public readonly ?string $sourceAnomalyId,
         public readonly ?string $createdByUserId,
@@ -71,7 +70,7 @@ final class CostAnomalySuppression implements \JsonSerializable
             anchorDay: Coerce::toString($data['anchorDay'] ?? null),
             startsOn: Coerce::toString($data['startsOn'] ?? null),
             expiresOn: Coerce::toString($data['expiresOn'] ?? null),
-            reason: Coerce::toString($data['reason'] ?? null),
+            reason: Coerce::toStringOrNull($data['reason'] ?? null),
             note: Coerce::toStringOrNull($data['note'] ?? null),
             sourceAnomalyId: Coerce::toStringOrNull($data['sourceAnomalyId'] ?? null),
             createdByUserId: Coerce::toStringOrNull($data['createdByUserId'] ?? null),

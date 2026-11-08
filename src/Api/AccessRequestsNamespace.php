@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -47,11 +47,13 @@ final class AccessRequestsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 403: Self-approval, or granting beyond the approver's own permissions
+     * Raises on 401: Unauthenticated
+     *
+     * Raises on 403: AccessDecisionForbidden
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: Already decided, or the request timed out
+     * Raises on 409: AccessDecisionConflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -116,6 +118,8 @@ final class AccessRequestsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
+     * Raises on 401: Unauthenticated
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
@@ -150,11 +154,13 @@ final class AccessRequestsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 403: Self-approval, or granting beyond the approver's own permissions
+     * Raises on 401: Unauthenticated
+     *
+     * Raises on 403: AccessDecisionForbidden
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: Already decided, or the request timed out
+     * Raises on 409: AccessDecisionConflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -221,9 +227,13 @@ final class AccessRequestsNamespace extends ApiNamespace
      *
      * POST /api/org/{orgId}/access-requests/{requestId}/revoke
      *
+     * Raises on 401: Unauthenticated
+     *
+     * Raises on 403: Forbidden
+     *
      * Raises on 404: Not found
      *
-     * Raises on 409: The grant is not active
+     * Raises on 409: AccessRevokeConflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -253,9 +263,11 @@ final class AccessRequestsNamespace extends ApiNamespace
      *
      * POST /api/org/{orgId}/access-requests/{requestId}/withdraw
      *
+     * Raises on 401: Unauthenticated
+     *
      * Raises on 404: Not found
      *
-     * Raises on 409: Already decided or expired
+     * Raises on 409: AccessWithdrawConflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

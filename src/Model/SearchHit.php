@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -38,8 +38,8 @@ final class SearchHit implements \JsonSerializable
         public readonly string $accountId,
         public readonly string $accountName,
         public readonly string $displayName,
-        public readonly ?string $kind = null,
         public readonly ?string $subtitle = null,
+        public readonly ?string $kind = null,
     ) {
     }
 
@@ -60,8 +60,8 @@ final class SearchHit implements \JsonSerializable
             accountId: Coerce::toString($data['accountId'] ?? null),
             accountName: Coerce::toString($data['accountName'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
-            kind: Coerce::toStringOrNull($data['kind'] ?? null),
             subtitle: Coerce::toStringOrNull($data['subtitle'] ?? null),
+            kind: Coerce::toStringOrNull($data['kind'] ?? null),
         );
     }
 
@@ -83,11 +83,11 @@ final class SearchHit implements \JsonSerializable
             'accountName' => $this->accountName,
             'displayName' => $this->displayName,
         ];
-        if ($this->kind !== null) {
-            $payload['kind'] = $this->kind;
-        }
         if ($this->subtitle !== null) {
             $payload['subtitle'] = $this->subtitle;
+        }
+        if ($this->kind !== null) {
+            $payload['kind'] = $this->kind;
         }
 
         return $payload;

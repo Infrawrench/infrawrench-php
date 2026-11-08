@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,13 +24,13 @@ final class CostScenarioModelInput implements \JsonSerializable
 {
     /**
      * @param string $currency Three-letter code. Every amount in the model must be in it; a model that mixed two would produce a projection that is the sum of two kinds of money, so this is refused rather than converted behind the caller's back.
-     * @param list<CostScenarioAdjustment> $adjustments
+     * @param list<CostScenarioAdjustment>|null $adjustments
      */
     public function __construct(
         public readonly string $name,
         public readonly string $currency,
-        public readonly array $adjustments,
         public readonly ?string $description = null,
+        public readonly ?array $adjustments = null,
     ) {
     }
 
@@ -44,8 +44,8 @@ final class CostScenarioModelInput implements \JsonSerializable
         return new self(
             name: Coerce::toString($data['name'] ?? null),
             currency: Coerce::toString($data['currency'] ?? null),
-            adjustments: Coerce::mapList($data['adjustments'] ?? null, static fn (mixed $item): CostScenarioAdjustment => CostScenarioAdjustment::fromArray(Coerce::toArray($item))),
             description: Coerce::toStringOrNull($data['description'] ?? null),
+            adjustments: Coerce::nullable($data['adjustments'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CostScenarioAdjustment => CostScenarioAdjustment::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -59,10 +59,12 @@ final class CostScenarioModelInput implements \JsonSerializable
         $payload = [
             'name' => $this->name,
             'currency' => $this->currency,
-            'adjustments' => array_map(static fn (CostScenarioAdjustment $item): array => $item->toArray(), $this->adjustments),
         ];
         if ($this->description !== null) {
             $payload['description'] = $this->description;
+        }
+        if ($this->adjustments !== null) {
+            $payload['adjustments'] = array_map(static fn (CostScenarioAdjustment $item): array => $item->toArray(), $this->adjustments);
         }
 
         return $payload;

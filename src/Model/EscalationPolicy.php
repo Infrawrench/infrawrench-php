@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,8 +24,6 @@ use Infrawrench\Sdk\Internal\Coerce;
  * Notify these destinations too if nobody acknowledges within afterMinutes. Acknowledgement comes
  * from the button on the Slack message, so an alert routed only to Teams or push will always
  * escalate.
- *
- * The API may send `null` in place of this object.
  */
 final class EscalationPolicy implements \JsonSerializable
 {

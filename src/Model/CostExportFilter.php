@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,6 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostExportFilter implements \JsonSerializable
 {
     /**
+     * @param CostDimension::* $dimension
      * @param CostFilterOperator::* $op
      * @param list<string> $values Values to compare with. At least one, except for `is_set` and `is_not_set`, which take an empty list. The text operators refuse an empty string.
      */

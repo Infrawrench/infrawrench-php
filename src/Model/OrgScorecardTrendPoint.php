@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,12 +24,13 @@ final class OrgScorecardTrendPoint implements \JsonSerializable
 {
     /**
      * @param string $day UTC calendar day.
+     * @param OrgScorecardGrade::* $grade
      * @param array<string, int> $pillars Per-pillar scores that day. A pillar unassessed then is absent, not zero.
      */
     public function __construct(
         public readonly string $day,
         public readonly int $score,
-        public readonly mixed $grade,
+        public readonly string $grade,
         public readonly array $pillars,
     ) {
     }
@@ -44,7 +45,7 @@ final class OrgScorecardTrendPoint implements \JsonSerializable
         return new self(
             day: Coerce::toString($data['day'] ?? null),
             score: Coerce::toInt($data['score'] ?? null),
-            grade: $data['grade'] ?? null,
+            grade: Coerce::toString($data['grade'] ?? null),
             pillars: Coerce::mapValues($data['pillars'] ?? null, static fn (mixed $item): int => Coerce::toInt($item)),
         );
     }

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,7 +33,7 @@ final class PluginSummary implements \JsonSerializable
         public readonly string $displayName,
         public readonly string $logoSvg,
         public readonly array $credentialFields,
-        public readonly ?PreflightDeclaration $preflight,
+        public readonly mixed $preflight,
         public readonly ?PluginOauthSummary $oauth = null,
         public readonly ?array $sshTunnel = null,
         public readonly ?bool $jumpHost = null,
@@ -53,7 +53,7 @@ final class PluginSummary implements \JsonSerializable
             displayName: Coerce::toString($data['displayName'] ?? null),
             logoSvg: Coerce::toString($data['logoSvg'] ?? null),
             credentialFields: Coerce::mapList($data['credentialFields'] ?? null, static fn (mixed $item): CredentialField => CredentialField::fromArray(Coerce::toArray($item))),
-            preflight: Coerce::nullable($data['preflight'] ?? null, static fn (mixed $value): PreflightDeclaration => PreflightDeclaration::fromArray(Coerce::toArray($value))),
+            preflight: $data['preflight'] ?? null,
             oauth: Coerce::nullable($data['oauth'] ?? null, static fn (mixed $value): PluginOauthSummary => PluginOauthSummary::fromArray(Coerce::toArray($value))),
             sshTunnel: Coerce::toArrayOrNull($data['sshTunnel'] ?? null),
             jumpHost: Coerce::toBoolOrNull($data['jumpHost'] ?? null),
@@ -73,7 +73,7 @@ final class PluginSummary implements \JsonSerializable
             'displayName' => $this->displayName,
             'logoSvg' => $this->logoSvg,
             'credentialFields' => array_map(static fn (CredentialField $item): array => $item->toArray(), $this->credentialFields),
-            'preflight' => $this->preflight?->toArray(),
+            'preflight' => $this->preflight,
         ];
         if ($this->oauth !== null) {
             $payload['oauth'] = $this->oauth->toArray();

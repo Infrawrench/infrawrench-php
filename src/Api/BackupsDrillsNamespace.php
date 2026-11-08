@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,9 +40,13 @@ final class BackupsDrillsNamespace extends ApiNamespace
      * did, and the person who spent Saturday restoring a database is rarely the person who set the
      * recovery objective.
      *
+     * _Requires permission: `resources:write`._
+     *
      * POST /api/org/{orgId}/backups/drills
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -69,6 +73,8 @@ final class BackupsDrillsNamespace extends ApiNamespace
      *
      * For one recorded against the wrong resource or the wrong date. Audited: deleting evidence
      * that a restore failed is exactly the edit a reviewer would want to know about.
+     *
+     * _Requires permission: `resources:write`._
      *
      * DELETE /api/org/{orgId}/backups/drills/{drillId}
      *
@@ -102,6 +108,8 @@ final class BackupsDrillsNamespace extends ApiNamespace
      * generically verified. What the product can do is make the exercise scheduled, recorded and
      * visible when it lapses.
      *
+     * _Requires permission: `resources:read`._
+     *
      * GET /api/org/{orgId}/backups/drills
      *
      * Raises on 400: Bad request
@@ -128,6 +136,8 @@ final class BackupsDrillsNamespace extends ApiNamespace
 
     /**
      * List recorded restore drills
+     *
+     * _Requires permission: `resources:read`._
      *
      * GET /api/org/{orgId}/backups/drills/log
      *

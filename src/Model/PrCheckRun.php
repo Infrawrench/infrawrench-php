@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class PrCheckRun implements \JsonSerializable
 {
     /**
      * @param 'running'|'completed'|'failed' $status
-     * @param PrCheckConclusion::* $conclusion
+     * @param PrCheckConclusion::*|null $conclusion
      */
     public function __construct(
         public readonly string $id,
@@ -35,7 +35,7 @@ final class PrCheckRun implements \JsonSerializable
         public readonly ?string $pullUrl,
         public readonly string $headSha,
         public readonly string $status,
-        public readonly string $conclusion,
+        public readonly ?string $conclusion,
         public readonly ?string $checkRunUrl,
         public readonly ?string $commentUrl,
         public readonly ?PrCheckReport $report,
@@ -61,7 +61,7 @@ final class PrCheckRun implements \JsonSerializable
             pullUrl: Coerce::toStringOrNull($data['pullUrl'] ?? null),
             headSha: Coerce::toString($data['headSha'] ?? null),
             status: Coerce::toString($data['status'] ?? null),
-            conclusion: Coerce::toString($data['conclusion'] ?? null),
+            conclusion: Coerce::toStringOrNull($data['conclusion'] ?? null),
             checkRunUrl: Coerce::toStringOrNull($data['checkRunUrl'] ?? null),
             commentUrl: Coerce::toStringOrNull($data['commentUrl'] ?? null),
             report: Coerce::nullable($data['report'] ?? null, static fn (mixed $value): PrCheckReport => PrCheckReport::fromArray(Coerce::toArray($value))),

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,8 @@ final class AiAttributionDimensionsNamespace extends ApiNamespace
 {
     /**
      * Map request-metadata keys to a caller dimension
+     *
+     * _Requires permission: `costs:write`._
      *
      * POST /api/org/{orgId}/ai-attribution/dimensions
      *
@@ -60,6 +62,8 @@ final class AiAttributionDimensionsNamespace extends ApiNamespace
     /**
      * Delete a caller dimension
      *
+     * _Requires permission: `costs:write`._
+     *
      * DELETE /api/org/{orgId}/ai-attribution/dimensions/{id}
      *
      * Raises on 403: Forbidden
@@ -88,6 +92,8 @@ final class AiAttributionDimensionsNamespace extends ApiNamespace
     /**
      * List caller dimensions
      *
+     * _Requires permission: `costs:read`._
+     *
      * GET /api/org/{orgId}/ai-attribution/dimensions
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -111,6 +117,8 @@ final class AiAttributionDimensionsNamespace extends ApiNamespace
 
     /**
      * Update a caller dimension
+     *
+     * _Requires permission: `costs:write`._
      *
      * PUT /api/org/{orgId}/ai-attribution/dimensions/{id}
      *

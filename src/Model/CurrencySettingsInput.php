@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -18,19 +18,15 @@ declare(strict_types=1);
 
 namespace Infrawrench\Sdk\Model;
 
-use Infrawrench\Sdk\Internal\Coerce;
-
 final class CurrencySettingsInput implements \JsonSerializable
 {
     /**
-     * @param string|null $displayCurrency The currency converted amounts are expressed in, or `null` for no conversion at all. `null` is the default and the state of every organization that has not opted in: cost data is stored per currency and never merged unless you ask.
-     * @param bool|null $autoRates Omitted keeps the stored value.
-     * @param 'daily'|'month_end'|null $rateBasis Omitted keeps the stored value.
+     * @param mixed $rateBasis Which automatic (feed) rate converts a day's spend. `daily`: the rate published for that day, carried forward over weekends and holidays. `month_end`: the rate in force on the last day of that day's month, so a whole month converts at one rate. Stated rates always apply to the days their own dates cover, whatever the basis.
      */
     public function __construct(
-        public readonly ?string $displayCurrency,
-        public readonly ?bool $autoRates = null,
-        public readonly ?string $rateBasis = null,
+        public readonly mixed $displayCurrency,
+        public readonly mixed $autoRates = null,
+        public readonly mixed $rateBasis = null,
     ) {
     }
 
@@ -42,9 +38,9 @@ final class CurrencySettingsInput implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            displayCurrency: Coerce::toStringOrNull($data['displayCurrency'] ?? null),
-            autoRates: Coerce::toBoolOrNull($data['autoRates'] ?? null),
-            rateBasis: Coerce::toStringOrNull($data['rateBasis'] ?? null),
+            displayCurrency: $data['displayCurrency'] ?? null,
+            autoRates: $data['autoRates'] ?? null,
+            rateBasis: $data['rateBasis'] ?? null,
         );
     }
 

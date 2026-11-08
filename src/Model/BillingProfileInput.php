@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,20 +24,12 @@ final class BillingProfileInput implements \JsonSerializable
 {
     /**
      * @param string $name What the profile is called in pickers. Not printed on the invoice.
-     * @param string|null $legalName The legal entity invoices are addressed to. Null leaves each customer's name.
-     * @param string|null $address Printed under the legal name. Null leaves each customer's billing address.
-     * @param string|null $taxId Tax ID or VAT number.
-     * @param string|null $poNumber Purchase-order reference.
      * @param list<string>|null $toEmails Addresses invoices are emailed to, **in addition to** each customer's own contact email.
      * @param list<string>|null $ccEmails Addresses that receive a copy. Each address gets its own message.
-     * @param string|null $currency ISO 4217. When set, invoices for every assigned customer are issued in this currency instead of the customer's billing currency.
-     * @param int|null $paymentTermsDays Net N days from the issue date. Null prints no due date; 0 is due on receipt.
      * @param string|null $numberPrefix Starts with a letter; letters, digits and hyphens. Defaults to `INV`. Profiles sharing a prefix share a sequence.
      * @param bool|null $numberIncludesYear Defaults to true: `INV-2026-0001`, with the sequence restarting each year of the period end. False gives `INV-0001` and one sequence for ever.
      * @param int|null $numberStart The lowest sequence number issued, for continuing a sequence from another system.
      * @param list<BillingProfileTaxRate>|null $taxRates
-     * @param string|null $footer Printed at the bottom of every page of the PDF.
-     * @param string|null $logo A PNG or JPEG `data:` URL of at most 100 KB, printed at the top of the PDF. Interlaced and 16-bit PNGs and CMYK JPEGs are refused. Absent on update leaves the saved logo; null removes it.
      */
     public function __construct(
         public readonly string $name,

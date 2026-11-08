@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -59,9 +59,10 @@ final class GithubIssuesNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 409: The GitHub App installation needs a permission an owner has not approved yet
+     * Raises on 409: The installation has not accepted the permission this needs. An owner of the
+     * GitHub account approves it from `manageUrl`.
      *
-     * Raises on 502: GitHub refused the request or was unreachable
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @return list<GithubAssignee>
@@ -94,9 +95,10 @@ final class GithubIssuesNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 409: The GitHub App installation needs a permission an owner has not approved yet
+     * Raises on 409: The installation has not accepted the permission this needs. An owner of the
+     * GitHub account approves it from `manageUrl`.
      *
-     * Raises on 502: GitHub refused the request or was unreachable
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @return list<string>
@@ -155,9 +157,10 @@ final class GithubIssuesNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 409: The GitHub App installation needs a permission an owner has not approved yet
+     * Raises on 409: The installation has not accepted the permission this needs. An owner of the
+     * GitHub account approves it from `manageUrl`.
      *
-     * Raises on 502: GitHub refused the request or was unreachable
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -190,9 +193,10 @@ final class GithubIssuesNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 409: The GitHub App installation needs a permission an owner has not approved yet
+     * Raises on 409: The installation has not accepted the permission this needs. An owner of the
+     * GitHub account approves it from `manageUrl`.
      *
-     * Raises on 502: GitHub refused the request or was unreachable
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @return list<GithubLabel>
@@ -251,6 +255,11 @@ final class GithubIssuesNamespace extends ApiNamespace
      * PUT /api/org/{orgId}/github-issues/settings
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 409: The installation has not accepted the permission this needs. An owner of the
+     * GitHub account approves it from `manageUrl`.
+     *
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

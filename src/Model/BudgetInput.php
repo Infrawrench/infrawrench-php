@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,7 +28,7 @@ final class BudgetInput implements \JsonSerializable
      * @param list<BudgetCostFilter>|null $filters
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` when the budget is evaluated. Updates are full replaces, so omitting it on PUT clears it. A reference that fails to resolve errors the budget's evaluation rather than silently measuring all spend.
      * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) this budget's **forecast** thresholds are measured against. Null (the default, and the value for every budget nobody deliberately opts in) keeps them on the bare trend. Opting in is per-budget on purpose: a hypothesis somebody typed into a form must not silently change when real people get paged. `actual` thresholds are never affected; they measure money already spent. Updates are full replaces, so omitting it on PUT clears the opt-in.
-     * @param BudgetCostBasis::*|null $costBasis
+     * @param BudgetCostBasis::*|null $costBasis Which number the budget tracks. Defaults to `cash`: what the provider charged, when it charged it. An organization holding reservations or savings plans usually wants `amortized`: a cash budget is blown the month a commitment is bought and then reads as under-spent for the rest of the term it paid for. `blended` additionally spreads each commitment's discount evenly over all the usage it could cover, which is the fair basis for a team's budget when commitments are bought centrally.
      * @param bool|null $useAdjustedSpend Measure this budget against billing-rule-adjusted spend (the internal figure) instead of what the providers charged. False by default, and for every budget nobody opted in. The default is a deliberate refusal: a markup is organisation policy and a budget threshold pages a real person, so adding one settings row must not be able to move every on-call rota at once. Unlike a scenario this affects `actual` thresholds too; an opted-in budget is measuring the internal number, and month-to-date internal spend is as marked up as the forecast is. The alert body says the figure is adjusted and names the collected one. Updates are full replaces, so omitting it on PUT clears the opt-in.
      * @param BudgetMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a usage budget counts, exactly as the providers report it.
@@ -48,7 +48,7 @@ final class BudgetInput implements \JsonSerializable
         public readonly ?string $measure = null,
         public readonly ?string $usageUnit = null,
         public readonly ?float $usageAmount = null,
-        public readonly mixed $period = null,
+        public readonly BudgetRecurringPeriod|BudgetExplicitPeriods|null $period = null,
         public readonly ?string $parentBudgetId = null,
         public readonly ?AlertEmailRecipients $emailRecipients = null,
     ) {

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,6 +37,8 @@ final class MsteamsWebhooksNamespace extends ApiNamespace
      * reach it is decided by /alert-rules; connecting a channel routes nothing to it on its own.
      * Responds 400 when the URL is not https or its host is not Microsoft-operated.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/msteams/webhooks
      *
      * Raises on 400: Bad request
@@ -64,6 +66,8 @@ final class MsteamsWebhooksNamespace extends ApiNamespace
     /**
      * Disconnect a Teams channel
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * DELETE /api/org/{orgId}/msteams/webhooks/{id}
      *
      * Raises on 404: Not found
@@ -90,6 +94,8 @@ final class MsteamsWebhooksNamespace extends ApiNamespace
      * Rename a Teams channel
      *
      * The webhook URL is immutable; remove the channel and re-add it to change it.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * PATCH /api/org/{orgId}/msteams/webhooks/{id}
      *

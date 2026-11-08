@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,14 +24,14 @@ final class OrgScorecard implements \JsonSerializable
 {
     /**
      * @param int|null $score Weighted mean over the assessed pillars, or null when none could be assessed: an organization with nothing connected has nothing to grade.
-     * @param OrgScorecardGrade::* $grade
+     * @param OrgScorecardGrade::*|null $grade
      * @param list<OrgScorecardPillar> $pillars
      * @param list<OrgScorecardPillarId::*> $failedPillars Pillars whose computation failed, as opposed to having no data. Excluded from the overall exactly as unassessed ones are, but named apart.
      * @param list<OrgScorecardTrendPoint> $trend Stored daily readings for the last 90 days, oldest first.
      */
     public function __construct(
         public readonly ?int $score,
-        public readonly string $grade,
+        public readonly ?string $grade,
         public readonly array $pillars,
         public readonly array $failedPillars,
         public readonly array $trend,
@@ -48,7 +48,7 @@ final class OrgScorecard implements \JsonSerializable
     {
         return new self(
             score: Coerce::toIntOrNull($data['score'] ?? null),
-            grade: Coerce::toString($data['grade'] ?? null),
+            grade: Coerce::toStringOrNull($data['grade'] ?? null),
             pillars: Coerce::mapList($data['pillars'] ?? null, static fn (mixed $item): OrgScorecardPillar => OrgScorecardPillar::fromArray(Coerce::toArray($item))),
             failedPillars: Coerce::mapList($data['failedPillars'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             trend: Coerce::mapList($data['trend'] ?? null, static fn (mixed $item): OrgScorecardTrendPoint => OrgScorecardTrendPoint::fromArray(Coerce::toArray($item))),

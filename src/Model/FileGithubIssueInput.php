@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class FileGithubIssueInput implements \JsonSerializable
      * @param list<array{label: string, value?: string|float|null}>|null $details
      * @param array{amount: float, currency: string}|null $monthlyCost
      * @param list<string>|null $remediation Shell commands that fix the finding, rendered as a code block to review.
+     * @param GithubRepoRef|null $repo Override the routed repository.
      * @param list<string>|null $labels
      * @param list<string>|null $assignees
      */
@@ -97,7 +98,7 @@ final class FileGithubIssueInput implements \JsonSerializable
             $payload['remediation'] = $this->remediation;
         }
         if ($this->repo !== null) {
-            $payload['repo'] = $this->repo?->toArray();
+            $payload['repo'] = $this->repo->toArray();
         }
         if ($this->labels !== null) {
             $payload['labels'] = $this->labels;

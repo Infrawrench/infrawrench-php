@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,7 @@ final class BlastRadiusDependant implements \JsonSerializable
      * @param array{fieldKey: string, outputKey: string, kind?: 'output-ref'|'declared'|'containment'|'field-match', label?: string}|null $via How a direct dependant reaches the resource. Absent for transitive dependants, whose path is several edges and has no single caption.
      */
     public function __construct(
-        public readonly ?BlastRadiusNode $node,
+        public readonly BlastRadiusNode $node,
         public readonly int $depth,
         public readonly ?array $via = null,
     ) {
@@ -41,7 +41,7 @@ final class BlastRadiusDependant implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            node: Coerce::nullable($data['node'] ?? null, static fn (mixed $value): BlastRadiusNode => BlastRadiusNode::fromArray(Coerce::toArray($value))),
+            node: BlastRadiusNode::fromArray(Coerce::toArray($data['node'] ?? null)),
             depth: Coerce::toInt($data['depth'] ?? null),
             via: Coerce::toArrayOrNull($data['via'] ?? null),
         );
@@ -55,7 +55,7 @@ final class BlastRadiusDependant implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
-            'node' => $this->node?->toArray(),
+            'node' => $this->node->toArray(),
             'depth' => $this->depth,
         ];
         if ($this->via !== null) {

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,8 @@ final class ComplianceControlsNamespace extends ApiNamespace
      *
      * DELETE /api/org/{orgId}/compliance/controls/{frameworkId}/{controlId}
      *
+     * Raises on 400: Bad request
+     *
      * Raises on 404: Not found
      *
      * @param string $frameworkId Framework registry id: `soc2` or `iso27001`.
@@ -63,6 +65,8 @@ final class ComplianceControlsNamespace extends ApiNamespace
      * _Requires permission: `audit:read`._
      *
      * GET /api/org/{orgId}/compliance/controls
+     *
+     * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *
@@ -93,6 +97,8 @@ final class ComplianceControlsNamespace extends ApiNamespace
      * _Requires permission: `audit:read`._
      *
      * GET /api/org/{orgId}/compliance/controls/{frameworkId}/{controlId}
+     *
+     * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *

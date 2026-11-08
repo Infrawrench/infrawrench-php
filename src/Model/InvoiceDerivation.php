@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,7 @@ final class InvoiceDerivation implements \JsonSerializable
      * @param array{costCentres: list<array{id: string, name: string}>, accounts: list<array{id: string, label: string}>} $scope
      * @param list<string> $missingScope Scope entries that no longer exist. Recorded rather than silently skipped; an invoice that is quietly short is worse than one that says why.
      * @param list<PricingEffect>|null $effects Every rule or setting that moved money, in pipeline order, with its total per currency: the per-invoice answer to which rule changed what.
+     * @param RerateCoverage|null $rerateCoverage How much in-scope usage was re-rated from a list price. Null when off.
      * @param list<string>|null $warnings
      * @param list<PricingExpressionFailure>|null $expressionFailures
      */
@@ -97,7 +98,7 @@ final class InvoiceDerivation implements \JsonSerializable
             'missingScope' => $this->missingScope,
         ];
         if ($this->pricing !== null) {
-            $payload['pricing'] = $this->pricing?->toArray();
+            $payload['pricing'] = $this->pricing->toArray();
         }
         if ($this->effects !== null) {
             $payload['effects'] = array_map(static fn (PricingEffect $item): array => $item->toArray(), $this->effects);

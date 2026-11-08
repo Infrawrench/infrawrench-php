@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,10 +23,6 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class MetricAlertRuleWithStatus implements \JsonSerializable
 {
     /**
-     * @param string|null $pluginId Selector: plugin the resource must belong to. Null matches any plugin.
-     * @param string|null $resourceTypeId Selector: resource type within the plugin. Null matches any type.
-     * @param string|null $tagKey Selector: tag key the resource must carry (matched case-insensitively). Null applies no tag filter. Resources are always selected by this query, never by id, so rules cover resources created later.
-     * @param string|null $tagValue Selector: exact value tagKey must have. Null matches any value.
      * @param string $metricKey The metric series label as the resource's charts report it (see /metric-alerts/metric-keys).
      * @param '>'|'>='|'<'|'<=' $comparator
      * @param int $forMinutes Trailing window (minutes) the condition must hold for before firing.
@@ -35,11 +31,11 @@ final class MetricAlertRuleWithStatus implements \JsonSerializable
      * @param int $matchingResourceCount Resources the selector matches right now.
      */
     public function __construct(
+        public readonly mixed $pluginId,
+        public readonly mixed $resourceTypeId,
+        public readonly mixed $tagKey,
+        public readonly mixed $tagValue,
         public readonly string $name,
-        public readonly ?string $pluginId,
-        public readonly ?string $resourceTypeId,
-        public readonly ?string $tagKey,
-        public readonly ?string $tagValue,
         public readonly string $metricKey,
         public readonly string $comparator,
         public readonly float $threshold,
@@ -63,11 +59,11 @@ final class MetricAlertRuleWithStatus implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
+            pluginId: $data['pluginId'] ?? null,
+            resourceTypeId: $data['resourceTypeId'] ?? null,
+            tagKey: $data['tagKey'] ?? null,
+            tagValue: $data['tagValue'] ?? null,
             name: Coerce::toString($data['name'] ?? null),
-            pluginId: Coerce::toStringOrNull($data['pluginId'] ?? null),
-            resourceTypeId: Coerce::toStringOrNull($data['resourceTypeId'] ?? null),
-            tagKey: Coerce::toStringOrNull($data['tagKey'] ?? null),
-            tagValue: Coerce::toStringOrNull($data['tagValue'] ?? null),
             metricKey: Coerce::toString($data['metricKey'] ?? null),
             comparator: Coerce::toString($data['comparator'] ?? null),
             threshold: Coerce::toFloat($data['threshold'] ?? null),
@@ -91,11 +87,11 @@ final class MetricAlertRuleWithStatus implements \JsonSerializable
     public function toArray(): array
     {
         return [
-            'name' => $this->name,
             'pluginId' => $this->pluginId,
             'resourceTypeId' => $this->resourceTypeId,
             'tagKey' => $this->tagKey,
             'tagValue' => $this->tagValue,
+            'name' => $this->name,
             'metricKey' => $this->metricKey,
             'comparator' => $this->comparator,
             'threshold' => $this->threshold,

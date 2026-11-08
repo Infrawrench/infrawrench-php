@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -72,6 +72,8 @@ final class ComplianceSchedulesNamespace extends ApiNamespace
      *
      * DELETE /api/org/{orgId}/compliance/schedules/{id}
      *
+     * Raises on 400: Bad request
+     *
      * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -97,6 +99,8 @@ final class ComplianceSchedulesNamespace extends ApiNamespace
      * _Requires permission: `audit:read`._
      *
      * GET /api/org/{orgId}/compliance/schedules/{id}
+     *
+     * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,6 @@ final class EventDelivery implements \JsonSerializable
     /**
      * @param 'pending'|'retrying'|'succeeded'|'dead'|'skipped' $state
      * @param list<EventDeliveryAttempt> $attempts
-     * @param array<string, mixed> $payload The envelope as sent.
      */
     public function __construct(
         public readonly string $id,
@@ -44,7 +43,7 @@ final class EventDelivery implements \JsonSerializable
         public readonly ?string $redeliveryOf,
         public readonly array $attempts,
         public readonly string $createdAt,
-        public readonly array $payload,
+        public readonly mixed $payload,
     ) {
     }
 
@@ -72,7 +71,7 @@ final class EventDelivery implements \JsonSerializable
             redeliveryOf: Coerce::toStringOrNull($data['redeliveryOf'] ?? null),
             attempts: Coerce::mapList($data['attempts'] ?? null, static fn (mixed $item): EventDeliveryAttempt => EventDeliveryAttempt::fromArray(Coerce::toArray($item))),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
-            payload: Coerce::toArray($data['payload'] ?? null),
+            payload: $data['payload'] ?? null,
         );
     }
 

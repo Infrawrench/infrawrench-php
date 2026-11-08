@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -78,6 +78,8 @@ final class LeakedSecretsNamespace extends ApiNamespace
      * _Requires permission: `resources:read`._
      *
      * GET /api/org/{orgId}/leaked-secrets
+     *
+     * Raises on 400: Bad request
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param 'open'|'rotated'|'dismissed'|'resolved'|null $status `open` needs rotating; `rotated` was rotated through Infrawrench or detected because the stored value changed; `dismissed` was accepted as not a risk; `resolved` was closed on the scanner by someone else before it was rotated here.

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,7 +24,7 @@ final class DrillCoverageRow implements \JsonSerializable
 {
     /**
      * @param 'verified'|'stale'|'failed'|'never' $standing `never` and `stale` are kept apart because they call for different conversations: one is 'nobody has ever tried', the other is 'it worked in March'.
-     * @param 'verified'|'restored-unverified'|'failed'|'blocked'|null $lastOutcome How the drill ended. Only `verified` counts as evidence the backup works: a restore that produced a running system nobody looked inside is exactly how a team discovers, mid-incident, that the dump had been empty for months. `restored-unverified` is recorded because doing the restore is worth recording, but it does not reset the clock.
+     * @param 'verified'|'restored-unverified'|'failed'|'blocked'|null $lastOutcome
      */
     public function __construct(
         public readonly string $resourceId,

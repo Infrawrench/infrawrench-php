@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class EventSubscriptionInput implements \JsonSerializable
     /**
      * @param array{kind: 'webhook', url: string}|array{kind: 'publish', accountId: string, resourceTypeId: string, resourceId: string} $destination
      * @param list<string>|null $eventTypes Event types to receive (see /event-subscriptions/catalog). Empty means all.
+     * @param EventSeverity::*|null $minSeverity Lowest severity to receive. Null means every severity.
      * @param list<string>|null $accountIds Only events about these accounts. Empty does not filter; an event with no account never matches a non-empty list.
      * @param list<string>|null $environments Only events whose environment is one of these (case-insensitive). Empty does not filter; an event with no environment never matches a non-empty list.
      */
@@ -33,7 +34,7 @@ final class EventSubscriptionInput implements \JsonSerializable
         public readonly array $destination,
         public readonly ?bool $enabled = null,
         public readonly ?array $eventTypes = null,
-        public readonly mixed $minSeverity = null,
+        public readonly ?string $minSeverity = null,
         public readonly ?array $accountIds = null,
         public readonly ?array $environments = null,
     ) {
@@ -51,7 +52,7 @@ final class EventSubscriptionInput implements \JsonSerializable
             destination: $data['destination'] ?? null,
             enabled: Coerce::toBoolOrNull($data['enabled'] ?? null),
             eventTypes: Coerce::nullable($data['eventTypes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
-            minSeverity: $data['minSeverity'] ?? null,
+            minSeverity: Coerce::toStringOrNull($data['minSeverity'] ?? null),
             accountIds: Coerce::nullable($data['accountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             environments: Coerce::nullable($data['environments'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
         );

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,16 +20,11 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-/**
- * Estimated monthly CO2e of the same configuration, beside its price. Null for a peer resource or
- * when the size catalogue could not be read.
- *
- * The API may send `null` in place of this object.
- */
 final class ResourceCarbonEstimate implements \JsonSerializable
 {
     /**
-     * @param 'unsupported-provider'|'unknown-region'|'unknown-size'|null $reason Why a resource has no estimate. Reported per resource rather than folded into the total: a figure that quietly excluded a third of the estate would read as a complete answer.
+     * @param CarbonFootprint|null $estimate Monthly (730 h) footprint, or null.
+     * @param 'unsupported-provider'|'unknown-region'|'unknown-size'|null $reason
      * @param bool $inScope False when the type declares nothing to read: a bucket, a DNS record.
      * @param 'instance'|'aggregate' $role `aggregate`: a group (a managed cluster) whose machines are also listed in their own right; shown per resource, never summed into the org total.
      * @param array{cpuUtilization: float, coefficientSource: string, coefficientVintage: string, scope: string} $assumptions

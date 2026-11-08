@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,8 +37,6 @@ final class SavingsEventResult implements \JsonSerializable
      * @param 'pending'|'accruing'|'complete'|'ended' $status
      * @param float|null $baselinePerDay Spend per day before the action.
      * @param float|null $currentPerDay Spend per day over the trailing measured days since.
-     * @param float|null $realizedToDate Currency units (not cents), in the row's currency.
-     * @param float|null $realizedInRange Currency units (not cents), in the row's currency.
      * @param float|null $projectedInRange Projected over the same accrued days in the range.
      * @param string|null $horizonEndsOn Last day a one-off action accrues on; null for recurring ones.
      * @param 'full'|'annotate'|'none' $editable `full`: a manual entry (PUT); `annotate`: an automatic event takes a note, a cost centre, a horizon and an end date (PATCH); `none`: derived rows.

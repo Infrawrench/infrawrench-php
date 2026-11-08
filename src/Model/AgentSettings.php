@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,7 +20,6 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-/** The API may send `null` in place of this object. */
 final class AgentSettings implements \JsonSerializable
 {
     /**
@@ -39,7 +38,7 @@ final class AgentSettings implements \JsonSerializable
         public readonly ?string $surface = null,
         public readonly ?array $serviceAccountIds = null,
         public readonly ?string $t3Access = null,
-        public readonly ?T3CodePolicy $t3Policy = null,
+        public readonly mixed $t3Policy = null,
     ) {
     }
 
@@ -59,7 +58,7 @@ final class AgentSettings implements \JsonSerializable
             surface: Coerce::toStringOrNull($data['surface'] ?? null),
             serviceAccountIds: Coerce::nullable($data['serviceAccountIds'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             t3Access: Coerce::toStringOrNull($data['t3Access'] ?? null),
-            t3Policy: Coerce::nullable($data['t3Policy'] ?? null, static fn (mixed $value): T3CodePolicy => T3CodePolicy::fromArray(Coerce::toArray($value))),
+            t3Policy: $data['t3Policy'] ?? null,
         );
     }
 
@@ -87,7 +86,7 @@ final class AgentSettings implements \JsonSerializable
             $payload['t3Access'] = $this->t3Access;
         }
         if ($this->t3Policy !== null) {
-            $payload['t3Policy'] = $this->t3Policy?->toArray();
+            $payload['t3Policy'] = $this->t3Policy;
         }
 
         return $payload;

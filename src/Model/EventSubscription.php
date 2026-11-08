@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class EventSubscription implements \JsonSerializable
      * @param array{kind: 'webhook', url: string}|array{kind: 'publish', accountId: string, resourceTypeId: string, resourceId: string} $destination
      * @param string $destinationLabel Human label for the destination.
      * @param list<string> $eventTypes Event types to receive (see /event-subscriptions/catalog). Empty means all.
+     * @param EventSeverity::*|null $minSeverity Lowest severity to receive. Null means every severity.
      * @param list<string> $accountIds Only events about these accounts. Empty does not filter; an event with no account never matches a non-empty list.
      * @param list<string> $environments Only events whose environment is one of these (case-insensitive). Empty does not filter; an event with no environment never matches a non-empty list.
      * @param string|null $secretHint Last four characters of the signing secret; null for publish destinations.
@@ -39,7 +40,7 @@ final class EventSubscription implements \JsonSerializable
         public readonly array $destination,
         public readonly string $destinationLabel,
         public readonly array $eventTypes,
-        public readonly mixed $minSeverity,
+        public readonly ?string $minSeverity,
         public readonly array $accountIds,
         public readonly array $environments,
         public readonly ?string $secretHint,
@@ -69,7 +70,7 @@ final class EventSubscription implements \JsonSerializable
             destination: $data['destination'] ?? null,
             destinationLabel: Coerce::toString($data['destinationLabel'] ?? null),
             eventTypes: Coerce::mapList($data['eventTypes'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
-            minSeverity: $data['minSeverity'] ?? null,
+            minSeverity: Coerce::toStringOrNull($data['minSeverity'] ?? null),
             accountIds: Coerce::mapList($data['accountIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             environments: Coerce::mapList($data['environments'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             secretHint: Coerce::toStringOrNull($data['secretHint'] ?? null),

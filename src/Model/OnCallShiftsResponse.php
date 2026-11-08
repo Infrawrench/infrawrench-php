@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class OnCallShiftsResponse implements \JsonSerializable
 {
     /**
-     * @param list<OnCallShift|null> $shifts
+     * @param list<OnCallShift> $shifts
      * @param list<OnCallOverride> $overrides Covers overlapping the previewed window, returned **separately** rather than merged into the shifts: a preview that folded them in would make it impossible to see what the rotation itself does, which is the thing being edited.
      */
     public function __construct(
@@ -40,7 +40,7 @@ final class OnCallShiftsResponse implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            shifts: Coerce::mapList($data['shifts'] ?? null, static fn (mixed $item): ?OnCallShift => Coerce::nullable($item, static fn (mixed $value): OnCallShift => OnCallShift::fromArray(Coerce::toArray($value)))),
+            shifts: Coerce::mapList($data['shifts'] ?? null, static fn (mixed $item): OnCallShift => OnCallShift::fromArray(Coerce::toArray($item))),
             overrides: Coerce::mapList($data['overrides'] ?? null, static fn (mixed $item): OnCallOverride => OnCallOverride::fromArray(Coerce::toArray($item))),
         );
     }
@@ -53,7 +53,7 @@ final class OnCallShiftsResponse implements \JsonSerializable
     public function toArray(): array
     {
         return [
-            'shifts' => array_map(static fn (?OnCallShift $item): array => $item?->toArray(), $this->shifts),
+            'shifts' => array_map(static fn (OnCallShift $item): array => $item->toArray(), $this->shifts),
             'overrides' => array_map(static fn (OnCallOverride $item): array => $item->toArray(), $this->overrides),
         ];
     }

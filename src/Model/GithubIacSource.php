@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,7 +30,7 @@ final class GithubIacSource implements \JsonSerializable
     public function __construct(
         public readonly string $id,
         public readonly ?string $iacAccountId,
-        public readonly ?GithubRepoRef $repo,
+        public readonly GithubRepoRef $repo,
         public readonly ?string $baseBranch,
         public readonly string $directory,
     ) {
@@ -46,7 +46,7 @@ final class GithubIacSource implements \JsonSerializable
         return new self(
             id: Coerce::toString($data['id'] ?? null),
             iacAccountId: Coerce::toStringOrNull($data['iacAccountId'] ?? null),
-            repo: Coerce::nullable($data['repo'] ?? null, static fn (mixed $value): GithubRepoRef => GithubRepoRef::fromArray(Coerce::toArray($value))),
+            repo: GithubRepoRef::fromArray(Coerce::toArray($data['repo'] ?? null)),
             baseBranch: Coerce::toStringOrNull($data['baseBranch'] ?? null),
             directory: Coerce::toString($data['directory'] ?? null),
         );
@@ -62,7 +62,7 @@ final class GithubIacSource implements \JsonSerializable
         return [
             'id' => $this->id,
             'iacAccountId' => $this->iacAccountId,
-            'repo' => $this->repo?->toArray(),
+            'repo' => $this->repo->toArray(),
             'baseBranch' => $this->baseBranch,
             'directory' => $this->directory,
         ];

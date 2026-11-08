@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,9 +37,13 @@ final class BackupsPoliciesNamespace extends ApiNamespace
      * nothing could never produce a finding and would read as protection while providing none. An
      * empty `resourceTypeIds` selects every stateful resource type.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/backups/policies
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
      *
      * Raises on 409: Conflict
      *
@@ -69,6 +73,8 @@ final class BackupsPoliciesNamespace extends ApiNamespace
      * Removes the objective. To stop a policy judging without losing it, set `enabled` to false
      * instead.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * DELETE /api/org/{orgId}/backups/policies/{policyId}
      *
      * Raises on 404: Not found
@@ -95,6 +101,8 @@ final class BackupsPoliciesNamespace extends ApiNamespace
      *
      * The recovery objectives coverage is judged against. A policy selects resources by type
      * and/or tag and demands a maximum RPO, a minimum retention, or both.
+     *
+     * _Requires permission: `resources:read`._
      *
      * GET /api/org/{orgId}/backups/policies
      *
@@ -123,11 +131,15 @@ final class BackupsPoliciesNamespace extends ApiNamespace
      * or `minRetentionDays`. The result is validated after merging, so a patch that would leave
      * the policy demanding nothing is rejected.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * PATCH /api/org/{orgId}/backups/policies/{policyId}
      *
      * Raises on 400: Bad request
      *
      * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

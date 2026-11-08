@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -45,6 +45,8 @@ final class AiAttributionNamespace extends ApiNamespace
     /**
      * Discover locations (buckets, log groups, gateways) for a source kind
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/ai-attribution/locations
      *
      * Raises on 400: Bad request
@@ -52,6 +54,8 @@ final class AiAttributionNamespace extends ApiNamespace
      * Raises on 403: Forbidden
      *
      * Raises on 404: Not found
+     *
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @return array{locations: list<array<string, mixed>>}
@@ -75,6 +79,8 @@ final class AiAttributionNamespace extends ApiNamespace
 
     /**
      * Re-split a range of days now
+     *
+     * _Requires permission: `costs:write`._
      *
      * POST /api/org/{orgId}/ai-attribution/reattribute
      *
@@ -107,6 +113,8 @@ final class AiAttributionNamespace extends ApiNamespace
     /**
      * List the request-log source kinds the org can add
      *
+     * _Requires permission: `costs:read`._
+     *
      * GET /api/org/{orgId}/ai-attribution/source-kinds
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -133,6 +141,8 @@ final class AiAttributionNamespace extends ApiNamespace
      *
      * Includes the `(unattributed)` remainder and `(not set)` for matched requests that lacked
      * every mapped key. For time series, group a cost report by the tag key `caller:<dimension>`.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/ai-attribution/spend
      *
@@ -161,6 +171,8 @@ final class AiAttributionNamespace extends ApiNamespace
 
     /**
      * Match-rate statistics per source and coverage per provider
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/ai-attribution/stats
      *

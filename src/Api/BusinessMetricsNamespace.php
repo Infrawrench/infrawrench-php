@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -73,7 +73,7 @@ final class BusinessMetricsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
-     * Raises on 409: A live metric already uses this key.
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -139,6 +139,8 @@ final class BusinessMetricsNamespace extends ApiNamespace
      *
      * Raises on 400: Bad request
      *
+     * Raises on 403: Forbidden
+     *
      * Raises on 404: Not found
      *
      * @param array{accountId: string, fieldKey: string, params: array<string, string>} $body
@@ -175,6 +177,8 @@ final class BusinessMetricsNamespace extends ApiNamespace
      * POST /api/org/{orgId}/business-metrics/importer-preview
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
      *
      * Raises on 404: Not found
      *
@@ -233,6 +237,8 @@ final class BusinessMetricsNamespace extends ApiNamespace
      * The label keys the metric's values carry, each with its distinct values (at most 500) and
      * its cost mapping. A mapped label nobody has reported yet is listed with no values.
      *
+     * _Requires permission: `costs:read`._
+     *
      * GET /api/org/{orgId}/business-metrics/{id}/labels
      *
      * Raises on 404: Not found
@@ -272,7 +278,7 @@ final class BusinessMetricsNamespace extends ApiNamespace
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: A live metric already uses this key.
+     * Raises on 409: Conflict
      *
      * @param string $id Metric id or key
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -300,6 +306,8 @@ final class BusinessMetricsNamespace extends ApiNamespace
      *
      * The provider usage units the organization's cost rows carry over the last 90 days, most
      * spend first, with a few of the services reporting each. Backs the per-usage-unit picker.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/business-metrics/usage-units
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class ChangesAlertSettingsNamespace extends ApiNamespace
      * how often a message may go out. Who receives it is the `resourceDrift` opt-in on push
      * preferences, Slack channels and Teams webhooks; off by default on all three.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/changes/alert-settings
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -62,6 +64,8 @@ final class ChangesAlertSettingsNamespace extends ApiNamespace
      * Every field is optional so a single toggle can be saved on its own. `cooldownMinutes` is
      * floored at 5: below the poller's own cycle the notification rate would follow the sync rate
      * again, which is what the batching exists to prevent.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * PUT /api/org/{orgId}/changes/alert-settings
      *

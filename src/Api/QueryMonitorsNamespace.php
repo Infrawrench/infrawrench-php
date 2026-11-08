@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -55,6 +55,8 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * against a customer database on a schedule, forever, which is a strictly larger act than
      * running one while watching it.
      *
+     * _Requires permission: `resources:execute`._
+     *
      * POST /api/org/{orgId}/query-monitors
      *
      * Raises on 400: Bad request
@@ -67,15 +69,15 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function create(?string $orgId = null, ?QueryMonitorCreate $body = null, ?RequestOptions $options = null): QueryMonitor
+    public function create(QueryMonitorCreate $body, ?string $orgId = null, ?RequestOptions $options = null): QueryMonitor
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/query-monitors',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
@@ -85,6 +87,8 @@ final class QueryMonitorsNamespace extends ApiNamespace
 
     /**
      * Delete a query monitor
+     *
+     * _Requires permission: `resources:execute`._
      *
      * DELETE /api/org/{orgId}/query-monitors/{monitorId}
      *
@@ -117,6 +121,8 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * fail. Pass a resource's `id` (and optionally its `resourceTypeId`: the server fills it from
      * the synced resource either way) when creating a monitor to scope the query to that resource.
      *
+     * _Requires permission: `resources:read`._
+     *
      * GET /api/org/{orgId}/query-monitors/targets
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -145,23 +151,26 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * preview: and applies the threshold, so the answer says whether it *would* be breaching
      * rather than leaving the reader to compare two numbers.
      *
+     * _Requires permission: `resources:execute`._
+     *
      * POST /api/org/{orgId}/query-monitors/test
      *
      * Raises on 400: Bad request
      *
+     * @param array<string, mixed> $body
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function test(?string $orgId = null, ?QueryMonitorCreate $body = null, ?RequestOptions $options = null): QueryMonitorTestResult
+    public function test(array $body, ?string $orgId = null, ?RequestOptions $options = null): QueryMonitorTestResult
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/query-monitors/test',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body,
+                hasBody: true,
             ),
             $options,
         );
@@ -177,6 +186,8 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * was accumulated against a different question, and carrying it forward would fire an alert on
      * the first run of a rule nobody has tested.
      *
+     * _Requires permission: `resources:execute`._
+     *
      * PATCH /api/org/{orgId}/query-monitors/{monitorId}
      *
      * Raises on 400: Bad request
@@ -189,15 +200,15 @@ final class QueryMonitorsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(string $monitorId, ?string $orgId = null, ?QueryMonitorUpdate $body = null, ?RequestOptions $options = null): QueryMonitor
+    public function update(string $monitorId, QueryMonitorUpdate $body, ?string $orgId = null, ?RequestOptions $options = null): QueryMonitor
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PATCH',
                 path: '/api/org/{orgId}/query-monitors/{monitorId}',
                 pathParams: ['orgId' => $orgId, 'monitorId' => $monitorId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -50,6 +50,8 @@ final class SlackNamespace extends ApiNamespace
      * approval screen, and Slack redirects back to /api/slack/oauth/callback. The install only
      * completes in the browser that opened the link as that user.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/slack/install-url
      *
      * Raises on 400: Bad request
@@ -79,6 +81,8 @@ final class SlackNamespace extends ApiNamespace
      * Reports whether the server has a Slack app registered, which workspaces this organization
      * has connected, and which channels alerts are routed to.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/slack/status
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -104,6 +108,8 @@ final class SlackNamespace extends ApiNamespace
      *
      * Ignores routing rules; every channel gets the test. Fails with the Slack error when nothing
      * could be delivered (`not_in_channel` means the bot needs inviting to a private channel).
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/slack/test
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -50,9 +50,13 @@ final class RunbooksNamespace extends ApiNamespace
      * is done, and it is read by strangers under pressure. Names are unique within an
      * organization: two runbooks called "Failover" is how the wrong one gets run.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/runbooks
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
      *
      * Raises on 409: Conflict
      *
@@ -60,15 +64,15 @@ final class RunbooksNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function create(?string $orgId = null, ?RunbookCreate $body = null, ?RequestOptions $options = null): Runbook
+    public function create(RunbookCreate $body, ?string $orgId = null, ?RequestOptions $options = null): Runbook
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/runbooks',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
@@ -81,6 +85,8 @@ final class RunbooksNamespace extends ApiNamespace
      *
      * Takes its run history with it. To retire a procedure without losing the record of the runs
      * performed against it, set `enabled` to false instead.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * DELETE /api/org/{orgId}/runbooks/{runbookId}
      *
@@ -110,6 +116,8 @@ final class RunbooksNamespace extends ApiNamespace
      * only changes the steps still has to produce a runbook that is valid as a whole. A step sent
      * with its `id` keeps its identity, so a run in progress still matches it.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * PATCH /api/org/{orgId}/runbooks/{runbookId}
      *
      * Raises on 400: Bad request
@@ -122,15 +130,15 @@ final class RunbooksNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(string $runbookId, ?string $orgId = null, ?RunbookUpdate $body = null, ?RequestOptions $options = null): Runbook
+    public function update(string $runbookId, RunbookUpdate $body, ?string $orgId = null, ?RequestOptions $options = null): Runbook
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PATCH',
                 path: '/api/org/{orgId}/runbooks/{runbookId}',
                 pathParams: ['orgId' => $orgId, 'runbookId' => $runbookId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );

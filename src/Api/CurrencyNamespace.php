@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -47,6 +47,8 @@ final class CurrencyNamespace extends ApiNamespace
      * Every rate the ECB feed holds for `date` (default today; weekends and holidays carry the
      * last publication), expressed in `base` (default the display currency, else EUR), plus the
      * feed's state. Readable whether or not the organization has automatic rates on.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/currency/feed
      *
@@ -108,6 +110,8 @@ final class CurrencyNamespace extends ApiNamespace
      * Applies the organization's precedence (a stated rate covering the day, else the automatic
      * feed when on, at the day or month-end rate per `rateBasis`) and explains the outcome. `to`
      * defaults to the display currency; `date` defaults to today.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/currency/lookup
      *

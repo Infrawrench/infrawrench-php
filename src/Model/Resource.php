@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,7 +35,7 @@ final class Resource implements \JsonSerializable
         public readonly ?string $externalId,
         public readonly array $fieldsJson,
         public readonly array $outputsJson,
-        public readonly mixed $parentResourceId,
+        public readonly ?string $parentResourceId,
     ) {
     }
 
@@ -55,7 +55,7 @@ final class Resource implements \JsonSerializable
             externalId: Coerce::toStringOrNull($data['externalId'] ?? null),
             fieldsJson: Coerce::toArray($data['fieldsJson'] ?? null),
             outputsJson: Coerce::toArray($data['outputsJson'] ?? null),
-            parentResourceId: $data['parentResourceId'] ?? null,
+            parentResourceId: Coerce::toStringOrNull($data['parentResourceId'] ?? null),
         );
     }
 

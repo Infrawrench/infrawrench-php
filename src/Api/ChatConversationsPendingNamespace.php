@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,6 +23,8 @@ use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Model\ChatAskQuestionInput;
 use Infrawrench\Sdk\Model\ChatAskQuestionResult;
+use Infrawrench\Sdk\Model\ChatPendingDecisionInput;
+use Infrawrench\Sdk\Model\ChatPendingDecisionResult;
 use Infrawrench\Sdk\RequestOptions;
 
 /** `$client->chat->conversations->pending` */
@@ -66,5 +68,48 @@ final class ChatConversationsPendingNamespace extends ApiNamespace
         );
 
         return ChatAskQuestionResult::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Approve or reject a pending tool call
+     *
+     * Approving runs the tool now, before answering; a tool that fails answers 500 with its error
+     * and the action is recorded as `errored`. Not for `ask_question` actions, which take answers
+     * instead.
+     *
+     * _Requires permission: `chat:write`._
+     *
+     * POST /api/org/{orgId}/chat/conversations/{conversationId}/pending/{pendingId}
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
+     *
+     * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
+     *
+     * Raises on 500: Server error
+     *
+     * @param string $conversationId Chat conversation id
+     * @param string $pendingId Pending ask_question action id
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function create(string $conversationId, string $pendingId, ChatPendingDecisionInput $body, ?string $orgId = null, ?RequestOptions $options = null): ChatPendingDecisionResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/chat/conversations/{conversationId}/pending/{pendingId}',
+                pathParams: ['orgId' => $orgId, 'conversationId' => $conversationId, 'pendingId' => $pendingId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return ChatPendingDecisionResult::fromArray(Coerce::toArray($data));
     }
 }

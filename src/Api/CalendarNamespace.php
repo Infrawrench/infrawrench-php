@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -49,6 +49,8 @@ final class CalendarNamespace extends ApiNamespace
      * The window defaults to the last 7 and next 35 days and may span at most 400. Recurring
      * sources are expanded to at most 400 occurrences each, so one nightly schedule cannot flood a
      * year-long query.
+     *
+     * _Requires permission: `resources:read`._
      *
      * GET /api/org/{orgId}/calendar
      *

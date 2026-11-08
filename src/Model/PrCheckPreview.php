@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,10 +22,13 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class PrCheckPreview implements \JsonSerializable
 {
-    /** @param string $markdown The check run summary, as GitHub renders it. */
+    /**
+     * @param PrCheckConclusion::* $conclusion
+     * @param string $markdown The check run summary, as GitHub renders it.
+     */
     public function __construct(
-        public readonly ?PrCheckReport $report,
-        public readonly mixed $conclusion,
+        public readonly PrCheckReport $report,
+        public readonly string $conclusion,
         public readonly string $title,
         public readonly string $markdown,
     ) {
@@ -39,8 +42,8 @@ final class PrCheckPreview implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            report: Coerce::nullable($data['report'] ?? null, static fn (mixed $value): PrCheckReport => PrCheckReport::fromArray(Coerce::toArray($value))),
-            conclusion: $data['conclusion'] ?? null,
+            report: PrCheckReport::fromArray(Coerce::toArray($data['report'] ?? null)),
+            conclusion: Coerce::toString($data['conclusion'] ?? null),
             title: Coerce::toString($data['title'] ?? null),
             markdown: Coerce::toString($data['markdown'] ?? null),
         );
@@ -54,7 +57,7 @@ final class PrCheckPreview implements \JsonSerializable
     public function toArray(): array
     {
         return [
-            'report' => $this->report?->toArray(),
+            'report' => $this->report->toArray(),
             'conclusion' => $this->conclusion,
             'title' => $this->title,
             'markdown' => $this->markdown,

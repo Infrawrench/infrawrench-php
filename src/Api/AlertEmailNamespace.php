@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -48,6 +48,8 @@ final class AlertEmailNamespace extends ApiNamespace
      * available on this deployment: everything a client needs to edit the `emailRecipients` on a
      * budget, cost change alert, anomaly settings or efficiency alert settings, or an email
      * destination on an alert routing rule. Requires `costs:read`.
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/alert-email
      *

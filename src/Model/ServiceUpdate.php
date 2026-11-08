@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,6 @@ final class ServiceUpdate implements \JsonSerializable
      * @param string|null $name Unique in the organization; at most 120 characters.
      * @param string|null $slug Lower-case letters, digits and dashes; unique. Derived from the name when omitted.
      * @param string|null $description At most 1000 characters.
-     * @param float|null $tier Criticality, 1 being the most critical.
      * @param string|null $ownerTeam Free-text owning team; display-only, never routed. At most 120 characters.
      * @param list<string>|null $ownerUserIds Owning org members (at most 20).
      * @param list<ServiceLink>|null $links Dashboards, repositories, docs (at most 20).

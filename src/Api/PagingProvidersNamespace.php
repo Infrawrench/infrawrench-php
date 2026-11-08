@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -48,6 +48,8 @@ final class PagingProvidersNamespace extends ApiNamespace
      * Listed live from each provider, so a destination is picked by name. A failure is reported
      * per account in `error` rather than failing the response.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/paging-providers/destinations
      *
      * Raises on 400: Bad request
@@ -64,10 +66,9 @@ final class PagingProvidersNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -93,6 +94,8 @@ final class PagingProvidersNamespace extends ApiNamespace
      * One row per (account, target, dedup key): a trigger, its acknowledgement and its resolution
      * are one alert upstream. `pendingAction` is set while a send is queued or being retried.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/paging-providers/events
      *
      * Raises on 400: Bad request
@@ -109,10 +112,9 @@ final class PagingProvidersNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -136,6 +138,8 @@ final class PagingProvidersNamespace extends ApiNamespace
     /**
      * List paging provider accounts and their settings
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/paging-providers
      *
      * Raises on 400: Bad request
@@ -152,10 +156,9 @@ final class PagingProvidersNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -183,6 +186,8 @@ final class PagingProvidersNamespace extends ApiNamespace
      * cannot be subscribed is reported in `warning` and mirroring falls back to reconciling on a
      * timer.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * PUT /api/org/{orgId}/paging-providers/{accountId}/settings
      *
      * Raises on 400: Bad request
@@ -199,25 +204,24 @@ final class PagingProvidersNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string $accountId A connected account whose plugin can page
      * @param string|null $orgId Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function settings(string $accountId, ?string $orgId = null, ?PagingProviderSettingsInput $body = null, ?RequestOptions $options = null): PagingProviderSettingsResult
+    public function settings(string $accountId, PagingProviderSettingsInput $body, ?string $orgId = null, ?RequestOptions $options = null): PagingProviderSettingsResult
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PUT',
                 path: '/api/org/{orgId}/paging-providers/{accountId}/settings',
                 pathParams: ['orgId' => $orgId, 'accountId' => $accountId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
@@ -227,6 +231,8 @@ final class PagingProvidersNamespace extends ApiNamespace
 
     /**
      * Reconcile an account's incidents now
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/paging-providers/{accountId}/sync
      *
@@ -244,10 +250,9 @@ final class PagingProvidersNamespace extends ApiNamespace
      *
      * Raises on 500: Server error
      *
-     * Raises on 503: A backing service this endpoint depends on is not available
+     * Raises on 502: Bad gateway: an upstream service failed
      *
-     * Raises on reauth: Recent sign-in required. Send the user through sign-in again and retry;
-     * the request itself was well-formed.
+     * Raises on 503: A backing service this endpoint depends on is not available
      *
      * @param string $accountId A connected account whose plugin can page
      * @param string|null $orgId Defaults to the `orgId` the client was constructed with.

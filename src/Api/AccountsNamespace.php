@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,11 +24,11 @@ use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
 use Infrawrench\Sdk\Model\Account;
 use Infrawrench\Sdk\Model\AccountDetail;
+use Infrawrench\Sdk\Model\CreateAccountRequest;
 use Infrawrench\Sdk\Model\CreateAccountResponse;
 use Infrawrench\Sdk\Model\CredentialOptionsRequest;
 use Infrawrench\Sdk\Model\CredentialOptionsResponse;
 use Infrawrench\Sdk\Model\Ok;
-use Infrawrench\Sdk\Model\PluginId;
 use Infrawrench\Sdk\Model\Resource;
 use Infrawrench\Sdk\Model\SyncResponse;
 use Infrawrench\Sdk\Model\TerraformExport;
@@ -74,19 +74,18 @@ final class AccountsNamespace extends ApiNamespace
      *
      * Raises on 402: Payment required: the organization's plan does not include this
      *
-     * @param array{pluginId?: PluginId::*, displayName: string, credentials: array<string, string>, bastionId?: string|null} $body
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function create(array $body, ?string $orgId = null, ?RequestOptions $options = null): CreateAccountResponse
+    public function create(CreateAccountRequest $body, ?string $orgId = null, ?RequestOptions $options = null): CreateAccountResponse
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/accounts',
                 pathParams: ['orgId' => $orgId],
-                body: $body,
+                body: $body->toArray(),
                 hasBody: true,
             ),
             $options,

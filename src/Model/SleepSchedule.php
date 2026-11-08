@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,14 +27,14 @@ final class SleepSchedule implements \JsonSerializable
      * @param PluginId::* $pluginId
      * @param string $resourceName Resource display name at read time.
      * @param list<int> $daysOfWeek ISO weekdays the resource is worked on: 1 = Monday … 7 = Sunday.
-     * @param string $stopTime Wall-clock time of day, 24-hour `"HH:MM"`, in the schedule's timezone.
-     * @param string $startTime Wall-clock time of day, 24-hour `"HH:MM"`, in the schedule's timezone.
+     * @param string $stopTime When the resource is stopped on each selected day.
+     * @param string $startTime When the resource is started on each selected day.
      * @param string $timezone IANA timezone the wall-clock times are computed in (DST-safe).
      * @param bool $paused Paused schedules keep their timing but never fire.
      * @param string|null $nextTransitionAt Next due transition; null while paused.
-     * @param 'stop'|'start'|null $nextTransitionAction A schedule transition: `stop` powers the resource off, `start` powers it on.
-     * @param 'stop'|'start'|null $lastRunAction A schedule transition: `stop` powers the resource off, `start` powers it on.
-     * @param 'ok'|'failed'|'skipped_freeze'|null $lastRunStatus Outcome of the last executed transition: `ok`, `failed` (see `lastRunError`), or `skipped_freeze` (an org change freeze was in effect, so the transition was skipped).
+     * @param 'stop'|'start'|null $nextTransitionAction
+     * @param 'stop'|'start'|null $lastRunAction
+     * @param 'ok'|'failed'|'skipped_freeze'|null $lastRunStatus
      * @param string|null $lastRunError Failure detail for a failed run.
      * @param float|null $projectedMonthlySaving Projected monthly saving from trailing per-resource spend × the weekly off-hours fraction; null when billing holds no rows for the resource.
      * @param string|null $currency Currency of the projection, when present.

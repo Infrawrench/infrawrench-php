@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -43,6 +43,8 @@ final class MomentNamespace extends ApiNamespace
      * GET /api/org/{orgId}/moment
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 403: Forbidden
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $at Centre of the window. Defaults to now.

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -89,12 +89,10 @@ final class ComplianceNamespace extends ApiNamespace
      *
      * @param string $framework Framework registry id: `soc2` or `iso27001`.
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param string|null $from First day of the period (UTC). Defaults to 90 days before `to`.
-     * @param string|null $to Last day of the period, inclusive (UTC). Defaults to today.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function get(string $framework, ?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): ComplianceStatus
+    public function get(string $framework, ?string $orgId = null, mixed $from = null, mixed $to = null, ?RequestOptions $options = null): ComplianceStatus
     {
         $data = $this->transport->request(
             new RequestSpec(
@@ -127,13 +125,11 @@ final class ComplianceNamespace extends ApiNamespace
      *
      * @param string $framework Framework registry id: `soc2` or `iso27001`.
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param string|null $from First day of the period (UTC). Defaults to 90 days before `to`.
-     * @param string|null $to Last day of the period, inclusive (UTC). Defaults to today.
      * @return string Raw response bytes.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function pack(string $framework, ?string $orgId = null, ?string $from = null, ?string $to = null, ?RequestOptions $options = null): string
+    public function pack(string $framework, ?string $orgId = null, mixed $from = null, mixed $to = null, ?RequestOptions $options = null): string
     {
         $data = $this->transport->request(
             new RequestSpec(

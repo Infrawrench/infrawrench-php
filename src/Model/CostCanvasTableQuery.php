@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,6 @@ final class CostCanvasTableQuery implements \JsonSerializable
     /**
      * @param array{kind: 'relative', preset: string}|array{kind: 'absolute', from: string, to: string} $dateRange
      * @param 'none'|'daily'|'weekly'|'monthly' $binning
-     * @param 'provider'|'account'|'service'|'region'|'resource'|'tag'|'charge_type'|'commitment' $groupBy
      * @param list<CostReportFilter>|null $filters
      * @param 'cash'|'amortized'|'blended'|null $costBasis
      */

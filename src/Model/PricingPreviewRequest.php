@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,10 +28,10 @@ final class PricingPreviewRequest implements \JsonSerializable
      * @param string|null $month `YYYY-MM`; defaults to last calendar month.
      */
     public function __construct(
-        public readonly ?BillingRuleInput $rule = null,
+        public readonly mixed $rule = null,
         public readonly ?string $ruleId = null,
         public readonly ?string $managedAccountId = null,
-        public readonly ?ManagedAccountPricing $pricing = null,
+        public readonly mixed $pricing = null,
         public readonly ?string $month = null,
     ) {
     }
@@ -44,10 +44,10 @@ final class PricingPreviewRequest implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            rule: Coerce::nullable($data['rule'] ?? null, static fn (mixed $value): BillingRuleInput => BillingRuleInput::fromArray(Coerce::toArray($value))),
+            rule: $data['rule'] ?? null,
             ruleId: Coerce::toStringOrNull($data['ruleId'] ?? null),
             managedAccountId: Coerce::toStringOrNull($data['managedAccountId'] ?? null),
-            pricing: Coerce::nullable($data['pricing'] ?? null, static fn (mixed $value): ManagedAccountPricing => ManagedAccountPricing::fromArray(Coerce::toArray($value))),
+            pricing: $data['pricing'] ?? null,
             month: Coerce::toStringOrNull($data['month'] ?? null),
         );
     }
@@ -62,7 +62,7 @@ final class PricingPreviewRequest implements \JsonSerializable
         $payload = [
         ];
         if ($this->rule !== null) {
-            $payload['rule'] = $this->rule?->toArray();
+            $payload['rule'] = $this->rule;
         }
         if ($this->ruleId !== null) {
             $payload['ruleId'] = $this->ruleId;
@@ -71,7 +71,7 @@ final class PricingPreviewRequest implements \JsonSerializable
             $payload['managedAccountId'] = $this->managedAccountId;
         }
         if ($this->pricing !== null) {
-            $payload['pricing'] = $this->pricing?->toArray();
+            $payload['pricing'] = $this->pricing;
         }
         if ($this->month !== null) {
             $payload['month'] = $this->month;

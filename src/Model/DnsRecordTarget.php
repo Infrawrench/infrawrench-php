@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,8 @@ final class DnsRecordTarget implements \JsonSerializable
     /**
      * @param string $value The target as stored, lowercased with any trailing dot removed.
      * @param 'owned'|'dangling'|'external'|'not-analysed' $classification What can be said about a record target from synced state alone. `owned`: the value is an identity of a synced resource. `dangling`: the value falls inside a provider namespace this workspace manages (an S3 endpoint, a `*.vercel.app` alias) and no synced resource claims it, which is the subdomain-takeover signature. `external`: the value points somewhere there is no declaration for; not a finding. `not-analysed`: the record type carries no host target that is reasoned about (TXT, MX, SOA, CAA, SRV).
+     * @param DnsTargetResource|null $resource Set only when classification is "owned".
+     * @param DnsTargetService|null $service Set only when classification is "dangling".
      */
     public function __construct(
         public readonly string $value,

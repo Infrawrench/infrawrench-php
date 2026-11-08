@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,13 +22,12 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class SqlExecuteRequest implements \JsonSerializable
 {
-    /** @param list<mixed>|null $params */
     public function __construct(
         public readonly string $accountId,
         public readonly string $sql,
         public readonly ?string $resourceId = null,
         public readonly ?string $resourceTypeId = null,
-        public readonly ?array $params = null,
+        public readonly mixed $params = null,
     ) {
     }
 
@@ -44,7 +43,7 @@ final class SqlExecuteRequest implements \JsonSerializable
             sql: Coerce::toString($data['sql'] ?? null),
             resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
             resourceTypeId: Coerce::toStringOrNull($data['resourceTypeId'] ?? null),
-            params: Coerce::toListOrNull($data['params'] ?? null),
+            params: $data['params'] ?? null,
         );
     }
 

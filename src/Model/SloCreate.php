@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,7 +30,7 @@ final class SloCreate implements \JsonSerializable
      * @param int|null $latencyThresholdMs `probe_latency`: a check is good at or under this many ms (1-60000).
      * @param string|null $resourceId `metric_threshold`: the synced resource reporting the series.
      * @param string|null $metricKey `metric_threshold`: the series label as the resource reports it, e.g. "CPU %".
-     * @param '<'|'<='|'>'|'>='|null $comparator `metric_threshold` only: a minute is good when `value <comparator> threshold`.
+     * @param '<'|'<='|'>'|'>='|null $comparator
      * @param float|null $threshold `metric_threshold`: the comparison's right side.
      * @param float|null $targetPercent Objective as a percentage, at least 50 and at most 99.999.
      * @param float|null $windowDays Rolling window in days.

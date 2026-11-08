@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,6 +40,8 @@ final class ScorecardsOrgNamespace extends ApiNamespace
      * assessed. The trend comes from a daily snapshot the poller records; days when nothing could
      * be graded are absent rather than zero. Does not seed the default scorecard.
      *
+     * _Requires permission: `resources:read`._
+     *
      * GET /api/org/{orgId}/scorecards/org
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -64,6 +66,8 @@ final class ScorecardsOrgNamespace extends ApiNamespace
      * List stored org grade readings
      *
      * The daily history alone, without computing the grade: the cheap read for a sparkline.
+     *
+     * _Requires permission: `resources:read`._
      *
      * GET /api/org/{orgId}/scorecards/org/history
      *

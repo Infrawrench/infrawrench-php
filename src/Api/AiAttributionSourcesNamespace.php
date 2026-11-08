@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,8 @@ final class AiAttributionSourcesNamespace extends ApiNamespace
      * Governed by `org:settings:write`: a source authorizes a daily read of the org's request
      * logs, and the Bedrock CloudWatch kind runs a Logs Insights query billed to the org's own AWS
      * account per GB scanned. Audit-logged.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/ai-attribution/sources
      *
@@ -66,6 +68,8 @@ final class AiAttributionSourcesNamespace extends ApiNamespace
     /**
      * Delete a request-log source
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * DELETE /api/org/{orgId}/ai-attribution/sources/{id}
      *
      * Raises on 403: Forbidden
@@ -94,6 +98,8 @@ final class AiAttributionSourcesNamespace extends ApiNamespace
     /**
      * List request-log sources
      *
+     * _Requires permission: `costs:read`._
+     *
      * GET /api/org/{orgId}/ai-attribution/sources
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -117,6 +123,8 @@ final class AiAttributionSourcesNamespace extends ApiNamespace
 
     /**
      * Read one request-log source
+     *
+     * _Requires permission: `costs:read`._
      *
      * GET /api/org/{orgId}/ai-attribution/sources/{id}
      *
@@ -145,6 +153,8 @@ final class AiAttributionSourcesNamespace extends ApiNamespace
      *
      * Aggregates keep only mapped metadata keys, so a newly mapped dimension reaches history only
      * by re-reading it. Clamped to the source kind's history limit.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/ai-attribution/sources/{id}/recollect
      *
@@ -177,6 +187,8 @@ final class AiAttributionSourcesNamespace extends ApiNamespace
      * Update a request-log source
      *
      * Pointing a source at a different location restarts its collection history.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * PUT /api/org/{orgId}/ai-attribution/sources/{id}
      *

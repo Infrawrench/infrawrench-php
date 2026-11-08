@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -38,6 +38,8 @@ final class CalendarSubscriptionsNamespace extends ApiNamespace
      *
      * An organization may hold 25 live subscriptions; revoking makes room.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/calendar/subscriptions
      *
      * Raises on 400: Bad request
@@ -67,6 +69,8 @@ final class CalendarSubscriptionsNamespace extends ApiNamespace
      *
      * The URL stops working immediately. The row is kept, and revoking twice is not an error.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * DELETE /api/org/{orgId}/calendar/subscriptions/{subscriptionId}
      *
      * Raises on 404: Not found
@@ -94,6 +98,8 @@ final class CalendarSubscriptionsNamespace extends ApiNamespace
      *
      * Feed URLs that have been minted, including revoked ones; a revoked row is kept so the audit
      * trail still resolves. The token itself is never returned.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * GET /api/org/{orgId}/calendar/subscriptions
      *

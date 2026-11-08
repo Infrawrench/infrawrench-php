@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,10 +34,11 @@ final class Slo implements \JsonSerializable
      * @param int|null $latencyThresholdMs `probe_latency`: a check is good at or under this many ms (1-60000).
      * @param string|null $resourceId `metric_threshold`: the synced resource reporting the series.
      * @param string|null $metricKey `metric_threshold`: the series label as the resource reports it, e.g. "CPU %".
-     * @param '<'|'<='|'>'|'>='|null $comparator `metric_threshold` only: a minute is good when `value <comparator> threshold`.
+     * @param '<'|'<='|'>'|'>='|null $comparator
      * @param float|null $threshold `metric_threshold`: the comparison's right side.
      * @param string|null $probeName The probe's name; null when it was deleted.
      * @param string|null $resourceName The resource's name; null when it is gone.
+     * @param PluginId::*|null $pluginId
      * @param 'exhausted'|'fast_burn'|'slow_burn'|'ok'|'unknown' $status Worst true thing first: `exhausted` (no budget left), `fast_burn` (a page-severity burn-rate pair is firing), `slow_burn` (the ticket pair), `ok`, or `unknown` (no data in the window, never evaluated, or disabled).
      * @param float|null $sli Fraction of good events over the window (0-1).
      * @param float $totalEvents Minutes with data in the window.
@@ -65,7 +66,7 @@ final class Slo implements \JsonSerializable
         public readonly ?string $probeName,
         public readonly ?string $resourceName,
         public readonly ?string $accountId,
-        public readonly mixed $pluginId,
+        public readonly ?string $pluginId,
         public readonly ?string $resourceTypeId,
         public readonly string $status,
         public readonly ?float $sli,
@@ -110,7 +111,7 @@ final class Slo implements \JsonSerializable
             probeName: Coerce::toStringOrNull($data['probeName'] ?? null),
             resourceName: Coerce::toStringOrNull($data['resourceName'] ?? null),
             accountId: Coerce::toStringOrNull($data['accountId'] ?? null),
-            pluginId: $data['pluginId'] ?? null,
+            pluginId: Coerce::toStringOrNull($data['pluginId'] ?? null),
             resourceTypeId: Coerce::toStringOrNull($data['resourceTypeId'] ?? null),
             status: Coerce::toString($data['status'] ?? null),
             sli: Coerce::toFloatOrNull($data['sli'] ?? null),

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -51,6 +51,8 @@ use Infrawrench\Sdk\Model\PluginId;
 use Infrawrench\Sdk\Model\ResourceDetail;
 use Infrawrench\Sdk\Model\ResourceTypeId;
 use Infrawrench\Sdk\Model\TerraformExport;
+use Infrawrench\Sdk\Model\TunnelSshAttachRequest;
+use Infrawrench\Sdk\Model\TunnelSshAttachResult;
 use Infrawrench\Sdk\Model\UpdateResourceRequest;
 use Infrawrench\Sdk\Model\UpdateResourceResponse;
 use Infrawrench\Sdk\RequestOptions;
@@ -158,6 +160,8 @@ final class ResourcesNamespace extends ApiNamespace
      * required tag (or carry a disallowed value). Retry with the `x-tag-policy-override: true`
      * header if you hold `tag-policy:override`; both blocks and overrides are audit-logged.
      *
+     * Raises on 500: Server error
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
@@ -219,6 +223,8 @@ final class ResourcesNamespace extends ApiNamespace
      * _Requires permission: `resources:read`._
      *
      * POST /api/org/{orgId}/resources/create-pricing
+     *
+     * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @return array<string, array<string, mixed>>
@@ -418,6 +424,8 @@ final class ResourcesNamespace extends ApiNamespace
      * Calls the plugin's `executeFieldAction`. Returns `{ value }` to assign to the field; for
      * `select` fields the optional `option` should be spliced into the options list so the new
      * value can be displayed.
+     *
+     * _Requires permission: `resources:write`._
      *
      * POST /api/org/{orgId}/resources/field-action
      *
@@ -678,12 +686,49 @@ final class ResourcesNamespace extends ApiNamespace
     }
 
     /**
+     * Serve a host over a Cloudflare Tunnel
+     *
+     * Points the tunnel's ingress at the host's service, creates the routing DNS record in
+     * `zoneId`, then connects to the host over SSH and installs and runs cloudflared. A DNS record
+     * that could not be created (one may already exist) is reported and the setup carries on; any
+     * other failed step is the last of `steps`, and `connectCommand` is only sent when every step
+     * ran.
+     *
+     * _Requires permission: `resources:write`._
+     *
+     * POST /api/org/{orgId}/resources/tunnel-ssh-attach
+     *
+     * Raises on 400: Bad request
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function tunnelSshAttach(TunnelSshAttachRequest $body, ?string $orgId = null, ?RequestOptions $options = null): TunnelSshAttachResult
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/resources/tunnel-ssh-attach',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return TunnelSshAttachResult::fromArray(Coerce::toArray($data));
+    }
+
+    /**
      * Update a resource via its plugin
      *
      * Applies the supplied field changes upstream and persists the refreshed fields/display name
      * to the DB. The body's `fields` map only carries the keys the caller actually changed.
      * Blocked with `423` while an org change freeze is in effect (this is also the path that
      * applies right-sizing recommendations); every applied update is audit-logged.
+     *
+     * _Requires permission: `resources:write`._
      *
      * POST /api/org/{orgId}/resources/update
      *

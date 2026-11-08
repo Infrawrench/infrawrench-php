@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -45,6 +45,8 @@ final class SavingsEventsNamespace extends ApiNamespace
      * Record a saving by hand, with the monthly amount and the day it began. Leaves an org-wide
      * cost annotation on that day. Requires `costs:write`.
      *
+     * _Requires permission: `costs:write`._
+     *
      * POST /api/org/{orgId}/savings/events
      *
      * Raises on 400: Bad request
@@ -73,6 +75,8 @@ final class SavingsEventsNamespace extends ApiNamespace
      * Remove a saving
      *
      * Hard delete, together with the cost annotation the event left on the charts.
+     *
+     * _Requires permission: `costs:write`._
      *
      * DELETE /api/org/{orgId}/savings/events/{id}
      *

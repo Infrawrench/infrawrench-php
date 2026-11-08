@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,25 +37,29 @@ final class RunbooksRunsStepsNamespace extends ApiNamespace
      * A closed run refuses updates, and reopening is not offered: a run is a record of what
      * happened. Start another run to record another attempt.
      *
+     * _Requires permission: `resources:read`._
+     *
      * PATCH /api/org/{orgId}/runbooks/runs/{runId}/steps/{stepId}
      *
      * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *
+     * Raises on 409: Conflict
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(string $runId, string $stepId, ?string $orgId = null, ?RunbookStepUpdate $body = null, ?RequestOptions $options = null): RunbookRun
+    public function update(string $runId, string $stepId, RunbookStepUpdate $body, ?string $orgId = null, ?RequestOptions $options = null): RunbookRun
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PATCH',
                 path: '/api/org/{orgId}/runbooks/runs/{runId}/steps/{stepId}',
                 pathParams: ['orgId' => $orgId, 'runId' => $runId, 'stepId' => $stepId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );

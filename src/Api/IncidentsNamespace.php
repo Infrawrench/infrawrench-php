@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -60,19 +60,23 @@ final class IncidentsNamespace extends ApiNamespace
      *
      * Raises on 403: Forbidden
      *
+     * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function create(?string $orgId = null, ?IncidentDeclare $body = null, ?RequestOptions $options = null): Incident
+    public function create(IncidentDeclare $body, ?string $orgId = null, ?RequestOptions $options = null): Incident
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/incidents',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
@@ -121,7 +125,11 @@ final class IncidentsNamespace extends ApiNamespace
      *
      * GET /api/org/{orgId}/incidents/{incidentId}/postmortem
      *
+     * Raises on 400: Bad request
+     *
      * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -155,7 +163,11 @@ final class IncidentsNamespace extends ApiNamespace
      *
      * POST /api/org/{orgId}/incidents/{incidentId}/retry-artifacts
      *
+     * Raises on 400: Bad request
+     *
      * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -193,7 +205,11 @@ final class IncidentsNamespace extends ApiNamespace
      *
      * GET /api/org/{orgId}/incidents/{incidentId}/timeline
      *
+     * Raises on 400: Bad request
+     *
      * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -229,19 +245,21 @@ final class IncidentsNamespace extends ApiNamespace
      *
      * Raises on 404: Not found
      *
+     * Raises on 409: Conflict
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(string $incidentId, ?string $orgId = null, ?IncidentPatch $body = null, ?RequestOptions $options = null): Incident
+    public function update(string $incidentId, IncidentPatch $body, ?string $orgId = null, ?RequestOptions $options = null): Incident
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PATCH',
                 path: '/api/org/{orgId}/incidents/{incidentId}',
                 pathParams: ['orgId' => $orgId, 'incidentId' => $incidentId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );

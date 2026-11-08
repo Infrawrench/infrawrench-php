@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -43,6 +43,8 @@ final class MsteamsNamespace extends ApiNamespace
      * Returns the Teams channels alerts can be routed to. Which alerts reach each one is decided
      * by /alert-rules. Webhook URLs are never included.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * GET /api/org/{orgId}/msteams/status
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
@@ -69,6 +71,8 @@ final class MsteamsNamespace extends ApiNamespace
      * Ignores routing rules; every channel gets the test. Fails with the error Microsoft returned
      * when nothing could be delivered (HTTP 404 usually means the Workflow was deleted or turned
      * off).
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/msteams/test
      *

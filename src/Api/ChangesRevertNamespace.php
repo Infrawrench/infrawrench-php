@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -77,25 +77,22 @@ final class ChangesRevertNamespace extends ApiNamespace
      * The stored resource snapshot is deliberately left untouched, so the next poll observes the
      * reverted state and records it as an ordinary change event.
      *
+     * _Requires permission: `resources:write`._
+     *
      * POST /api/org/{orgId}/changes/{changeId}/revert
      *
      * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *
-     * Raises on 409: Already reverted, another revert holds the event, nothing in the plan is
-     * writable, or this attempt was superseded mid-write (its lease lapsed). The body carries
-     * `code: change_revert_conflict` for all but the writability case, and `appliedFields` when
-     * the provider write had already landed.
+     * Raises on 409: Conflict
      *
      * Raises on 423: Blocked by an active change freeze. Retry with the `x-change-freeze-override:
      * true` header if you hold `freezes:override`; both blocks and overrides are audit-logged.
      *
-     * Raises on 500: The provider accepted the write but it could not be recorded against the
-     * event. The resource *has* been put back; `appliedFields` names what changed. A later retry
-     * reconciles the timeline.
+     * Raises on 500: Server error
      *
-     * Raises on 502: The provider couldn't be read. Nothing was written.
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -130,12 +127,13 @@ final class ChangesRevertNamespace extends ApiNamespace
      * Gated on `resources:write` rather than `resources:read`: the plan names the write it is
      * offering to make.
      *
+     * _Requires permission: `resources:write`._
+     *
      * GET /api/org/{orgId}/changes/{changeId}/revert
      *
      * Raises on 404: Not found
      *
-     * Raises on 502: The provider couldn't be read, so no plan can be made safely. Nothing was
-     * written.
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class BlastRadiusFlowPeer implements \JsonSerializable
      * @param 'egress'|'ingress' $direction Relative to the resource being deleted, not to the row the provider captured.
      * @param string $scope The boundary the traffic crossed.
      * @param int $days Days in the window this peer appeared on; a spike versus a standing flow.
+     * @param string|null $resourceId The peer's Infrawrench resource id when its flow ref resolved to exactly one synced resource. Null when it resolved to none (an endpoint outside the organization) and also when it resolved to several; a provider id is only unique within one plugin and account, and a flow record does not name the peer's account, so a contested ref is reported unlinked with the reason in `unchecked` rather than attributed to a guess.
      */
     public function __construct(
         public readonly string $ref,
@@ -37,7 +38,7 @@ final class BlastRadiusFlowPeer implements \JsonSerializable
         public readonly float $estimatedCost,
         public readonly string $currency,
         public readonly int $days,
-        public readonly mixed $resourceId,
+        public readonly ?string $resourceId,
     ) {
     }
 
@@ -57,7 +58,7 @@ final class BlastRadiusFlowPeer implements \JsonSerializable
             estimatedCost: Coerce::toFloat($data['estimatedCost'] ?? null),
             currency: Coerce::toString($data['currency'] ?? null),
             days: Coerce::toInt($data['days'] ?? null),
-            resourceId: $data['resourceId'] ?? null,
+            resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
         );
     }
 

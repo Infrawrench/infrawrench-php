@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,6 +33,8 @@ final class AlertRulesDeliveriesNamespace extends ApiNamespace
      * A conditional update: only a delivery still in `awaiting_ack` can move, so two people
      * pressing at once produce one acknowledgement and an alert that already escalated cannot be
      * retroactively silenced.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/alert-rules/deliveries/{id}/ack
      *
@@ -63,6 +65,8 @@ final class AlertRulesDeliveriesNamespace extends ApiNamespace
 
     /**
      * Drop held or awaiting-acknowledgement deliveries
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * POST /api/org/{orgId}/alert-rules/deliveries/cancel
      *
@@ -97,6 +101,8 @@ final class AlertRulesDeliveriesNamespace extends ApiNamespace
      *
      * Only alerts a rule created follow-up work for appear here: one held by quiet hours, or one
      * waiting on an acknowledgement. An alert that went straight out leaves no row.
+     *
+     * _Requires permission: `org:settings:write`._
      *
      * GET /api/org/{orgId}/alert-rules/deliveries
      *

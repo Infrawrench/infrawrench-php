@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,12 +20,15 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-final class LinuxAppSetupEvent implements \JsonSerializable
+final class ChatPendingDecisionInput implements \JsonSerializable
 {
+    /**
+     * @param 'approve'|'reject' $action
+     * @param string|null $reason Recorded as the tool's result on a rejection.
+     */
     public function __construct(
-        public readonly ?string $line = null,
-        public readonly ?LinuxAppInstallOutcome $outcome = null,
-        public readonly ?string $error = null,
+        public readonly string $action,
+        public readonly ?string $reason = null,
     ) {
     }
 
@@ -37,9 +40,8 @@ final class LinuxAppSetupEvent implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            line: Coerce::toStringOrNull($data['line'] ?? null),
-            outcome: Coerce::nullable($data['outcome'] ?? null, static fn (mixed $value): LinuxAppInstallOutcome => LinuxAppInstallOutcome::fromArray(Coerce::toArray($value))),
-            error: Coerce::toStringOrNull($data['error'] ?? null),
+            action: Coerce::toString($data['action'] ?? null),
+            reason: Coerce::toStringOrNull($data['reason'] ?? null),
         );
     }
 
@@ -51,15 +53,10 @@ final class LinuxAppSetupEvent implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
+            'action' => $this->action,
         ];
-        if ($this->line !== null) {
-            $payload['line'] = $this->line;
-        }
-        if ($this->outcome !== null) {
-            $payload['outcome'] = $this->outcome->toArray();
-        }
-        if ($this->error !== null) {
-            $payload['error'] = $this->error;
+        if ($this->reason !== null) {
+            $payload['reason'] = $this->reason;
         }
 
         return $payload;

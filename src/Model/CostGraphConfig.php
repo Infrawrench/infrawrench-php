@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,20 +34,20 @@ final class CostGraphConfig implements \JsonSerializable
      * @param string|null $savedFilterId A saved cost filter (see /saved-cost-filters) applied by reference and AND-composed with `filters` at query time, server-side. Editing the saved filter changes every graph, report and budget referencing it; a reference that fails to resolve makes the query error rather than silently run unfiltered.
      * @param string|null $scenarioModelId A scenario model (see /cost-scenarios) overlaid on the forecast; known future cost the trend cannot see, drawn as a second dashed line beside the trend rather than instead of it. Only meaningful alongside `showForecast`.
      * @param 'cash'|'amortized'|'blended'|null $costBasis
+     * @param string|null $unitCostMetricId Divide spend by this business metric (an id, so a key rename never re-points the graph).
+     * @param UnitCostMode::*|null $unitCostMode
+     * @param float|null $unitCostScale "Per N units" for a ratio, or the unit a raw metric is shown in. Absent is 1.
+     * @param string|null $unitCostUsageUnit `usage_unit_cost` only: the provider usage unit to divide by.
+     * @param list<UnitCostLabelFilter>|null $unitCostLabelFilters Keep only metric values carrying these labels.
+     * @param string|null $unitCostGroupByLabel One line per value of this metric label.
+     * @param bool|null $adjusted Draw the org's billing rules applied.
      * @param CostMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
      * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.
-     * @param CostDimension::*|null $xAxis
+     * @param CostDimension::*|null $xAxis Put this dimension's values on the X axis instead of date bins: one bar per value, ranked by spend over the range, the top `topN` then `__other__`. `groupBy` then segments each bar (or set `segmentByDate` to segment by bin instead). Omitted is the date axis. Refused with a forecast, a scenario, a running total, the `count` measure or a unit-cost chart, which all need dates.
      * @param string|null $xAxisTagKey Required when `xAxis` is `tag` or `virtual_tag`: which key's values go on the axis.
      * @param bool|null $segmentByDate With `xAxis` and `groupBy: none`: segment each bar by date bin (one series per bin). Refused alongside a `groupBy`; ignored without `xAxis`.
      * @param 'line'|'bars'|null $comparisonStyle How `comparePreviousPeriod` is drawn: `line` (omitted) is the dashed totals line, `bars` a previous-period bar beside each bar (bar charts only). Tables always list previous, change and change % columns.
-     * @param string|null $unitCostMetricId Divide spend by this business metric (an id, so a key rename never re-points the graph).
-     * @param 'unit_cost'|'margin'|'usage_unit_cost'|'raw_metric'|null $unitCostMode The calculation. `usage_unit_cost` needs `unitCostUsageUnit` instead of a metric; the others need `unitCostMetricId`.
-     * @param float|null $unitCostScale "Per N units" for a ratio, or the unit a raw metric is shown in. Absent is 1.
-     * @param string|null $unitCostUsageUnit `usage_unit_cost` only: the provider usage unit to divide by.
-     * @param list<array{key: string, op: 'in'|'not_in', values: list<string>}>|null $unitCostLabelFilters Keep only metric values carrying these labels.
-     * @param string|null $unitCostGroupByLabel One line per value of this metric label.
-     * @param bool|null $adjusted Draw the org's billing rules applied.
      */
     public function __construct(
         public readonly float $version,
@@ -63,13 +63,6 @@ final class CostGraphConfig implements \JsonSerializable
         public readonly ?bool $showForecast = null,
         public readonly ?string $scenarioModelId = null,
         public readonly ?string $costBasis = null,
-        public readonly ?string $measure = null,
-        public readonly ?string $usageUnit = null,
-        public readonly ?bool $cumulative = null,
-        public readonly ?string $xAxis = null,
-        public readonly ?string $xAxisTagKey = null,
-        public readonly ?bool $segmentByDate = null,
-        public readonly ?string $comparisonStyle = null,
         public readonly ?string $unitCostMetricId = null,
         public readonly ?string $unitCostMode = null,
         public readonly ?float $unitCostScale = null,
@@ -77,6 +70,13 @@ final class CostGraphConfig implements \JsonSerializable
         public readonly ?array $unitCostLabelFilters = null,
         public readonly ?string $unitCostGroupByLabel = null,
         public readonly ?bool $adjusted = null,
+        public readonly ?string $measure = null,
+        public readonly ?string $usageUnit = null,
+        public readonly ?bool $cumulative = null,
+        public readonly ?string $xAxis = null,
+        public readonly ?string $xAxisTagKey = null,
+        public readonly ?bool $segmentByDate = null,
+        public readonly ?string $comparisonStyle = null,
     ) {
     }
 
@@ -101,6 +101,13 @@ final class CostGraphConfig implements \JsonSerializable
             showForecast: Coerce::toBoolOrNull($data['showForecast'] ?? null),
             scenarioModelId: Coerce::toStringOrNull($data['scenarioModelId'] ?? null),
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
+            unitCostMetricId: Coerce::toStringOrNull($data['unitCostMetricId'] ?? null),
+            unitCostMode: Coerce::toStringOrNull($data['unitCostMode'] ?? null),
+            unitCostScale: Coerce::toFloatOrNull($data['unitCostScale'] ?? null),
+            unitCostUsageUnit: Coerce::toStringOrNull($data['unitCostUsageUnit'] ?? null),
+            unitCostLabelFilters: Coerce::nullable($data['unitCostLabelFilters'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): UnitCostLabelFilter => UnitCostLabelFilter::fromArray(Coerce::toArray($item)))),
+            unitCostGroupByLabel: Coerce::toStringOrNull($data['unitCostGroupByLabel'] ?? null),
+            adjusted: Coerce::toBoolOrNull($data['adjusted'] ?? null),
             measure: Coerce::toStringOrNull($data['measure'] ?? null),
             usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
             cumulative: Coerce::toBoolOrNull($data['cumulative'] ?? null),
@@ -108,13 +115,6 @@ final class CostGraphConfig implements \JsonSerializable
             xAxisTagKey: Coerce::toStringOrNull($data['xAxisTagKey'] ?? null),
             segmentByDate: Coerce::toBoolOrNull($data['segmentByDate'] ?? null),
             comparisonStyle: Coerce::toStringOrNull($data['comparisonStyle'] ?? null),
-            unitCostMetricId: Coerce::toStringOrNull($data['unitCostMetricId'] ?? null),
-            unitCostMode: Coerce::toStringOrNull($data['unitCostMode'] ?? null),
-            unitCostScale: Coerce::toFloatOrNull($data['unitCostScale'] ?? null),
-            unitCostUsageUnit: Coerce::toStringOrNull($data['unitCostUsageUnit'] ?? null),
-            unitCostLabelFilters: Coerce::nullable($data['unitCostLabelFilters'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
-            unitCostGroupByLabel: Coerce::toStringOrNull($data['unitCostGroupByLabel'] ?? null),
-            adjusted: Coerce::toBoolOrNull($data['adjusted'] ?? null),
         );
     }
 
@@ -156,6 +156,27 @@ final class CostGraphConfig implements \JsonSerializable
         if ($this->costBasis !== null) {
             $payload['costBasis'] = $this->costBasis;
         }
+        if ($this->unitCostMetricId !== null) {
+            $payload['unitCostMetricId'] = $this->unitCostMetricId;
+        }
+        if ($this->unitCostMode !== null) {
+            $payload['unitCostMode'] = $this->unitCostMode;
+        }
+        if ($this->unitCostScale !== null) {
+            $payload['unitCostScale'] = $this->unitCostScale;
+        }
+        if ($this->unitCostUsageUnit !== null) {
+            $payload['unitCostUsageUnit'] = $this->unitCostUsageUnit;
+        }
+        if ($this->unitCostLabelFilters !== null) {
+            $payload['unitCostLabelFilters'] = array_map(static fn (UnitCostLabelFilter $item): array => $item->toArray(), $this->unitCostLabelFilters);
+        }
+        if ($this->unitCostGroupByLabel !== null) {
+            $payload['unitCostGroupByLabel'] = $this->unitCostGroupByLabel;
+        }
+        if ($this->adjusted !== null) {
+            $payload['adjusted'] = $this->adjusted;
+        }
         if ($this->measure !== null) {
             $payload['measure'] = $this->measure;
         }
@@ -176,27 +197,6 @@ final class CostGraphConfig implements \JsonSerializable
         }
         if ($this->comparisonStyle !== null) {
             $payload['comparisonStyle'] = $this->comparisonStyle;
-        }
-        if ($this->unitCostMetricId !== null) {
-            $payload['unitCostMetricId'] = $this->unitCostMetricId;
-        }
-        if ($this->unitCostMode !== null) {
-            $payload['unitCostMode'] = $this->unitCostMode;
-        }
-        if ($this->unitCostScale !== null) {
-            $payload['unitCostScale'] = $this->unitCostScale;
-        }
-        if ($this->unitCostUsageUnit !== null) {
-            $payload['unitCostUsageUnit'] = $this->unitCostUsageUnit;
-        }
-        if ($this->unitCostLabelFilters !== null) {
-            $payload['unitCostLabelFilters'] = $this->unitCostLabelFilters;
-        }
-        if ($this->unitCostGroupByLabel !== null) {
-            $payload['unitCostGroupByLabel'] = $this->unitCostGroupByLabel;
-        }
-        if ($this->adjusted !== null) {
-            $payload['adjusted'] = $this->adjusted;
         }
 
         return $payload;

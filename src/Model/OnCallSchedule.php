@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,7 @@ final class OnCallSchedule implements \JsonSerializable
      * @param int $rotationDays Days per shift. 7 is the common case; 1 gives a daily rotation.
      * @param string $handoffTime Wall-clock time in `timezone` at which the shift changes hands.
      * @param string $startDate The calendar date in `timezone` the first shift begins on. Every later boundary is derived from it, so moving this re-anchors the whole rotation.
-     * @param list<OnCallParticipant|null> $participants Rotation order. Reordering re-plans the future, deliberately.
+     * @param list<OnCallParticipant> $participants Rotation order. Reordering re-plans the future, deliberately.
      * @param bool $enabled Off resolves to nobody. A routing destination pointing at a disabled rotation contributes nobody and the rule's other destinations still deliver.
      */
     public function __construct(
@@ -57,7 +57,7 @@ final class OnCallSchedule implements \JsonSerializable
             rotationDays: Coerce::toInt($data['rotationDays'] ?? null),
             handoffTime: Coerce::toString($data['handoffTime'] ?? null),
             startDate: Coerce::toString($data['startDate'] ?? null),
-            participants: Coerce::mapList($data['participants'] ?? null, static fn (mixed $item): ?OnCallParticipant => Coerce::nullable($item, static fn (mixed $value): OnCallParticipant => OnCallParticipant::fromArray(Coerce::toArray($value)))),
+            participants: Coerce::mapList($data['participants'] ?? null, static fn (mixed $item): OnCallParticipant => OnCallParticipant::fromArray(Coerce::toArray($item))),
             enabled: Coerce::toBool($data['enabled'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
             updatedAt: Coerce::toString($data['updatedAt'] ?? null),
@@ -78,7 +78,7 @@ final class OnCallSchedule implements \JsonSerializable
             'rotationDays' => $this->rotationDays,
             'handoffTime' => $this->handoffTime,
             'startDate' => $this->startDate,
-            'participants' => array_map(static fn (?OnCallParticipant $item): array => $item?->toArray(), $this->participants),
+            'participants' => array_map(static fn (OnCallParticipant $item): array => $item->toArray(), $this->participants),
             'enabled' => $this->enabled,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,

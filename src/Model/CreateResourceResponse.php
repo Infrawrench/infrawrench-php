@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,7 +22,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class CreateResourceResponse implements \JsonSerializable
 {
-    /** @param list<string>|null $warnings */
+    /** @param list<ResourceWarning>|null $warnings */
     public function __construct(
         public readonly string $id,
         public readonly string $displayName,
@@ -40,7 +40,7 @@ final class CreateResourceResponse implements \JsonSerializable
         return new self(
             id: Coerce::toString($data['id'] ?? null),
             displayName: Coerce::toString($data['displayName'] ?? null),
-            warnings: Coerce::nullable($data['warnings'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            warnings: Coerce::nullable($data['warnings'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): ResourceWarning => ResourceWarning::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -56,7 +56,7 @@ final class CreateResourceResponse implements \JsonSerializable
             'displayName' => $this->displayName,
         ];
         if ($this->warnings !== null) {
-            $payload['warnings'] = $this->warnings;
+            $payload['warnings'] = array_map(static fn (ResourceWarning $item): array => $item->toArray(), $this->warnings);
         }
 
         return $payload;

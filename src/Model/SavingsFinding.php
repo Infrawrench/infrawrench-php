@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,9 @@ final class SavingsFinding implements \JsonSerializable
      * @param SavingsFindingKind::* $kind
      * @param string|null $resourceId Infrawrench resource id; null for seats.
      * @param array<string, string> $tags
+     * @param SavingsFindingMoney|null $monthlySavings What acting on it saves per month; null when the finder has no price (and, for orphans, when the caller lacks `costs:read`, as on `/orphans`).
      * @param SavingsFindingStatus::* $status
+     * @param SavingsFindingActor|null $statusChangedBy Null for the initial Ready and automatic changes.
      * @param 'manual'|'resolved'|null $resolution For Completed: `manual` when a person completed it, `resolved` when a scan stopped reporting it (the resource was removed, resized or is in use again).
      * @param string $detectedAt First observation of this occurrence.
      * @param bool $present False once a scan stopped reporting it.

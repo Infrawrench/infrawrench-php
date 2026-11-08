@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -98,7 +98,7 @@ This is deliberately a list of existing cost centres rather than a rule of its o
             $payload['applyBillingRules'] = $this->applyBillingRules;
         }
         if ($this->pricing !== null) {
-            $payload['pricing'] = $this->pricing?->toArray();
+            $payload['pricing'] = $this->pricing->toArray();
         }
         if ($this->notes !== null) {
             $payload['notes'] = $this->notes;

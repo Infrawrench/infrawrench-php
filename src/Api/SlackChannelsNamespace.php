@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -38,6 +38,8 @@ final class SlackChannelsNamespace extends ApiNamespace
      * to the default (everything except drift, everywhere), so a freshly added channel starts
      * receiving alerts without a second step.
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * POST /api/org/{orgId}/slack/channels
      *
      * Raises on 400: Bad request
@@ -67,6 +69,8 @@ final class SlackChannelsNamespace extends ApiNamespace
     /**
      * Disconnect a channel
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * DELETE /api/org/{orgId}/slack/channels/{id}
      *
      * Raises on 404: Not found
@@ -92,7 +96,11 @@ final class SlackChannelsNamespace extends ApiNamespace
     /**
      * Refresh a channel's cached name
      *
+     * _Requires permission: `org:settings:write`._
+     *
      * PATCH /api/org/{orgId}/slack/channels/{id}
+     *
+     * Raises on 400: Bad request
      *
      * Raises on 404: Not found
      *

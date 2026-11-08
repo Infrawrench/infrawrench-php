@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,6 @@ final class EventTypeInfo implements \JsonSerializable
      * @param 'cost'|'security'|'reliability'|'access'|'operations'|'system' $category
      * @param EventSeverity::* $defaultSeverity
      * @param bool $carriesCost Receiving it needs costs:read as well as org:settings:write.
-     * @param array<string, mixed> $schema JSON Schema of `data`.
      */
     public function __construct(
         public readonly string $type,
@@ -36,7 +35,7 @@ final class EventTypeInfo implements \JsonSerializable
         public readonly string $category,
         public readonly string $defaultSeverity,
         public readonly bool $carriesCost,
-        public readonly array $schema,
+        public readonly mixed $schema,
     ) {
     }
 
@@ -55,7 +54,7 @@ final class EventTypeInfo implements \JsonSerializable
             category: Coerce::toString($data['category'] ?? null),
             defaultSeverity: Coerce::toString($data['defaultSeverity'] ?? null),
             carriesCost: Coerce::toBool($data['carriesCost'] ?? null),
-            schema: Coerce::toArray($data['schema'] ?? null),
+            schema: $data['schema'] ?? null,
         );
     }
 

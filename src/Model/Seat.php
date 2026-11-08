@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,7 +29,7 @@ final class Seat implements \JsonSerializable
      * @param string $seatKey Empty unless one member holds several seats on the account.
      * @param 'ai-coding'|'ai-assistant'|'source-control'|'identity'|'other' $category What the seat is for. Two seats one person holds in the same category on different products are a duplicate finding; `other` never is.
      * @param float|null $monthlyPrice Per month; null when unpriced.
-     * @param 'billing'|'catalog'|'configured'|'list-price'|null $priceSource `billing`/`catalog`: read from the provider. `configured`: the price set on the account. `list-price`: the provider's published list price, an estimate.
+     * @param 'billing'|'catalog'|'configured'|'list-price'|null $priceSource
      * @param 'last-activity'|'last-login'|'usage-window'|'none' $activityBasis How the provider evidences use: `last-activity` (last use of the product), `last-login` (last sign-in), `usage-window` (per-day usage over `activityWindowDays`), or `none` (no evidence; never flagged inactive).
      * @param string $activitySource Plain-English description of the evidence.
      * @param bool $removable Whether the in-app Remove can remove it.

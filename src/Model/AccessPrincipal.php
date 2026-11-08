@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class AccessPrincipal implements \JsonSerializable
      * @param bool|null $admin True when the type's declared admin indicator matched; null when the type declares none.
      * @param bool|null $mfa Multi-factor state, only on types that declare an MFA field. Null everywhere else; "not synced" is not "MFA is off".
      * @param string|null $parent The principal this one hangs off; a key's owner, a binding's subject.
+     * @param AccessPrincipalOwner|null $owner Who owns the resource, from the resource-ownership record. Null when nobody is named.
      * @param string|null $revokeActionId The plugin action that revokes this principal, when the type declares one. Dispatch it through POST /resources/invoke-action; null means the provider offers no revocation Infrawrench can invoke.
      */
     public function __construct(

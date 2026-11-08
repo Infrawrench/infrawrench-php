@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -41,7 +41,7 @@ final class ManagedAccount implements \JsonSerializable
         public readonly string $billingCurrency,
         public readonly string $costBasis,
         public readonly bool $applyBillingRules,
-        public readonly ?ManagedAccountPricing $pricing,
+        public readonly ManagedAccountPricing $pricing,
         public readonly ?string $notes,
         public readonly ?string $billingProfileId,
         public readonly array $costCentreIds,
@@ -69,7 +69,7 @@ final class ManagedAccount implements \JsonSerializable
             billingCurrency: Coerce::toString($data['billingCurrency'] ?? null),
             costBasis: Coerce::toString($data['costBasis'] ?? null),
             applyBillingRules: Coerce::toBool($data['applyBillingRules'] ?? null),
-            pricing: Coerce::nullable($data['pricing'] ?? null, static fn (mixed $value): ManagedAccountPricing => ManagedAccountPricing::fromArray(Coerce::toArray($value))),
+            pricing: ManagedAccountPricing::fromArray(Coerce::toArray($data['pricing'] ?? null)),
             notes: Coerce::toStringOrNull($data['notes'] ?? null),
             billingProfileId: Coerce::toStringOrNull($data['billingProfileId'] ?? null),
             costCentreIds: Coerce::mapList($data['costCentreIds'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
@@ -97,7 +97,7 @@ final class ManagedAccount implements \JsonSerializable
             'billingCurrency' => $this->billingCurrency,
             'costBasis' => $this->costBasis,
             'applyBillingRules' => $this->applyBillingRules,
-            'pricing' => $this->pricing?->toArray(),
+            'pricing' => $this->pricing->toArray(),
             'notes' => $this->notes,
             'billingProfileId' => $this->billingProfileId,
             'costCentreIds' => $this->costCentreIds,

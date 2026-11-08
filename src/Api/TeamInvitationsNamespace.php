@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,14 +37,17 @@ final class TeamInvitationsNamespace extends ApiNamespace
      *
      * POST /api/org/{orgId}/team/invitations
      *
+     * Raises on 400: Bad request
+     *
      * Raises on 402: Payment required: the organization's plan does not include this
      *
-     * Raises on 403: The role would grant permissions the caller does not hold, or the caller is
-     * not an owner and tried to invite an owner
+     * Raises on 403: Forbidden
      *
-     * Raises on 409: All seats are in use; retry with addSeat to buy one more
+     * Raises on 404: Not found
      *
-     * Raises on 502: Buying the extra seat failed; the invitation was not sent
+     * Raises on 409: SeatLimitResponse
+     *
+     * Raises on 502: Bad gateway: an upstream service failed
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.

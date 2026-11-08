@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,7 +36,7 @@ final class ResourceReportRows implements \JsonSerializable
         public readonly int $offset,
         public readonly int $limit,
         public readonly bool $truncated,
-        public readonly ?ResourceReportSort $sort,
+        public readonly ResourceReportSort $sort,
         public readonly ?array $cost,
     ) {
     }
@@ -55,7 +55,7 @@ final class ResourceReportRows implements \JsonSerializable
             offset: Coerce::toInt($data['offset'] ?? null),
             limit: Coerce::toInt($data['limit'] ?? null),
             truncated: Coerce::toBool($data['truncated'] ?? null),
-            sort: Coerce::nullable($data['sort'] ?? null, static fn (mixed $value): ResourceReportSort => ResourceReportSort::fromArray(Coerce::toArray($value))),
+            sort: ResourceReportSort::fromArray(Coerce::toArray($data['sort'] ?? null)),
             cost: Coerce::toArrayOrNull($data['cost'] ?? null),
         );
     }
@@ -74,7 +74,7 @@ final class ResourceReportRows implements \JsonSerializable
             'offset' => $this->offset,
             'limit' => $this->limit,
             'truncated' => $this->truncated,
-            'sort' => $this->sort?->toArray(),
+            'sort' => $this->sort->toArray(),
             'cost' => $this->cost,
         ];
     }

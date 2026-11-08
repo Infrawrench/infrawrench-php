@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,7 +26,7 @@ final class CreateAgentSession implements \JsonSerializable
      * @param array{scopes: list<string>}|null $nibbletsLink Nibblets sessions only: start the server linked to this organization through an agent link you approve, as on the link approval page. Needs `team:invite`; `scopes` must be within what you hold (no break-glass elevation) minus permissions no agent may hold. Refused for API keys and agents.
      */
     public function __construct(
-        public readonly ?AgentSettings $settings,
+        public readonly AgentSettings $settings,
         public readonly ?string $repo = null,
         public readonly ?string $projectName = null,
         public readonly ?string $workspaceName = null,
@@ -42,7 +42,7 @@ final class CreateAgentSession implements \JsonSerializable
     public static function fromArray(array $data): self
     {
         return new self(
-            settings: Coerce::nullable($data['settings'] ?? null, static fn (mixed $value): AgentSettings => AgentSettings::fromArray(Coerce::toArray($value))),
+            settings: AgentSettings::fromArray(Coerce::toArray($data['settings'] ?? null)),
             repo: Coerce::toStringOrNull($data['repo'] ?? null),
             projectName: Coerce::toStringOrNull($data['projectName'] ?? null),
             workspaceName: Coerce::toStringOrNull($data['workspaceName'] ?? null),
@@ -58,7 +58,7 @@ final class CreateAgentSession implements \JsonSerializable
     public function toArray(): array
     {
         $payload = [
-            'settings' => $this->settings?->toArray(),
+            'settings' => $this->settings->toArray(),
         ];
         if ($this->repo !== null) {
             $payload['repo'] = $this->repo;

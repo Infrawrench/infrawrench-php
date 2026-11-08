@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class SavingsEventsUpdateNamespace extends ApiNamespace
      * date. The facts of an automatic event (what was done, when, the projection) stay as
      * observed.
      *
+     * _Requires permission: `costs:write`._
+     *
      * PATCH /api/org/{orgId}/savings/events/{id}
      *
      * Raises on 400: Bad request
@@ -66,6 +68,8 @@ final class SavingsEventsUpdateNamespace extends ApiNamespace
      * Rewrite a manual saving
      *
      * Full replace of a manual entry. Automatic events are a 400; use PATCH.
+     *
+     * _Requires permission: `costs:write`._
      *
      * PUT /api/org/{orgId}/savings/events/{id}
      *

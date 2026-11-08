@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,7 +29,7 @@ final class BusinessMetricLabelMapping implements \JsonSerializable
 {
     /**
      * @param string $label A label key: a lowercase slug, normalised (trimmed, lowercased) on write.
-     * @param array{kind: 'dimension', dimension: string, tagKey?: string}|array{kind: 'cost_centre'} $target
+     * @param array{kind: 'dimension', dimension: CostDimension::*, tagKey?: string}|array{kind: 'cost_centre'} $target
      */
     public function __construct(
         public readonly string $label,

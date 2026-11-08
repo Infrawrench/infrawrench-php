@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,7 @@ final class ExchangeRateLookup implements \JsonSerializable
      * @param string $toCurrency ISO 4217 code, upper-case.
      * @param 'daily'|'month_end' $rateBasis Which automatic (feed) rate converts a day's spend. `daily`: the rate published for that day, carried forward over weekends and holidays. `month_end`: the rate in force on the last day of that day's month, so a whole month converts at one rate. Stated rates always apply to the days their own dates cover, whatever the basis.
      * @param float|null $rate Multiply an amount in `fromCurrency` by this. `null`: no rate applies.
-     * @param 'manual'|'ecb'|null $source `manual`: a rate your organization stated. `ecb`: the automatic European Central Bank euro reference rate (crossed through EUR when neither side is EUR).
+     * @param 'manual'|'ecb'|null $source
      * @param string|null $rateDate The stated rate's effective date, or the ECB publication date used.
      */
     public function __construct(

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,21 +24,21 @@ final class SloUpdate implements \JsonSerializable
 {
     /**
      * @param string|null $name Unique in the organization; at most 120 characters.
-     * @param string|null $description At most 500 characters.
      * @param 'probe_availability'|'probe_latency'|'metric_threshold'|null $sliKind Where the SLI comes from: a synthetic probe's success ratio, the share of a probe's checks at or under a latency threshold, or the share of minutes a resource's metric series satisfies a comparison.
+     * @param string|null $description At most 500 characters.
      * @param string|null $probeId `probe_*`: the synthetic probe the SLI is read from.
      * @param int|null $latencyThresholdMs `probe_latency`: a check is good at or under this many ms (1-60000).
      * @param string|null $resourceId `metric_threshold`: the synced resource reporting the series.
      * @param string|null $metricKey `metric_threshold`: the series label as the resource reports it, e.g. "CPU %".
-     * @param '<'|'<='|'>'|'>='|null $comparator `metric_threshold` only: a minute is good when `value <comparator> threshold`.
+     * @param '<'|'<='|'>'|'>='|null $comparator
      * @param float|null $threshold `metric_threshold`: the comparison's right side.
      * @param float|null $targetPercent Objective as a percentage, at least 50 and at most 99.999.
      * @param float|null $windowDays Rolling window in days.
      */
     public function __construct(
         public readonly ?string $name = null,
-        public readonly ?string $description = null,
         public readonly ?string $sliKind = null,
+        public readonly ?string $description = null,
         public readonly ?string $probeId = null,
         public readonly ?int $latencyThresholdMs = null,
         public readonly ?string $resourceId = null,
@@ -62,8 +62,8 @@ final class SloUpdate implements \JsonSerializable
     {
         return new self(
             name: Coerce::toStringOrNull($data['name'] ?? null),
-            description: Coerce::toStringOrNull($data['description'] ?? null),
             sliKind: Coerce::toStringOrNull($data['sliKind'] ?? null),
+            description: Coerce::toStringOrNull($data['description'] ?? null),
             probeId: Coerce::toStringOrNull($data['probeId'] ?? null),
             latencyThresholdMs: Coerce::toIntOrNull($data['latencyThresholdMs'] ?? null),
             resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
@@ -90,11 +90,11 @@ final class SloUpdate implements \JsonSerializable
         if ($this->name !== null) {
             $payload['name'] = $this->name;
         }
-        if ($this->description !== null) {
-            $payload['description'] = $this->description;
-        }
         if ($this->sliKind !== null) {
             $payload['sliKind'] = $this->sliKind;
+        }
+        if ($this->description !== null) {
+            $payload['description'] = $this->description;
         }
         if ($this->probeId !== null) {
             $payload['probeId'] = $this->probeId;

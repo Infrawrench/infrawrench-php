@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,8 +24,6 @@ use Infrawrench\Sdk\Internal\Coerce;
  * What the declaration asked for, recorded so a retry asks for the same thing. Present on the
  * status-page artefact, where a retry that forgot the operator's chosen components would publish
  * the outage against the whole page.
- *
- * The API may send `null` in place of this object.
  */
 final class IncidentArtifactRequest implements \JsonSerializable
 {

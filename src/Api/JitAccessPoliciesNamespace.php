@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -154,7 +154,9 @@ final class JitAccessPoliciesNamespace extends ApiNamespace
      *
      * GET /api/org/{orgId}/jit-access/policies/{policyId}/principal
      *
-     * Raises on 403: Not a requester
+     * Raises on 401: Unauthenticated
+     *
+     * Raises on 403: JitError
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -181,8 +183,10 @@ final class JitAccessPoliciesNamespace extends ApiNamespace
      *
      * GET /api/org/{orgId}/jit-access/policies/{policyId}/principals
      *
+     * Raises on 401: Unauthenticated
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @return list<JitPrincipalOption|null>
+     * @return list<JitPrincipalOption>
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
@@ -198,7 +202,7 @@ final class JitAccessPoliciesNamespace extends ApiNamespace
             $options,
         );
 
-        return Coerce::mapList($data, static fn (mixed $item): ?JitPrincipalOption => Coerce::nullable($item, static fn (mixed $value): JitPrincipalOption => JitPrincipalOption::fromArray(Coerce::toArray($value))));
+        return Coerce::mapList($data, static fn (mixed $item): JitPrincipalOption => JitPrincipalOption::fromArray(Coerce::toArray($item)));
     }
 
     /**

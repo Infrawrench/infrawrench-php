@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,8 @@ final class VulnerabilitiesDismissalsNamespace extends ApiNamespace
      * Accept an advisory as a known risk for one artifact (keyed on the image repository, so it
      * survives rebuilds) or, with `artifactKey: "*"`, everywhere. Idempotent.
      *
+     * _Requires permission: `resources:write`._
+     *
      * POST /api/org/{orgId}/vulnerabilities/dismissals
      *
      * Raises on 400: Bad request
@@ -62,6 +64,8 @@ final class VulnerabilitiesDismissalsNamespace extends ApiNamespace
      * Restore a dismissed vulnerability
      *
      * The key is in the query string because artifact keys contain slashes.
+     *
+     * _Requires permission: `resources:write`._
      *
      * DELETE /api/org/{orgId}/vulnerabilities/dismissals
      *

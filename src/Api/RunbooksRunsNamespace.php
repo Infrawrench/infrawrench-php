@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -47,6 +47,8 @@ final class RunbooksRunsNamespace extends ApiNamespace
      * pending is a true and useful record (it says the incident ended before the checklist did)
      * and quietly marking them done would erase the one thing a postmortem wants to know.
      *
+     * _Requires permission: `resources:read`._
+     *
      * POST /api/org/{orgId}/runbooks/runs/{runId}/close
      *
      * Raises on 400: Bad request
@@ -59,15 +61,15 @@ final class RunbooksRunsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function close(string $runId, ?string $orgId = null, ?RunbookRunClose $body = null, ?RequestOptions $options = null): RunbookRun
+    public function close(string $runId, RunbookRunClose $body, ?string $orgId = null, ?RequestOptions $options = null): RunbookRun
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'POST',
                 path: '/api/org/{orgId}/runbooks/runs/{runId}/close',
                 pathParams: ['orgId' => $orgId, 'runId' => $runId],
-                body: $body?->toArray(),
-                hasBody: $body !== null,
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
@@ -87,11 +89,15 @@ final class RunbooksRunsNamespace extends ApiNamespace
      * twice in one incident is a real thing, and refusing the second would mean it goes unrecorded
      * rather than not happening.
      *
+     * _Requires permission: `resources:read`._
+     *
      * POST /api/org/{orgId}/runbooks/{runbookId}/runs
      *
      * Raises on 400: Bad request
      *
      * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -118,6 +124,8 @@ final class RunbooksRunsNamespace extends ApiNamespace
      *
      * Newest first, optionally narrowed to one runbook or one incident.
      *
+     * _Requires permission: `resources:read`._
+     *
      * GET /api/org/{orgId}/runbooks/runs
      *
      * Raises on 400: Bad request
@@ -143,6 +151,8 @@ final class RunbooksRunsNamespace extends ApiNamespace
 
     /**
      * Get one runbook run
+     *
+     * _Requires permission: `resources:read`._
      *
      * GET /api/org/{orgId}/runbooks/runs/{runId}
      *

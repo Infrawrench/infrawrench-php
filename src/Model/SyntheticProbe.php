@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,6 +30,7 @@ final class SyntheticProbe implements \JsonSerializable
      * @param int $failureThreshold Consecutive failures before the probe flips to `down` and notifies. Clamped 1–20.
      * @param string|null $accountId Account of the linked resource, when the URL came from one.
      * @param string|null $resourceId Linked resource id; advisory, not a foreign key.
+     * @param PluginId::*|null $pluginId
      * @param string|null $outputKey The resource output/field key the URL was suggested from.
      * @param 'up'|'down'|'unknown' $status The probe's state machine: `unknown` until the first result, `down` after `failureThreshold` consecutive failures, `up` on any success.
      * @param string|null $lastError Failure detail; null after a success.
@@ -47,7 +48,7 @@ final class SyntheticProbe implements \JsonSerializable
         public readonly bool $enabled,
         public readonly ?string $accountId,
         public readonly ?string $resourceId,
-        public readonly mixed $pluginId,
+        public readonly ?string $pluginId,
         public readonly ?string $resourceTypeId,
         public readonly ?string $outputKey,
         public readonly string $status,
@@ -81,7 +82,7 @@ final class SyntheticProbe implements \JsonSerializable
             enabled: Coerce::toBool($data['enabled'] ?? null),
             accountId: Coerce::toStringOrNull($data['accountId'] ?? null),
             resourceId: Coerce::toStringOrNull($data['resourceId'] ?? null),
-            pluginId: $data['pluginId'] ?? null,
+            pluginId: Coerce::toStringOrNull($data['pluginId'] ?? null),
             resourceTypeId: Coerce::toStringOrNull($data['resourceTypeId'] ?? null),
             outputKey: Coerce::toStringOrNull($data['outputKey'] ?? null),
             status: Coerce::toString($data['status'] ?? null),

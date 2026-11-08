@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -36,6 +36,8 @@ final class BusinessMetricsUsageUnitCostsNamespace extends ApiNamespace
      * metric involved. Both halves come from the same cost rows (those reported in that unit), so
      * the numerator is exactly the spend that bought the denominator. A bucket with no usage is a
      * gap (`no_usage`), never 0. Labels do not apply.
+     *
+     * _Requires permission: `costs:read`._
      *
      * POST /api/org/{orgId}/business-metrics/usage-unit-costs
      *

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -48,12 +48,12 @@ final class SavingsFindingsNamespace extends ApiNamespace
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @param string|null $view Apply a saved view, by id or name. Explicit params override it.
-     * @param SavingsFindingStatusFilter::*|null $status A status, `open` (Ready or In progress), or `all`.
+     * @param SavingsFindingStatusFilter::*|null $status Status tab. Defaults to `all` (or the view's).
      * @param string|null $kind Comma-separated finding kinds.
      * @param string|null $provider Comma-separated plugin ids.
      * @param string|null $account Comma-separated account ids.
      * @param string|null $region Comma-separated regions.
-     * @param string|null $tag `key` or `key=value`; repeat for more terms (all must match).
+     * @param list<string>|null $tag `key` or `key=value`; repeat for more terms (all must match).
      * @param string|null $minSavings Minimum monthly savings, in each finding's own currency. Unpriced findings never pass.
      * @param string|null $detectedFrom Detected on or after (UTC day).
      * @param string|null $detectedTo Detected on or before (UTC day).
@@ -63,7 +63,7 @@ final class SavingsFindingsNamespace extends ApiNamespace
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function get(?string $orgId = null, ?string $view = null, ?string $status = null, ?string $kind = null, ?string $provider = null, ?string $account = null, ?string $region = null, ?string $tag = null, ?string $minSavings = null, ?string $detectedFrom = null, ?string $detectedTo = null, ?string $q = null, ?string $sort = null, ?string $refresh = null, ?RequestOptions $options = null): SavingsFindingsResponse
+    public function get(?string $orgId = null, ?string $view = null, ?string $status = null, ?string $kind = null, ?string $provider = null, ?string $account = null, ?string $region = null, ?array $tag = null, ?string $minSavings = null, ?string $detectedFrom = null, ?string $detectedTo = null, ?string $q = null, ?string $sort = null, ?string $refresh = null, ?RequestOptions $options = null): SavingsFindingsResponse
     {
         $data = $this->transport->request(
             new RequestSpec(

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,7 +27,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CostExportQuery implements \JsonSerializable
 {
     /**
-     * @param list<string> $dimensions Row-identity columns kept in the output. Dropping one aggregates over it; an export grouped to provider + service is orders of magnitude smaller than a per-resource one.
+     * @param list<CostDimension::*> $dimensions Row-identity columns kept in the output. Dropping one aggregates over it; an export grouped to provider + service is orders of magnitude smaller than a per-resource one.
      * @param list<string> $tagKeys Tag keys emitted as their own `tag_<key>` columns.
      * @param list<CostExportFilter> $filters
      * @param list<string>|null $virtualTagKeys Virtual tag keys emitted as their own `vtag_<key>` columns. A row a split rule divides is exported once per share with weighted amounts, so the file still sums to the total.

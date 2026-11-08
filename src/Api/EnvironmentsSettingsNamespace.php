@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -66,18 +66,21 @@ final class EnvironmentsSettingsNamespace extends ApiNamespace
      *
      * PUT /api/org/{orgId}/environments/settings
      *
+     * Raises on 400: Bad request
+     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param array{maxTtlHours?: int, defaultTtlHours?: int}|null $body
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */
-    public function update(?string $orgId = null, ?EnvironmentSettings $body = null, ?RequestOptions $options = null): EnvironmentSettings
+    public function update(?string $orgId = null, ?array $body = null, ?RequestOptions $options = null): EnvironmentSettings
     {
         $data = $this->transport->request(
             new RequestSpec(
                 method: 'PUT',
                 path: '/api/org/{orgId}/environments/settings',
                 pathParams: ['orgId' => $orgId],
-                body: $body?->toArray(),
+                body: $body,
                 hasBody: $body !== null,
             ),
             $options,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,7 +40,7 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
      * @param CostMeasure::*|null $measure
      * @param string|null $usageUnit The usage unit a `usage` measure sums, exactly as the provider spells it (`Hrs`, `GB-Mo`). List them with GET /costs/dimensions?dimension=usage-units. Required for `usage`, refused for any other measure.
      * @param bool|null $cumulative Running totals from the start of the range, at any bin size. Omitted is off. Totals then report the last point rather than the sum.
-     * @param CostDimension::*|null $xAxis
+     * @param CostDimension::*|null $xAxis Put this dimension's values on the X axis instead of date bins: one bar per value, ranked by spend over the range, the top `topN` then `__other__`. `groupBy` then segments each bar (or set `segmentByDate` to segment by bin instead). Omitted is the date axis. Refused with a forecast, a scenario, a running total, the `count` measure or a unit-cost chart, which all need dates.
      * @param string|null $xAxisTagKey Required when `xAxis` is `tag` or `virtual_tag`: which key's values go on the axis.
      * @param bool|null $segmentByDate With `xAxis` and `groupBy: none`: segment each bar by date bin (one series per bin). Refused alongside a `groupBy`; ignored without `xAxis`.
      */
@@ -59,6 +59,7 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         public readonly ?string $scenarioModelId = null,
         public readonly ?string $costBasis = null,
         public readonly ?array $chargeTypes = null,
+        public readonly ?string $displayCurrency = null,
         public readonly ?bool $adjusted = null,
         public readonly ?string $measure = null,
         public readonly ?string $usageUnit = null,
@@ -91,6 +92,7 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
             scenarioModelId: Coerce::toStringOrNull($data['scenarioModelId'] ?? null),
             costBasis: Coerce::toStringOrNull($data['costBasis'] ?? null),
             chargeTypes: Coerce::nullable($data['chargeTypes'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            displayCurrency: Coerce::toStringOrNull($data['displayCurrency'] ?? null),
             adjusted: Coerce::toBoolOrNull($data['adjusted'] ?? null),
             measure: Coerce::toStringOrNull($data['measure'] ?? null),
             usageUnit: Coerce::toStringOrNull($data['usageUnit'] ?? null),
@@ -143,6 +145,9 @@ Sending both `query` and a non-empty `filters` is a 400, not a precedence rule. 
         }
         if ($this->chargeTypes !== null) {
             $payload['chargeTypes'] = $this->chargeTypes;
+        }
+        if ($this->displayCurrency !== null) {
+            $payload['displayCurrency'] = $this->displayCurrency;
         }
         if ($this->adjusted !== null) {
             $payload['adjusted'] = $this->adjusted;

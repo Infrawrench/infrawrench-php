@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,8 @@ final class DashboardsWidgetsNamespace extends ApiNamespace
 {
     /**
      * Add a widget (cost graph, report, budget, KPI, text, ...) to a dashboard
+     *
+     * _Requires permission: `dashboards:write`._
      *
      * POST /api/org/{orgId}/dashboards/widgets
      *
@@ -62,6 +64,8 @@ final class DashboardsWidgetsNamespace extends ApiNamespace
     /**
      * Remove a widget from a dashboard
      *
+     * _Requires permission: `dashboards:write`._
+     *
      * DELETE /api/org/{orgId}/dashboards/widgets/{widgetId}
      *
      * Raises on 404: Not found
@@ -91,6 +95,8 @@ final class DashboardsWidgetsNamespace extends ApiNamespace
      * card behind it one slot along. A copy of a budget or report card is a second view onto the
      * same budget or report. Audit-logged.
      *
+     * _Requires permission: `dashboards:write`._
+     *
      * POST /api/org/{orgId}/dashboards/widgets/{widgetId}/duplicate
      *
      * Raises on 400: Bad request
@@ -117,6 +123,8 @@ final class DashboardsWidgetsNamespace extends ApiNamespace
 
     /**
      * Update a widget's title, config, or layout
+     *
+     * _Requires permission: `dashboards:write`._
      *
      * PATCH /api/org/{orgId}/dashboards/widgets/{widgetId}
      *

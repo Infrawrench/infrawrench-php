@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,11 +21,12 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * The last delivery attempt, or null when none has been made; including on an invoice marked sent
- * by a deployment with no mail provider. “A person released this” and “we delivered it” are
- * different claims, and this field is only ever the second.
+ * What became of the last attempt to email this invoice to its customer. Separate from the figures
+ * in every sense: delivery records where a frozen document went and cannot restate what it says.
  *
- * The API may send `null` in place of this object.
+ * **A partial delivery is terminal.** The mail provider has no idempotency key, so retrying after
+ * some addresses succeeded would put a second copy of the same bill in inboxes that already have
+ * it.
  */
 final class InvoiceDelivery implements \JsonSerializable
 {

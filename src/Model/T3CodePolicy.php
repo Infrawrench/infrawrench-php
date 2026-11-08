@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -20,14 +20,6 @@ namespace Infrawrench\Sdk\Model;
 
 use Infrawrench\Sdk\Internal\Coerce;
 
-/**
- * The organization's T3 Code managed policy, installed on every T3 Code server
- * (`/etc/t3code/policy.json`). On save: omit to keep the stored policy, `null` to remove it. A new
- * T3 Code session is refused when the policy does not allow its tool or turns off the T3 Connect
- * it is reached through.
- *
- * The API may send `null` in place of this object.
- */
 final class T3CodePolicy implements \JsonSerializable
 {
     /**

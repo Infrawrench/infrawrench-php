@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -40,6 +40,8 @@ final class ProviderOauthNamespace extends ApiNamespace
      * `__oauth` grant; send them unchanged to `POST /accounts` or `PUT /accounts/{id}/credentials`
      * within 30 minutes. Requires `accounts:write`. 400 when the plugin has no OAuth flow or this
      * server has no client configured for it.
+     *
+     * _Requires permission: `accounts:write`._
      *
      * POST /api/org/{orgId}/provider-oauth/{pluginId}/authorize
      *

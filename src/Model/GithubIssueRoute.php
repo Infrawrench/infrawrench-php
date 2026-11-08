@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -30,7 +30,7 @@ final class GithubIssueRoute implements \JsonSerializable
     public function __construct(
         public readonly string $id,
         public readonly array $match,
-        public readonly ?GithubRepoRef $repo,
+        public readonly GithubRepoRef $repo,
         public readonly array $labels,
         public readonly array $assignees,
     ) {
@@ -46,7 +46,7 @@ final class GithubIssueRoute implements \JsonSerializable
         return new self(
             id: Coerce::toString($data['id'] ?? null),
             match: $data['match'] ?? null,
-            repo: Coerce::nullable($data['repo'] ?? null, static fn (mixed $value): GithubRepoRef => GithubRepoRef::fromArray(Coerce::toArray($value))),
+            repo: GithubRepoRef::fromArray(Coerce::toArray($data['repo'] ?? null)),
             labels: Coerce::mapList($data['labels'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             assignees: Coerce::mapList($data['assignees'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
         );
@@ -62,7 +62,7 @@ final class GithubIssueRoute implements \JsonSerializable
         return [
             'id' => $this->id,
             'match' => $this->match,
-            'repo' => $this->repo?->toArray(),
+            'repo' => $this->repo->toArray(),
             'labels' => $this->labels,
             'assignees' => $this->assignees,
         ];

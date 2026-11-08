@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.98.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.98.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,10 +21,9 @@ namespace Infrawrench\Sdk\Model;
 use Infrawrench\Sdk\Internal\Coerce;
 
 /**
- * **Null for a draft**, null, not zero. A draft's figures are recomputed on read and the list does
- * not recompute; fetch the invoice by id for a draft's current numbers.
- *
- * The API may send `null` in place of this object.
+ * `collected + adjustment === adjusted` holds for every currency. That identity is what makes an
+ * invoice reconcilable back to the spend that produced it, and it is checked before anything is
+ * frozen.
  */
 final class InvoiceTotals implements \JsonSerializable
 {
