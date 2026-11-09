@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.100.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.100.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -49,6 +49,7 @@ use Infrawrench\Sdk\Api\CarbonNamespace;
 use Infrawrench\Sdk\Api\ChangeFreezesNamespace;
 use Infrawrench\Sdk\Api\ChangesNamespace;
 use Infrawrench\Sdk\Api\ChatNamespace;
+use Infrawrench\Sdk\Api\CiNamespace;
 use Infrawrench\Sdk\Api\CommitmentsNamespace;
 use Infrawrench\Sdk\Api\ComplianceNamespace;
 use Infrawrench\Sdk\Api\ConfigNamespace;
@@ -83,6 +84,7 @@ use Infrawrench\Sdk\Api\EnvironmentsNamespace;
 use Infrawrench\Sdk\Api\EventSubscriptionsNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\ExtendedSupportNamespace;
+use Infrawrench\Sdk\Api\FeaturesNamespace;
 use Infrawrench\Sdk\Api\GithubIssuesNamespace;
 use Infrawrench\Sdk\Api\GithubNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
@@ -276,6 +278,9 @@ final class APIV1Client
     /** `$client->chat` */
     public readonly ChatNamespace $chat;
 
+    /** `$client->ci` */
+    public readonly CiNamespace $ci;
+
     /** `$client->commitments` */
     public readonly CommitmentsNamespace $commitments;
 
@@ -377,6 +382,9 @@ final class APIV1Client
 
     /** `$client->extendedSupport` */
     public readonly ExtendedSupportNamespace $extendedSupport;
+
+    /** `$client->features` */
+    public readonly FeaturesNamespace $features;
 
     /** `$client->github` */
     public readonly GithubNamespace $github;
@@ -658,6 +666,7 @@ final class APIV1Client
         $this->changeFreezes = new ChangeFreezesNamespace($this->transport);
         $this->changes = new ChangesNamespace($this->transport);
         $this->chat = new ChatNamespace($this->transport);
+        $this->ci = new CiNamespace($this->transport);
         $this->commitments = new CommitmentsNamespace($this->transport);
         $this->compliance = new ComplianceNamespace($this->transport);
         $this->config = new ConfigNamespace($this->transport);
@@ -692,6 +701,7 @@ final class APIV1Client
         $this->eventSubscriptions = new EventSubscriptionsNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->extendedSupport = new ExtendedSupportNamespace($this->transport);
+        $this->features = new FeaturesNamespace($this->transport);
         $this->github = new GithubNamespace($this->transport);
         $this->githubIssues = new GithubIssuesNamespace($this->transport);
         $this->iac = new IacNamespace($this->transport);

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.100.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.100.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -824,7 +824,6 @@ final class ResourceTypeId
     public const PARSING_RULE_GROUP = 'parsing-rule-group';
     public const PERMISSION = 'permission';
     public const PERPLEXITY_AGENT_MODEL = 'perplexity-agent-model';
-    public const PERPLEXITY_ASYNC_REQUEST = 'perplexity-async-request';
     public const PERPLEXITY_ROUTER_MODEL = 'perplexity-router-model';
     public const PERPLEXITY_SKILL = 'perplexity-skill';
     public const PERPLEXITY_SONAR_MODEL = 'perplexity-sonar-model';
@@ -2067,7 +2066,6 @@ final class ResourceTypeId
             self::PARSING_RULE_GROUP,
             self::PERMISSION,
             self::PERPLEXITY_AGENT_MODEL,
-            self::PERPLEXITY_ASYNC_REQUEST,
             self::PERPLEXITY_ROUTER_MODEL,
             self::PERPLEXITY_SKILL,
             self::PERPLEXITY_SONAR_MODEL,

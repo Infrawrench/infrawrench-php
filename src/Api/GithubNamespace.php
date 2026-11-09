@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.99.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.100.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.99.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.100.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -49,7 +49,7 @@ final class GithubNamespace extends ApiNamespace
      * Raises on 400: Bad request
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
-     * @param 'agents'|'workflows'|'settings/github-issues'|null $return The page (under the organization) the install flow returns to. Anything else: `agents`.
+     * @param 'agents'|'workflows'|'settings/github-issues'|'settings/pr-checks'|'ci'|null $return The page (under the organization) the install flow returns to. Anything else: `agents`.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */

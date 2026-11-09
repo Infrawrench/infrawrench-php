@@ -1,0 +1,54 @@
+<?php
+
+/*
+ * infrawrench/sdk v1.100.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * https://github.com/Infrawrench/Infrawrench
+ *
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.100.0).
+ *
+ * DO NOT EDIT. Regenerate with:
+ *   pnpm --filter @infrawrench/web generate:sdk
+ *
+ * Internal routes are absent by construction: the generator consumes the same
+ * published spec that /openapi.json serves, which drops every operation
+ * marked x-internal.
+ */
+
+declare(strict_types=1);
+
+namespace Infrawrench\Sdk\Model;
+
+/**
+ * The values `CiRunStatus` accepts.
+ *
+ * Constants rather than an enum, deliberately: a value added by a newer API version has to
+ * deserialize, and `enum::from()` would raise instead.
+ */
+final class CiRunStatus
+{
+    public const AWAITING_APPROVAL = 'awaiting_approval';
+    public const QUEUED = 'queued';
+    public const RUNNING = 'running';
+    public const PASSED = 'passed';
+    public const FAILED = 'failed';
+    public const ERROR = 'error';
+    public const REJECTED = 'rejected';
+
+    /**
+     * Every value, in the order the spec lists them.
+     *
+     * @return list<string>
+     */
+    public static function values(): array
+    {
+        return [
+            self::AWAITING_APPROVAL,
+            self::QUEUED,
+            self::RUNNING,
+            self::PASSED,
+            self::FAILED,
+            self::ERROR,
+            self::REJECTED,
+        ];
+    }
+}
