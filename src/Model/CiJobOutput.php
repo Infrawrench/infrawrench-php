@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.100.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.100.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class CiJobOutput implements \JsonSerializable
     /**
      * @param 'passed'|'failed'|'skipped'|'error' $status
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $durationMs
+     * @param list<string>|null $needs The job keys it waited for, as the pipeline's `needs:` expanded them. Absent from runs before runner 0.3.1.
      */
     public function __construct(
         public readonly string $pipeline,
@@ -35,6 +36,7 @@ final class CiJobOutput implements \JsonSerializable
         public readonly float|string|null $durationMs,
         public readonly string $stdout,
         public readonly string $stderr,
+        public readonly ?array $needs = null,
     ) {
     }
 
@@ -54,6 +56,7 @@ final class CiJobOutput implements \JsonSerializable
             durationMs: $data['durationMs'] ?? null,
             stdout: Coerce::toString($data['stdout'] ?? null),
             stderr: Coerce::toString($data['stderr'] ?? null),
+            needs: Coerce::nullable($data['needs'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
         );
     }
 
@@ -64,7 +67,7 @@ final class CiJobOutput implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'pipeline' => $this->pipeline,
             'id' => $this->id,
             'name' => $this->name,
@@ -74,6 +77,11 @@ final class CiJobOutput implements \JsonSerializable
             'stdout' => $this->stdout,
             'stderr' => $this->stderr,
         ];
+        if ($this->needs !== null) {
+            $payload['needs'] = $this->needs;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
