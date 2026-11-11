@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,11 +22,15 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class PreflightCapability implements \JsonSerializable
 {
-    /** @param list<PreflightPermission> $requiredPermissions */
+    /**
+     * @param list<PreflightPermission> $requiredPermissions
+     * @param ProductId::*|null $product
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $label,
         public readonly array $requiredPermissions,
+        public readonly ?string $product = null,
         public readonly ?string $description = null,
         public readonly ?bool $essential = null,
     ) {
@@ -43,6 +47,7 @@ final class PreflightCapability implements \JsonSerializable
             id: Coerce::toString($data['id'] ?? null),
             label: Coerce::toString($data['label'] ?? null),
             requiredPermissions: Coerce::mapList($data['requiredPermissions'] ?? null, static fn (mixed $item): PreflightPermission => PreflightPermission::fromArray(Coerce::toArray($item))),
+            product: Coerce::toStringOrNull($data['product'] ?? null),
             description: Coerce::toStringOrNull($data['description'] ?? null),
             essential: Coerce::toBoolOrNull($data['essential'] ?? null),
         );
@@ -60,6 +65,9 @@ final class PreflightCapability implements \JsonSerializable
             'label' => $this->label,
             'requiredPermissions' => array_map(static fn (PreflightPermission $item): array => $item->toArray(), $this->requiredPermissions),
         ];
+        if ($this->product !== null) {
+            $payload['product'] = $this->product;
+        }
         if ($this->description !== null) {
             $payload['description'] = $this->description;
         }

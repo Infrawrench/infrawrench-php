@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -37,6 +37,7 @@ final class TabTarget implements \JsonSerializable
         public readonly ?string $serviceId = null,
         public readonly ?string $view = null,
         public readonly ?string $framework = null,
+        public readonly ?string $productId = null,
         public readonly ?string $sessionId = null,
         public readonly ?int $windowId = null,
         public readonly ?string $appId = null,
@@ -64,6 +65,7 @@ final class TabTarget implements \JsonSerializable
             serviceId: Coerce::toStringOrNull($data['serviceId'] ?? null),
             view: Coerce::toStringOrNull($data['view'] ?? null),
             framework: Coerce::toStringOrNull($data['framework'] ?? null),
+            productId: Coerce::toStringOrNull($data['productId'] ?? null),
             sessionId: Coerce::toStringOrNull($data['sessionId'] ?? null),
             windowId: Coerce::toIntOrNull($data['windowId'] ?? null),
             appId: Coerce::toStringOrNull($data['appId'] ?? null),
@@ -115,6 +117,9 @@ final class TabTarget implements \JsonSerializable
         }
         if ($this->framework !== null) {
             $payload['framework'] = $this->framework;
+        }
+        if ($this->productId !== null) {
+            $payload['productId'] = $this->productId;
         }
         if ($this->sessionId !== null) {
             $payload['sessionId'] = $this->sessionId;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -98,6 +98,7 @@ final class Permission
     public const INVOICES_ISSUE = 'invoices:issue';
     public const PAGES_WRITE = 'pages:write';
     public const SHARING_OVERRIDE = 'sharing:override';
+    public const ORG_APPS_WRITE = 'org:apps:write';
     public const ORG_SETTINGS_WRITE = 'org:settings:write';
 
     /**
@@ -177,6 +178,7 @@ final class Permission
             self::INVOICES_ISSUE,
             self::PAGES_WRITE,
             self::SHARING_OVERRIDE,
+            self::ORG_APPS_WRITE,
             self::ORG_SETTINGS_WRITE,
         ];
     }

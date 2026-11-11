@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -24,10 +24,12 @@ final class UpdateAccountRequest implements \JsonSerializable
 {
     /**
      * @param string|null $bastionId Pass `null` to unbind, a uuid to bind, or omit the field to leave the binding unchanged.
+     * @param list<ProductId::*>|null $products Change the apps this connection is for; omit the field to leave them unchanged. Same rules as on create. Adding an app makes its collection due now; the credential must already carry that app's permissions.
      */
     public function __construct(
         public readonly ?string $displayName = null,
         public readonly ?string $bastionId = null,
+        public readonly ?array $products = null,
     ) {
     }
 
@@ -41,6 +43,7 @@ final class UpdateAccountRequest implements \JsonSerializable
         return new self(
             displayName: Coerce::toStringOrNull($data['displayName'] ?? null),
             bastionId: Coerce::toStringOrNull($data['bastionId'] ?? null),
+            products: Coerce::nullable($data['products'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
         );
     }
 
@@ -58,6 +61,9 @@ final class UpdateAccountRequest implements \JsonSerializable
         }
         if ($this->bastionId !== null) {
             $payload['bastionId'] = $this->bastionId;
+        }
+        if ($this->products !== null) {
+            $payload['products'] = $this->products;
         }
 
         return $payload;

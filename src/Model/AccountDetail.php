@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class AccountDetail implements \JsonSerializable
 {
     /**
-     * @param array{id: string, pluginId: string, displayName: string, oauthStatus: AccountOauthStatus::*} $account
+     * @param array{id: string, pluginId: string, displayName: string, oauthStatus: AccountOauthStatus::*, products?: list<string>|null} $account
      * @param list<ResourceTypeSummary> $resourceTypes
      */
     public function __construct(

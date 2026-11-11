@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -265,9 +265,14 @@ final class AccountsNamespace extends ApiNamespace
     /**
      * Sync all resource types for an account
      *
+     * 400 for an account connected for Costs alone: its resources are not synced. Add another app
+     * to the connection (`PATCH /accounts/{id}` with `products`) first.
+     *
      * _Requires permission: `resources:read`._
      *
      * POST /api/org/{orgId}/accounts/{id}/sync
+     *
+     * Raises on 400: Bad request
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
@@ -288,7 +293,7 @@ final class AccountsNamespace extends ApiNamespace
     }
 
     /**
-     * Update an account (rename and/or change bastion binding)
+     * Update an account (rename, change bastion binding, change what it is for)
      *
      * _Requires permission: `accounts:write`._
      *

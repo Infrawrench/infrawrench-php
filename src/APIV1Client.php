@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.101.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.101.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -119,6 +119,7 @@ use Infrawrench\Sdk\Api\PostureNamespace;
 use Infrawrench\Sdk\Api\PrChecksNamespace;
 use Infrawrench\Sdk\Api\PriceCatalogNamespace;
 use Infrawrench\Sdk\Api\ProbesNamespace;
+use Infrawrench\Sdk\Api\ProductsNamespace;
 use Infrawrench\Sdk\Api\ProfileNamespace;
 use Infrawrench\Sdk\Api\ProviderOauthNamespace;
 use Infrawrench\Sdk\Api\QueryMonitorsNamespace;
@@ -488,6 +489,9 @@ final class APIV1Client
     /** `$client->probes` */
     public readonly ProbesNamespace $probes;
 
+    /** `$client->products` */
+    public readonly ProductsNamespace $products;
+
     /** `$client->profile` */
     public readonly ProfileNamespace $profile;
 
@@ -736,6 +740,7 @@ final class APIV1Client
         $this->prChecks = new PrChecksNamespace($this->transport);
         $this->priceCatalog = new PriceCatalogNamespace($this->transport);
         $this->probes = new ProbesNamespace($this->transport);
+        $this->products = new ProductsNamespace($this->transport);
         $this->profile = new ProfileNamespace($this->transport);
         $this->providerOauth = new ProviderOauthNamespace($this->transport);
         $this->queryMonitors = new QueryMonitorsNamespace($this->transport);
