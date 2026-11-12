@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.103.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.103.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Model\CiRun;
 use Infrawrench\Sdk\Model\CiRunDetail;
 use Infrawrench\Sdk\Model\CiRunStatus;
 use Infrawrench\Sdk\Model\Ok;
@@ -145,5 +146,41 @@ final class CiRunsNamespace extends ApiNamespace
         );
 
         return Ok::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Run a finished CI run again
+     *
+     * Queues a new run of the same repository, commit, branch and event, linked to this one. A run
+     * waiting for approval is approved instead, and a fork's pull request still runs without
+     * secrets.
+     *
+     * _Requires permission: `ci:approve`._
+     *
+     * POST /api/org/{orgId}/ci/runs/{runId}/retry
+     *
+     * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
+     *
+     * @param array{noTaskCache?: bool} $body
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function retry(string $runId, array $body, ?string $orgId = null, ?RequestOptions $options = null): CiRun
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/ci/runs/{runId}/retry',
+                pathParams: ['orgId' => $orgId, 'runId' => $runId],
+                body: $body,
+                hasBody: true,
+            ),
+            $options,
+        );
+
+        return CiRun::fromArray(Coerce::toArray($data));
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.102.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.103.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.102.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.103.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,9 @@ final class CiRun implements \JsonSerializable
      * @param list<CiJobSummary>|null $jobs
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $vcpuSeconds
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $memoryGibSeconds
+     * @param string|null $retryOfRunId The run this one retries: the same repository, commit, branch and event.
+     * @param string|null $retriedAsRunId The newest retry of this run.
+     * @param bool|null $noTaskCache The run did not read the task cache: every `task-cache:` job ran, and saved its result again.
      */
     public function __construct(
         public readonly string $id,
@@ -48,6 +51,9 @@ final class CiRun implements \JsonSerializable
         public readonly float|string|null $vcpuSeconds,
         public readonly float|string|null $memoryGibSeconds,
         public readonly string $githubUrl,
+        public readonly ?string $retryOfRunId = null,
+        public readonly ?string $retriedAsRunId = null,
+        public readonly ?bool $noTaskCache = null,
     ) {
     }
 
@@ -77,6 +83,9 @@ final class CiRun implements \JsonSerializable
             vcpuSeconds: $data['vcpuSeconds'] ?? null,
             memoryGibSeconds: $data['memoryGibSeconds'] ?? null,
             githubUrl: Coerce::toString($data['githubUrl'] ?? null),
+            retryOfRunId: Coerce::toStringOrNull($data['retryOfRunId'] ?? null),
+            retriedAsRunId: Coerce::toStringOrNull($data['retriedAsRunId'] ?? null),
+            noTaskCache: Coerce::toBoolOrNull($data['noTaskCache'] ?? null),
         );
     }
 
@@ -87,7 +96,7 @@ final class CiRun implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'repoFullName' => $this->repoFullName,
             'event' => $this->event,
@@ -107,6 +116,17 @@ final class CiRun implements \JsonSerializable
             'memoryGibSeconds' => $this->memoryGibSeconds,
             'githubUrl' => $this->githubUrl,
         ];
+        if ($this->retryOfRunId !== null) {
+            $payload['retryOfRunId'] = $this->retryOfRunId;
+        }
+        if ($this->retriedAsRunId !== null) {
+            $payload['retriedAsRunId'] = $this->retriedAsRunId;
+        }
+        if ($this->noTaskCache !== null) {
+            $payload['noTaskCache'] = $this->noTaskCache;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
