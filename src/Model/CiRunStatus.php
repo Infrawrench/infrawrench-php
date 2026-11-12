@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.104.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.105.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.104.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.105.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,11 +28,13 @@ final class CiRunStatus
 {
     public const AWAITING_APPROVAL = 'awaiting_approval';
     public const QUEUED = 'queued';
+    public const PENDING = 'pending';
     public const RUNNING = 'running';
     public const PASSED = 'passed';
     public const FAILED = 'failed';
     public const ERROR = 'error';
     public const REJECTED = 'rejected';
+    public const CANCELLED = 'cancelled';
 
     /**
      * Every value, in the order the spec lists them.
@@ -44,11 +46,13 @@ final class CiRunStatus
         return [
             self::AWAITING_APPROVAL,
             self::QUEUED,
+            self::PENDING,
             self::RUNNING,
             self::PASSED,
             self::FAILED,
             self::ERROR,
             self::REJECTED,
+            self::CANCELLED,
         ];
     }
 }

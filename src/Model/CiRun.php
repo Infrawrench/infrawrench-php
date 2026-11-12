@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.104.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.105.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.104.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.105.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,6 +31,8 @@ final class CiRun implements \JsonSerializable
      * @param string|null $retryOfRunId The run this one retries: the same repository, commit, branch and event.
      * @param string|null $retriedAsRunId The newest retry of this run.
      * @param bool|null $noTaskCache The run did not read the task cache: every `task-cache:` job ran, and saved its result again.
+     * @param list<string>|null $concurrencyGroups The `concurrency:` groups its pipelines hold or wait for, once the runners have read them.
+     * @param bool|null $cancelRequested Someone asked to cancel the run, and its runner is stopping it.
      */
     public function __construct(
         public readonly string $id,
@@ -54,6 +56,8 @@ final class CiRun implements \JsonSerializable
         public readonly ?string $retryOfRunId = null,
         public readonly ?string $retriedAsRunId = null,
         public readonly ?bool $noTaskCache = null,
+        public readonly ?array $concurrencyGroups = null,
+        public readonly ?bool $cancelRequested = null,
     ) {
     }
 
@@ -86,6 +90,8 @@ final class CiRun implements \JsonSerializable
             retryOfRunId: Coerce::toStringOrNull($data['retryOfRunId'] ?? null),
             retriedAsRunId: Coerce::toStringOrNull($data['retriedAsRunId'] ?? null),
             noTaskCache: Coerce::toBoolOrNull($data['noTaskCache'] ?? null),
+            concurrencyGroups: Coerce::nullable($data['concurrencyGroups'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            cancelRequested: Coerce::toBoolOrNull($data['cancelRequested'] ?? null),
         );
     }
 
@@ -124,6 +130,12 @@ final class CiRun implements \JsonSerializable
         }
         if ($this->noTaskCache !== null) {
             $payload['noTaskCache'] = $this->noTaskCache;
+        }
+        if ($this->concurrencyGroups !== null) {
+            $payload['concurrencyGroups'] = $this->concurrencyGroups;
+        }
+        if ($this->cancelRequested !== null) {
+            $payload['cancelRequested'] = $this->cancelRequested;
         }
 
         return $payload;

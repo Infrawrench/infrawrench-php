@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.104.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.105.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.104.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.105.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CiJobOutput implements \JsonSerializable
 {
     /**
-     * @param 'passed'|'failed'|'skipped'|'error' $status
+     * @param 'passed'|'failed'|'skipped'|'error'|'cancelled' $status
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $durationMs
      * @param list<string>|null $needs The job keys it waited for, as the pipeline's `needs:` expanded them. Absent from runs before runner 0.3.1.
      * @param list<CiDownload>|null $downloads The files the job kept with `downloads:`. Absent when it kept none.
