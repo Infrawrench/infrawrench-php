@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.103.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.104.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.103.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.104.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class CiJobOutput implements \JsonSerializable
      * @param 'passed'|'failed'|'skipped'|'error' $status
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $durationMs
      * @param list<string>|null $needs The job keys it waited for, as the pipeline's `needs:` expanded them. Absent from runs before runner 0.3.1.
+     * @param list<CiDownload>|null $downloads The files the job kept with `downloads:`. Absent when it kept none.
      */
     public function __construct(
         public readonly string $pipeline,
@@ -37,6 +38,7 @@ final class CiJobOutput implements \JsonSerializable
         public readonly string $stdout,
         public readonly string $stderr,
         public readonly ?array $needs = null,
+        public readonly ?array $downloads = null,
     ) {
     }
 
@@ -57,6 +59,7 @@ final class CiJobOutput implements \JsonSerializable
             stdout: Coerce::toString($data['stdout'] ?? null),
             stderr: Coerce::toString($data['stderr'] ?? null),
             needs: Coerce::nullable($data['needs'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            downloads: Coerce::nullable($data['downloads'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CiDownload => CiDownload::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -79,6 +82,9 @@ final class CiJobOutput implements \JsonSerializable
         ];
         if ($this->needs !== null) {
             $payload['needs'] = $this->needs;
+        }
+        if ($this->downloads !== null) {
+            $payload['downloads'] = array_map(static fn (CiDownload $item): array => $item->toArray(), $this->downloads);
         }
 
         return $payload;

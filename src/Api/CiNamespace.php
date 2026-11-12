@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.103.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.104.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.103.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.104.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -76,7 +76,7 @@ final class CiNamespace extends ApiNamespace
     }
 
     /**
-     * CI usage in a month: runs, compute and cache storage
+     * CI usage in a month: runs, compute and storage (caches and downloads)
      *
      * _Requires permission: `ci:read`._
      *

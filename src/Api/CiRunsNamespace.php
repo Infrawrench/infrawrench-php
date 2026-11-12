@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.103.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.104.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.103.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.104.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -21,6 +21,7 @@ namespace Infrawrench\Sdk\Api;
 use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
+use Infrawrench\Sdk\Model\CiDownloadLink;
 use Infrawrench\Sdk\Model\CiRun;
 use Infrawrench\Sdk\Model\CiRunDetail;
 use Infrawrench\Sdk\Model\CiRunStatus;
@@ -60,6 +61,41 @@ final class CiRunsNamespace extends ApiNamespace
         );
 
         return Ok::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * A short-lived link to a file a job kept for download
+     *
+     * The link is signed for this one file for 15 minutes (less when the file expires sooner) and
+     * is served by the CI proxy, not this API.
+     *
+     * _Requires permission: `ci:read`._
+     *
+     * GET /api/org/{orgId}/ci/runs/{runId}/download
+     *
+     * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
+     *
+     * @param string $job The job's id, as the run's `jobs` list it.
+     * @param string $path The file's `path`, as the job's `downloads` list it.
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function download(string $runId, string $job, string $path, ?string $orgId = null, ?RequestOptions $options = null): CiDownloadLink
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/ci/runs/{runId}/download',
+                pathParams: ['orgId' => $orgId, 'runId' => $runId],
+                query: ['job' => $job, 'path' => $path],
+            ),
+            $options,
+        );
+
+        return CiDownloadLink::fromArray(Coerce::toArray($data));
     }
 
     /**
