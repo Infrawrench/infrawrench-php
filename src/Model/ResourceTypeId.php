@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.105.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.106.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.105.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.106.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -995,7 +995,9 @@ final class ResourceTypeId
     public const S3_BUCKET = 's3-bucket';
     public const SAGEMAKER_ENDPOINT = 'sagemaker-endpoint';
     public const SAMBANOVA_MODEL = 'sambanova-model';
+    public const SANDBOX = 'sandbox';
     public const SAVED_QUERY = 'saved-query';
+    public const SAVED_SNAPSHOT = 'saved-snapshot';
     public const SCHEDULE = 'schedule';
     public const SCHEDULED_FUNCTION = 'scheduled-function';
     public const SCHEMA_REGISTRY = 'schema-registry';
@@ -2237,7 +2239,9 @@ final class ResourceTypeId
             self::S3_BUCKET,
             self::SAGEMAKER_ENDPOINT,
             self::SAMBANOVA_MODEL,
+            self::SANDBOX,
             self::SAVED_QUERY,
+            self::SAVED_SNAPSHOT,
             self::SCHEDULE,
             self::SCHEDULED_FUNCTION,
             self::SCHEMA_REGISTRY,

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.105.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.106.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.105.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.106.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,6 +42,7 @@ final class PluginId
     public const BASETEN = 'baseten';
     public const BETTER_STACK = 'better-stack';
     public const BITBUCKET = 'bitbucket';
+    public const BOAT = 'boat';
     public const BUILDKITE = 'buildkite';
     public const BUNNY = 'bunny';
     public const CARTESIA = 'cartesia';
@@ -203,6 +204,7 @@ final class PluginId
             self::BASETEN,
             self::BETTER_STACK,
             self::BITBUCKET,
+            self::BOAT,
             self::BUILDKITE,
             self::BUNNY,
             self::CARTESIA,
