@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.106.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.107.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.106.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.107.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -60,6 +60,7 @@ final class Permission
     public const CI_READ = 'ci:read';
     public const CI_WRITE = 'ci:write';
     public const CI_APPROVE = 'ci:approve';
+    public const CI_ACCESS_WRITE = 'ci-access:write';
     public const INCIDENTS_READ = 'incidents:read';
     public const INCIDENTS_WRITE = 'incidents:write';
     public const TAG_POLICY_OVERRIDE = 'tag-policy:override';
@@ -140,6 +141,7 @@ final class Permission
             self::CI_READ,
             self::CI_WRITE,
             self::CI_APPROVE,
+            self::CI_ACCESS_WRITE,
             self::INCIDENTS_READ,
             self::INCIDENTS_WRITE,
             self::TAG_POLICY_OVERRIDE,

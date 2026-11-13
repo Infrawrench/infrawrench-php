@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.106.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.107.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.106.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.107.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -38,6 +38,8 @@ final class CiJobOutput implements \JsonSerializable
         public readonly string $stdout,
         public readonly string $stderr,
         public readonly ?array $needs = null,
+        public readonly ?CiJobAccessNames $access = null,
+        public readonly ?CiJobCloud $cloud = null,
         public readonly ?array $downloads = null,
     ) {
     }
@@ -59,6 +61,8 @@ final class CiJobOutput implements \JsonSerializable
             stdout: Coerce::toString($data['stdout'] ?? null),
             stderr: Coerce::toString($data['stderr'] ?? null),
             needs: Coerce::nullable($data['needs'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
+            access: Coerce::nullable($data['access'] ?? null, static fn (mixed $value): CiJobAccessNames => CiJobAccessNames::fromArray(Coerce::toArray($value))),
+            cloud: Coerce::nullable($data['cloud'] ?? null, static fn (mixed $value): CiJobCloud => CiJobCloud::fromArray(Coerce::toArray($value))),
             downloads: Coerce::nullable($data['downloads'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CiDownload => CiDownload::fromArray(Coerce::toArray($item)))),
         );
     }
@@ -82,6 +86,12 @@ final class CiJobOutput implements \JsonSerializable
         ];
         if ($this->needs !== null) {
             $payload['needs'] = $this->needs;
+        }
+        if ($this->access !== null) {
+            $payload['access'] = $this->access->toArray();
+        }
+        if ($this->cloud !== null) {
+            $payload['cloud'] = $this->cloud->toArray();
         }
         if ($this->downloads !== null) {
             $payload['downloads'] = array_map(static fn (CiDownload $item): array => $item->toArray(), $this->downloads);

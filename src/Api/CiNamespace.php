@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.106.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.107.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.106.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.107.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -29,6 +29,9 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->ci` */
 final class CiNamespace extends ApiNamespace
 {
+    /** `$client->ci->access` */
+    public readonly CiAccessNamespace $access;
+
     /** `$client->ci->accounts` */
     public readonly CiAccountsNamespace $accounts;
 
@@ -44,6 +47,7 @@ final class CiNamespace extends ApiNamespace
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->access = new CiAccessNamespace($this->transport);
         $this->accounts = new CiAccountsNamespace($this->transport);
         $this->caches = new CiCachesNamespace($this->transport);
         $this->runs = new CiRunsNamespace($this->transport);
