@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.108.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.109.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.108.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.109.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,6 +22,7 @@ use Infrawrench\Sdk\Internal\ApiNamespace;
 use Infrawrench\Sdk\Internal\Coerce;
 use Infrawrench\Sdk\Internal\RequestSpec;
 use Infrawrench\Sdk\Internal\Transport;
+use Infrawrench\Sdk\Model\CiManualPipelines;
 use Infrawrench\Sdk\Model\CiSchedules;
 use Infrawrench\Sdk\Model\CiStatus;
 use Infrawrench\Sdk\Model\CiUsage;
@@ -78,6 +79,36 @@ final class CiNamespace extends ApiNamespace
         );
 
         return CiStatus::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Pipelines that can be started by hand
+     *
+     * Each repository's pipelines with `on.manual` on its default branch, as last read, with their
+     * inputs. They are read again on every push to the default branch.
+     *
+     * _Requires permission: `ci:read`._
+     *
+     * GET /api/org/{orgId}/ci/manual
+     *
+     * Raises on 404: Not found
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function manual(?string $orgId = null, ?RequestOptions $options = null): CiManualPipelines
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'GET',
+                path: '/api/org/{orgId}/ci/manual',
+                pathParams: ['orgId' => $orgId],
+            ),
+            $options,
+        );
+
+        return CiManualPipelines::fromArray(Coerce::toArray($data));
     }
 
     /**

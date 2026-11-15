@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.108.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.109.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.108.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.109.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CiRun implements \JsonSerializable
 {
     /**
-     * @param 'push'|'pull-request'|'schedule' $event What started the run. `schedule`: a pipeline's `on.schedule` cron, on the default branch's head.
+     * @param 'push'|'pull-request'|'schedule'|'manual' $event What started the run. `schedule`: a pipeline's `on.schedule` cron, on the default branch's head. `manual`: a person, for a pipeline with `on.manual`, on a branch they chose.
      * @param CiRunStatus::* $status
      * @param list<CiJobSummary>|null $jobs
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $vcpuSeconds
@@ -31,7 +31,8 @@ final class CiRun implements \JsonSerializable
      * @param string|null $retryOfRunId The run this one retries: the same repository, commit, branch and event.
      * @param string|null $retriedAsRunId The newest retry of this run.
      * @param bool|null $noTaskCache The run did not read the task cache: every `task-cache:` job ran, and saved its result again.
-     * @param string|null $pipelineFile A scheduled run's pipeline file, whose `on.schedule` cron started it.
+     * @param string|null $pipelineFile A scheduled or manual run's pipeline file: the one it runs.
+     * @param array<string, string>|null $inputs A manual run's inputs as it was started with them, by name, as text (`true`, `4`, `staging`). Inputs left out read as the pipeline's defaults.
      * @param list<string>|null $concurrencyGroups The `concurrency:` groups its pipelines hold or wait for, once the runners have read them.
      * @param bool|null $cancelRequested Someone asked to cancel the run, and its runner is stopping it.
      */
@@ -58,6 +59,7 @@ final class CiRun implements \JsonSerializable
         public readonly ?string $retriedAsRunId = null,
         public readonly ?bool $noTaskCache = null,
         public readonly ?string $pipelineFile = null,
+        public readonly ?array $inputs = null,
         public readonly ?array $concurrencyGroups = null,
         public readonly ?bool $cancelRequested = null,
     ) {
@@ -93,6 +95,7 @@ final class CiRun implements \JsonSerializable
             retriedAsRunId: Coerce::toStringOrNull($data['retriedAsRunId'] ?? null),
             noTaskCache: Coerce::toBoolOrNull($data['noTaskCache'] ?? null),
             pipelineFile: Coerce::toStringOrNull($data['pipelineFile'] ?? null),
+            inputs: Coerce::nullable($data['inputs'] ?? null, static fn (mixed $value): array => Coerce::mapValues($value, static fn (mixed $item): string => Coerce::toString($item))),
             concurrencyGroups: Coerce::nullable($data['concurrencyGroups'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             cancelRequested: Coerce::toBoolOrNull($data['cancelRequested'] ?? null),
         );
@@ -136,6 +139,9 @@ final class CiRun implements \JsonSerializable
         }
         if ($this->pipelineFile !== null) {
             $payload['pipelineFile'] = $this->pipelineFile;
+        }
+        if ($this->inputs !== null) {
+            $payload['inputs'] = $this->inputs;
         }
         if ($this->concurrencyGroups !== null) {
             $payload['concurrencyGroups'] = $this->concurrencyGroups;

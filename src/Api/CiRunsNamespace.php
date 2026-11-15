@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.108.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.109.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.108.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.109.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ use Infrawrench\Sdk\Model\CiDownloadLink;
 use Infrawrench\Sdk\Model\CiRun;
 use Infrawrench\Sdk\Model\CiRunDetail;
 use Infrawrench\Sdk\Model\CiRunStatus;
+use Infrawrench\Sdk\Model\CiStartRun;
 use Infrawrench\Sdk\Model\Ok;
 use Infrawrench\Sdk\RequestOptions;
 
@@ -89,6 +90,45 @@ final class CiRunsNamespace extends ApiNamespace
                 method: 'POST',
                 path: '/api/org/{orgId}/ci/runs/{runId}/cancel',
                 pathParams: ['orgId' => $orgId, 'runId' => $runId],
+            ),
+            $options,
+        );
+
+        return CiRun::fromArray(Coerce::toArray($data));
+    }
+
+    /**
+     * Start a pipeline by hand
+     *
+     * Queues a run of one pipeline with `on.manual`, at the head of a branch of the repository
+     * itself, with the inputs given. The pipeline must be listed by `GET /ci/manual`, and the
+     * inputs are checked against its declaration there; the runner checks them again against the
+     * branch's own file. The run is trusted like a push to that branch: it gets the repository's
+     * secrets and only what is lent to that branch.
+     *
+     * _Requires permission: `ci:approve`._
+     *
+     * POST /api/org/{orgId}/ci/runs
+     *
+     * Raises on 400: Bad request
+     *
+     * Raises on 404: Not found
+     *
+     * Raises on 409: Conflict
+     *
+     * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
+     * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
+     */
+    public function create(CiStartRun $body, ?string $orgId = null, ?RequestOptions $options = null): CiRun
+    {
+        $data = $this->transport->request(
+            new RequestSpec(
+                method: 'POST',
+                path: '/api/org/{orgId}/ci/runs',
+                pathParams: ['orgId' => $orgId],
+                body: $body->toArray(),
+                hasBody: true,
             ),
             $options,
         );
