@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.109.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.110.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.109.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.110.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -459,8 +459,6 @@ final class ResourceTypeId
     public const ESCALATION_POLICY = 'escalation-policy';
     public const EVAL = 'eval';
     public const EVALUATION = 'evaluation';
-    public const EVALUATION_JOB = 'evaluation-job';
-    public const EVALUATOR = 'evaluator';
     public const EVENT_HOOK = 'event-hook';
     public const EVENTBRIDGE_RULE = 'eventbridge-rule';
     public const EVENTS2METRICS = 'events2metrics';
@@ -954,7 +952,6 @@ final class ResourceTypeId
     public const REGISTRY_MODULE = 'registry-module';
     public const REGISTRY_NAMESPACE = 'registry-namespace';
     public const REGISTRY_PROVIDER = 'registry-provider';
-    public const REINFORCEMENT_FINE_TUNING_JOB = 'reinforcement-fine-tuning-job';
     public const RELEASE = 'release';
     public const REPLICATION_RULE = 'replication-rule';
     public const REPO_BLOCKLIST = 'repo-blocklist';
@@ -1703,8 +1700,6 @@ final class ResourceTypeId
             self::ESCALATION_POLICY,
             self::EVAL,
             self::EVALUATION,
-            self::EVALUATION_JOB,
-            self::EVALUATOR,
             self::EVENT_HOOK,
             self::EVENTBRIDGE_RULE,
             self::EVENTS2METRICS,
@@ -2198,7 +2193,6 @@ final class ResourceTypeId
             self::REGISTRY_MODULE,
             self::REGISTRY_NAMESPACE,
             self::REGISTRY_PROVIDER,
-            self::REINFORCEMENT_FINE_TUNING_JOB,
             self::RELEASE,
             self::REPLICATION_RULE,
             self::REPO_BLOCKLIST,
