@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.114.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.115.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.114.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.115.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -35,6 +35,8 @@ final class AuditLogsNamespace extends ApiNamespace
      * GET /api/org/{orgId}/audit-logs
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
+     * @param int|null $page The page to read, from 1 (the default).
+     * @param int|null $pageSize Entries per page, 25 by default. A value above 200 reads as 200.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
      */

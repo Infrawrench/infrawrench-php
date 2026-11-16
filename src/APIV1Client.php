@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.114.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.115.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.114.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.115.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -83,7 +83,6 @@ use Infrawrench\Sdk\Api\EnvironmentsNamespace;
 use Infrawrench\Sdk\Api\EventSubscriptionsNamespace;
 use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\ExtendedSupportNamespace;
-use Infrawrench\Sdk\Api\FeaturesNamespace;
 use Infrawrench\Sdk\Api\GithubIssuesNamespace;
 use Infrawrench\Sdk\Api\GithubNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
@@ -379,9 +378,6 @@ final class APIV1Client
 
     /** `$client->extendedSupport` */
     public readonly ExtendedSupportNamespace $extendedSupport;
-
-    /** `$client->features` */
-    public readonly FeaturesNamespace $features;
 
     /** `$client->github` */
     public readonly GithubNamespace $github;
@@ -700,7 +696,6 @@ final class APIV1Client
         $this->eventSubscriptions = new EventSubscriptionsNamespace($this->transport);
         $this->expiring = new ExpiringNamespace($this->transport);
         $this->extendedSupport = new ExtendedSupportNamespace($this->transport);
-        $this->features = new FeaturesNamespace($this->transport);
         $this->github = new GithubNamespace($this->transport);
         $this->githubIssues = new GithubIssuesNamespace($this->transport);
         $this->iac = new IacNamespace($this->transport);

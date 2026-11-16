@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.114.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.115.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.114.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.115.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CiStatus implements \JsonSerializable
 {
     /**
-     * @param bool $enabled CI is turned on for this organization
+     * @param bool $enabled Always true: CI is on for every organization. Kept for clients that predate that, which hide CI when it is false
      * @param bool $configured The runner pool is configured on this server
      * @param list<CiAccount> $accounts
      */
