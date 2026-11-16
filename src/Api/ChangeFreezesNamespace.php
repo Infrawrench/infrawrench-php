@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,8 +34,8 @@ final class ChangeFreezesNamespace extends ApiNamespace
      * Declare a change freeze window
      *
      * While the freeze is in effect, destructive actions (resource deletion, destructive plugin
-     * actions, secret-version destroys, deployment rollbacks) return `423` unless explicitly
-     * overridden by a caller with `freezes:override`.
+     * actions, secret-version destroys) return `423` unless explicitly overridden by a caller with
+     * `freezes:override`.
      *
      * _Requires permission: `freezes:write`._
      *

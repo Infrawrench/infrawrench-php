@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class IncidentTimelineEntry implements \JsonSerializable
 {
     /**
-     * @param 'incident'|'note'|'artifact'|'moment'|'probe'|'metric-alert' $source `moment` covers everything the moment union already indexes; resource changes, deployments, cost anomalies, provider status incidents, audit entries, change freezes and workflow runs. Nothing is copied into the incident's own tables; the timeline is a join, so re-reading it reflects the record as it stands today.
+     * @param 'incident'|'note'|'artifact'|'moment'|'probe'|'metric-alert' $source `moment` covers everything the moment union already indexes; resource changes, cost anomalies, provider status incidents, audit entries, change freezes and workflow runs. Nothing is copied into the incident's own tables; the timeline is a join, so re-reading it reflects the record as it stands today.
      * @param string $kind `<noun>.<verb>`. Open set: render unknown kinds generically.
      * @param 'info'|'warning'|'critical' $severity
      * @param array{kind: string, id?: string|null, parentId?: string|null, url?: string|null}|null $link

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,7 +25,7 @@ final class MomentEvent implements \JsonSerializable
     /**
      * @param string $id Stable synthetic id, unique within a response (`feed:rowId[:phase]`).
      * @param MomentFeedId::* $feed
-     * @param string $kind Fine-grained `<noun>.<verb>` kind, e.g. `change.created`, `incident.started`, `workflow-run.failed`, `deployment.finished`, `freeze.started`, `drift-alert.sent`. Open set: render unknown kinds generically.
+     * @param string $kind Fine-grained `<noun>.<verb>` kind, e.g. `change.created`, `incident.started`, `workflow-run.failed`, `freeze.started`, `drift-alert.sent`. Open set: render unknown kinds generically.
      * @param string $title One-line headline.
      * @param MomentSeverity::* $severity
      * @param string|null $detail Optional second line; diff summary, actor, error text.

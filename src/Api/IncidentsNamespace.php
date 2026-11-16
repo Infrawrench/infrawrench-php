@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -191,11 +191,10 @@ final class IncidentsNamespace extends ApiNamespace
      * Assemble the incident's timeline
      *
      * Merged on read from what is already recorded between the incident's start and its
-     * resolution: resource changes, deployments, cost anomalies, provider status incidents, audit
-     * entries, change freezes and workflow runs (all via the same union the Moment screen uses),
-     * plus probe state transitions, metric-alert firings, the incident's own life events, its
-     * artefacts and its operator notes. Nothing is copied; a correction upstream shows up here on
-     * the next read.
+     * resolution: resource changes, cost anomalies, provider status incidents, audit entries,
+     * change freezes and workflow runs (all via the same union the Moment screen uses), plus probe
+     * state transitions, metric-alert firings, the incident's own life events, its artefacts and
+     * its operator notes. Nothing is copied; a correction upstream shows up here on the next read.
      *
      * Probe transitions are an approximation: `synthetic_probes` keeps only a single
      * `lastStateChangeAt`, so a probe that flapped twice inside the window contributes its most

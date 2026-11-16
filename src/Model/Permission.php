@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,7 +46,6 @@ final class Permission
     public const WORKFLOWS_WRITE = 'workflows:write';
     public const WORKFLOWS_APPROVE = 'workflows:approve';
     public const DEPLOYMENTS_READ = 'deployments:read';
-    public const DEPLOYMENTS_PLAN = 'deployments:plan';
     public const DEPLOYMENTS_WRITE = 'deployments:write';
     public const COSTS_READ = 'costs:read';
     public const COSTS_WRITE = 'costs:write';
@@ -127,7 +126,6 @@ final class Permission
             self::WORKFLOWS_WRITE,
             self::WORKFLOWS_APPROVE,
             self::DEPLOYMENTS_READ,
-            self::DEPLOYMENTS_PLAN,
             self::DEPLOYMENTS_WRITE,
             self::COSTS_READ,
             self::COSTS_WRITE,

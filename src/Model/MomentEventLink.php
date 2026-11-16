@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class MomentEventLink implements \JsonSerializable
 {
     /**
-     * @param string $kind Which native screen the event deep-links to.
+     * @param 'resource'|'changes'|'incident'|'costs'|'workflow-run'|'audit'|'freeze'|'expiring' $kind Which native screen the event deep-links to.
      * @param string|null $id Target id where the kind needs one (resource id, run id, freeze id…).
      * @param string|null $parentId Parent id where the target needs one (workflow id for a run).
      * @param string|null $url Absolute external URL; a provider's incident page. Wins when present.

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -19,8 +19,8 @@ declare(strict_types=1);
 namespace Infrawrench\Sdk\Model;
 
 /**
- * Where the change was learned from: an Infrafile run, a synced provider deploy, a GitHub
- * deployment, one recorded over this API, or the change timeline.
+ * Where the change was learned from: a synced provider deploy, a GitHub deployment, one recorded
+ * over this API, or the change timeline.
  *
  * The values `DoraSource` accepts.
  *
@@ -29,7 +29,6 @@ namespace Infrawrench\Sdk\Model;
  */
 final class DoraSource
 {
-    public const INFRAFILE = 'infrafile';
     public const PLUGIN = 'plugin';
     public const GITHUB = 'github';
     public const API = 'api';
@@ -43,7 +42,6 @@ final class DoraSource
     public static function values(): array
     {
         return [
-            self::INFRAFILE,
             self::PLUGIN,
             self::GITHUB,
             self::API,

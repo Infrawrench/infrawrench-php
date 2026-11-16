@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,7 +32,6 @@ final class MomentFeedId
     public const STATUS_INCIDENTS = 'statusIncidents';
     public const COST_ANOMALIES = 'costAnomalies';
     public const WORKFLOW_RUNS = 'workflowRuns';
-    public const DEPLOYMENTS = 'deployments';
     public const AUDIT = 'audit';
     public const FREEZES = 'freezes';
     public const DRIFT_ALERTS = 'driftAlerts';
@@ -50,7 +49,6 @@ final class MomentFeedId
             self::STATUS_INCIDENTS,
             self::COST_ANOMALIES,
             self::WORKFLOW_RUNS,
-            self::DEPLOYMENTS,
             self::AUDIT,
             self::FREEZES,
             self::DRIFT_ALERTS,

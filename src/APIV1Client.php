@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -74,7 +74,6 @@ use Infrawrench\Sdk\Api\CustomGraphsNamespace;
 use Infrawrench\Sdk\Api\DashboardNotificationsNamespace;
 use Infrawrench\Sdk\Api\DashboardsNamespace;
 use Infrawrench\Sdk\Api\DependencyGraphNamespace;
-use Infrawrench\Sdk\Api\DeploymentsNamespace;
 use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DnsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
@@ -353,9 +352,6 @@ final class APIV1Client
 
     /** `$client->dependencyGraph` */
     public readonly DependencyGraphNamespace $dependencyGraph;
-
-    /** `$client->deployments` */
-    public readonly DeploymentsNamespace $deployments;
 
     /** `$client->digest` */
     public readonly DigestNamespace $digest;
@@ -695,7 +691,6 @@ final class APIV1Client
         $this->dashboardNotifications = new DashboardNotificationsNamespace($this->transport);
         $this->dashboards = new DashboardsNamespace($this->transport);
         $this->dependencyGraph = new DependencyGraphNamespace($this->transport);
-        $this->deployments = new DeploymentsNamespace($this->transport);
         $this->digest = new DigestNamespace($this->transport);
         $this->dns = new DnsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
