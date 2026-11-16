@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.111.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.112.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.111.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.112.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -173,6 +173,9 @@ final class CiRunsNamespace extends ApiNamespace
 
     /**
      * List CI runs, newest first
+     *
+     * Runs with nothing to run (`skipped`: no pipeline runs on the push or pull request) are left
+     * out unless `status=skipped` asks for them.
      *
      * _Requires permission: `ci:read`._
      *
