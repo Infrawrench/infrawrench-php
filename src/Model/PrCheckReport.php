@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.113.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.114.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.113.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.114.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class PrCheckReport implements \JsonSerializable
 {
     /**
-     * @param list<array{path: string, kind: 'terraform'|'infrafile'|'kubernetes', status: 'added'|'modified'|'removed'|'renamed', analysed: bool, note: string|null}> $files
+     * @param list<array{path: string, kind: 'terraform'|'kubernetes', status: 'added'|'modified'|'removed'|'renamed', analysed: bool, note: string|null}> $files
      * @param list<PrCheckChange> $changes
      * @param array{monthlyDelta: float|null, currency: string|null, partial: bool, pricedChanges: int, unpricedChanges: int, otherCurrencyChanges: int} $totals
      * @param array{touchedResources: int, dependants: int, highestSeverity: 'none'|'low'|'medium'|'high'|'unknown'|null} $blast
