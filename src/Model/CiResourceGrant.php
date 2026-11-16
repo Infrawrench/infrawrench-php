@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.110.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.111.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.110.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.111.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class CiResourceGrant implements \JsonSerializable
      * @param list<string> $outputs
      * @param list<string>|null $repos Repositories (`owner/name`). Null: every repository the organization runs CI for.
      * @param string|null $branchPattern Branches it holds for: globs separated by commas, where `*` stops at `/` and `**` does not (`main, release/*`). Null: every branch.
+     * @param CiResourceGrantPeer|null $peer What the resource is lent as, or null when only its outputs are granted.
      */
     public function __construct(
         public readonly string $id,
@@ -41,6 +42,7 @@ final class CiResourceGrant implements \JsonSerializable
         public readonly ?array $repos,
         public readonly ?string $branchPattern,
         public readonly string $createdAt,
+        public readonly ?CiResourceGrantPeer $peer = null,
     ) {
     }
 
@@ -65,6 +67,7 @@ final class CiResourceGrant implements \JsonSerializable
             repos: Coerce::nullable($data['repos'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             branchPattern: Coerce::toStringOrNull($data['branchPattern'] ?? null),
             createdAt: Coerce::toString($data['createdAt'] ?? null),
+            peer: Coerce::nullable($data['peer'] ?? null, static fn (mixed $value): CiResourceGrantPeer => CiResourceGrantPeer::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -75,7 +78,7 @@ final class CiResourceGrant implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'id' => $this->id,
             'accountId' => $this->accountId,
             'accountName' => $this->accountName,
@@ -90,6 +93,11 @@ final class CiResourceGrant implements \JsonSerializable
             'branchPattern' => $this->branchPattern,
             'createdAt' => $this->createdAt,
         ];
+        if ($this->peer !== null) {
+            $payload['peer'] = $this->peer?->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

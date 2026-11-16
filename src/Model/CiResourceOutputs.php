@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.110.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.111.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.110.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.111.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,10 +25,12 @@ final class CiResourceOutputs implements \JsonSerializable
     /**
      * @param list<array{key: string, label: string, sensitive: bool}> $outputs
      * @param list<array{id: string, state: string, createdAt: string|null}>|null $secretVersions
+     * @param list<CiPeerOption>|null $peers The plugins it can be lent to CI as, through its type's peer integrations: those that lend a connection or run cloud jobs.
      */
     public function __construct(
         public readonly array $outputs,
         public readonly ?array $secretVersions,
+        public readonly ?array $peers = null,
     ) {
     }
 
@@ -42,6 +44,7 @@ final class CiResourceOutputs implements \JsonSerializable
         return new self(
             outputs: Coerce::mapList($data['outputs'] ?? null, static fn (mixed $item): array => Coerce::toArray($item)),
             secretVersions: Coerce::nullable($data['secretVersions'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
+            peers: Coerce::nullable($data['peers'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): CiPeerOption => CiPeerOption::fromArray(Coerce::toArray($item)))),
         );
     }
 
@@ -52,10 +55,15 @@ final class CiResourceOutputs implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'outputs' => $this->outputs,
             'secretVersions' => $this->secretVersions,
         ];
+        if ($this->peers !== null) {
+            $payload['peers'] = array_map(static fn (CiPeerOption $item): array => $item->toArray(), $this->peers);
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */

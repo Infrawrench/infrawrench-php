@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.110.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.111.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.110.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.111.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class CiResourceGrantInput implements \JsonSerializable
      * @param list<string> $outputs
      * @param list<string>|null $repos Repositories (`owner/name`). Null: every repository the organization runs CI for.
      * @param string|null $branchPattern Branches it holds for: globs separated by commas, where `*` stops at `/` and `**` does not (`main, release/*`). Null: every branch.
+     * @param CiResourceGrantPeerInput|null $peer Use the resource as a peer plugin's connection: lend it (`connections: [<ciName>]`), run cloud jobs on it, or both. Null: neither. An update must send it when the grant has one: a client that cannot show it is refused (409) rather than changing a grant whose lending it cannot see.
      */
     public function __construct(
         public readonly string $resourceId,
@@ -35,6 +36,7 @@ final class CiResourceGrantInput implements \JsonSerializable
         public readonly ?string $secretVersion,
         public readonly ?array $repos,
         public readonly ?string $branchPattern,
+        public readonly ?CiResourceGrantPeerInput $peer = null,
     ) {
     }
 
@@ -52,6 +54,7 @@ final class CiResourceGrantInput implements \JsonSerializable
             secretVersion: Coerce::toStringOrNull($data['secretVersion'] ?? null),
             repos: Coerce::nullable($data['repos'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): string => Coerce::toString($item))),
             branchPattern: Coerce::toStringOrNull($data['branchPattern'] ?? null),
+            peer: Coerce::nullable($data['peer'] ?? null, static fn (mixed $value): CiResourceGrantPeerInput => CiResourceGrantPeerInput::fromArray(Coerce::toArray($value))),
         );
     }
 
@@ -62,7 +65,7 @@ final class CiResourceGrantInput implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'resourceId' => $this->resourceId,
             'ciName' => $this->ciName,
             'outputs' => $this->outputs,
@@ -70,6 +73,11 @@ final class CiResourceGrantInput implements \JsonSerializable
             'repos' => $this->repos,
             'branchPattern' => $this->branchPattern,
         ];
+        if ($this->peer !== null) {
+            $payload['peer'] = $this->peer?->toArray();
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
