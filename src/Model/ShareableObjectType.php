@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.116.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.117.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.116.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.117.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,7 @@ final class ShareableObjectType
     public const SAVINGS_VIEW = 'savings_view';
     public const RESOURCE_REPORT = 'resource_report';
     public const NETWORK_FLOW_REPORT = 'network_flow_report';
+    public const COMMITMENT_REPORT = 'commitment_report';
 
     /**
      * Every value, in the order the spec lists them.
@@ -51,6 +52,7 @@ final class ShareableObjectType
             self::SAVINGS_VIEW,
             self::RESOURCE_REPORT,
             self::NETWORK_FLOW_REPORT,
+            self::COMMITMENT_REPORT,
         ];
     }
 }
