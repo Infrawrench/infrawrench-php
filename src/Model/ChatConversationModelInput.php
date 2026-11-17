@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.115.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.116.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.115.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.116.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ChatConversationModelInput implements \JsonSerializable
 {
     /**
-     * @param 'gemini-3.7-flash'|'claude-sonnet-5'|'claude-opus-5'|'claude-haiku-4-5' $model The model the next turn runs on. Required.
+     * @param 'claude-sonnet-5-5'|'claude-opus-5-5' $model The model the next turn runs on. Required.
      */
     public function __construct(
         public readonly string $model,

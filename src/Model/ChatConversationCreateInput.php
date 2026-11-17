@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.115.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.116.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.115.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.116.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class ChatConversationCreateInput implements \JsonSerializable
 {
     /**
-     * @param 'gemini-3.7-flash'|'claude-sonnet-5'|'claude-opus-5'|'claude-haiku-4-5'|null $model The model the conversation runs on. Omitted: the cheapest model.
+     * @param 'claude-sonnet-5-5'|'claude-opus-5-5'|null $model The model the conversation runs on. Omitted: the cheapest model.
      * @param string|null $title Initial title, cut to 200 characters. Omitted: `New chat`, renamed after the first message.
      * @param string|null $systemPrompt Replaces the agent's default system prompt.
      */
