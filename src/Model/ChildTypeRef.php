@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.117.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.118.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.117.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.118.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,7 @@ final class ChildTypeRef implements \JsonSerializable
     /**
      * @param list<array{key: string, label: string}>|null $showcase
      * @param list<array<string, mixed>>|null $fields
+     * @param bool|null $topLevel A top-level type shown on the account root's detail view beside its children. Its resources have no parent: send no `parentResourceId` when creating, editing or deleting one.
      */
     public function __construct(
         public readonly string $id,
@@ -34,6 +35,7 @@ final class ChildTypeRef implements \JsonSerializable
         public readonly ?string $iconKey = null,
         public readonly ?array $showcase = null,
         public readonly ?array $fields = null,
+        public readonly ?bool $topLevel = null,
     ) {
     }
 
@@ -52,6 +54,7 @@ final class ChildTypeRef implements \JsonSerializable
             iconKey: Coerce::toStringOrNull($data['iconKey'] ?? null),
             showcase: Coerce::nullable($data['showcase'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
             fields: Coerce::nullable($data['fields'] ?? null, static fn (mixed $value): array => Coerce::mapList($value, static fn (mixed $item): array => Coerce::toArray($item))),
+            topLevel: Coerce::toBoolOrNull($data['topLevel'] ?? null),
         );
     }
 
@@ -78,6 +81,9 @@ final class ChildTypeRef implements \JsonSerializable
         }
         if ($this->fields !== null) {
             $payload['fields'] = $this->fields;
+        }
+        if ($this->topLevel !== null) {
+            $payload['topLevel'] = $this->topLevel;
         }
 
         return $payload;
