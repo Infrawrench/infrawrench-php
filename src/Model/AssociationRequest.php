@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.119.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.120.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.119.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.120.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,14 +22,19 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class AssociationRequest implements \JsonSerializable
 {
+    /**
+     * @param string|null $providerPluginId Deprecated and ignored: read from the stored provider resource.
+     * @param string|null $providerResourceTypeId Deprecated and ignored: read from the stored provider resource.
+     * @param string|null $providerAccountId Deprecated and ignored: read from the stored provider resource.
+     */
     public function __construct(
         public readonly string $consumerResourceId,
         public readonly string $consumerFieldKey,
         public readonly string $providerResourceId,
         public readonly string $providerOutputKey,
-        public readonly string $providerPluginId,
-        public readonly string $providerResourceTypeId,
-        public readonly string $providerAccountId,
+        public readonly ?string $providerPluginId = null,
+        public readonly ?string $providerResourceTypeId = null,
+        public readonly ?string $providerAccountId = null,
     ) {
     }
 
@@ -45,9 +50,9 @@ final class AssociationRequest implements \JsonSerializable
             consumerFieldKey: Coerce::toString($data['consumerFieldKey'] ?? null),
             providerResourceId: Coerce::toString($data['providerResourceId'] ?? null),
             providerOutputKey: Coerce::toString($data['providerOutputKey'] ?? null),
-            providerPluginId: Coerce::toString($data['providerPluginId'] ?? null),
-            providerResourceTypeId: Coerce::toString($data['providerResourceTypeId'] ?? null),
-            providerAccountId: Coerce::toString($data['providerAccountId'] ?? null),
+            providerPluginId: Coerce::toStringOrNull($data['providerPluginId'] ?? null),
+            providerResourceTypeId: Coerce::toStringOrNull($data['providerResourceTypeId'] ?? null),
+            providerAccountId: Coerce::toStringOrNull($data['providerAccountId'] ?? null),
         );
     }
 
@@ -58,15 +63,23 @@ final class AssociationRequest implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'consumerResourceId' => $this->consumerResourceId,
             'consumerFieldKey' => $this->consumerFieldKey,
             'providerResourceId' => $this->providerResourceId,
             'providerOutputKey' => $this->providerOutputKey,
-            'providerPluginId' => $this->providerPluginId,
-            'providerResourceTypeId' => $this->providerResourceTypeId,
-            'providerAccountId' => $this->providerAccountId,
         ];
+        if ($this->providerPluginId !== null) {
+            $payload['providerPluginId'] = $this->providerPluginId;
+        }
+        if ($this->providerResourceTypeId !== null) {
+            $payload['providerResourceTypeId'] = $this->providerResourceTypeId;
+        }
+        if ($this->providerAccountId !== null) {
+            $payload['providerAccountId'] = $this->providerAccountId;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
