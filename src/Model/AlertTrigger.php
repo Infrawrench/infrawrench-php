@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.120.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.121.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.120.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.121.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -46,6 +46,7 @@ final class AlertTrigger
     public const LEAKED_SECRET_ALERTS = 'leakedSecretAlerts';
     public const VULNERABILITY_ALERTS = 'vulnerabilityAlerts';
     public const PROBE_ALERTS = 'probeAlerts';
+    public const HEARTBEAT_ALERTS = 'heartbeatAlerts';
     public const SLO_ALERTS = 'sloAlerts';
     public const SCORECARD_ALERTS = 'scorecardAlerts';
     public const QUOTA_ALERTS = 'quotaAlerts';
@@ -79,6 +80,7 @@ final class AlertTrigger
             self::LEAKED_SECRET_ALERTS,
             self::VULNERABILITY_ALERTS,
             self::PROBE_ALERTS,
+            self::HEARTBEAT_ALERTS,
             self::SLO_ALERTS,
             self::SCORECARD_ALERTS,
             self::QUOTA_ALERTS,

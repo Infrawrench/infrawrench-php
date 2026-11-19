@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.120.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.121.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.120.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.121.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,6 +33,7 @@ final class ResourceDetail implements \JsonSerializable
      * @param array<string, mixed> $resourceFields
      * @param bool $schedulable The type declares lifecycle start/stop actions, so this resource can carry a sleep/wake schedule.
      * @param bool|null $supportsSshInstall Whether the generic SSH service installer can target this resource.
+     * @param bool|null $hasSchedule The type flags a field as the schedule it runs on, so a heartbeat can watch it.
      */
     public function __construct(
         public readonly array $detailSchema,
@@ -74,6 +75,7 @@ final class ResourceDetail implements \JsonSerializable
         public readonly ?string $kvDriverName = null,
         public readonly ?bool $supportsSshInstall = null,
         public readonly ?string $sshPrivateHost = null,
+        public readonly ?bool $hasSchedule = null,
     ) {
     }
 
@@ -124,6 +126,7 @@ final class ResourceDetail implements \JsonSerializable
             kvDriverName: Coerce::toStringOrNull($data['kvDriverName'] ?? null),
             supportsSshInstall: Coerce::toBoolOrNull($data['supportsSshInstall'] ?? null),
             sshPrivateHost: Coerce::toStringOrNull($data['sshPrivateHost'] ?? null),
+            hasSchedule: Coerce::toBoolOrNull($data['hasSchedule'] ?? null),
         );
     }
 
@@ -180,6 +183,9 @@ final class ResourceDetail implements \JsonSerializable
         }
         if ($this->sshPrivateHost !== null) {
             $payload['sshPrivateHost'] = $this->sshPrivateHost;
+        }
+        if ($this->hasSchedule !== null) {
+            $payload['hasSchedule'] = $this->hasSchedule;
         }
 
         return $payload;

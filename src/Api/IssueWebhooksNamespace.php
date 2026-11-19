@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.120.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.121.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.120.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.121.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -44,8 +44,10 @@ final class IssueWebhooksNamespace extends ApiNamespace
      * Inbound GitHub App webhook for issue status
      *
      * The GitHub App's webhook URL. `X-Hub-Signature-256` is verified with the server's
-     * `GITHUB_APP_WEBHOOK_SECRET`; `issues` events update the status of filed issues and `ping` is
-     * acknowledged. Every other event is ignored.
+     * `GITHUB_APP_WEBHOOK_SECRET`; `issues` events update the status of filed issues; `push` and
+     * `pull_request` events start CI runs; `check_suite` and `check_run` `rerequested` events
+     * retry the CI runs behind Infrawrench's own checks; and `ping` is acknowledged. Every other
+     * event is ignored.
      *
      * POST /api/issue-webhooks/github
      *

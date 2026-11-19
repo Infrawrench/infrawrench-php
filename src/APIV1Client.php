@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.120.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.121.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.120.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.121.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -85,6 +85,7 @@ use Infrawrench\Sdk\Api\ExpiringNamespace;
 use Infrawrench\Sdk\Api\ExtendedSupportNamespace;
 use Infrawrench\Sdk\Api\GithubIssuesNamespace;
 use Infrawrench\Sdk\Api\GithubNamespace;
+use Infrawrench\Sdk\Api\HeartbeatsNamespace;
 use Infrawrench\Sdk\Api\IacNamespace;
 use Infrawrench\Sdk\Api\IdleFindingsNamespace;
 use Infrawrench\Sdk\Api\IncidentsNamespace;
@@ -113,6 +114,7 @@ use Infrawrench\Sdk\Api\PagesNamespace;
 use Infrawrench\Sdk\Api\PagingIncidentsNamespace;
 use Infrawrench\Sdk\Api\PagingProvidersNamespace;
 use Infrawrench\Sdk\Api\PagingWebhooksNamespace;
+use Infrawrench\Sdk\Api\PingNamespace;
 use Infrawrench\Sdk\Api\PostureNamespace;
 use Infrawrench\Sdk\Api\PrChecksNamespace;
 use Infrawrench\Sdk\Api\PriceCatalogNamespace;
@@ -385,6 +387,9 @@ final class APIV1Client
     /** `$client->githubIssues` */
     public readonly GithubIssuesNamespace $githubIssues;
 
+    /** `$client->heartbeats` */
+    public readonly HeartbeatsNamespace $heartbeats;
+
     /** `$client->iac` */
     public readonly IacNamespace $iac;
 
@@ -468,6 +473,9 @@ final class APIV1Client
 
     /** `$client->pagingWebhooks` */
     public readonly PagingWebhooksNamespace $pagingWebhooks;
+
+    /** `$client->ping` */
+    public readonly PingNamespace $ping;
 
     /** `$client->posture` */
     public readonly PostureNamespace $posture;
@@ -698,6 +706,7 @@ final class APIV1Client
         $this->extendedSupport = new ExtendedSupportNamespace($this->transport);
         $this->github = new GithubNamespace($this->transport);
         $this->githubIssues = new GithubIssuesNamespace($this->transport);
+        $this->heartbeats = new HeartbeatsNamespace($this->transport);
         $this->iac = new IacNamespace($this->transport);
         $this->idleFindings = new IdleFindingsNamespace($this->transport);
         $this->incidents = new IncidentsNamespace($this->transport);
@@ -726,6 +735,7 @@ final class APIV1Client
         $this->pagingIncidents = new PagingIncidentsNamespace($this->transport);
         $this->pagingProviders = new PagingProvidersNamespace($this->transport);
         $this->pagingWebhooks = new PagingWebhooksNamespace($this->transport);
+        $this->ping = new PingNamespace($this->transport);
         $this->posture = new PostureNamespace($this->transport);
         $this->prChecks = new PrChecksNamespace($this->transport);
         $this->priceCatalog = new PriceCatalogNamespace($this->transport);
