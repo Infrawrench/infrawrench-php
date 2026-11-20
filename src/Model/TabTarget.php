@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.122.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.123.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.122.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.123.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -32,6 +32,7 @@ final class TabTarget implements \JsonSerializable
         public readonly ?string $reportId = null,
         public readonly ?string $invoiceId = null,
         public readonly ?string $canvasId = null,
+        public readonly ?string $estimateId = null,
         public readonly ?string $sloId = null,
         public readonly ?string $runId = null,
         public readonly ?string $serviceId = null,
@@ -60,6 +61,7 @@ final class TabTarget implements \JsonSerializable
             reportId: Coerce::toStringOrNull($data['reportId'] ?? null),
             invoiceId: Coerce::toStringOrNull($data['invoiceId'] ?? null),
             canvasId: Coerce::toStringOrNull($data['canvasId'] ?? null),
+            estimateId: Coerce::toStringOrNull($data['estimateId'] ?? null),
             sloId: Coerce::toStringOrNull($data['sloId'] ?? null),
             runId: Coerce::toStringOrNull($data['runId'] ?? null),
             serviceId: Coerce::toStringOrNull($data['serviceId'] ?? null),
@@ -102,6 +104,9 @@ final class TabTarget implements \JsonSerializable
         }
         if ($this->canvasId !== null) {
             $payload['canvasId'] = $this->canvasId;
+        }
+        if ($this->estimateId !== null) {
+            $payload['estimateId'] = $this->estimateId;
         }
         if ($this->sloId !== null) {
             $payload['sloId'] = $this->sloId;

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.122.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.123.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.122.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.123.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -104,6 +104,7 @@ use Infrawrench\Sdk\Api\LiveNamespace;
 use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
 use Infrawrench\Sdk\Api\ManagedAccountsNamespace;
 use Infrawrench\Sdk\Api\MetricAlertsNamespace;
+use Infrawrench\Sdk\Api\MigrationEstimatesNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\NetworkFlowsNamespace;
@@ -445,6 +446,9 @@ final class APIV1Client
     /** `$client->metricAlerts` */
     public readonly MetricAlertsNamespace $metricAlerts;
 
+    /** `$client->migrationEstimates` */
+    public readonly MigrationEstimatesNamespace $migrationEstimates;
+
     /** `$client->moment` */
     public readonly MomentNamespace $moment;
 
@@ -729,6 +733,7 @@ final class APIV1Client
         $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
         $this->managedAccounts = new ManagedAccountsNamespace($this->transport);
         $this->metricAlerts = new MetricAlertsNamespace($this->transport);
+        $this->migrationEstimates = new MigrationEstimatesNamespace($this->transport);
         $this->moment = new MomentNamespace($this->transport);
         $this->msteams = new MsteamsNamespace($this->transport);
         $this->networkFlows = new NetworkFlowsNamespace($this->transport);
