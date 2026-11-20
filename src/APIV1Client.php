@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.121.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.122.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.121.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.122.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -100,6 +100,7 @@ use Infrawrench\Sdk\Api\KvNamespace;
 use Infrawrench\Sdk\Api\LeakedSecretsNamespace;
 use Infrawrench\Sdk\Api\LeasesNamespace;
 use Infrawrench\Sdk\Api\LinearNamespace;
+use Infrawrench\Sdk\Api\LiveNamespace;
 use Infrawrench\Sdk\Api\LogWorkspacesNamespace;
 use Infrawrench\Sdk\Api\ManagedAccountsNamespace;
 use Infrawrench\Sdk\Api\MetricAlertsNamespace;
@@ -432,6 +433,9 @@ final class APIV1Client
     /** `$client->linear` */
     public readonly LinearNamespace $linear;
 
+    /** `$client->live` */
+    public readonly LiveNamespace $live;
+
     /** `$client->logWorkspaces` */
     public readonly LogWorkspacesNamespace $logWorkspaces;
 
@@ -721,6 +725,7 @@ final class APIV1Client
         $this->leakedSecrets = new LeakedSecretsNamespace($this->transport);
         $this->leases = new LeasesNamespace($this->transport);
         $this->linear = new LinearNamespace($this->transport);
+        $this->live = new LiveNamespace($this->transport);
         $this->logWorkspaces = new LogWorkspacesNamespace($this->transport);
         $this->managedAccounts = new ManagedAccountsNamespace($this->transport);
         $this->metricAlerts = new MetricAlertsNamespace($this->transport);
