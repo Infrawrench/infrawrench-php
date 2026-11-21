@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.123.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.123.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -78,6 +78,7 @@ use Infrawrench\Sdk\Api\DigestNamespace;
 use Infrawrench\Sdk\Api\DnsNamespace;
 use Infrawrench\Sdk\Api\DockerNamespace;
 use Infrawrench\Sdk\Api\DoraNamespace;
+use Infrawrench\Sdk\Api\EnvFilesNamespace;
 use Infrawrench\Sdk\Api\EnvironmentDiffNamespace;
 use Infrawrench\Sdk\Api\EnvironmentsNamespace;
 use Infrawrench\Sdk\Api\EventSubscriptionsNamespace;
@@ -367,6 +368,9 @@ final class APIV1Client
 
     /** `$client->dora` */
     public readonly DoraNamespace $dora;
+
+    /** `$client->envFiles` */
+    public readonly EnvFilesNamespace $envFiles;
 
     /** `$client->environmentDiff` */
     public readonly EnvironmentDiffNamespace $environmentDiff;
@@ -707,6 +711,7 @@ final class APIV1Client
         $this->dns = new DnsNamespace($this->transport);
         $this->docker = new DockerNamespace($this->transport);
         $this->dora = new DoraNamespace($this->transport);
+        $this->envFiles = new EnvFilesNamespace($this->transport);
         $this->environmentDiff = new EnvironmentDiffNamespace($this->transport);
         $this->environments = new EnvironmentsNamespace($this->transport);
         $this->eventSubscriptions = new EventSubscriptionsNamespace($this->transport);
