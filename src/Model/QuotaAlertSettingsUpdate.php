@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -25,6 +25,8 @@ final class QuotaAlertSettingsUpdate implements \JsonSerializable
     public function __construct(
         public readonly ?bool $enabled = null,
         public readonly ?float $threshold = null,
+        public readonly ?int $runwayDays = null,
+        public readonly ?float $allowanceThreshold = null,
     ) {
     }
 
@@ -38,6 +40,8 @@ final class QuotaAlertSettingsUpdate implements \JsonSerializable
         return new self(
             enabled: Coerce::toBoolOrNull($data['enabled'] ?? null),
             threshold: Coerce::toFloatOrNull($data['threshold'] ?? null),
+            runwayDays: Coerce::toIntOrNull($data['runwayDays'] ?? null),
+            allowanceThreshold: Coerce::toFloatOrNull($data['allowanceThreshold'] ?? null),
         );
     }
 
@@ -55,6 +59,12 @@ final class QuotaAlertSettingsUpdate implements \JsonSerializable
         }
         if ($this->threshold !== null) {
             $payload['threshold'] = $this->threshold;
+        }
+        if ($this->runwayDays !== null) {
+            $payload['runwayDays'] = $this->runwayDays;
+        }
+        if ($this->allowanceThreshold !== null) {
+            $payload['allowanceThreshold'] = $this->allowanceThreshold;
         }
 
         return $payload;

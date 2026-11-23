@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -34,6 +34,7 @@ final class ResourceDetail implements \JsonSerializable
      * @param bool $schedulable The type declares lifecycle start/stop actions, so this resource can carry a sleep/wake schedule.
      * @param bool|null $supportsSshInstall Whether the generic SSH service installer can target this resource.
      * @param bool|null $hasSchedule The type flags a field as the schedule it runs on, so a heartbeat can watch it.
+     * @param bool|null $hasCapacityRunway The type declares a usage with a limit, so the resource has a capacity runway (`GET /api/org/{orgId}/quotas/runway/resource`).
      */
     public function __construct(
         public readonly array $detailSchema,
@@ -76,6 +77,7 @@ final class ResourceDetail implements \JsonSerializable
         public readonly ?bool $supportsSshInstall = null,
         public readonly ?string $sshPrivateHost = null,
         public readonly ?bool $hasSchedule = null,
+        public readonly ?bool $hasCapacityRunway = null,
     ) {
     }
 
@@ -127,6 +129,7 @@ final class ResourceDetail implements \JsonSerializable
             supportsSshInstall: Coerce::toBoolOrNull($data['supportsSshInstall'] ?? null),
             sshPrivateHost: Coerce::toStringOrNull($data['sshPrivateHost'] ?? null),
             hasSchedule: Coerce::toBoolOrNull($data['hasSchedule'] ?? null),
+            hasCapacityRunway: Coerce::toBoolOrNull($data['hasCapacityRunway'] ?? null),
         );
     }
 
@@ -186,6 +189,9 @@ final class ResourceDetail implements \JsonSerializable
         }
         if ($this->hasSchedule !== null) {
             $payload['hasSchedule'] = $this->hasSchedule;
+        }
+        if ($this->hasCapacityRunway !== null) {
+            $payload['hasCapacityRunway'] = $this->hasCapacityRunway;
         }
 
         return $payload;

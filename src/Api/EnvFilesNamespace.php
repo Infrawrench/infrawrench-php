@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -78,8 +78,9 @@ final class EnvFilesNamespace extends ApiNamespace
     /**
      * Check an .infraenv file
      *
-     * Parses the file and looks up every reference it makes: which resource, account and output
-     * each `resource()` names, and whether each `secret()` exists. Returns no values and calls no
+     * Parses the file and looks up every reference it makes, once per environment with that
+     * environment's substitutions filled in: which resource, account and output each `resource()`
+     * names or finds by name, and whether each `secret()` exists. Returns no values and calls no
      * provider.
      *
      * _Requires permission: `resources:read`._
@@ -185,7 +186,8 @@ final class EnvFilesNamespace extends ApiNamespace
     /**
      * Resolve an .infraenv file into .env values
      *
-     * Resolves every variable of one environment: literals as written, `resource()` through the
+     * Resolves every variable of one environment: literals as written, `resource()` (by id, or by
+     * plugin, type and name in this organization, after `${var}` substitution) through the
      * resource's provider, `secret()` from the organization's secrets. Returns the values in
      * plaintext along with the generated `.env` text, and records an audit entry naming the
      * variables (never their values). A variable that does not resolve is reported in `problems`

@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -476,6 +476,7 @@ final class ResourceTypeId
     public const FILE = 'file';
     public const FILE_SEARCH_DOCUMENT = 'file-search-document';
     public const FILE_SEARCH_STORE = 'file-search-store';
+    public const FILESTORE_INSTANCE = 'filestore-instance';
     public const FILESYSTEM = 'filesystem';
     public const FINE_TUNE = 'fine-tune';
     public const FINE_TUNING_JOB = 'fine-tuning-job';
@@ -1717,6 +1718,7 @@ final class ResourceTypeId
             self::FILE,
             self::FILE_SEARCH_DOCUMENT,
             self::FILE_SEARCH_STORE,
+            self::FILESTORE_INSTANCE,
             self::FILESYSTEM,
             self::FINE_TUNE,
             self::FINE_TUNING_JOB,

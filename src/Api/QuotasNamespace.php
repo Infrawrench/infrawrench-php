@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,12 +28,16 @@ use Infrawrench\Sdk\RequestOptions;
 /** `$client->quotas` */
 final class QuotasNamespace extends ApiNamespace
 {
+    /** `$client->quotas->runway` */
+    public readonly QuotasRunwayNamespace $runway;
+
     /** `$client->quotas->settings` */
     public readonly QuotasSettingsNamespace $settings;
 
     public function __construct(Transport $transport)
     {
         parent::__construct($transport);
+        $this->runway = new QuotasRunwayNamespace($this->transport);
         $this->settings = new QuotasSettingsNamespace($this->transport);
     }
 

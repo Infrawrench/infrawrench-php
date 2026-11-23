@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.124.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.124.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -31,8 +31,9 @@ final class QuotasSettingsNamespace extends ApiNamespace
     /**
      * Get the organization's quota alert settings
      *
-     * The threshold feeds both the feed's severity buckets and the poller's daily alert scan. An
-     * organization that never saved reads the shipped defaults (enabled, 0.8).
+     * The threshold feeds both the feed's severity buckets and the poller's daily alert scan; the
+     * runway thresholds feed the capacity runway the same way. An organization that never saved
+     * reads the shipped defaults (enabled, 0.8, 14 days, 0.8).
      *
      * _Requires permission: `org:settings:write`._
      *
