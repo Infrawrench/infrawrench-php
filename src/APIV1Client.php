@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.125.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.126.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.125.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.126.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -109,6 +109,7 @@ use Infrawrench\Sdk\Api\MigrationEstimatesNamespace;
 use Infrawrench\Sdk\Api\MomentNamespace;
 use Infrawrench\Sdk\Api\MsteamsNamespace;
 use Infrawrench\Sdk\Api\NetworkFlowsNamespace;
+use Infrawrench\Sdk\Api\OffboardingsNamespace;
 use Infrawrench\Sdk\Api\OnCallNamespace;
 use Infrawrench\Sdk\Api\OrgsNamespace;
 use Infrawrench\Sdk\Api\OrphansNamespace;
@@ -462,6 +463,9 @@ final class APIV1Client
     /** `$client->networkFlows` */
     public readonly NetworkFlowsNamespace $networkFlows;
 
+    /** `$client->offboardings` */
+    public readonly OffboardingsNamespace $offboardings;
+
     /** `$client->onCall` */
     public readonly OnCallNamespace $onCall;
 
@@ -742,6 +746,7 @@ final class APIV1Client
         $this->moment = new MomentNamespace($this->transport);
         $this->msteams = new MsteamsNamespace($this->transport);
         $this->networkFlows = new NetworkFlowsNamespace($this->transport);
+        $this->offboardings = new OffboardingsNamespace($this->transport);
         $this->onCall = new OnCallNamespace($this->transport);
         $this->orgs = new OrgsNamespace($this->transport);
         $this->orphans = new OrphansNamespace($this->transport);
