@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.132.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.133.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.132.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.133.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,7 @@ final class CreateAgentSession implements \JsonSerializable
     public function __construct(
         public readonly AgentSettings $settings,
         public readonly ?string $repo = null,
+        public readonly ?AgentGitWork $gitWork = null,
         public readonly ?string $projectName = null,
         public readonly ?string $workspaceName = null,
         public readonly ?array $nibbletsLink = null,
@@ -44,6 +45,7 @@ final class CreateAgentSession implements \JsonSerializable
         return new self(
             settings: AgentSettings::fromArray(Coerce::toArray($data['settings'] ?? null)),
             repo: Coerce::toStringOrNull($data['repo'] ?? null),
+            gitWork: Coerce::nullable($data['gitWork'] ?? null, static fn (mixed $value): AgentGitWork => AgentGitWork::fromArray(Coerce::toArray($value))),
             projectName: Coerce::toStringOrNull($data['projectName'] ?? null),
             workspaceName: Coerce::toStringOrNull($data['workspaceName'] ?? null),
             nibbletsLink: Coerce::toArrayOrNull($data['nibbletsLink'] ?? null),
@@ -62,6 +64,9 @@ final class CreateAgentSession implements \JsonSerializable
         ];
         if ($this->repo !== null) {
             $payload['repo'] = $this->repo;
+        }
+        if ($this->gitWork !== null) {
+            $payload['gitWork'] = $this->gitWork->toArray();
         }
         if ($this->projectName !== null) {
             $payload['projectName'] = $this->projectName;
