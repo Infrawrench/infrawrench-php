@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.131.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.132.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.131.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.132.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -26,6 +26,7 @@ final class GitForgeOverview implements \JsonSerializable
      * @param string $forgeUrl The forge's origin.
      * @param GitForgeNamespace|null $namespace Null until someone with `git:admin` claims one.
      * @param 'free'|'paid' $plan
+     * @param bool|null $reservedNamesAllowed The caller may claim a name on the reserved list: a platform admin, for Infrawrench's own organisation.
      */
     public function __construct(
         public readonly string $forgeUrl,
@@ -33,6 +34,7 @@ final class GitForgeOverview implements \JsonSerializable
         public readonly string $plan,
         public readonly GitForgeLimits $limits,
         public readonly GitForgeUsage $usage,
+        public readonly ?bool $reservedNamesAllowed = null,
     ) {
     }
 
@@ -49,6 +51,7 @@ final class GitForgeOverview implements \JsonSerializable
             plan: Coerce::toString($data['plan'] ?? null),
             limits: GitForgeLimits::fromArray(Coerce::toArray($data['limits'] ?? null)),
             usage: GitForgeUsage::fromArray(Coerce::toArray($data['usage'] ?? null)),
+            reservedNamesAllowed: Coerce::toBoolOrNull($data['reservedNamesAllowed'] ?? null),
         );
     }
 
@@ -59,13 +62,18 @@ final class GitForgeOverview implements \JsonSerializable
      */
     public function toArray(): array
     {
-        return [
+        $payload = [
             'forgeUrl' => $this->forgeUrl,
             'namespace' => $this->namespace?->toArray(),
             'plan' => $this->plan,
             'limits' => $this->limits->toArray(),
             'usage' => $this->usage->toArray(),
         ];
+        if ($this->reservedNamesAllowed !== null) {
+            $payload['reservedNamesAllowed'] = $this->reservedNamesAllowed;
+        }
+
+        return $payload;
     }
 
     /** @return array<string, mixed> */
