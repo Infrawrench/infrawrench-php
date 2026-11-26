@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.126.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.131.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.126.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.131.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -28,6 +28,9 @@ final class CiRun implements \JsonSerializable
      * @param list<CiJobSummary>|null $jobs
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $vcpuSeconds
      * @param float|'Infinity'|'-Infinity'|'NaN'|null $memoryGibSeconds
+     * @param string $githubUrl The commit or pull request on the repository's forge: the same link as `sourceUrl`, under the name it had when GitHub was the only one.
+     * @param 'github'|'git'|null $source Where the repository lives: `github` (reached through the GitHub App) or `git` (git.infrawrench.com).
+     * @param string|null $sourceUrl The commit or pull request on the repository's forge.
      * @param string|null $retryOfRunId The run this one retries: the same repository, commit, branch and event.
      * @param string|null $retriedAsRunId The newest retry of this run.
      * @param bool|null $noTaskCache The run did not read the task cache: every `task-cache:` job ran, and saved its result again.
@@ -55,6 +58,8 @@ final class CiRun implements \JsonSerializable
         public readonly float|string|null $vcpuSeconds,
         public readonly float|string|null $memoryGibSeconds,
         public readonly string $githubUrl,
+        public readonly ?string $source = null,
+        public readonly ?string $sourceUrl = null,
         public readonly ?string $retryOfRunId = null,
         public readonly ?string $retriedAsRunId = null,
         public readonly ?bool $noTaskCache = null,
@@ -91,6 +96,8 @@ final class CiRun implements \JsonSerializable
             vcpuSeconds: $data['vcpuSeconds'] ?? null,
             memoryGibSeconds: $data['memoryGibSeconds'] ?? null,
             githubUrl: Coerce::toString($data['githubUrl'] ?? null),
+            source: Coerce::toStringOrNull($data['source'] ?? null),
+            sourceUrl: Coerce::toStringOrNull($data['sourceUrl'] ?? null),
             retryOfRunId: Coerce::toStringOrNull($data['retryOfRunId'] ?? null),
             retriedAsRunId: Coerce::toStringOrNull($data['retriedAsRunId'] ?? null),
             noTaskCache: Coerce::toBoolOrNull($data['noTaskCache'] ?? null),
@@ -128,6 +135,12 @@ final class CiRun implements \JsonSerializable
             'memoryGibSeconds' => $this->memoryGibSeconds,
             'githubUrl' => $this->githubUrl,
         ];
+        if ($this->source !== null) {
+            $payload['source'] = $this->source;
+        }
+        if ($this->sourceUrl !== null) {
+            $payload['sourceUrl'] = $this->sourceUrl;
+        }
         if ($this->retryOfRunId !== null) {
             $payload['retryOfRunId'] = $this->retryOfRunId;
         }

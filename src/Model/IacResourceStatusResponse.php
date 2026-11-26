@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.126.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.131.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.126.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.131.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,13 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class IacResourceStatusResponse implements \JsonSerializable
 {
-    /** @param 'managed'|'drifted'|'unmanaged'|null $status */
+    /**
+     * @param 'managed'|'drifted'|'unmanaged'|null $status
+     * @param list<IacManagedBy> $managedBy The Terraform workspaces on git.infrawrench.com whose current state holds this resource. Independent of `status`, which is about uploaded state documents. A workspace of a private repository is listed only for a caller with `git:read` (or more) in the organization. Empty when none matched, or none the caller may see.
+     */
     public function __construct(
         public readonly ?string $status,
         public readonly ?string $stateId,
         public readonly ?string $stateLabel,
         public readonly ?string $terraformAddress,
         public readonly int $driftFieldCount,
+        public readonly array $managedBy,
     ) {
     }
 
@@ -45,6 +49,7 @@ final class IacResourceStatusResponse implements \JsonSerializable
             stateLabel: Coerce::toStringOrNull($data['stateLabel'] ?? null),
             terraformAddress: Coerce::toStringOrNull($data['terraformAddress'] ?? null),
             driftFieldCount: Coerce::toInt($data['driftFieldCount'] ?? null),
+            managedBy: Coerce::mapList($data['managedBy'] ?? null, static fn (mixed $item): IacManagedBy => IacManagedBy::fromArray(Coerce::toArray($item))),
         );
     }
 
@@ -61,6 +66,7 @@ final class IacResourceStatusResponse implements \JsonSerializable
             'stateLabel' => $this->stateLabel,
             'terraformAddress' => $this->terraformAddress,
             'driftFieldCount' => $this->driftFieldCount,
+            'managedBy' => array_map(static fn (IacManagedBy $item): array => $item->toArray(), $this->managedBy),
         ];
     }
 

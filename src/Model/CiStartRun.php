@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.126.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.131.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.126.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.131.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -23,7 +23,7 @@ use Infrawrench\Sdk\Internal\Coerce;
 final class CiStartRun implements \JsonSerializable
 {
     /**
-     * @param int $installationId The GitHub App installation of the account that runs CI for the repository.
+     * @param int $installationId The GitHub App installation of the account that runs CI for the repository, or `0` for a repository on git.infrawrench.com, as `GET /ci/manual` lists it.
      * @param string $repoFullName `owner/name`.
      * @param string $pipelineFile The pipeline to run, as `GET /ci/manual` lists it (`.infrawrench/ci/deploy.yml`).
      * @param string|null $branch A branch of the repository itself, whose head runs. The default branch when omitted.

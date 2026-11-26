@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.126.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.131.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.126.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.131.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -22,13 +22,17 @@ use Infrawrench\Sdk\Internal\Coerce;
 
 final class MeResponse implements \JsonSerializable
 {
-    /** @param list<Permission::*> $permissions */
+    /**
+     * @param list<Permission::*> $permissions
+     * @param bool|null $gitEnabled Whether the organisation has Git (git.infrawrench.com) turned on. While it is false, the `git:` permissions grant nothing and the Git routes answer 404. Absent means on.
+     */
     public function __construct(
         public readonly string $userId,
         public readonly string $email,
         public readonly ?RoleSummary $role,
         public readonly array $permissions,
         public readonly ?CostVisibilitySummary $costVisibility = null,
+        public readonly ?bool $gitEnabled = null,
     ) {
     }
 
@@ -45,6 +49,7 @@ final class MeResponse implements \JsonSerializable
             role: Coerce::nullable($data['role'] ?? null, static fn (mixed $value): RoleSummary => RoleSummary::fromArray(Coerce::toArray($value))),
             permissions: Coerce::mapList($data['permissions'] ?? null, static fn (mixed $item): string => Coerce::toString($item)),
             costVisibility: Coerce::nullable($data['costVisibility'] ?? null, static fn (mixed $value): CostVisibilitySummary => CostVisibilitySummary::fromArray(Coerce::toArray($value))),
+            gitEnabled: Coerce::toBoolOrNull($data['gitEnabled'] ?? null),
         );
     }
 
@@ -63,6 +68,9 @@ final class MeResponse implements \JsonSerializable
         ];
         if ($this->costVisibility !== null) {
             $payload['costVisibility'] = $this->costVisibility->toArray();
+        }
+        if ($this->gitEnabled !== null) {
+            $payload['gitEnabled'] = $this->gitEnabled;
         }
 
         return $payload;
