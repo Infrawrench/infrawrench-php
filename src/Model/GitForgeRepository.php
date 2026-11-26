@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.133.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.134.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.133.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.134.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -27,6 +27,7 @@ final class GitForgeRepository implements \JsonSerializable
      * @param string $url The repository's page on the forge.
      * @param GitForgeVisibility::* $visibility
      * @param string|null $pushedAt Null until something is pushed.
+     * @param int $openBranches The repository's open branch pages: its branches under review, and the ones forks propose to it.
      * @param array{status: string, runId: string, sha: string}|null $ci The latest CI run of the default branch. Null when CI has not run there.
      */
     public function __construct(
@@ -40,7 +41,7 @@ final class GitForgeRepository implements \JsonSerializable
         public readonly bool $isFork,
         public readonly string $defaultBranch,
         public readonly ?string $pushedAt,
-        public readonly int $openPullRequests,
+        public readonly int $openBranches,
         public readonly int $openIssues,
         public readonly float $sizeBytes,
         public readonly ?array $ci,
@@ -65,7 +66,7 @@ final class GitForgeRepository implements \JsonSerializable
             isFork: Coerce::toBool($data['isFork'] ?? null),
             defaultBranch: Coerce::toString($data['defaultBranch'] ?? null),
             pushedAt: Coerce::toStringOrNull($data['pushedAt'] ?? null),
-            openPullRequests: Coerce::toInt($data['openPullRequests'] ?? null),
+            openBranches: Coerce::toInt($data['openBranches'] ?? null),
             openIssues: Coerce::toInt($data['openIssues'] ?? null),
             sizeBytes: Coerce::toFloat($data['sizeBytes'] ?? null),
             ci: Coerce::toArrayOrNull($data['ci'] ?? null),
@@ -90,7 +91,7 @@ final class GitForgeRepository implements \JsonSerializable
             'isFork' => $this->isFork,
             'defaultBranch' => $this->defaultBranch,
             'pushedAt' => $this->pushedAt,
-            'openPullRequests' => $this->openPullRequests,
+            'openBranches' => $this->openBranches,
             'openIssues' => $this->openIssues,
             'sizeBytes' => $this->sizeBytes,
             'ci' => $this->ci,
