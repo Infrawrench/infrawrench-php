@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.134.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.135.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.134.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.135.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -42,8 +42,6 @@ final class GitNamespace extends ApiNamespace
      *
      * GET /api/org/{orgId}/git
      *
-     * Raises on 404: Not found
-     *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
      * @throws \Infrawrench\Sdk\MissingParameterException if a path parameter has no value.
@@ -66,16 +64,15 @@ final class GitNamespace extends ApiNamespace
      * Claim or rename the organisation's namespace
      *
      * Claims the namespace when the organisation has none, renames it otherwise. A rename moves no
-     * repository, and URLs under the old name stop resolving. 400 when the name breaks the forge's
-     * rules or is reserved, 409 when someone has it.
+     * repository, and URLs under the old name stop resolving. A first claim needs a paid plan. 400
+     * when the name breaks the forge's rules or is reserved, or when an organisation that is not
+     * on a paid plan claims one; 409 when someone has it.
      *
      * _Requires permission: `git:admin`._
      *
      * PUT /api/org/{orgId}/git/namespace
      *
      * Raises on 400: Bad request
-     *
-     * Raises on 404: Not found
      *
      * Raises on 409: Conflict
      *
@@ -108,8 +105,6 @@ final class GitNamespace extends ApiNamespace
      * _Requires permission: `git:read`._
      *
      * GET /api/org/{orgId}/git/repositories
-     *
-     * Raises on 404: Not found
      *
      * @param string|null $orgId Organization id. Defaults to the `orgId` the client was constructed with.
      * @throws \Infrawrench\Sdk\ApiException on any non-2xx response.
