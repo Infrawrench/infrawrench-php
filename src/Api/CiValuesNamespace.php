@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.135.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.136.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.135.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.136.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -100,13 +100,15 @@ final class CiValuesNamespace extends ApiNamespace
     }
 
     /**
-     * Set a CI secret or variable
+     * Set a CI secret or variable (paid plan required)
      *
      * _Requires permission: `ci:write`._
      *
      * PUT /api/org/{orgId}/ci/values/{kind}/{name}
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 404: Not found
      *

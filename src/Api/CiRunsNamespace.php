@@ -1,10 +1,10 @@
 <?php
 
 /*
- * infrawrench/sdk v1.135.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
+ * infrawrench/sdk v1.136.0 | MIT | Copyright (c) 2026 Infrawrench Services, Inc.
  * https://github.com/Infrawrench/Infrawrench
  *
- * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.135.0).
+ * Generated from the Infrawrench API OpenAPI 3.1 spec (API version 1.136.0).
  *
  * DO NOT EDIT. Regenerate with:
  *   pnpm --filter @infrawrench/web generate:sdk
@@ -33,7 +33,7 @@ use Infrawrench\Sdk\RequestOptions;
 final class CiRunsNamespace extends ApiNamespace
 {
     /**
-     * Approve a fork's pull request commit
+     * Approve a fork's pull request commit (paid plan required)
      *
      * Runs CI for this one commit of a pull request from a fork, without the organization's or
      * repository's secrets. A later commit needs approving again.
@@ -41,6 +41,8 @@ final class CiRunsNamespace extends ApiNamespace
      * _Requires permission: `ci:approve`._
      *
      * POST /api/org/{orgId}/ci/runs/{runId}/approve
+     *
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 404: Not found
      *
@@ -98,7 +100,7 @@ final class CiRunsNamespace extends ApiNamespace
     }
 
     /**
-     * Start a pipeline by hand
+     * Start a pipeline by hand (paid plan required)
      *
      * Queues a run of one pipeline with `on.manual`, at the head of a branch of the repository
      * itself, with the inputs given. The pipeline must be listed by `GET /ci/manual`, and the
@@ -111,6 +113,8 @@ final class CiRunsNamespace extends ApiNamespace
      * POST /api/org/{orgId}/ci/runs
      *
      * Raises on 400: Bad request
+     *
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 404: Not found
      *
@@ -261,7 +265,7 @@ final class CiRunsNamespace extends ApiNamespace
     }
 
     /**
-     * Run a finished CI run again
+     * Run a finished CI run again (paid plan required)
      *
      * Queues a new run of the same repository, commit, branch and event, linked to this one. A run
      * waiting for approval is approved instead, and a fork's pull request still runs without
@@ -270,6 +274,8 @@ final class CiRunsNamespace extends ApiNamespace
      * _Requires permission: `ci:approve`._
      *
      * POST /api/org/{orgId}/ci/runs/{runId}/retry
+     *
+     * Raises on 402: Payment required: the organization's plan does not include this
      *
      * Raises on 404: Not found
      *
